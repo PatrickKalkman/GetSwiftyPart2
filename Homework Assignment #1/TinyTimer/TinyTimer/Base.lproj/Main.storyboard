@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer is a simple timer and helps you track your time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XW5-vG-isk">
-                                <rect key="frame" x="19" y="296" width="337.5" height="42.5"/>
+                                <rect key="frame" x="19" y="218" width="337.5" height="42.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5f-Dw-VWX" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
-                                <rect key="frame" x="213" y="493" width="84" height="84"/>
+                                <rect key="frame" x="219" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="Ebh-vx-g3H"/>
                                     <constraint firstAttribute="width" constant="84" id="doL-RP-a9r"/>
@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1X-Wp-zhl" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
-                                <rect key="frame" x="78" y="493" width="84" height="84"/>
+                                <rect key="frame" x="72" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="4Yf-2V-X3d"/>
                                     <constraint firstAttribute="height" constant="84" id="kVA-q1-BTf"/>
@@ -106,7 +106,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYp-aR-Z1N" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
-                                <rect key="frame" x="213" y="493" width="84" height="84"/>
+                                <rect key="frame" x="219" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="fuz-ql-jQy"/>
                                     <constraint firstAttribute="height" constant="84" id="tvb-7y-dSo"/>
@@ -132,12 +132,6 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJZ-ta-Fc8">
                                 <rect key="frame" x="92" y="68" width="191" height="54"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="45"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISs-WK-Jzl">
-                                <rect key="frame" x="92" y="116" width="191" height="54"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -173,7 +167,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93A-bC-SUP" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
-                                <rect key="frame" x="78" y="493" width="84" height="84"/>
+                                <rect key="frame" x="72" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="De3-h4-b4a"/>
                                     <constraint firstAttribute="height" constant="84" id="Tsd-FS-Lf1"/>
@@ -197,31 +191,37 @@
                                     <action selector="resetAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6LH-hI-PfR"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paused" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBA-hH-nIP">
+                                <rect key="frame" x="134" y="313" width="107" height="41"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XW5-vG-isk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="4ZA-KM-Zjf"/>
-                            <constraint firstItem="ISs-WK-Jzl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="96" id="6wF-BS-hbh"/>
+                            <constraint firstItem="DBA-hH-nIP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7ec-bi-6Gv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="93A-bC-SUP" secondAttribute="bottom" constant="90" id="8JF-nM-TUg"/>
+                            <constraint firstItem="XW5-vG-isk" firstAttribute="top" secondItem="hJZ-ta-Fc8" secondAttribute="top" constant="150" id="BCC-9X-DIW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LYp-aR-Z1N" secondAttribute="bottom" constant="90" id="DS3-YO-kbE"/>
                             <constraint firstItem="mn4-XA-uet" firstAttribute="top" secondItem="t3V-TQ-VGf" secondAttribute="top" constant="10" id="DzN-Gy-Oyr"/>
                             <constraint firstItem="WUA-Fm-ALG" firstAttribute="top" secondItem="FeA-Q3-MhL" secondAttribute="bottom" constant="-31" id="F4U-bn-cES"/>
                             <constraint firstItem="mrl-1b-GXT" firstAttribute="leading" secondItem="oIL-V9-2dT" secondAttribute="trailing" constant="6" id="GNL-M9-9yX"/>
                             <constraint firstItem="mrl-1b-GXT" firstAttribute="top" secondItem="oIL-V9-2dT" secondAttribute="top" constant="10" id="JJq-R9-TqV"/>
-                            <constraint firstItem="ISs-WK-Jzl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LuK-th-CCH"/>
-                            <constraint firstItem="93A-bC-SUP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="NMv-nA-cTv"/>
+                            <constraint firstItem="93A-bC-SUP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="NMv-nA-cTv"/>
                             <constraint firstItem="hJZ-ta-Fc8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RFR-sM-j0n"/>
-                            <constraint firstItem="XW5-vG-isk" firstAttribute="top" secondItem="ISs-WK-Jzl" secondAttribute="top" constant="180" id="V4b-8i-yGG"/>
                             <constraint firstItem="t3V-TQ-VGf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W2p-Px-Dxg"/>
                             <constraint firstItem="WUA-Fm-ALG" firstAttribute="trailing" secondItem="t3V-TQ-VGf" secondAttribute="leading" constant="-36" id="aLb-ju-rRh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q5f-Dw-VWX" secondAttribute="trailing" constant="78" id="d29-Uy-4Ma"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q5f-Dw-VWX" secondAttribute="trailing" constant="72" id="d29-Uy-4Ma"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qkt-Ke-eSC" secondAttribute="bottom" constant="90" id="fJs-DD-AhH"/>
-                            <constraint firstItem="V1X-Wp-zhl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="fQj-Ly-Drq"/>
+                            <constraint firstItem="V1X-Wp-zhl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="fQj-Ly-Drq"/>
+                            <constraint firstItem="DBA-hH-nIP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gE3-IE-NLQ"/>
                             <constraint firstItem="t3V-TQ-VGf" firstAttribute="top" secondItem="hJZ-ta-Fc8" secondAttribute="bottom" constant="90" id="git-5d-Jg2"/>
                             <constraint firstItem="oIL-V9-2dT" firstAttribute="leading" secondItem="t3V-TQ-VGf" secondAttribute="trailing" constant="36" id="gt1-4t-DdN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V1X-Wp-zhl" secondAttribute="bottom" constant="90" id="hwn-K1-CBM"/>
                             <constraint firstItem="FeA-Q3-MhL" firstAttribute="top" secondItem="WUA-Fm-ALG" secondAttribute="top" constant="10" id="iZ6-zU-dvE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LYp-aR-Z1N" secondAttribute="trailing" constant="78" id="kUB-hB-phf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LYp-aR-Z1N" secondAttribute="trailing" constant="72" id="kUB-hB-phf"/>
                             <constraint firstItem="FeA-Q3-MhL" firstAttribute="leading" secondItem="WUA-Fm-ALG" secondAttribute="trailing" constant="6" id="s0l-4H-sun"/>
                             <constraint firstItem="mn4-XA-uet" firstAttribute="leading" secondItem="t3V-TQ-VGf" secondAttribute="trailing" constant="6" id="uWf-hP-PkG"/>
                             <constraint firstItem="hJZ-ta-Fc8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="v1J-uX-rrN"/>
@@ -259,6 +259,7 @@
                         <outlet property="minutesLabel" destination="t3V-TQ-VGf" id="NdJ-NY-Izm"/>
                         <outlet property="minutesUnitLabel" destination="mn4-XA-uet" id="PHC-Pa-O8A"/>
                         <outlet property="pauseButton" destination="LYp-aR-Z1N" id="fkp-Gm-6wO"/>
+                        <outlet property="pausedLabel" destination="DBA-hH-nIP" id="79k-0z-kzF"/>
                         <outlet property="resetButton" destination="93A-bC-SUP" id="vlN-9P-eXf"/>
                         <outlet property="resumeButton" destination="q5f-Dw-VWX" id="all-cr-49e"/>
                         <outlet property="secondUnitLabel" destination="mrl-1b-GXT" id="pnj-IC-dK1"/>
@@ -267,7 +268,6 @@
                         <outlet property="stopButton" destination="V1X-Wp-zhl" id="uHP-A5-sqr"/>
                         <outlet property="tinyTimerDescriptionLabel" destination="XW5-vG-isk" id="tBx-hf-7RS"/>
                         <outlet property="tinyTimerRunningLabel" destination="hJZ-ta-Fc8" id="b6c-gu-AqO"/>
-                        <outlet property="tinyTimerTitleLabel" destination="ISs-WK-Jzl" id="SmF-Ve-jfG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

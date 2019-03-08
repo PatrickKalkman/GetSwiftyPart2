@@ -8,18 +8,11 @@
 
 import UIKit
 
-enum TinyTimerState
-{
-    case Init
-    case Running
-    case Paused
-}
-
 class ViewController: UIViewController {
 
     var currentState : TinyTimerState = TinyTimerState.Init
-    
-    @IBOutlet weak var tinyTimerTitleLabel: UILabel!
+    var timer: Timer = Timer()
+   
     @IBOutlet weak var tinyTimerRunningLabel: UILabel!
     @IBOutlet weak var tinyTimerDescriptionLabel: UILabel!
     
@@ -31,6 +24,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var secondUnitLabel: UILabel!
+    @IBOutlet weak var pausedLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resumeButton: UIButton!
@@ -41,85 +35,112 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         refreshUiState()
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    func refreshUiState()
-    {
-        switch currentState {
-        case TinyTimerState.Init:
-         tinyTimerTitleLabel.isHidden = false
-         tinyTimerDescriptionLabel.isHidden = false
-         startButton.isHidden = false
-         
-         tinyTimerRunningLabel.isHidden = true
-         showStopwatchTimer(isHidden: true)
-         
-         resumeButton.isHidden = true
-         stopButton.isHidden = true
-         resetButton.isHidden = true
-         pauseButton.isHidden = true
-            
-            
-        case TinyTimerState.Running:
-            tinyTimerTitleLabel.isHidden = true
-            tinyTimerDescriptionLabel.isHidden = true
-            startButton.isHidden = true
-            
-            tinyTimerRunningLabel.isHidden = false
-            showStopwatchTimer(isHidden: false)
-            
-            resumeButton.isHidden = true
-            stopButton.isHidden = false
-            resetButton.isHidden = true
-            pauseButton.isHidden = false
-        case TinyTimerState.Paused:
-            tinyTimerTitleLabel.isHidden = true
-            tinyTimerDescriptionLabel.isHidden = true
-            startButton.isHidden = true
-            
-            tinyTimerRunningLabel.isHidden = false
-            showStopwatchTimer(isHidden: false)
-            
-            resumeButton.isHidden = false
-            stopButton.isHidden = true
-            resetButton.isHidden = false
-            pauseButton.isHidden = true
-        }
-    }
-    
+
     func showStopwatchTimer(isHidden: Bool) {
-        hoursLabel.isHidden = isHidden
-        hoursUnitLabel.isHidden = isHidden
-        minutesLabel.isHidden = isHidden
-        minutesUnitLabel.isHidden = isHidden
-        secondsLabel.isHidden = isHidden
-        secondUnitLabel.isHidden = isHidden
+        hoursLabel.hideWithAnimation(hidden: isHidden)
+        hoursUnitLabel.hideWithAnimation(hidden: isHidden)
+        minutesLabel.hideWithAnimation(hidden: isHidden)
+        minutesUnitLabel.hideWithAnimation(hidden: isHidden)
+        secondsLabel.hideWithAnimation(hidden: isHidden)
+        secondUnitLabel.hideWithAnimation(hidden: isHidden)
     }
-    
+   
+   var stopWatchTime : TimeSpan = TimeSpan()
+   
+   @objc func UpdateTimer() {
+      stopWatchTime.addSecond()
+      refreshStopWatchView()
+   }
+   
+   func refreshStopWatchView() {
+      secondsLabel.fadeTransition(0.6)
+      secondsLabel.text = String(format: "%02i", stopWatchTime.seconds)
+      minutesLabel.fadeTransition(0.6)
+      minutesLabel.text = String(format: "%02i", stopWatchTime.minutes)
+      hoursLabel.fadeTransition(0.6)
+      hoursLabel.text = String(format: "%02i", stopWatchTime.hours)
+   }
+   
     @IBAction func startAction(_ sender: UIButton) {
         currentState = TinyTimerState.Running
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
         refreshUiState()
     }
     
     @IBAction func stopAction(_ sender: UIButton) {
         currentState = TinyTimerState.Init
+        timer.invalidate()
+        stopWatchTime.reset()
         refreshUiState()
     }
     
     @IBAction func pauseAction(_ sender: UIButton) {
         currentState = TinyTimerState.Paused
+        timer.invalidate()
         refreshUiState()
     }
     
     @IBAction func resumeAction(_ sender: UIButton) {
         currentState = TinyTimerState.Running
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
         refreshUiState()
     }
     
     @IBAction func resetAction(_ sender: UIButton) {
         currentState = TinyTimerState.Init
+        timer.invalidate()
+        stopWatchTime.reset()
         refreshUiState()
     }
+   
+   func refreshUiState()
+   {
+      switch currentState {
+      case TinyTimerState.Init:
+         refreshStopWatchView()
+         tinyTimerDescriptionLabel.hideWithAnimation(hidden: false)
+         startButton.hideWithAnimation(hidden: false)
+         
+         tinyTimerRunningLabel.hideWithAnimation(hidden: false)
+         
+         resumeButton.hideWithAnimation(hidden: true)
+         stopButton.hideWithAnimation(hidden: true)
+         resetButton.hideWithAnimation(hidden: true)
+         pauseButton.hideWithAnimation(hidden: true)
+         pausedLabel.hideWithAnimation(hidden: true)
+         
+         showStopwatchTimer(isHidden: true)
+      case TinyTimerState.Running:
+         refreshStopWatchView()
+         tinyTimerDescriptionLabel.hideWithAnimation(hidden: true)
+         startButton.hideWithAnimation(hidden: true)
+         
+         tinyTimerRunningLabel.hideWithAnimation(hidden: false)
+   
+         resumeButton.hideWithAnimation(hidden: true)
+         stopButton.hideWithAnimation(hidden: false)
+         resetButton.hideWithAnimation(hidden: true)
+         pauseButton.hideWithAnimation(hidden: false)
+         pausedLabel.hideWithAnimation(hidden: true)
+         
+         showStopwatchTimer(isHidden: false)
+      case TinyTimerState.Paused:
+         refreshStopWatchView()
+         tinyTimerDescriptionLabel.hideWithAnimation(hidden: true)
+         startButton.hideWithAnimation(hidden: true)
+         
+         tinyTimerRunningLabel.isHidden = false
+         showStopwatchTimer(isHidden: false)
+         
+         pausedLabel.hideWithAnimation(hidden: false)
+         resumeButton.hideWithAnimation(hidden: false)
+         stopButton.hideWithAnimation(hidden: true)
+         resetButton.hideWithAnimation(hidden: false)
+         pauseButton.hideWithAnimation(hidden: true)
+      }
+   }
+   
 }
+
 
