@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TinyTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="TinyTimer" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer is a simple timer and helps you track your time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XW5-vG-isk">
+                                <rect key="frame" x="19" y="296" width="337.5" height="42.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeA-Q3-MhL">
+                                <rect key="frame" x="129" y="222" width="12" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-Ke-eSC" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                                <rect key="frame" x="145.5" y="493" width="84" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="1no-oa-Cix"/>
+                                    <constraint firstAttribute="width" constant="84" id="gPq-55-HcD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="42"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="di4-br-PIp"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5f-Dw-VWX" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                                <rect key="frame" x="213" y="493" width="84" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="Ebh-vx-g3H"/>
+                                    <constraint firstAttribute="width" constant="84" id="doL-RP-a9r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Resume">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="42"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resumeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CoI-yg-r1C"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1X-Wp-zhl" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                                <rect key="frame" x="78" y="493" width="84" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="4Yf-2V-X3d"/>
+                                    <constraint firstAttribute="height" constant="84" id="kVA-q1-BTf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="42"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stopAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZVQ-CN-XBU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYp-aR-Z1N" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                                <rect key="frame" x="213" y="493" width="84" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="fuz-ql-jQy"/>
+                                    <constraint firstAttribute="height" constant="84" id="tvb-7y-dSo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="42"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pauseAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDu-x3-Wdf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJZ-ta-Fc8">
+                                <rect key="frame" x="92" y="68" width="191" height="54"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISs-WK-Jzl">
+                                <rect key="frame" x="92" y="116" width="191" height="54"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUA-Fm-ALG">
+                                <rect key="frame" x="66" y="212" width="57" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="51"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mn4-XA-uet">
+                                <rect key="frame" x="222" y="222" width="14" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3V-TQ-VGf">
+                                <rect key="frame" x="159" y="212" width="57" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="51"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrl-1b-GXT">
+                                <rect key="frame" x="316" y="222" width="11" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="57" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIL-V9-2dT">
+                                <rect key="frame" x="252" y="212" width="58" height="62"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="52"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93A-bC-SUP" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                                <rect key="frame" x="78" y="493" width="84" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="De3-h4-b4a"/>
+                                    <constraint firstAttribute="height" constant="84" id="Tsd-FS-Lf1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="42"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6LH-hI-PfR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XW5-vG-isk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="4ZA-KM-Zjf"/>
+                            <constraint firstItem="ISs-WK-Jzl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="96" id="6wF-BS-hbh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="93A-bC-SUP" secondAttribute="bottom" constant="90" id="8JF-nM-TUg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LYp-aR-Z1N" secondAttribute="bottom" constant="90" id="DS3-YO-kbE"/>
+                            <constraint firstItem="mn4-XA-uet" firstAttribute="top" secondItem="t3V-TQ-VGf" secondAttribute="top" constant="10" id="DzN-Gy-Oyr"/>
+                            <constraint firstItem="WUA-Fm-ALG" firstAttribute="top" secondItem="FeA-Q3-MhL" secondAttribute="bottom" constant="-31" id="F4U-bn-cES"/>
+                            <constraint firstItem="mrl-1b-GXT" firstAttribute="leading" secondItem="oIL-V9-2dT" secondAttribute="trailing" constant="6" id="GNL-M9-9yX"/>
+                            <constraint firstItem="mrl-1b-GXT" firstAttribute="top" secondItem="oIL-V9-2dT" secondAttribute="top" constant="10" id="JJq-R9-TqV"/>
+                            <constraint firstItem="ISs-WK-Jzl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LuK-th-CCH"/>
+                            <constraint firstItem="93A-bC-SUP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="NMv-nA-cTv"/>
+                            <constraint firstItem="hJZ-ta-Fc8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RFR-sM-j0n"/>
+                            <constraint firstItem="XW5-vG-isk" firstAttribute="top" secondItem="ISs-WK-Jzl" secondAttribute="top" constant="180" id="V4b-8i-yGG"/>
+                            <constraint firstItem="t3V-TQ-VGf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W2p-Px-Dxg"/>
+                            <constraint firstItem="WUA-Fm-ALG" firstAttribute="trailing" secondItem="t3V-TQ-VGf" secondAttribute="leading" constant="-36" id="aLb-ju-rRh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q5f-Dw-VWX" secondAttribute="trailing" constant="78" id="d29-Uy-4Ma"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qkt-Ke-eSC" secondAttribute="bottom" constant="90" id="fJs-DD-AhH"/>
+                            <constraint firstItem="V1X-Wp-zhl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="fQj-Ly-Drq"/>
+                            <constraint firstItem="t3V-TQ-VGf" firstAttribute="top" secondItem="hJZ-ta-Fc8" secondAttribute="bottom" constant="90" id="git-5d-Jg2"/>
+                            <constraint firstItem="oIL-V9-2dT" firstAttribute="leading" secondItem="t3V-TQ-VGf" secondAttribute="trailing" constant="36" id="gt1-4t-DdN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V1X-Wp-zhl" secondAttribute="bottom" constant="90" id="hwn-K1-CBM"/>
+                            <constraint firstItem="FeA-Q3-MhL" firstAttribute="top" secondItem="WUA-Fm-ALG" secondAttribute="top" constant="10" id="iZ6-zU-dvE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LYp-aR-Z1N" secondAttribute="trailing" constant="78" id="kUB-hB-phf"/>
+                            <constraint firstItem="FeA-Q3-MhL" firstAttribute="leading" secondItem="WUA-Fm-ALG" secondAttribute="trailing" constant="6" id="s0l-4H-sun"/>
+                            <constraint firstItem="mn4-XA-uet" firstAttribute="leading" secondItem="t3V-TQ-VGf" secondAttribute="trailing" constant="6" id="uWf-hP-PkG"/>
+                            <constraint firstItem="hJZ-ta-Fc8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="v1J-uX-rrN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q5f-Dw-VWX" secondAttribute="bottom" constant="90" id="v4g-hs-oVJ"/>
+                            <constraint firstItem="oIL-V9-2dT" firstAttribute="top" secondItem="t3V-TQ-VGf" secondAttribute="top" id="w3k-eU-IhA"/>
+                            <constraint firstItem="WUA-Fm-ALG" firstAttribute="top" secondItem="t3V-TQ-VGf" secondAttribute="top" id="w6i-fp-bvH"/>
+                            <constraint firstItem="XW5-vG-isk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xgF-6Z-5Zx"/>
+                            <constraint firstItem="Qkt-Ke-eSC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zLv-Wz-H8v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                <color key="value" red="0.76226448717605466" green="0.18993825259989039" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                <color key="value" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startPointX">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startPointY">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endPointX">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endPointY">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <outlet property="hoursLabel" destination="WUA-Fm-ALG" id="kLp-nd-enw"/>
+                        <outlet property="hoursUnitLabel" destination="FeA-Q3-MhL" id="q5Q-9h-fJF"/>
+                        <outlet property="minutesLabel" destination="t3V-TQ-VGf" id="NdJ-NY-Izm"/>
+                        <outlet property="minutesUnitLabel" destination="mn4-XA-uet" id="PHC-Pa-O8A"/>
+                        <outlet property="pauseButton" destination="LYp-aR-Z1N" id="fkp-Gm-6wO"/>
+                        <outlet property="resetButton" destination="93A-bC-SUP" id="vlN-9P-eXf"/>
+                        <outlet property="resumeButton" destination="q5f-Dw-VWX" id="all-cr-49e"/>
+                        <outlet property="secondUnitLabel" destination="mrl-1b-GXT" id="pnj-IC-dK1"/>
+                        <outlet property="secondsLabel" destination="oIL-V9-2dT" id="zE1-jv-ebo"/>
+                        <outlet property="startButton" destination="Qkt-Ke-eSC" id="CJE-2R-LDl"/>
+                        <outlet property="stopButton" destination="V1X-Wp-zhl" id="uHP-A5-sqr"/>
+                        <outlet property="tinyTimerDescriptionLabel" destination="XW5-vG-isk" id="tBx-hf-7RS"/>
+                        <outlet property="tinyTimerRunningLabel" destination="hJZ-ta-Fc8" id="b6c-gu-AqO"/>
+                        <outlet property="tinyTimerTitleLabel" destination="ISs-WK-Jzl" id="SmF-Ve-jfG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+</document>
