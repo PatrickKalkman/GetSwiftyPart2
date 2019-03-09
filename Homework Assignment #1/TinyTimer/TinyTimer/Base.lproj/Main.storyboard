@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1X-Wp-zhl" customClass="BorderButton" customModule="Tiny_Timer" customModuleProvider="target">
-                                <rect key="frame" x="72" y="493" width="84" height="84"/>
+                                <rect key="frame" x="145.5" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="4Yf-2V-X3d"/>
                                     <constraint firstAttribute="height" constant="84" id="kVA-q1-BTf"/>
@@ -103,31 +103,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="stopAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZVQ-CN-XBU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYp-aR-Z1N" customClass="BorderButton" customModule="Tiny_Timer" customModuleProvider="target">
-                                <rect key="frame" x="219" y="493" width="84" height="84"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="84" id="fuz-ql-jQy"/>
-                                    <constraint firstAttribute="height" constant="84" id="tvb-7y-dSo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Pause">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="42"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="pauseAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDu-x3-Wdf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJZ-ta-Fc8">
@@ -200,11 +175,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="V1X-Wp-zhl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0to-Do-fRk"/>
                             <constraint firstItem="XW5-vG-isk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="4ZA-KM-Zjf"/>
                             <constraint firstItem="DBA-hH-nIP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7ec-bi-6Gv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="93A-bC-SUP" secondAttribute="bottom" constant="90" id="8JF-nM-TUg"/>
                             <constraint firstItem="XW5-vG-isk" firstAttribute="top" secondItem="hJZ-ta-Fc8" secondAttribute="top" constant="150" id="BCC-9X-DIW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LYp-aR-Z1N" secondAttribute="bottom" constant="90" id="DS3-YO-kbE"/>
                             <constraint firstItem="mn4-XA-uet" firstAttribute="top" secondItem="t3V-TQ-VGf" secondAttribute="top" constant="10" id="DzN-Gy-Oyr"/>
                             <constraint firstItem="WUA-Fm-ALG" firstAttribute="top" secondItem="FeA-Q3-MhL" secondAttribute="bottom" constant="-31" id="F4U-bn-cES"/>
                             <constraint firstItem="mrl-1b-GXT" firstAttribute="leading" secondItem="oIL-V9-2dT" secondAttribute="trailing" constant="6" id="GNL-M9-9yX"/>
@@ -215,13 +190,11 @@
                             <constraint firstItem="WUA-Fm-ALG" firstAttribute="trailing" secondItem="t3V-TQ-VGf" secondAttribute="leading" constant="-36" id="aLb-ju-rRh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q5f-Dw-VWX" secondAttribute="trailing" constant="72" id="d29-Uy-4Ma"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qkt-Ke-eSC" secondAttribute="bottom" constant="90" id="fJs-DD-AhH"/>
-                            <constraint firstItem="V1X-Wp-zhl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="fQj-Ly-Drq"/>
                             <constraint firstItem="DBA-hH-nIP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gE3-IE-NLQ"/>
                             <constraint firstItem="t3V-TQ-VGf" firstAttribute="top" secondItem="hJZ-ta-Fc8" secondAttribute="bottom" constant="90" id="git-5d-Jg2"/>
                             <constraint firstItem="oIL-V9-2dT" firstAttribute="leading" secondItem="t3V-TQ-VGf" secondAttribute="trailing" constant="36" id="gt1-4t-DdN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V1X-Wp-zhl" secondAttribute="bottom" constant="90" id="hwn-K1-CBM"/>
                             <constraint firstItem="FeA-Q3-MhL" firstAttribute="top" secondItem="WUA-Fm-ALG" secondAttribute="top" constant="10" id="iZ6-zU-dvE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LYp-aR-Z1N" secondAttribute="trailing" constant="72" id="kUB-hB-phf"/>
                             <constraint firstItem="FeA-Q3-MhL" firstAttribute="leading" secondItem="WUA-Fm-ALG" secondAttribute="trailing" constant="6" id="s0l-4H-sun"/>
                             <constraint firstItem="mn4-XA-uet" firstAttribute="leading" secondItem="t3V-TQ-VGf" secondAttribute="trailing" constant="6" id="uWf-hP-PkG"/>
                             <constraint firstItem="hJZ-ta-Fc8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="v1J-uX-rrN"/>
@@ -258,7 +231,6 @@
                         <outlet property="hoursUnitLabel" destination="FeA-Q3-MhL" id="q5Q-9h-fJF"/>
                         <outlet property="minutesLabel" destination="t3V-TQ-VGf" id="NdJ-NY-Izm"/>
                         <outlet property="minutesUnitLabel" destination="mn4-XA-uet" id="PHC-Pa-O8A"/>
-                        <outlet property="pauseButton" destination="LYp-aR-Z1N" id="fkp-Gm-6wO"/>
                         <outlet property="pausedLabel" destination="DBA-hH-nIP" id="79k-0z-kzF"/>
                         <outlet property="resetButton" destination="93A-bC-SUP" id="vlN-9P-eXf"/>
                         <outlet property="resumeButton" destination="q5f-Dw-VWX" id="all-cr-49e"/>

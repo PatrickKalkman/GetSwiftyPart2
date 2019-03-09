@@ -26,7 +26,6 @@ class ViewController: UIViewController, StopWatchElapsedDelegate {
    @IBOutlet weak var resumeButton: UIButton!
    @IBOutlet weak var stopButton: UIButton!
    @IBOutlet weak var resetButton: UIButton!
-   @IBOutlet weak var pauseButton: UIButton!
 
    // The model of the application
    var stopWatch : StopWatch = StopWatch()
@@ -47,18 +46,13 @@ class ViewController: UIViewController, StopWatchElapsedDelegate {
       refreshUI()
    }
 
-   @IBAction func pauseAction(_ sender: UIButton) {
-      stopWatch.pause()
-      refreshUI()
-   }
-
    @IBAction func resumeAction(_ sender: UIButton) {
       stopWatch.start()
       refreshUI()
    }
 
    @IBAction func resetAction(_ sender: UIButton) {
-      stopWatch.stop()
+      stopWatch.reset()
       refreshUI()
    }
    
@@ -78,7 +72,6 @@ class ViewController: UIViewController, StopWatchElapsedDelegate {
       pausedLabel.hideWithAnimation(hidden: state != TinyTimerState.Paused)
       resumeButton.hideWithAnimation(hidden: state != TinyTimerState.Paused)
       stopButton.hideWithAnimation(hidden: state != TinyTimerState.Running)
-      pauseButton.hideWithAnimation(hidden: state != TinyTimerState.Running)
       showStopwatchTimer(isHidden: state == TinyTimerState.Init)
 
       refreshStopWatchView()

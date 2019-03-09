@@ -29,14 +29,14 @@ class StopWatch {
    }
    
    func stop() {
+      currentState = TinyTimerState.Paused
+      timer.invalidate()
+   }
+   
+   func reset() {
       currentState = TinyTimerState.Init
       timer.invalidate()
       currentTime.reset()
-   }
-   
-   func pause() {
-      currentState = TinyTimerState.Paused
-      timer.invalidate()
    }
    
    @objc func UpdateTimer() {
