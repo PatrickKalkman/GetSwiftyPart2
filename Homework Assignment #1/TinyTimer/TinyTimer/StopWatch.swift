@@ -8,7 +8,7 @@
 
 import Foundation
 
-// The model off the application
+// The model of the application
 class StopWatch {
    
    var currentState : TinyTimerState = TinyTimerState.Init
