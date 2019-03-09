@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// A button with a single border
 @IBDesignable class BorderButton: UIButton {
    
    @IBInspectable var borderColor: UIColor = UIColor.white {

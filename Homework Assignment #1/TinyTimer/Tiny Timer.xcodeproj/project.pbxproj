@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D08E8ACE15F29B7E509EF2E /* Pods_Tiny_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB3E0102159B235A361CB9 /* Pods_Tiny_Timer.framework */; };
+		ABB484B52233205000AC90E3 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB484B42233205000AC90E3 /* StopWatch.swift */; };
+		ABB484B722339B4500AC90E3 /* TimeTriggeredDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB484B622339B4500AC90E3 /* TimeTriggeredDelegate.swift */; };
 		ABE9CFF322326811008290AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9CFF222326811008290AE /* AppDelegate.swift */; };
 		ABE9CFF522326811008290AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9CFF422326811008290AE /* ViewController.swift */; };
 		ABE9CFF822326811008290AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE9CFF622326811008290AE /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		1D1B30DBDFE6FF02937466ED /* Pods-Tiny Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Timer.release.xcconfig"; path = "Target Support Files/Pods-Tiny Timer/Pods-Tiny Timer.release.xcconfig"; sourceTree = "<group>"; };
 		2F7895980B6DA634ECAA8415 /* Pods-Tiny Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Timer.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Timer/Pods-Tiny Timer.debug.xcconfig"; sourceTree = "<group>"; };
 		58FB3E0102159B235A361CB9 /* Pods_Tiny_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB484B42233205000AC90E3 /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		ABB484B622339B4500AC90E3 /* TimeTriggeredDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTriggeredDelegate.swift; sourceTree = "<group>"; };
 		ABE9CFEF22326811008290AE /* Tiny Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE9CFF222326811008290AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE9CFF422326811008290AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				ABE9D0242232A55B008290AE /* UIViewExtensions.swift */,
 				ABE9D0262232A5B8008290AE /* TinyTimerState.swift */,
 				ABE9D0282232AAA7008290AE /* TimeSpan.swift */,
+				ABB484B42233205000AC90E3 /* StopWatch.swift */,
+				ABB484B622339B4500AC90E3 /* TimeTriggeredDelegate.swift */,
 			);
 			path = TinyTimer;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB484B722339B4500AC90E3 /* TimeTriggeredDelegate.swift in Sources */,
 				ABE9CFF522326811008290AE /* ViewController.swift in Sources */,
 				ABE9D0292232AAA7008290AE /* TimeSpan.swift in Sources */,
 				ABE9D0252232A55B008290AE /* UIViewExtensions.swift in Sources */,
@@ -359,6 +366,7 @@
 				ABE9D0272232A5B8008290AE /* TinyTimerState.swift in Sources */,
 				ABE9D02122326E15008290AE /* GradientView.swift in Sources */,
 				ABE9D023223273B8008290AE /* BorderButton.swift in Sources */,
+				ABB484B52233205000AC90E3 /* StopWatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

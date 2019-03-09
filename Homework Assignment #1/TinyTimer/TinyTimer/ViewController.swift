@@ -8,139 +8,101 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+// The main and single view controller of the application
+class ViewController: UIViewController, StopWatchElapsedDelegate {
 
-    var currentState : TinyTimerState = TinyTimerState.Init
-    var timer: Timer = Timer()
+   // Stopwatch labels
+   @IBOutlet weak var hoursLabel: UILabel!
+   @IBOutlet weak var hoursUnitLabel: UILabel!
+   @IBOutlet weak var minutesLabel: UILabel!
+   @IBOutlet weak var minutesUnitLabel: UILabel!
+   @IBOutlet weak var secondsLabel: UILabel!
+   @IBOutlet weak var secondUnitLabel: UILabel!
+   @IBOutlet weak var pausedLabel: UILabel!
+   @IBOutlet weak var tinyTimerDescriptionLabel: UILabel!
    
-    @IBOutlet weak var tinyTimerRunningLabel: UILabel!
-    @IBOutlet weak var tinyTimerDescriptionLabel: UILabel!
-    
-    @IBOutlet weak var hoursLabel: UILabel!
-    @IBOutlet weak var hoursUnitLabel: UILabel!
-    
-    @IBOutlet weak var minutesLabel: UILabel!
-    @IBOutlet weak var minutesUnitLabel: UILabel!
-    
-    @IBOutlet weak var secondsLabel: UILabel!
-    @IBOutlet weak var secondUnitLabel: UILabel!
-    @IBOutlet weak var pausedLabel: UILabel!
-    
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var resumeButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var pauseButton: UIButton!
-    
-    override func viewDidLoad() {
-        refreshUiState()
-        super.viewDidLoad()
-    }
+   // Stopwatch buttons
+   @IBOutlet weak var startButton: UIButton!
+   @IBOutlet weak var resumeButton: UIButton!
+   @IBOutlet weak var stopButton: UIButton!
+   @IBOutlet weak var resetButton: UIButton!
+   @IBOutlet weak var pauseButton: UIButton!
 
-    func showStopwatchTimer(isHidden: Bool) {
-        hoursLabel.hideWithAnimation(hidden: isHidden)
-        hoursUnitLabel.hideWithAnimation(hidden: isHidden)
-        minutesLabel.hideWithAnimation(hidden: isHidden)
-        minutesUnitLabel.hideWithAnimation(hidden: isHidden)
-        secondsLabel.hideWithAnimation(hidden: isHidden)
-        secondUnitLabel.hideWithAnimation(hidden: isHidden)
-    }
+   // The model of the application
+   var stopWatch : StopWatch = StopWatch()
    
-   var stopWatchTime : TimeSpan = TimeSpan()
+   override func viewDidLoad() {
+      stopWatch.setElapsedDelegate(stopWatchElapsedDelegate: self)
+      refreshUI()
+      super.viewDidLoad()
+   }
    
-   @objc func UpdateTimer() {
-      stopWatchTime.addSecond()
+   @IBAction func startAction(_ sender: UIButton) {
+      stopWatch.start()
+      refreshUI()
+   }
+
+   @IBAction func stopAction(_ sender: UIButton) {
+      stopWatch.stop()
+      refreshUI()
+   }
+
+   @IBAction func pauseAction(_ sender: UIButton) {
+      stopWatch.pause()
+      refreshUI()
+   }
+
+   @IBAction func resumeAction(_ sender: UIButton) {
+      stopWatch.start()
+      refreshUI()
+   }
+
+   @IBAction func resetAction(_ sender: UIButton) {
+      stopWatch.stop()
+      refreshUI()
+   }
+   
+   // The stopwatch model calls this method every second
+   func elapsed() {
       refreshStopWatchView()
    }
    
+   func refreshUI() {
+      // Retrieve the state from the model
+      let state: TinyTimerState = stopWatch.currentState
+
+      // Reorganize the UI based on the state of the stopwatch model
+      startButton.hideWithAnimation(hidden: state != TinyTimerState.Init)
+      resetButton.hideWithAnimation(hidden: state != TinyTimerState.Paused)
+      tinyTimerDescriptionLabel.hideWithAnimation(hidden: state != TinyTimerState.Init)
+      pausedLabel.hideWithAnimation(hidden: state != TinyTimerState.Paused)
+      resumeButton.hideWithAnimation(hidden: state != TinyTimerState.Paused)
+      stopButton.hideWithAnimation(hidden: state != TinyTimerState.Running)
+      pauseButton.hideWithAnimation(hidden: state != TinyTimerState.Running)
+      showStopwatchTimer(isHidden: state == TinyTimerState.Init)
+
+      refreshStopWatchView()
+   }
+
    func refreshStopWatchView() {
-      secondsLabel.fadeTransition(0.6)
-      secondsLabel.text = String(format: "%02i", stopWatchTime.seconds)
-      minutesLabel.fadeTransition(0.6)
-      minutesLabel.text = String(format: "%02i", stopWatchTime.minutes)
-      hoursLabel.fadeTransition(0.6)
-      hoursLabel.text = String(format: "%02i", stopWatchTime.hours)
+      // refresh the stop watch view by retrieving the formatted values from
+      // the model and animate to the next string
+      let transitionTime : Double = 0.6
+      secondsLabel.fadeTransition(transitionTime)
+      secondsLabel.text = stopWatch.formattedSeconds()
+      minutesLabel.fadeTransition(transitionTime)
+      minutesLabel.text = stopWatch.formattedMinutes()
+      hoursLabel.fadeTransition(transitionTime)
+      hoursLabel.text = stopWatch.formattedHours()
    }
-   
-    @IBAction func startAction(_ sender: UIButton) {
-        currentState = TinyTimerState.Running
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
-        refreshUiState()
-    }
-    
-    @IBAction func stopAction(_ sender: UIButton) {
-        currentState = TinyTimerState.Init
-        timer.invalidate()
-        stopWatchTime.reset()
-        refreshUiState()
-    }
-    
-    @IBAction func pauseAction(_ sender: UIButton) {
-        currentState = TinyTimerState.Paused
-        timer.invalidate()
-        refreshUiState()
-    }
-    
-    @IBAction func resumeAction(_ sender: UIButton) {
-        currentState = TinyTimerState.Running
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
-        refreshUiState()
-    }
-    
-    @IBAction func resetAction(_ sender: UIButton) {
-        currentState = TinyTimerState.Init
-        timer.invalidate()
-        stopWatchTime.reset()
-        refreshUiState()
-    }
-   
-   func refreshUiState()
-   {
-      switch currentState {
-      case TinyTimerState.Init:
-         refreshStopWatchView()
-         tinyTimerDescriptionLabel.hideWithAnimation(hidden: false)
-         startButton.hideWithAnimation(hidden: false)
-         
-         tinyTimerRunningLabel.hideWithAnimation(hidden: false)
-         
-         resumeButton.hideWithAnimation(hidden: true)
-         stopButton.hideWithAnimation(hidden: true)
-         resetButton.hideWithAnimation(hidden: true)
-         pauseButton.hideWithAnimation(hidden: true)
-         pausedLabel.hideWithAnimation(hidden: true)
-         
-         showStopwatchTimer(isHidden: true)
-      case TinyTimerState.Running:
-         refreshStopWatchView()
-         tinyTimerDescriptionLabel.hideWithAnimation(hidden: true)
-         startButton.hideWithAnimation(hidden: true)
-         
-         tinyTimerRunningLabel.hideWithAnimation(hidden: false)
-   
-         resumeButton.hideWithAnimation(hidden: true)
-         stopButton.hideWithAnimation(hidden: false)
-         resetButton.hideWithAnimation(hidden: true)
-         pauseButton.hideWithAnimation(hidden: false)
-         pausedLabel.hideWithAnimation(hidden: true)
-         
-         showStopwatchTimer(isHidden: false)
-      case TinyTimerState.Paused:
-         refreshStopWatchView()
-         tinyTimerDescriptionLabel.hideWithAnimation(hidden: true)
-         startButton.hideWithAnimation(hidden: true)
-         
-         tinyTimerRunningLabel.isHidden = false
-         showStopwatchTimer(isHidden: false)
-         
-         pausedLabel.hideWithAnimation(hidden: false)
-         resumeButton.hideWithAnimation(hidden: false)
-         stopButton.hideWithAnimation(hidden: true)
-         resetButton.hideWithAnimation(hidden: false)
-         pauseButton.hideWithAnimation(hidden: true)
-      }
+
+   func showStopwatchTimer(isHidden: Bool) {
+      // Reorganize the timer UI
+      hoursLabel.hideWithAnimation(hidden: isHidden)
+      hoursUnitLabel.hideWithAnimation(hidden: isHidden)
+      minutesLabel.hideWithAnimation(hidden: isHidden)
+      minutesUnitLabel.hideWithAnimation(hidden: isHidden)
+      secondsLabel.hideWithAnimation(hidden: isHidden)
+      secondUnitLabel.hideWithAnimation(hidden: isHidden)
    }
-   
 }
-
-

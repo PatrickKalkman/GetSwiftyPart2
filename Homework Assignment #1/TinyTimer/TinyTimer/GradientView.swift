@@ -5,6 +5,8 @@
 //  Created by Patrick Kalkman on 08/03/2019.
 //  Copyright © 2019 SimpleTechture. All rights reserved.
 //
+//  Original version from Mathieu Vandeginste
+//  See: https://github.com/matvdg/Gradient-View/blob/master/GradientView.swift
 
 import UIKit
 

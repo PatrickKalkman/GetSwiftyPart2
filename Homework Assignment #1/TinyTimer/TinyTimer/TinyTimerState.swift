@@ -8,6 +8,7 @@
 
 import Foundation
 
+// All the states of Tiny Timer
 enum TinyTimerState
 {
    // The timer is not running

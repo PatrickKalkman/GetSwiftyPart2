@@ -8,6 +8,7 @@
 
 import Foundation
 
+// A struct for holding a time 
 struct TimeSpan {
    var hours: UInt8
    var minutes: UInt8

@@ -13,13 +13,13 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TinyTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="TinyTimer" customModuleProvider="target">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tiny_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="Tiny_Timer" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer is a simple timer and helps you track your time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XW5-vG-isk">
-                                <rect key="frame" x="19" y="218" width="337.5" height="42.5"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiny Timer is a simple timer and helps you track your time. Press the start button to start the timer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XW5-vG-isk">
+                                <rect key="frame" x="19" y="218" width="337.5" height="64"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -30,7 +30,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-Ke-eSC" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkt-Ke-eSC" customClass="BorderButton" customModule="Tiny_Timer" customModuleProvider="target">
                                 <rect key="frame" x="145.5" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="1no-oa-Cix"/>
@@ -55,7 +55,7 @@
                                     <action selector="startAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="di4-br-PIp"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5f-Dw-VWX" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5f-Dw-VWX" customClass="BorderButton" customModule="Tiny_Timer" customModuleProvider="target">
                                 <rect key="frame" x="219" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="Ebh-vx-g3H"/>
@@ -80,7 +80,7 @@
                                     <action selector="resumeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CoI-yg-r1C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1X-Wp-zhl" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1X-Wp-zhl" customClass="BorderButton" customModule="Tiny_Timer" customModuleProvider="target">
                                 <rect key="frame" x="72" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="4Yf-2V-X3d"/>
@@ -105,7 +105,7 @@
                                     <action selector="stopAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZVQ-CN-XBU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYp-aR-Z1N" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYp-aR-Z1N" customClass="BorderButton" customModule="Tiny_Timer" customModuleProvider="target">
                                 <rect key="frame" x="219" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="fuz-ql-jQy"/>
@@ -166,7 +166,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93A-bC-SUP" customClass="BorderButton" customModule="TinyTimer" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93A-bC-SUP" customClass="BorderButton" customModule="Tiny_Timer" customModuleProvider="target">
                                 <rect key="frame" x="72" y="493" width="84" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="De3-h4-b4a"/>
@@ -267,7 +267,6 @@
                         <outlet property="startButton" destination="Qkt-Ke-eSC" id="CJE-2R-LDl"/>
                         <outlet property="stopButton" destination="V1X-Wp-zhl" id="uHP-A5-sqr"/>
                         <outlet property="tinyTimerDescriptionLabel" destination="XW5-vG-isk" id="tBx-hf-7RS"/>
-                        <outlet property="tinyTimerRunningLabel" destination="hJZ-ta-Fc8" id="b6c-gu-AqO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
