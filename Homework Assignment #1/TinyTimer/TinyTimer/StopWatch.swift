@@ -41,7 +41,7 @@ class StopWatch {
    
    @objc func UpdateTimer() {
       currentTime.addSecond()
-      // If not delegate is set we do nothing, otherwise we call the elapsed
+      // If no delegate is set we do nothing, otherwise we call the elapsed
       // function on the delegate
       if let delegate = self.stopWatchElapsedDelegate {
          delegate.elapsed()
