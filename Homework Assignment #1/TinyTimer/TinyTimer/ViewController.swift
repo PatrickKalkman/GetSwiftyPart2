@@ -78,12 +78,6 @@ class ViewController: UIViewController, StopWatchElapsedDelegate {
          print("Text value: \(txt.text ?? "NA")")
       }
       _ = alert.showEdit("Save Timing", subTitle:"Save your timing")
-
-//      let modal = ModalViewController()
-//      let transitionDelegate = SPStorkTransitioningDelegate()
-//      modal.transitioningDelegate = transitionDelegate
-//      modal.modalPresentationStyle = .custom
-//      self.present(modal, animated: true, completion: nil)
       
       
       refreshUI()

@@ -46,14 +46,10 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - SCLAlertView (0.8)
-  - SparrowKit (1.5.3)
-  - SPStorkController (1.5.4)
 
 DEPENDENCIES:
   - Firebase/Core
   - SCLAlertView
-  - SparrowKit
-  - SPStorkController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -65,8 +61,6 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - SCLAlertView
-    - SparrowKit
-    - SPStorkController
 
 SPEC CHECKSUMS:
   Firebase: 75ea9e232eefa158c1049028030b8f661a2ccb62
@@ -77,9 +71,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
-  SparrowKit: 8a2991c81d6ab3038d4a41a98a1a73ea17d1a977
-  SPStorkController: 6c34a0375ef1254299e460784886ff4e929b82ed
 
-PODFILE CHECKSUM: 4dac197d5ac81fcc48ca9126afe94fe0d950acb4
+PODFILE CHECKSUM: faba9f9b0bea0304ed3e8d820c6c47243581cff4
 
 COCOAPODS: 1.6.1
