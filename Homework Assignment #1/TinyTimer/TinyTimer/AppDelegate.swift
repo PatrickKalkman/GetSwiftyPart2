@@ -14,13 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
          // Override point for customization after application launch.
-      
-         // Use Firebase library to configure APIs
+      // Use Firebase library to configure APIs
          FirebaseApp.configure()
+         let mainContext = createMainContext()
+         let firstViewController = getFirstViewController()
+
         return true
+    }
+   
+    func getFirstViewController() -> UIViewController? {
+      return window?.rootViewController
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6D08E8ACE15F29B7E509EF2E /* Pods_Tiny_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FB3E0102159B235A361CB9 /* Pods_Tiny_Timer.framework */; };
+		AB2FABED223544D90094DCC3 /* TinyTimerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB2FABEB223544D90094DCC3 /* TinyTimerModel.xcdatamodeld */; };
+		AB2FABEF223545AC0094DCC3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FABEE223545AC0094DCC3 /* CoreDataStack.swift */; };
+		AB2FABF12235A2BD0094DCC3 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FABF02235A2BD0094DCC3 /* ModalViewController.swift */; };
 		ABB484B52233205000AC90E3 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB484B42233205000AC90E3 /* StopWatch.swift */; };
 		ABB484B722339B4500AC90E3 /* TimeTriggeredDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB484B622339B4500AC90E3 /* TimeTriggeredDelegate.swift */; };
 		ABE9CFF322326811008290AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9CFF222326811008290AE /* AppDelegate.swift */; };
@@ -46,6 +49,9 @@
 		1D1B30DBDFE6FF02937466ED /* Pods-Tiny Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Timer.release.xcconfig"; path = "Target Support Files/Pods-Tiny Timer/Pods-Tiny Timer.release.xcconfig"; sourceTree = "<group>"; };
 		2F7895980B6DA634ECAA8415 /* Pods-Tiny Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Timer.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Timer/Pods-Tiny Timer.debug.xcconfig"; sourceTree = "<group>"; };
 		58FB3E0102159B235A361CB9 /* Pods_Tiny_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB2FABEC223544D90094DCC3 /* TinyTimerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinyTimerModel.xcdatamodel; sourceTree = "<group>"; };
+		AB2FABEE223545AC0094DCC3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		AB2FABF02235A2BD0094DCC3 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		ABB484B42233205000AC90E3 /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 		ABB484B622339B4500AC90E3 /* TimeTriggeredDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTriggeredDelegate.swift; sourceTree = "<group>"; };
 		ABE9CFEF22326811008290AE /* Tiny Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +151,9 @@
 				ABE9D0282232AAA7008290AE /* TimeSpan.swift */,
 				ABB484B42233205000AC90E3 /* StopWatch.swift */,
 				ABB484B622339B4500AC90E3 /* TimeTriggeredDelegate.swift */,
+				AB2FABEB223544D90094DCC3 /* TinyTimerModel.xcdatamodeld */,
+				AB2FABEE223545AC0094DCC3 /* CoreDataStack.swift */,
+				AB2FABF02235A2BD0094DCC3 /* ModalViewController.swift */,
 			);
 			path = TinyTimer;
 			sourceTree = "<group>";
@@ -337,6 +346,9 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tiny Timer/Pods-Tiny Timer-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
+				"${BUILT_PRODUCTS_DIR}/SparrowKit/SparrowKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -344,6 +356,9 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SparrowKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,8 +376,11 @@
 				ABB484B722339B4500AC90E3 /* TimeTriggeredDelegate.swift in Sources */,
 				ABE9CFF522326811008290AE /* ViewController.swift in Sources */,
 				ABE9D0292232AAA7008290AE /* TimeSpan.swift in Sources */,
+				AB2FABED223544D90094DCC3 /* TinyTimerModel.xcdatamodeld in Sources */,
+				AB2FABF12235A2BD0094DCC3 /* ModalViewController.swift in Sources */,
 				ABE9D0252232A55B008290AE /* UIViewExtensions.swift in Sources */,
 				ABE9CFF322326811008290AE /* AppDelegate.swift in Sources */,
+				AB2FABEF223545AC0094DCC3 /* CoreDataStack.swift in Sources */,
 				ABE9D0272232A5B8008290AE /* TinyTimerState.swift in Sources */,
 				ABE9D02122326E15008290AE /* GradientView.swift in Sources */,
 				ABE9D023223273B8008290AE /* BorderButton.swift in Sources */,
@@ -699,6 +717,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB2FABEB223544D90094DCC3 /* TinyTimerModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB2FABEC223544D90094DCC3 /* TinyTimerModel.xcdatamodel */,
+			);
+			currentVersion = AB2FABEC223544D90094DCC3 /* TinyTimerModel.xcdatamodel */;
+			path = TinyTimerModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ABE9CFE722326811008290AE /* Project object */;
 }

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '12.1'
 
 target 'Tiny Timer' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -7,5 +7,9 @@ target 'Tiny Timer' do
 
   # Pods for Tiny Timer
   pod 'Firebase/Core'
+  pod 'SCLAlertView'
+  pod 'SPStorkController'
+  pod 'SparrowKit'
+  pod 'SPFakeBarView'
 
 end

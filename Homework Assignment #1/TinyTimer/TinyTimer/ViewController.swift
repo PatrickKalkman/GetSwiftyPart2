@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SCLAlertView
+import SPStorkController
 
 // The main and single view controller of the application
 class ViewController: UIViewController, StopWatchElapsedDelegate {
@@ -29,6 +31,15 @@ class ViewController: UIViewController, StopWatchElapsedDelegate {
 
    // The model of the application
    var stopWatch : StopWatch = StopWatch()
+   
+   
+   let kSuccessTitle = "Congratulations"
+   let kErrorTitle = "Connection error"
+   let kNoticeTitle = "Notice"
+   let kWarningTitle = "Warning"
+   let kInfoTitle = "Info"
+   let kSubtitle = "You've just displayed this awesome Pop Up View"
+
    
    override func viewDidLoad() {
       stopWatch.setElapsedDelegate(stopWatchElapsedDelegate: self)
@@ -53,7 +64,33 @@ class ViewController: UIViewController, StopWatchElapsedDelegate {
 
    @IBAction func resetAction(_ sender: UIButton) {
       stopWatch.reset()
+      
+      let appearance = SCLAlertView.SCLAppearance(
+         kTextFieldHeight: 60,
+         showCloseButton: false
+      )
+      let alert = SCLAlertView(appearance: appearance)
+      let txt = alert.addTextField("Timing description")
+      _ = alert.addButton("Save") {
+         print("Text value: \(txt.text ?? "NA")")
+      }
+      _ = alert.addButton("Cancel") {
+         print("Text value: \(txt.text ?? "NA")")
+      }
+      _ = alert.showEdit("Save Timing", subTitle:"Save your timing")
+
+//      let modal = ModalViewController()
+//      let transitionDelegate = SPStorkTransitioningDelegate()
+//      modal.transitioningDelegate = transitionDelegate
+//      modal.modalPresentationStyle = .custom
+//      self.present(modal, animated: true, completion: nil)
+      
+      
       refreshUI()
+   }
+   
+   @objc func firstButton() {
+      print("First button tapped")
    }
    
    // The stopwatch model calls this method every second
