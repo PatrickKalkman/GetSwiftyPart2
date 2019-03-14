@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		20AA7D7E06C9550052D828C3 /* Pods_Tiny_Converter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09853518B11ECAB5F9BBF0A4 /* Pods_Tiny_Converter.framework */; };
 		AB93D766223A2BE200A4378C /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D765223A2BE200A4378C /* DropDownButton.swift */; };
+		AB93D768223A449B00A4378C /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D767223A449B00A4378C /* BorderButton.swift */; };
+		AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D769223A5FFA00A4378C /* UnitConverter.swift */; };
+		AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76B223A740300A4378C /* UiViewExtensions.swift */; };
+		AB93D76E223A7C6000A4378C /* SelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76D223A7C6000A4378C /* SelectionMode.swift */; };
 		ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B522397E2300E0F013 /* AppDelegate.swift */; };
 		ABE208B822397E2300E0F013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B722397E2300E0F013 /* ViewController.swift */; };
 		ABE208BB22397E2300E0F013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE208B922397E2300E0F013 /* Main.storyboard */; };
@@ -35,6 +39,10 @@
 /* Begin PBXFileReference section */
 		09853518B11ECAB5F9BBF0A4 /* Pods_Tiny_Converter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_Converter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93D765223A2BE200A4378C /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
+		AB93D767223A449B00A4378C /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
+		AB93D769223A5FFA00A4378C /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
+		AB93D76B223A740300A4378C /* UiViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiViewExtensions.swift; sourceTree = "<group>"; };
+		AB93D76D223A7C6000A4378C /* SelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionMode.swift; sourceTree = "<group>"; };
 		ABE208B222397E2300E0F013 /* Tiny Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE208B522397E2300E0F013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE208B722397E2300E0F013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +116,7 @@
 		ABE208B422397E2300E0F013 /* Tiny Converter */ = {
 			isa = PBXGroup;
 			children = (
+				AB93D767223A449B00A4378C /* BorderButton.swift */,
 				ABE208D82239846E00E0F013 /* GradientView.swift */,
 				ABE208B522397E2300E0F013 /* AppDelegate.swift */,
 				ABE208B722397E2300E0F013 /* ViewController.swift */,
@@ -119,6 +128,9 @@
 				ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */,
 				ABE208DC2239A46800E0F013 /* ModalViewController.swift */,
 				AB93D765223A2BE200A4378C /* DropDownButton.swift */,
+				AB93D769223A5FFA00A4378C /* UnitConverter.swift */,
+				AB93D76B223A740300A4378C /* UiViewExtensions.swift */,
+				AB93D76D223A7C6000A4378C /* SelectionMode.swift */,
 			);
 			path = "Tiny Converter";
 			sourceTree = "<group>";
@@ -324,7 +336,11 @@
 				ABE208BE22397E2300E0F013 /* Tiny_Converter.xcdatamodeld in Sources */,
 				ABE208D92239846E00E0F013 /* GradientView.swift in Sources */,
 				ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */,
+				AB93D76E223A7C6000A4378C /* SelectionMode.swift in Sources */,
+				AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */,
+				AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */,
 				ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */,
+				AB93D768223A449B00A4378C /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
