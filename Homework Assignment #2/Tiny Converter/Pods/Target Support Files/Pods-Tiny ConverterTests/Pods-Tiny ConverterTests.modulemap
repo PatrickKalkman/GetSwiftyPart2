@@ -1,0 +1,6 @@
+framework module Pods_Tiny_ConverterTests {
+  umbrella header "Pods-Tiny ConverterTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

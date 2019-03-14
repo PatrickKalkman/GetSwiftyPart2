@@ -1,0 +1,20 @@
+PODS:
+  - SparrowKit (1.5.3)
+  - SPStorkController (1.5.4)
+
+DEPENDENCIES:
+  - SparrowKit
+  - SPStorkController
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SparrowKit
+    - SPStorkController
+
+SPEC CHECKSUMS:
+  SparrowKit: 8a2991c81d6ab3038d4a41a98a1a73ea17d1a977
+  SPStorkController: 6c34a0375ef1254299e460784886ff4e929b82ed
+
+PODFILE CHECKSUM: 1451bfcf4ae11b22b415b964332771f36fd8e816
+
+COCOAPODS: 1.6.1

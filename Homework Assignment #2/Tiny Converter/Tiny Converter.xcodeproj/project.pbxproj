@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20AA7D7E06C9550052D828C3 /* Pods_Tiny_Converter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09853518B11ECAB5F9BBF0A4 /* Pods_Tiny_Converter.framework */; };
+		AB93D766223A2BE200A4378C /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D765223A2BE200A4378C /* DropDownButton.swift */; };
 		ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B522397E2300E0F013 /* AppDelegate.swift */; };
 		ABE208B822397E2300E0F013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B722397E2300E0F013 /* ViewController.swift */; };
 		ABE208BB22397E2300E0F013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE208B922397E2300E0F013 /* Main.storyboard */; };
@@ -14,6 +16,10 @@
 		ABE208C022397E2400E0F013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE208BF22397E2400E0F013 /* Assets.xcassets */; };
 		ABE208C322397E2400E0F013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE208C122397E2400E0F013 /* LaunchScreen.storyboard */; };
 		ABE208CE22397E2400E0F013 /* Tiny_ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208CD22397E2400E0F013 /* Tiny_ConverterTests.swift */; };
+		ABE208D92239846E00E0F013 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208D82239846E00E0F013 /* GradientView.swift */; };
+		ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */; };
+		ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DC2239A46800E0F013 /* ModalViewController.swift */; };
+		DDDB403AD5C9A0CCCC15595B /* Pods_Tiny_ConverterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09853518B11ECAB5F9BBF0A4 /* Pods_Tiny_Converter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_Converter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB93D765223A2BE200A4378C /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		ABE208B222397E2300E0F013 /* Tiny Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE208B522397E2300E0F013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE208B722397E2300E0F013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +46,14 @@
 		ABE208C922397E2400E0F013 /* Tiny ConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tiny ConverterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE208CD22397E2400E0F013 /* Tiny_ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiny_ConverterTests.swift; sourceTree = "<group>"; };
 		ABE208CF22397E2400E0F013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABE208D82239846E00E0F013 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		ABE208DC2239A46800E0F013 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		B924BD8DCD97570BC01447E2 /* Pods-Tiny ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Tiny ConverterTests/Pods-Tiny ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
+		B998FCEC2D4B3ECDC81C06F7 /* Pods-Tiny Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Converter.release.xcconfig"; path = "Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter.release.xcconfig"; sourceTree = "<group>"; };
+		C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_ConverterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFC88B389B2BC5DDA8A09433 /* Pods-Tiny ConverterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ConverterTests.debug.xcconfig"; path = "Target Support Files/Pods-Tiny ConverterTests/Pods-Tiny ConverterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD7247AF9E93032C0071D4D7 /* Pods-Tiny Converter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Converter.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20AA7D7E06C9550052D828C3 /* Pods_Tiny_Converter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +69,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDDB403AD5C9A0CCCC15595B /* Pods_Tiny_ConverterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6AD2367008BAB658CF33DFCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09853518B11ECAB5F9BBF0A4 /* Pods_Tiny_Converter.framework */,
+				C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ABE208A922397E2300E0F013 = {
 			isa = PBXGroup;
 			children = (
 				ABE208B422397E2300E0F013 /* Tiny Converter */,
 				ABE208CC22397E2400E0F013 /* Tiny ConverterTests */,
 				ABE208B322397E2300E0F013 /* Products */,
+				E142EE3C6204BE9A8A210AEF /* Pods */,
+				6AD2367008BAB658CF33DFCA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +108,7 @@
 		ABE208B422397E2300E0F013 /* Tiny Converter */ = {
 			isa = PBXGroup;
 			children = (
+				ABE208D82239846E00E0F013 /* GradientView.swift */,
 				ABE208B522397E2300E0F013 /* AppDelegate.swift */,
 				ABE208B722397E2300E0F013 /* ViewController.swift */,
 				ABE208B922397E2300E0F013 /* Main.storyboard */,
@@ -86,6 +116,9 @@
 				ABE208C122397E2400E0F013 /* LaunchScreen.storyboard */,
 				ABE208C422397E2400E0F013 /* Info.plist */,
 				ABE208BC22397E2300E0F013 /* Tiny_Converter.xcdatamodeld */,
+				ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */,
+				ABE208DC2239A46800E0F013 /* ModalViewController.swift */,
+				AB93D765223A2BE200A4378C /* DropDownButton.swift */,
 			);
 			path = "Tiny Converter";
 			sourceTree = "<group>";
@@ -99,6 +132,17 @@
 			path = "Tiny ConverterTests";
 			sourceTree = "<group>";
 		};
+		E142EE3C6204BE9A8A210AEF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD7247AF9E93032C0071D4D7 /* Pods-Tiny Converter.debug.xcconfig */,
+				B998FCEC2D4B3ECDC81C06F7 /* Pods-Tiny Converter.release.xcconfig */,
+				DFC88B389B2BC5DDA8A09433 /* Pods-Tiny ConverterTests.debug.xcconfig */,
+				B924BD8DCD97570BC01447E2 /* Pods-Tiny ConverterTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABE208D222397E2400E0F013 /* Build configuration list for PBXNativeTarget "Tiny Converter" */;
 			buildPhases = (
+				FC5B1C6731DD477B9539D739 /* [CP] Check Pods Manifest.lock */,
 				ABE208AE22397E2300E0F013 /* Sources */,
 				ABE208AF22397E2300E0F013 /* Frameworks */,
 				ABE208B022397E2300E0F013 /* Resources */,
+				2125CDF7EA63F3313A2D5E46 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +169,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABE208D522397E2400E0F013 /* Build configuration list for PBXNativeTarget "Tiny ConverterTests" */;
 			buildPhases = (
+				50EB8BAD1A2855B515D32DEF /* [CP] Check Pods Manifest.lock */,
 				ABE208C522397E2400E0F013 /* Sources */,
 				ABE208C622397E2400E0F013 /* Frameworks */,
 				ABE208C722397E2400E0F013 /* Resources */,
@@ -195,13 +242,88 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2125CDF7EA63F3313A2D5E46 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
+				"${BUILT_PRODUCTS_DIR}/SparrowKit/SparrowKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SparrowKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50EB8BAD1A2855B515D32DEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tiny ConverterTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC5B1C6731DD477B9539D739 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tiny Converter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABE208AE22397E2300E0F013 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */,
+				AB93D766223A2BE200A4378C /* DropDownButton.swift in Sources */,
 				ABE208B822397E2300E0F013 /* ViewController.swift in Sources */,
 				ABE208BE22397E2300E0F013 /* Tiny_Converter.xcdatamodeld in Sources */,
+				ABE208D92239846E00E0F013 /* GradientView.swift in Sources */,
+				ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */,
 				ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +484,7 @@
 		};
 		ABE208D322397E2400E0F013 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD7247AF9E93032C0071D4D7 /* Pods-Tiny Converter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -380,6 +503,7 @@
 		};
 		ABE208D422397E2400E0F013 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B998FCEC2D4B3ECDC81C06F7 /* Pods-Tiny Converter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -398,6 +522,7 @@
 		};
 		ABE208D622397E2400E0F013 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFC88B389B2BC5DDA8A09433 /* Pods-Tiny ConverterTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -419,6 +544,7 @@
 		};
 		ABE208D722397E2400E0F013 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B924BD8DCD97570BC01447E2 /* Pods-Tiny ConverterTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

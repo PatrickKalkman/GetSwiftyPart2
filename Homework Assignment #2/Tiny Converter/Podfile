@@ -1,0 +1,18 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+target 'Tiny Converter' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'SPStorkController'
+  pod 'SparrowKit'
+
+  # Pods for Tiny Converter
+
+  target 'Tiny ConverterTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
