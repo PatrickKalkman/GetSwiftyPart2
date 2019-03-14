@@ -12,10 +12,6 @@ class UnitConverter {
     
     var conversionMatrix: Dictionary<String, QuantityConversion> = [:]
     
-    let Quantities : [String] = ["Weight", "Volume", "Length", "Temperature"]
-    
-    let Units : [String] = ["Inches", "Feets", "Yards", "Miles", "Millimeters", "Centimeters", "Meters", "Kilometers"]
-    
     var SelectedQuantity : String
     var SelectedQuantityIndex : Int
     
@@ -26,16 +22,58 @@ class UnitConverter {
     var SelectedDestinationUnitIndex : Int
     
     init() {
-        SelectedQuantityIndex = 2
-        SelectedQuantity = Quantities[SelectedQuantityIndex]
+        SelectedQuantityIndex = 0
+        SelectedQuantity = ""
         
         SelectedSourceUnitIndex = 0
-        SelectedSourceUnit = Units[SelectedSourceUnitIndex]
+        SelectedSourceUnit = ""
         
-        SelectedDestinationUnitIndex = 5
-        SelectedDestinationUnit = Units[SelectedDestinationUnitIndex]
+        SelectedDestinationUnitIndex = 0
+        SelectedDestinationUnit = ""
         
-        buildConversionMatrix()
+        buildConversions()
+    }
+    
+    func setDefault() {
+        SelectedQuantityIndex = 0
+        SelectedQuantity = getQuantities()[0]
+        
+        SelectedSourceUnitIndex = 0
+        SelectedSourceUnit = getUnits(quantity: SelectedQuantity)[0]
+        
+        SelectedDestinationUnitIndex = 0
+        SelectedDestinationUnit = getUnits(quantity: SelectedQuantity)[0]
+    }
+    
+    func setDefault(selectedQuantity: String) {
+        SelectedSourceUnitIndex = 0
+        SelectedSourceUnit = getUnits(quantity: selectedQuantity)[0]
+        
+        SelectedDestinationUnitIndex = 0
+        SelectedDestinationUnit = getUnits(quantity: selectedQuantity)[0]
+    }
+    
+    func getQuantities() -> [String]  {
+        return conversionMatrix.keys.map({(key) -> String in return key})
+    }
+    
+    func getUnits(quantity: String) -> [String] {
+        
+        guard let conversion : QuantityConversion = conversionMatrix[quantity] else {
+            return [String]()
+        }
+        
+        var result = conversion.conversions.map({(item) -> String in return item.sourceUnit})
+        
+        result.append(contentsOf: conversion.conversions.map({(item) -> String in return item.destinationUnit}))
+        
+        removeDuplicates(&result)
+        
+        return result
+    }
+    
+    func removeDuplicates(_ strings: inout [String]) {
+        strings = Set(strings).sorted()
     }
     
     func Convert(quantity: String, sourceUnit: String, destinationUnit: String, input: Double) -> Double {
@@ -47,52 +85,107 @@ class UnitConverter {
         return quantityConversionMatrix.Convert(sourceUnit: sourceUnit, destinationUnit: destinationUnit, input: input)
     }
     
+    func buildConversions() {
+        buildTemperatureConversionMatrix()
+        buildWeightConversionMatrix()
+        
+    }
     
-    func buildConversionMatrix() {
+    func buildWeightConversionMatrix() {
+        let weight : QuantityConversion = QuantityConversion(quantity: "Weight")
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Pounds", destinationUnit: "Ounces",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input * 16 },
+            conversionFunctionDestinationSource: {(input: Double) -> Double in return input / 16 }))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Pounds", destinationUnit: "Stones",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input / 14 },
+            conversionFunctionDestinationSource: {(input: Double) -> Double in return input * 14 }))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Pounds", destinationUnit: "Milligrams",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input * 453592.37 },
+            conversionFunctionDestinationSource: {(input: Double) -> Double in return input / 453592.37 }))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Pounds", destinationUnit: "Grams",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input * 453.592 },
+            conversionFunctionDestinationSource: {(input: Double) -> Double in return input / 453.592 }))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Pounds", destinationUnit: "Kilograms",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input / 2.205 },
+            conversionFunctionDestinationSource: {(input: Double) -> Double in return input * 2.205 }))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Pounds", destinationUnit: "Tons",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input / 2204.623 },
+            conversionFunctionDestinationSource:  {(input: Double) -> Double in return input / 2204.623 } ))
+
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Ounces", destinationUnit: "Stones",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input / 224 },
+            conversionFunctionDestinationSource:  {(input: Double) -> Double in return input * 224 } ))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Ounces", destinationUnit: "Milligrams",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input * 28349.523 },
+            conversionFunctionDestinationSource:  {(input: Double) -> Double in return input / 28349.523 } ))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Ounces", destinationUnit: "Grams",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input * 28.35 },
+            conversionFunctionDestinationSource:  {(input: Double) -> Double in return input / 28.35 } ))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Ounces", destinationUnit: "Kilograms",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input / 35.274 },
+            conversionFunctionDestinationSource:  {(input: Double) -> Double in return input * 35.274 } ))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Ounces", destinationUnit: "Tons",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input / 35840 },
+            conversionFunctionDestinationSource:  {(input: Double) -> Double in return input * 35840 } ))
+        
+        weight.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Stones", destinationUnit: "Milligrams",
+            conversionFunctionSourceDestination: {(input: Double) -> Double in return input * (6.35029318 * 1000000) },
+            conversionFunctionDestinationSource:  {(input: Double) -> Double in return input / (6.35029318 * 1000000)} ))
+        
+        conversionMatrix.updateValue(weight, forKey: weight.quantity)
+        
+//        Pounds
+//        Ounces
+//        Stone
+//        Milligrams
+//        Grams
+//        Kilograms
+//        Tons
+
+    }
+    
+    func buildTemperatureConversionMatrix() {
         
         let temperature : QuantityConversion = QuantityConversion(quantity: "Temperature")
         
-        temperature.addConversion(unitConversion: UnitConversion(sourceUnit: "Celcius", destinationUnit: "Fahrenheit", conversionFunction: {(celcius:Double) -> Double in return (celcius * 9.0 / 5.0) + 10.5 } ))
-      
-        temperature.addConversion(unitConversion: UnitConversion(sourceUnit: "Fahrenheit", destinationUnit: "Celcius", conversionFunction: {(fahrenheit:Double) -> Double in return (fahrenheit - 32) * 5.0 / 9.0 } ))
+        temperature.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Celcius", destinationUnit: "Fahrenheit",
+            conversionFunctionSourceDestination: {(input:Double) -> Double in return (input * (9.0 / 5.0)) + 32 },
+            conversionFunctionDestinationSource: {(input:Double) -> Double in return (input - 32) * 5.0 / 9.0 }))
         
-        //(2323°F − 32) × 5/9
-        
-        conversionMatrix.updateValue(temperature, forKey: temperature.quantity)
-        
-    }
-    
-    class QuantityConversion {
-        var quantity: String
-        var conversions: [UnitConversion] = []
+        temperature.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Celcius", destinationUnit: "Kelvin",
+            conversionFunctionSourceDestination: {(input:Double) -> Double in return input + 273.15 },
+            conversionFunctionDestinationSource: {(input:Double) -> Double in return input - 273.15 } ))
+ 
+        temperature.addConversion(unitConversion: UnitConversion(
+            sourceUnit: "Fahrenheit", destinationUnit: "Kelvin",
+            conversionFunctionSourceDestination: {(input:Double) -> Double in return ((input - 32) * 5.0 / 9.0) + 273.15 },
+            conversionFunctionDestinationSource: {(input:Double) -> Double in return ((input - 273.15) * 9.0 / 5.0) + 32 }))
 
-        init(quantity: String) {
-            self.quantity = quantity
-        }
-     
-        func addConversion(unitConversion: UnitConversion) {
-            self.conversions.append(unitConversion)
-        }
-        
-        func Convert(sourceUnit: String, destinationUnit: String, input: Double) -> Double {
-            for conversion in conversions {
-                if conversion.sourceUnit == sourceUnit && conversion.destinationUnit == destinationUnit {
-                    return conversion.conversionFunction(input)
-                }
-            }
-            Print("Conversion for \(self.quantity) from \(sourceUnit) to \(destinationUnit) not found")
-        }
+        conversionMatrix.updateValue(temperature, forKey: temperature.quantity)
     }
-    
-    class UnitConversion {
-        var sourceUnit: String
-        var destinationUnit: String
-        var conversionFunction: ((Double) -> (Double))
-        
-        init(sourceUnit: String, destinationUnit: String, conversionFunction: @escaping ((Double) -> (Double))) {
-            self.sourceUnit = sourceUnit
-            self.destinationUnit = destinationUnit
-            self.conversionFunction = conversionFunction
-        }
-    }
+
 }

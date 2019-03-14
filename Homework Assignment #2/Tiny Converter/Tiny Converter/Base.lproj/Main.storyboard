@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8i-N0-Z0J" customClass="GradientView" customModule="Tiny_Converter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="322"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1b-Bx-Oio" customClass="ResizableButton" customModule="Tiny_Converter" customModuleProvider="target">
                                                 <rect key="frame" x="131" y="32" width="113" height="48"/>
@@ -34,11 +34,11 @@
                                                     <action selector="SelectQuantity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ocL-qe-E9e"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" adjustsFontSizeToFit="NO" minimumFontSize="70" translatesAutoresizingMaskIntoConstraints="NO" id="6rw-BT-rgo" customClass="DesignableUITextField" customModule="Tiny_Converter" customModuleProvider="target">
-                                                <rect key="frame" x="64" y="126" width="201" height="82"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="6rw-BT-rgo" customClass="DesignableUITextField" customModule="Tiny_Converter" customModuleProvider="target">
+                                                <rect key="frame" x="42" y="126" width="223" height="70"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="70"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -69,7 +69,7 @@
                                             <constraint firstItem="9D8-Hh-pV8" firstAttribute="top" secondItem="6rw-BT-rgo" secondAttribute="top" id="NIc-o2-AVh"/>
                                             <constraint firstItem="9D8-Hh-pV8" firstAttribute="leading" secondItem="6rw-BT-rgo" secondAttribute="trailing" id="Pv4-mz-nrI"/>
                                             <constraint firstItem="P1b-Bx-Oio" firstAttribute="top" secondItem="u8i-N0-Z0J" secondAttribute="top" constant="32" id="VvE-FU-CYy"/>
-                                            <constraint firstItem="6rw-BT-rgo" firstAttribute="leading" secondItem="u8i-N0-Z0J" secondAttribute="leading" constant="64" id="uKA-oR-0Ti"/>
+                                            <constraint firstItem="6rw-BT-rgo" firstAttribute="leading" secondItem="u8i-N0-Z0J" secondAttribute="leading" constant="42" id="uKA-oR-0Ti"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -93,13 +93,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOx-Sf-aEt" customClass="GradientView" customModule="Tiny_Converter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="334" width="375" height="334"/>
+                                        <rect key="frame" x="0.0" y="322" width="375" height="322"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2.54" adjustsFontSizeToFit="NO" minimumFontSize="70" translatesAutoresizingMaskIntoConstraints="NO" id="V0m-Ge-IaG" customClass="DesignableUITextField" customModule="Tiny_Converter" customModuleProvider="target">
-                                                <rect key="frame" x="64" y="126" width="201" height="82"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2.54" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="V0m-Ge-IaG" customClass="DesignableUITextField" customModule="Tiny_Converter" customModuleProvider="target">
+                                                <rect key="frame" x="42" y="126" width="223" height="70"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="0.83568816637170718" green="0.5181804691277655" blue="0.50422189914421134" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="70"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -123,7 +123,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="V0m-Ge-IaG" firstAttribute="leading" secondItem="YOx-Sf-aEt" secondAttribute="leading" constant="64" id="2rB-Wm-cjN"/>
+                                            <constraint firstItem="V0m-Ge-IaG" firstAttribute="leading" secondItem="YOx-Sf-aEt" secondAttribute="leading" constant="42" id="2rB-Wm-cjN"/>
                                             <constraint firstAttribute="trailing" secondItem="V0m-Ge-IaG" secondAttribute="trailing" constant="110" id="4iG-KZ-mi5"/>
                                             <constraint firstItem="ajU-xY-hCV" firstAttribute="top" secondItem="V0m-Ge-IaG" secondAttribute="top" id="VXF-jC-LYb"/>
                                             <constraint firstItem="V0m-Ge-IaG" firstAttribute="centerY" secondItem="YOx-Sf-aEt" secondAttribute="centerY" id="Vhg-xC-LIf"/>
@@ -152,7 +152,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvW-fe-mE4" customClass="BorderButton" customModule="Tiny_Converter" customModuleProvider="target">
-                                        <rect key="frame" x="145.5" y="292" width="84" height="84"/>
+                                        <rect key="frame" x="145.5" y="280" width="84" height="84"/>
                                         <color key="backgroundColor" red="0.77254901960784317" green="0.34509803921568627" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="84" id="BXX-6P-u5T"/>
@@ -168,6 +168,9 @@
                                                 <integer key="value" value="42"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="convertButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dVT-GY-t9m"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

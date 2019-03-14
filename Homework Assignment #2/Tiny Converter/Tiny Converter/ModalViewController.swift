@@ -19,13 +19,15 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     let unitConverter : UnitConverter
     var functionToFinish: (() -> Void)
     var selectionMode: SelectionMode
+    let selectedQuantity: String
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .default}
     
-    init(unitConverter: UnitConverter, selectionMode: SelectionMode, functionToFinish: @escaping (() -> Void)) {
+    init(unitConverter: UnitConverter, selectionMode: SelectionMode, selectedQuantity: String, functionToFinish: @escaping (() -> Void)) {
         self.unitConverter = unitConverter
         self.functionToFinish = functionToFinish
         self.selectionMode = selectionMode
+        self.selectedQuantity = selectedQuantity
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -91,11 +93,10 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.selectionMode == SelectionMode.Quantity {
-            return unitConverter.Quantities.count
+            return unitConverter.getQuantities().count
         } else {
-            return unitConverter.Units.count
+            return unitConverter.getUnits(quantity: selectedQuantity).count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,9 +105,9 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
         cell.selectionStyle = .blue
         
         if self.selectionMode == SelectionMode.Quantity {
-            cell.textLabel?.text = unitConverter.Quantities[indexPath.row]
+            cell.textLabel?.text = unitConverter.getQuantities()[indexPath.row]
         } else {
-            cell.textLabel?.text = unitConverter.Units[indexPath.row]
+            cell.textLabel?.text = unitConverter.getUnits(quantity: selectedQuantity)[indexPath.row]
         }
         
         cell.transform = .identity
@@ -123,15 +124,15 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if self.selectionMode == SelectionMode.Quantity {
-            let selectedItem : String = unitConverter.Quantities[indexPath.row]
+            let selectedItem : String = unitConverter.getQuantities()[indexPath.row]
             unitConverter.SelectedQuantity = selectedItem
             unitConverter.SelectedQuantityIndex = indexPath.row
         } else if self.selectionMode == SelectionMode.SourceUnit {
-            let selectedItem : String = unitConverter.Units[indexPath.row]
+            let selectedItem : String = unitConverter.getUnits(quantity: selectedQuantity)[indexPath.row]
             unitConverter.SelectedSourceUnit = selectedItem
             unitConverter.SelectedSourceUnitIndex = indexPath.row
         } else if self.selectionMode == SelectionMode.DestinationUnit {
-            let selectedItem : String = unitConverter.Units[indexPath.row]
+            let selectedItem : String = unitConverter.getUnits(quantity: selectedQuantity)[indexPath.row]
             unitConverter.SelectedDestinationUnit = selectedItem
             unitConverter.SelectedDestinationUnitIndex = indexPath.row
         }

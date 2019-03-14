@@ -23,6 +23,8 @@
 		ABE208D92239846E00E0F013 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208D82239846E00E0F013 /* GradientView.swift */; };
 		ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */; };
 		ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DC2239A46800E0F013 /* ModalViewController.swift */; };
+		ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */; };
+		ABFA7EA8223ACF8A00A574A3 /* UnitConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA7EA7223ACF8A00A574A3 /* UnitConversion.swift */; };
 		DDDB403AD5C9A0CCCC15595B /* Pods_Tiny_ConverterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		ABE208D82239846E00E0F013 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		ABE208DC2239A46800E0F013 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityConversion.swift; sourceTree = "<group>"; };
+		ABFA7EA7223ACF8A00A574A3 /* UnitConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversion.swift; sourceTree = "<group>"; };
 		B924BD8DCD97570BC01447E2 /* Pods-Tiny ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Tiny ConverterTests/Pods-Tiny ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		B998FCEC2D4B3ECDC81C06F7 /* Pods-Tiny Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Converter.release.xcconfig"; path = "Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter.release.xcconfig"; sourceTree = "<group>"; };
 		C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_ConverterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +135,8 @@
 				AB93D769223A5FFA00A4378C /* UnitConverter.swift */,
 				AB93D76B223A740300A4378C /* UiViewExtensions.swift */,
 				AB93D76D223A7C6000A4378C /* SelectionMode.swift */,
+				ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */,
+				ABFA7EA7223ACF8A00A574A3 /* UnitConversion.swift */,
 			);
 			path = "Tiny Converter";
 			sourceTree = "<group>";
@@ -338,8 +344,10 @@
 				ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */,
 				AB93D76E223A7C6000A4378C /* SelectionMode.swift in Sources */,
 				AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */,
+				ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */,
 				AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */,
 				ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */,
+				ABFA7EA8223ACF8A00A574A3 /* UnitConversion.swift in Sources */,
 				AB93D768223A449B00A4378C /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

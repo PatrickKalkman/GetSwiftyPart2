@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setupKeyboardNotifications()
         sourceTextField.delegate = self
         destinationTextField.delegate = self
+        converter.setDefault()
         refresh()
     }
     
@@ -34,6 +35,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLayoutSubviews()
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
+    
+    @IBAction func convertButtonAction(_ sender: Any) {
+        
+        guard let inputString : String = sourceTextField.text else {
+            print("No input available")
+            return
+        }
+        
+        guard let input = Double(inputString) else {
+            print("Cannot convert \(inputString)")
+            return
+        }
+        
+        guard var quantity : String = quantityButton.titleLabel?.text else {
+            print("No quantity chosen")
+            return
+        }
+        quantity = quantity.replace("  ▾", with: "")
+        
+        guard var sourceUnit : String = sourceUnitButton.titleLabel?.text else {
+            print("No source unit chosen")
+            return
+        }
+        sourceUnit = sourceUnit.replace("▾ ", with: "")
+        
+        guard var destinationUnit : String = destinationUnitButton.titleLabel?.text else {
+            print("No destination unit chosen")
+            return
+        }
+        destinationUnit = destinationUnit.replace("▾ ", with: "")
+        
+        let result : Double = converter.Convert(quantity: quantity,
+                          sourceUnit: sourceUnit,
+                          destinationUnit: destinationUnit,
+                          input: input)
+        
+        destinationTextField.text = String(format: "%.2f", result)
+    }
+    
     
     private func setupKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIControl.keyboardWillShowNotification, object: nil)
@@ -62,19 +102,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func SelectQuantity(_ sender: Any) {
-        showModal(selectionMode: SelectionMode.Quantity)
+        showModal(selectionMode: SelectionMode.Quantity, functionToFinish: setDefaultAndRefresh)
     }
     
     @IBAction func SelectSourceUnit(_ sender: Any) {
-        showModal(selectionMode: SelectionMode.SourceUnit)
+        showModal(selectionMode: SelectionMode.SourceUnit, functionToFinish: refresh)
     }
     
     @IBAction func SelectDestinationUnit(_ sender: Any) {
-        showModal(selectionMode: SelectionMode.DestinationUnit)
+        showModal(selectionMode: SelectionMode.DestinationUnit, functionToFinish: refresh)
     }
     
-    func showModal(selectionMode: SelectionMode) {
-        let modal = ModalTableViewController(unitConverter: converter, selectionMode: selectionMode, functionToFinish: refresh)
+    func showModal(selectionMode: SelectionMode, functionToFinish: @escaping (() -> Void)) {
+        
+        guard var quantity : String = quantityButton.titleLabel?.text else {
+            print("No quantity chosen")
+            return
+        }
+        quantity = quantity.replace("  ▾", with: "")
+        
+        let modal = ModalTableViewController(unitConverter: converter, selectionMode: selectionMode, selectedQuantity: quantity, functionToFinish: functionToFinish)
         let transitionDelegate = SPStorkTransitioningDelegate()
         modal.transitioningDelegate = transitionDelegate
         modal.modalPresentationStyle = .custom
@@ -94,7 +141,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         UIView.transition(with: destinationUnitButton, duration: transitionTime, options: .transitionCrossDissolve, animations: {
             self.destinationUnitButton.setTitle("▾ \(self.converter.SelectedDestinationUnit)")
         }, completion: nil)
-
+    }
+    
+    func setDefaultAndRefresh() {
+        
+        guard var quantity : String = quantityButton.titleLabel?.text else {
+            print("No quantity chosen")
+            return
+        }
+        quantity = quantity.replace("  ▾", with: "")
+        
+        if (self.converter.SelectedQuantity != quantity) {
+            self.converter.setDefault(selectedQuantity: self.converter.SelectedQuantity)
+        }
+        
+        refresh()
     }
     
     let numbers = "0123456789.,";
