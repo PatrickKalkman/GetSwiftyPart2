@@ -49,7 +49,7 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
         if self.selectionMode == SelectionMode.Quantity {
             self.navBar.titleLabel.text = "Select Quantity"
         } else {
-            self.navBar.titleLabel.text = "Select Quantity"
+            self.navBar.titleLabel.text = "Select Unit"
         }
 
         self.navBar.titleLabel.textColor = selectedColor
@@ -64,9 +64,16 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(_ animated: Bool) {
 
-        let indexPath : IndexPath = IndexPath(row: unitConverter.SelectedQuantityIndex, section: 0)
-        self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
+        var indexPath : IndexPath
+        if self.selectionMode == SelectionMode.Quantity {
+            indexPath = IndexPath(row: unitConverter.SelectedQuantityIndex, section: 0)
+        } else if self.selectionMode == SelectionMode.SourceUnit {
+            indexPath = IndexPath(row: unitConverter.SelectedSourceUnitIndex, section: 0)
+        } else {
+            indexPath = IndexPath(row: unitConverter.SelectedDestinationUnitIndex, section: 0)
+        }
         
+        self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
     }
     
     override func viewWillLayoutSubviews() {
@@ -83,7 +90,12 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return unitConverter.Quantities.count
+        if self.selectionMode == SelectionMode.Quantity {
+            return unitConverter.Quantities.count
+        } else {
+            return unitConverter.Units.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

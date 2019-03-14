@@ -9,38 +9,73 @@
 import UIKit
 import SPStorkController
 
-class ViewController: UIViewController {
-        
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var topGradient: GradientView!
+    @IBOutlet weak var bottomGradient: GradientView!
     @IBOutlet weak var quantityButton: UIButton!
     @IBOutlet weak var sourceUnitButton: UIButton!
     @IBOutlet weak var destinationUnitButton: UIButton!
+    @IBOutlet weak var sourceTextField: DesignableUITextField!
+    @IBOutlet weak var destinationTextField: DesignableUITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let converter: UnitConverter = UnitConverter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupKeyboardNotifications()
+        sourceTextField.delegate = self
+        destinationTextField.delegate = self
         refresh()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
+    }
+    
+    private func setupKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIControl.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIControl.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size
+        
+        let tabbarHeight = tabBarController?.tabBar.frame.size.height ?? 0
+        let toolbarHeight = navigationController?.toolbar.frame.size.height ?? 0
+        let bottomInset = keyboardSize.height - tabbarHeight - toolbarHeight
+        
+        scrollView.contentInset.bottom = bottomInset
+        scrollView.scrollIndicatorInsets.bottom = bottomInset
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = .zero
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.endEditing(false)
     }
 
     @IBAction func SelectQuantity(_ sender: Any) {
-        let modal = ModalTableViewController(unitConverter: converter, selectionMode: SelectionMode.Quantity, functionToFinish: refresh)
-        let transitionDelegate = SPStorkTransitioningDelegate()
-        modal.transitioningDelegate = transitionDelegate
-        modal.modalPresentationStyle = .custom
-        self.present(modal, animated: true, completion: nil)
+        showModal(selectionMode: SelectionMode.Quantity)
     }
     
     @IBAction func SelectSourceUnit(_ sender: Any) {
-        let modal = ModalTableViewController(unitConverter: converter, selectionMode: SelectionMode.SourceUnit, functionToFinish: refresh)
-        let transitionDelegate = SPStorkTransitioningDelegate()
-        modal.transitioningDelegate = transitionDelegate
-        modal.modalPresentationStyle = .custom
-        self.present(modal, animated: true, completion: nil)
+        showModal(selectionMode: SelectionMode.SourceUnit)
     }
     
     @IBAction func SelectDestinationUnit(_ sender: Any) {
-        let modal = ModalTableViewController(unitConverter: converter, selectionMode: SelectionMode.DestinationUnit, functionToFinish: refresh)
+        showModal(selectionMode: SelectionMode.DestinationUnit)
+    }
+    
+    func showModal(selectionMode: SelectionMode) {
+        let modal = ModalTableViewController(unitConverter: converter, selectionMode: selectionMode, functionToFinish: refresh)
         let transitionDelegate = SPStorkTransitioningDelegate()
         modal.transitioningDelegate = transitionDelegate
         modal.modalPresentationStyle = .custom
