@@ -57,7 +57,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         scrollView.scrollIndicatorInsets = .zero
     }
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.endEditing(false)
     }
