@@ -97,5 +97,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }, completion: nil)
 
     }
+    
+    let numbers = "0123456789.,";
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return string.count > 0 ? numbers.contains(string) : true
+    }
 }
 
