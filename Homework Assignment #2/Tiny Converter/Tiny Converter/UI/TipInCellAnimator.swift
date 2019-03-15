@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 let TipInCellAnimatorStartTransform:CATransform3D = {
     let rotationDegrees: CGFloat = -45.0

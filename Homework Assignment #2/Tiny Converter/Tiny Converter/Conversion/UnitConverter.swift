@@ -54,7 +54,9 @@ class UnitConverter {
     }
     
     func getQuantities() -> [String]  {
-        return conversionMatrix.keys.map({(key) -> String in return key})
+        var result = conversionMatrix.keys.map({(key) -> String in return key})
+        removeDuplicates(&result)
+        return result
     }
     
     func getUnits(quantity: String) -> [String] {
@@ -84,12 +86,14 @@ class UnitConverter {
         
         return quantityConversionMatrix.Convert(sourceUnit: sourceUnit, destinationUnit: destinationUnit, input: input)
     }
-    
+        
     func buildConversions() {
         buildTemperatureConversionMatrix()
         buildWeightConversionMatrix()
         buildLengthConversionMatrix()
         buildVolumeConversionMatrix()
+        buildAreaConversionMatrix()
+        buildPowerConversionMatrix()
     }
     
     func buildVolumeConversionMatrix() {
@@ -207,6 +211,151 @@ class UnitConverter {
         weight.addConversion(unitConversion: SimpleConversion(sourceUnit: "Tons", destinationUnit: "Kilograms", conversionFactor: 1016.047 ))
                 
         conversionMatrix.updateValue(weight, forKey: weight.quantity)
+    }
+    
+    func buildPowerConversionMatrix() {
+        let power : QuantityConversion = QuantityConversion(quantity: "Power")
+        
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Horse Power", destinationUnit: "btu/h", conversionFactor: 2544.43 ))
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Kilowatt", destinationUnit: "btu/h", conversionFactor: 3412.14 ))
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Watt", destinationUnit: "btu/h", conversionFactor: 3.4121))
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Tonne of refr.", destinationUnit: "btu/h", conversionFactor: 12000))
+        
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Kilowatt", destinationUnit: "Horse Power", conversionFactor: 1.3596 ))
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Horse Power", destinationUnit: "Watt", conversionFactor: 735.50))
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Tonne of refr.", destinationUnit: "Horse Power", conversionFactor: 4.7816))
+        
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Kilowatt", destinationUnit: "Watt", conversionFactor: 1000 ))
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Tonne of refr.", destinationUnit: "Kilowatt", conversionFactor: 3.5169))
+
+        power.addConversion(unitConversion: SimpleConversion(sourceUnit: "Tonne of refr.", destinationUnit: "Watt", conversionFactor: 3516.8528))
+        
+        conversionMatrix.updateValue(power, forKey: power.quantity)
+    }
+    
+    func buildAreaConversionMatrix() {
+        let area : QuantityConversion = QuantityConversion(quantity: "Area")
+        
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Are", conversionFactor: 40.5 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Are", conversionFactor: 2.5 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Centimeter", conversionFactor: 40468564.2 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Decimeter", conversionFactor: 404685.6 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Foot", conversionFactor: 43560 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Acre", conversionFactor: 2.5 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Inch", conversionFactor: 6272640 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Acre", conversionFactor: 247.1 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Meter", conversionFactor: 4046.9 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Micrometer", conversionFactor: 4046856422000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Acre", conversionFactor: 640 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Millimeter", conversionFactor: 4046856422 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Nanometer", conversionFactor: 4046856421999999713280 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Acre", destinationUnit: "Sq Yard", conversionFactor: 4840 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Are", conversionFactor: 100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Centimeter", conversionFactor: 1000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Decimeter", conversionFactor: 10000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Foot", conversionFactor: 1076.4 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Are", conversionFactor: 2.5 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Inch", conversionFactor: 1550003 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Are", conversionFactor: 10000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Meter", conversionFactor: 100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Micrometer", conversionFactor: 100000000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Are", conversionFactor: 25899.9 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Millimeter", conversionFactor: 100000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Nanometer", conversionFactor: 100000000000000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Are", destinationUnit: "Sq Yard", conversionFactor: 119.6 ))
+        
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Centimeter", conversionFactor: 100000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Decimeter", conversionFactor: 1000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Foot", conversionFactor: 107639.1 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Hectare", conversionFactor: 1 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Inch", conversionFactor: 15500031 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Hectare", conversionFactor: 100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Meter", conversionFactor: 10000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Micrometer", conversionFactor: 10000000000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Hectare", conversionFactor: 259 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Millimeter", conversionFactor: 10000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Nanometer", conversionFactor: 10000000000000000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Hectare", destinationUnit: "Sq Yard", conversionFactor: 11959.9 ))
+        
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Decimeter", destinationUnit: "Sq Centimeter", conversionFactor: 100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Foot", destinationUnit: "Sq Centimeter", conversionFactor: 929 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Centimeter", conversionFactor: 100000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Inch", destinationUnit: "Sq Centimeter", conversionFactor: 6.5 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Centimeter", conversionFactor: 10000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Centimeter", conversionFactor: 100000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Centimer", destinationUnit: "Sq Micrometer", conversionFactor: 100000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Centimer", conversionFactor: 25899881100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Centimer", destinationUnit: "Sq Millimeter", conversionFactor: 100))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Centimer", destinationUnit: "Sq Nanometer", conversionFactor: 100000000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Yard", destinationUnit: "Sq Centimer", conversionFactor: 8361.3 ))
+        
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Foot", destinationUnit: "Sq Decimeter", conversionFactor: 9.3 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Decimeter", conversionFactor: 1000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Decimeter", destinationUnit: "Sq Inch", conversionFactor: 15.5 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Decimeter", conversionFactor: 100000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Decimeter", conversionFactor: 100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Decimeter", destinationUnit: "Sq Micrometer", conversionFactor: 10000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Decimeter", conversionFactor: 258998811 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Decimeter", destinationUnit: "Sq Millimeter", conversionFactor: 10000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Decimeter", destinationUnit: "Sq Nanometer", conversionFactor: 10000000000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Yard", destinationUnit: "Sq Decimeter", conversionFactor: 83.613 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Foot", conversionFactor: 107639.1 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Foot", destinationUnit: "Sq Inch", conversionFactor: 144 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Foot", conversionFactor: 10763910.4 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Foot", conversionFactor: 10.8 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Foot", destinationUnit: "Sq Micrometer", conversionFactor: 92903040000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Foot", conversionFactor: 27878400 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Foot", destinationUnit: "Sq Millimeter", conversionFactor: 92903))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Foot", destinationUnit: "Sq Nanometer", conversionFactor: 92903040000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Yard", destinationUnit: "Sq Foot", conversionFactor: 9 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Inch", conversionFactor: 15500031 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Hectometer", conversionFactor: 100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Meter", conversionFactor: 10000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Micrometer", conversionFactor: 10000000000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Hectometer", conversionFactor: 259 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Millimeter", conversionFactor: 10000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Nanometer", conversionFactor: 10000000000000000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Hectometer", destinationUnit: "Sq Yard", conversionFactor: 11959.9 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Inch", conversionFactor: 1550003100 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Inch", conversionFactor: 1550 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Inch", destinationUnit: "Sq Micrometer", conversionFactor: 645160000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Inch", conversionFactor: 4014489599.5 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Inch", destinationUnit: "Sq Millimeter", conversionFactor: 645.2))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Inch", destinationUnit: "Sq Nanometer", conversionFactor: 6451599999999999))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Yard", destinationUnit: "Sq Inch", conversionFactor: 1296 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Meter", conversionFactor: 1000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Micrometer", conversionFactor: 1000000000000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Kilometer", conversionFactor: 2.6 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Millimeter", conversionFactor: 1000000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Nanometer", conversionFactor: 999999999999999983222784))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Kilometer", destinationUnit: "Sq Yard", conversionFactor: 1195990 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Micrometer", conversionFactor: 1000000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Meter", conversionFactor: 2589988.1 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Millimeter", conversionFactor: 1000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Nanometer", conversionFactor: 999999999999999872))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Meter", destinationUnit: "Sq Yard", conversionFactor: 1.2 ))
+        
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Micrometer", conversionFactor: 2589988110000000000 ))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Millimeter", destinationUnit: "Sq Micrometer", conversionFactor: 1000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Micrometer", destinationUnit: "Sq Nanometer", conversionFactor: 1000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Yard", destinationUnit: "Sq Micrometer", conversionFactor: 836127360000 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Millimeter", conversionFactor: 2589988110000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Nanometer", conversionFactor: 2589988109999999809486848))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Mile", destinationUnit: "Sq Yard", conversionFactor: 3097600 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Millimeter", destinationUnit: "Sq Nanometer", conversionFactor: 1000000000000))
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Yard", destinationUnit: "Sq Millimeter", conversionFactor: 836127.4 ))
+
+        area.addConversion(unitConversion: SimpleConversion(sourceUnit: "Sq Yard", destinationUnit: "Sq Nanometer", conversionFactor: 836127359999999872 ))
+
+        conversionMatrix.updateValue(area, forKey: area.quantity)
     }
     
     func buildTemperatureConversionMatrix() {

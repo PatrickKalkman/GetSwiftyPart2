@@ -10,7 +10,7 @@ import UIKit
 import SPStorkController
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
+
     @IBOutlet weak var topGradient: GradientView!
     @IBOutlet weak var bottomGradient: GradientView!
     @IBOutlet weak var quantityButton: UIButton!
