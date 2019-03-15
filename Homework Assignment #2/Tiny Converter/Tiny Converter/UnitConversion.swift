@@ -8,9 +8,8 @@
 
 import Foundation
 
-class UnitConversion {
-    var sourceUnit: String
-    var destinationUnit: String
+class ComplexConversion : SimpleConversion {
+
     var conversionFunctionSourceDestination: ((Double) -> (Double))
     var conversionFunctionDestinationSource: ((Double) -> (Double))
     
@@ -18,9 +17,24 @@ class UnitConversion {
          destinationUnit: String,
          conversionFunctionSourceDestination: @escaping ((Double) -> (Double)),
          conversionFunctionDestinationSource: @escaping ((Double) -> (Double))) {
-        self.sourceUnit = sourceUnit
-        self.destinationUnit = destinationUnit
+        
         self.conversionFunctionSourceDestination = conversionFunctionSourceDestination
         self.conversionFunctionDestinationSource = conversionFunctionDestinationSource
+        
+        super.init(sourceUnit: sourceUnit, destinationUnit: destinationUnit, conversionFactor: nil)
+    }
+}
+
+class SimpleConversion {
+    var sourceUnit: String
+    var destinationUnit: String
+    var conversionFactor: Double?
+    
+    init(sourceUnit: String,
+         destinationUnit: String,
+         conversionFactor: Double?) {
+        self.sourceUnit = sourceUnit
+        self.destinationUnit = destinationUnit
+        self.conversionFactor = conversionFactor
     }
 }
