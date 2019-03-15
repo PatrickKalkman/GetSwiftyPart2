@@ -167,7 +167,7 @@
                                             <constraint firstAttribute="height" constant="84" id="ysN-dU-0Bk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="60"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="-11" maxX="0.0" maxY="0.0"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="-11" maxX="0.0" maxY="3"/>
                                         <state key="normal" title="=">
                                             <color key="titleColor" red="1" green="1" blue="0.99627786870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>

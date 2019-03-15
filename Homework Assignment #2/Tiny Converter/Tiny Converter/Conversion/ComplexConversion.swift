@@ -24,17 +24,3 @@ class ComplexConversion : SimpleConversion {
         super.init(sourceUnit: sourceUnit, destinationUnit: destinationUnit, conversionFactor: nil)
     }
 }
-
-class SimpleConversion {
-    var sourceUnit: String
-    var destinationUnit: String
-    var conversionFactor: Double?
-    
-    init(sourceUnit: String,
-         destinationUnit: String,
-         conversionFactor: Double?) {
-        self.sourceUnit = sourceUnit
-        self.destinationUnit = destinationUnit
-        self.conversionFactor = conversionFactor
-    }
-}

@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		20AA7D7E06C9550052D828C3 /* Pods_Tiny_Converter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09853518B11ECAB5F9BBF0A4 /* Pods_Tiny_Converter.framework */; };
-		AB799F1B223B7A7400C94803 /* UnitConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB799F1A223B7A7400C94803 /* UnitConversion.swift */; };
+		AB799F1B223B7A7400C94803 /* ComplexConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB799F1A223B7A7400C94803 /* ComplexConversion.swift */; };
 		AB799F1F223BA8AD00C94803 /* ZfRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB799F1E223BA8AD00C94803 /* ZfRippleButton.swift */; };
-		AB93D766223A2BE200A4378C /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D765223A2BE200A4378C /* DropDownButton.swift */; };
+		AB799F21223BB65F00C94803 /* SimpleConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB799F20223BB65F00C94803 /* SimpleConversion.swift */; };
+		AB799F25223BBA0A00C94803 /* TipInCellAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB799F24223BBA0A00C94803 /* TipInCellAnimator.swift */; };
 		AB93D768223A449B00A4378C /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D767223A449B00A4378C /* BorderButton.swift */; };
 		AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D769223A5FFA00A4378C /* UnitConverter.swift */; };
 		AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76B223A740300A4378C /* UiViewExtensions.swift */; };
@@ -41,9 +42,10 @@
 
 /* Begin PBXFileReference section */
 		09853518B11ECAB5F9BBF0A4 /* Pods_Tiny_Converter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_Converter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB799F1A223B7A7400C94803 /* UnitConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitConversion.swift; sourceTree = "<group>"; };
+		AB799F1A223B7A7400C94803 /* ComplexConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexConversion.swift; sourceTree = "<group>"; };
 		AB799F1E223BA8AD00C94803 /* ZfRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZfRippleButton.swift; sourceTree = "<group>"; };
-		AB93D765223A2BE200A4378C /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
+		AB799F20223BB65F00C94803 /* SimpleConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleConversion.swift; sourceTree = "<group>"; };
+		AB799F24223BBA0A00C94803 /* TipInCellAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipInCellAnimator.swift; sourceTree = "<group>"; };
 		AB93D767223A449B00A4378C /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		AB93D769223A5FFA00A4378C /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
 		AB93D76B223A740300A4378C /* UiViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiViewExtensions.swift; sourceTree = "<group>"; };
@@ -99,6 +101,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB799F22223BB67200C94803 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AB799F24223BBA0A00C94803 /* TipInCellAnimator.swift */,
+				AB799F1E223BA8AD00C94803 /* ZfRippleButton.swift */,
+				AB93D76B223A740300A4378C /* UiViewExtensions.swift */,
+				ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */,
+				ABE208D82239846E00E0F013 /* GradientView.swift */,
+				AB93D767223A449B00A4378C /* BorderButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AB799F23223BB6B400C94803 /* Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				AB93D769223A5FFA00A4378C /* UnitConverter.swift */,
+				ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */,
+				AB799F20223BB65F00C94803 /* SimpleConversion.swift */,
+				AB799F1A223B7A7400C94803 /* ComplexConversion.swift */,
+			);
+			path = Conversion;
+			sourceTree = "<group>";
+		};
 		ABE208A922397E2300E0F013 = {
 			isa = PBXGroup;
 			children = (
@@ -122,9 +148,8 @@
 		ABE208B422397E2300E0F013 /* Tiny Converter */ = {
 			isa = PBXGroup;
 			children = (
-				AB799F1A223B7A7400C94803 /* UnitConversion.swift */,
-				AB93D767223A449B00A4378C /* BorderButton.swift */,
-				ABE208D82239846E00E0F013 /* GradientView.swift */,
+				AB799F23223BB6B400C94803 /* Conversion */,
+				AB799F22223BB67200C94803 /* UI */,
 				ABE208B522397E2300E0F013 /* AppDelegate.swift */,
 				ABE208B722397E2300E0F013 /* ViewController.swift */,
 				ABE208B922397E2300E0F013 /* Main.storyboard */,
@@ -132,14 +157,8 @@
 				ABE208C122397E2400E0F013 /* LaunchScreen.storyboard */,
 				ABE208C422397E2400E0F013 /* Info.plist */,
 				ABE208BC22397E2300E0F013 /* Tiny_Converter.xcdatamodeld */,
-				ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */,
 				ABE208DC2239A46800E0F013 /* ModalViewController.swift */,
-				AB93D765223A2BE200A4378C /* DropDownButton.swift */,
-				AB93D769223A5FFA00A4378C /* UnitConverter.swift */,
-				AB93D76B223A740300A4378C /* UiViewExtensions.swift */,
 				AB93D76D223A7C6000A4378C /* SelectionMode.swift */,
-				ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */,
-				AB799F1E223BA8AD00C94803 /* ZfRippleButton.swift */,
 			);
 			path = "Tiny Converter";
 			sourceTree = "<group>";
@@ -340,13 +359,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */,
-				AB93D766223A2BE200A4378C /* DropDownButton.swift in Sources */,
 				ABE208B822397E2300E0F013 /* ViewController.swift in Sources */,
 				ABE208BE22397E2300E0F013 /* Tiny_Converter.xcdatamodeld in Sources */,
+				AB799F21223BB65F00C94803 /* SimpleConversion.swift in Sources */,
 				ABE208D92239846E00E0F013 /* GradientView.swift in Sources */,
 				ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */,
 				AB93D76E223A7C6000A4378C /* SelectionMode.swift in Sources */,
-				AB799F1B223B7A7400C94803 /* UnitConversion.swift in Sources */,
+				AB799F25223BBA0A00C94803 /* TipInCellAnimator.swift in Sources */,
+				AB799F1B223B7A7400C94803 /* ComplexConversion.swift in Sources */,
 				AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */,
 				ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */,
 				AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */,
