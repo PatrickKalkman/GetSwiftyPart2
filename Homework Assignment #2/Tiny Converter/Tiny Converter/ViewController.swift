@@ -36,6 +36,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
     
+    @IBAction func showSettingButton(_ sender: Any) {
+        let modal = SettingsViewController(functionToFinish: refresh)
+        let transitionDelegate = SPStorkTransitioningDelegate()
+        modal.transitioningDelegate = transitionDelegate
+        modal.modalPresentationStyle = .custom
+        self.present(modal, animated: true, completion: nil)
+    }
+    
     @IBAction func convertButtonAction(_ sender: Any) {
         
         guard let inputString : String = sourceTextField.text else {

@@ -82,6 +82,9 @@
                                                         <color key="value" red="0.91324681043624878" green="0.39177367091178894" blue="0.36703145503997803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="showSettingButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="56V-fn-cGr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
