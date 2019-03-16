@@ -37,11 +37,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func showSettingButton(_ sender: Any) {
-        let modal = SettingsViewController(functionToFinish: refresh)
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let settingsViewController = storyBoard.instantiateViewController(withIdentifier: "SettingsViewId") as! SettingsViewController
         let transitionDelegate = SPStorkTransitioningDelegate()
-        modal.transitioningDelegate = transitionDelegate
-        modal.modalPresentationStyle = .custom
-        self.present(modal, animated: true, completion: nil)
+        settingsViewController.transitioningDelegate = transitionDelegate
+        settingsViewController.modalPresentationStyle = .custom
+        self.present(settingsViewController, animated:true, completion:nil)
     }
     
     @IBAction func convertButtonAction(_ sender: Any) {
@@ -79,7 +81,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                           destinationUnit: destinationUnit,
                           input: input)
         
-        destinationTextField.text = String(format: "%.2f", result)
+        let numberOfDecimals : Int = SettingsBundleHelper.getNumberOfDecimals()
+        
+        destinationTextField.text = String(format: "%.\(numberOfDecimals)f", result)
     }
     
     

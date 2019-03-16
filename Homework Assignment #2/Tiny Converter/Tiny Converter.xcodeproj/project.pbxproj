@@ -28,6 +28,9 @@
 		ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DC2239A46800E0F013 /* ModalViewController.swift */; };
 		ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */; };
 		ABFBA496223C12160000E8F0 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA495223C12160000E8F0 /* SettingsModalViewController.swift */; };
+		ABFBA49A223D205A0000E8F0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABFBA499223D205A0000E8F0 /* Settings.bundle */; };
+		ABFBA49C223D221B0000E8F0 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA49B223D221B0000E8F0 /* SettingsBundleHelper.swift */; };
+		ABFBA49E223D3F380000E8F0 /* EmbeddedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA49D223D3F380000E8F0 /* EmbeddedTableViewController.swift */; };
 		DDDB403AD5C9A0CCCC15595B /* Pods_Tiny_ConverterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		ABE208DC2239A46800E0F013 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityConversion.swift; sourceTree = "<group>"; };
 		ABFBA495223C12160000E8F0 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
+		ABFBA499223D205A0000E8F0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		ABFBA49B223D221B0000E8F0 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
+		ABFBA49D223D3F380000E8F0 /* EmbeddedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTableViewController.swift; sourceTree = "<group>"; };
 		B924BD8DCD97570BC01447E2 /* Pods-Tiny ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Tiny ConverterTests/Pods-Tiny ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		B998FCEC2D4B3ECDC81C06F7 /* Pods-Tiny Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Converter.release.xcconfig"; path = "Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter.release.xcconfig"; sourceTree = "<group>"; };
 		C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_ConverterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +168,9 @@
 				ABE208DC2239A46800E0F013 /* ModalViewController.swift */,
 				AB93D76D223A7C6000A4378C /* SelectionMode.swift */,
 				ABFBA495223C12160000E8F0 /* SettingsModalViewController.swift */,
+				ABFBA499223D205A0000E8F0 /* Settings.bundle */,
+				ABFBA49B223D221B0000E8F0 /* SettingsBundleHelper.swift */,
+				ABFBA49D223D3F380000E8F0 /* EmbeddedTableViewController.swift */,
 			);
 			path = "Tiny Converter";
 			sourceTree = "<group>";
@@ -270,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABFBA49A223D205A0000E8F0 /* Settings.bundle in Resources */,
 				ABE208C322397E2400E0F013 /* LaunchScreen.storyboard in Resources */,
 				ABE208C022397E2400E0F013 /* Assets.xcassets in Resources */,
 				ABE208BB22397E2300E0F013 /* Main.storyboard in Resources */,
@@ -366,6 +376,7 @@
 				ABE208BE22397E2300E0F013 /* Tiny_Converter.xcdatamodeld in Sources */,
 				AB799F21223BB65F00C94803 /* SimpleConversion.swift in Sources */,
 				ABE208D92239846E00E0F013 /* GradientView.swift in Sources */,
+				ABFBA49C223D221B0000E8F0 /* SettingsBundleHelper.swift in Sources */,
 				ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */,
 				AB93D76E223A7C6000A4378C /* SelectionMode.swift in Sources */,
 				AB799F25223BBA0A00C94803 /* TipInCellAnimator.swift in Sources */,
@@ -377,6 +388,7 @@
 				ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */,
 				AB93D768223A449B00A4378C /* BorderButton.swift in Sources */,
 				AB799F1F223BA8AD00C94803 /* ZfRippleButton.swift in Sources */,
+				ABFBA49E223D3F380000E8F0 /* EmbeddedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
