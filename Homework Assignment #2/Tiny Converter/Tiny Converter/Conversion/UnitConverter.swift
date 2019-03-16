@@ -35,14 +35,14 @@ class UnitConverter {
     }
     
     func setDefault() {
-        SelectedQuantityIndex = 0
-        SelectedQuantity = getQuantities()[0]
+        SelectedQuantityIndex = 3
+        SelectedQuantity = getQuantities()[3]
         
         SelectedSourceUnitIndex = 0
         SelectedSourceUnit = getUnits(quantity: SelectedQuantity)[0]
         
-        SelectedDestinationUnitIndex = 0
-        SelectedDestinationUnit = getUnits(quantity: SelectedQuantity)[0]
+        SelectedDestinationUnitIndex = 1
+        SelectedDestinationUnit = getUnits(quantity: SelectedQuantity)[1]
     }
     
     func setDefault(selectedQuantity: String) {
@@ -78,15 +78,19 @@ class UnitConverter {
         strings = Set(strings).sorted()
     }
     
-    func Convert(quantity: String, sourceUnit: String, destinationUnit: String, input: Double) -> Double {
-        guard let quantityConversionMatrix : QuantityConversion = conversionMatrix[quantity] else {
-            print("Cannot find quantity conversion matrix for \(quantity)")
+    func Convert(input: Double, direction: CalculationDirection) -> Double {
+        guard let quantityConversionMatrix : QuantityConversion = conversionMatrix[SelectedQuantity] else {
+            print("Cannot find quantity conversion matrix for \(SelectedQuantity)")
             return 0
         }
         
-        return quantityConversionMatrix.Convert(sourceUnit: sourceUnit, destinationUnit: destinationUnit, input: input)
+        if (direction == CalculationDirection.SourceToDestination) {
+            return quantityConversionMatrix.Convert(sourceUnit: SelectedSourceUnit, destinationUnit: SelectedDestinationUnit, input: input)
+        } else {
+             return quantityConversionMatrix.Convert(sourceUnit: SelectedDestinationUnit, destinationUnit: SelectedSourceUnit, input: input)
+        }
     }
-        
+    
     func buildConversions() {
         buildTemperatureConversionMatrix()
         buildWeightConversionMatrix()

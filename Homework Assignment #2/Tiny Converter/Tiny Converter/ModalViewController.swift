@@ -10,20 +10,20 @@ import UIKit
 import SPStorkController
 import SparrowKit
 
+// Controller to select the quantity, source unit or destination unit
+// of a conversion
 class ModalTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let lightColor : UIColor = UIColor.init(hex: "E1D3D3")
-    let selectedColor : UIColor = UIColor.init(hex: "C55856")
     let navBar = SPFakeBarView(style: .stork)
     let tableView = UITableView()
     let unitConverter : UnitConverter
-    var functionToFinish: (() -> Void)
-    var selectionMode: SelectionMode
+    var functionToFinish: ((_ direction: CalculationDirection) -> Void)
+    var selectionMode: ModalSelectionMode
     let selectedQuantity: String
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .default}
     
-    init(unitConverter: UnitConverter, selectionMode: SelectionMode, selectedQuantity: String, functionToFinish: @escaping (() -> Void)) {
+    init(unitConverter: UnitConverter, selectionMode: ModalSelectionMode, selectedQuantity: String, functionToFinish: @escaping ((_ direction: CalculationDirection) -> Void)) {
         self.unitConverter = unitConverter
         self.functionToFinish = functionToFinish
         self.selectionMode = selectionMode
@@ -37,10 +37,10 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = lightColor
+        self.view.backgroundColor = Constants.Colors.LightColor
         self.modalPresentationCapturesStatusBarAppearance = true
         
-        self.tableView.backgroundColor = lightColor
+        self.tableView.backgroundColor = Constants.Colors.LightColor
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -48,17 +48,17 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.scrollIndicatorInsets.top = self.navBar.height
         self.view.addSubview(self.tableView)
         
-        if self.selectionMode == SelectionMode.Quantity {
+        if self.selectionMode == ModalSelectionMode.Quantity {
             self.navBar.titleLabel.text = "Select Quantity"
         } else {
             self.navBar.titleLabel.text = "Select Unit"
         }
 
-        self.navBar.titleLabel.textColor = selectedColor
-        self.navBar.backgroundColor = lightColor
+        self.navBar.titleLabel.textColor = Constants.Colors.SelectedColor
+        self.navBar.backgroundColor = Constants.Colors.LightColor
         
         self.navBar.leftButton.setImage(UIImage(named: "backButton")!)
-        self.navBar.leftButton.setTitleColor(selectedColor)
+        self.navBar.leftButton.setTitleColor(Constants.Colors.SelectedColor)
         self.navBar.leftButton.addTarget(self, action: #selector(self.dismissAction), for: .touchUpInside)
         self.view.addSubview(self.navBar)
         
@@ -68,9 +68,9 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(_ animated: Bool) {
 
         var indexPath : IndexPath
-        if self.selectionMode == SelectionMode.Quantity {
+        if self.selectionMode == ModalSelectionMode.Quantity {
             indexPath = IndexPath(row: unitConverter.SelectedQuantityIndex, section: 0)
-        } else if self.selectionMode == SelectionMode.SourceUnit {
+        } else if self.selectionMode == ModalSelectionMode.SourceUnit {
             indexPath = IndexPath(row: unitConverter.SelectedSourceUnitIndex, section: 0)
         } else {
             indexPath = IndexPath(row: unitConverter.SelectedDestinationUnitIndex, section: 0)
@@ -93,7 +93,7 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.selectionMode == SelectionMode.Quantity {
+        if self.selectionMode == ModalSelectionMode.Quantity {
             return unitConverter.getQuantities().count
         } else {
             return unitConverter.getUnits(quantity: selectedQuantity).count
@@ -106,10 +106,10 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.backgroundColor = lightColor
+        cell.backgroundColor = Constants.Colors.LightColor
         cell.selectionStyle = .blue
         
-        if self.selectionMode == SelectionMode.Quantity {
+        if self.selectionMode == ModalSelectionMode.Quantity {
             cell.textLabel?.text = unitConverter.getQuantities()[indexPath.row]
         } else {
             cell.textLabel?.text = unitConverter.getUnits(quantity: selectedQuantity)[indexPath.row]
@@ -118,9 +118,9 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
         cell.transform = .identity
 
         let customView : UIView = UIView()
-        customView.backgroundColor = selectedColor
-        cell.textLabel?.textColor = selectedColor
-        cell.textLabel?.highlightedTextColor = lightColor
+        customView.backgroundColor = Constants.Colors.SelectedColor
+        cell.textLabel?.textColor = Constants.Colors.SelectedColor
+        cell.textLabel?.highlightedTextColor = Constants.Colors.LightColor
         cell.selectedBackgroundView = customView
 
         return cell
@@ -128,26 +128,24 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if self.selectionMode == SelectionMode.Quantity {
+        if self.selectionMode == ModalSelectionMode.Quantity {
             let selectedItem : String = unitConverter.getQuantities()[indexPath.row]
             unitConverter.SelectedQuantity = selectedItem
             unitConverter.SelectedQuantityIndex = indexPath.row
-        } else if self.selectionMode == SelectionMode.SourceUnit {
+        } else if self.selectionMode == ModalSelectionMode.SourceUnit {
             let selectedItem : String = unitConverter.getUnits(quantity: selectedQuantity)[indexPath.row]
             unitConverter.SelectedSourceUnit = selectedItem
             unitConverter.SelectedSourceUnitIndex = indexPath.row
-        } else if self.selectionMode == SelectionMode.DestinationUnit {
+        } else if self.selectionMode == ModalSelectionMode.DestinationUnit {
             let selectedItem : String = unitConverter.getUnits(quantity: selectedQuantity)[indexPath.row]
             unitConverter.SelectedDestinationUnit = selectedItem
             unitConverter.SelectedDestinationUnitIndex = indexPath.row
         }
-        functionToFinish()
+        functionToFinish(CalculationDirection.SourceToDestination)
         self.dismiss(animated: true, completion: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         SPStorkController.scrollViewDidScroll(scrollView)
     }
-
 }
-

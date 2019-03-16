@@ -15,11 +15,10 @@
 		AB93D768223A449B00A4378C /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D767223A449B00A4378C /* BorderButton.swift */; };
 		AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D769223A5FFA00A4378C /* UnitConverter.swift */; };
 		AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76B223A740300A4378C /* UiViewExtensions.swift */; };
-		AB93D76E223A7C6000A4378C /* SelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76D223A7C6000A4378C /* SelectionMode.swift */; };
+		AB93D76E223A7C6000A4378C /* ModalSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76D223A7C6000A4378C /* ModalSelectionMode.swift */; };
 		ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B522397E2300E0F013 /* AppDelegate.swift */; };
 		ABE208B822397E2300E0F013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B722397E2300E0F013 /* ViewController.swift */; };
 		ABE208BB22397E2300E0F013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE208B922397E2300E0F013 /* Main.storyboard */; };
-		ABE208BE22397E2300E0F013 /* Tiny_Converter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABE208BC22397E2300E0F013 /* Tiny_Converter.xcdatamodeld */; };
 		ABE208C022397E2400E0F013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE208BF22397E2400E0F013 /* Assets.xcassets */; };
 		ABE208C322397E2400E0F013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE208C122397E2400E0F013 /* LaunchScreen.storyboard */; };
 		ABE208CE22397E2400E0F013 /* Tiny_ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208CD22397E2400E0F013 /* Tiny_ConverterTests.swift */; };
@@ -27,10 +26,13 @@
 		ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */; };
 		ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DC2239A46800E0F013 /* ModalViewController.swift */; };
 		ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */; };
-		ABFBA496223C12160000E8F0 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA495223C12160000E8F0 /* SettingsModalViewController.swift */; };
+		ABFBA496223C12160000E8F0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA495223C12160000E8F0 /* SettingsViewController.swift */; };
 		ABFBA49A223D205A0000E8F0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABFBA499223D205A0000E8F0 /* Settings.bundle */; };
 		ABFBA49C223D221B0000E8F0 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA49B223D221B0000E8F0 /* SettingsBundleHelper.swift */; };
 		ABFBA49E223D3F380000E8F0 /* EmbeddedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA49D223D3F380000E8F0 /* EmbeddedTableViewController.swift */; };
+		ABFBA4A0223D60C60000E8F0 /* CalculationDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA49F223D60C60000E8F0 /* CalculationDirection.swift */; };
+		ABFBA4A2223D73DA0000E8F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABFBA4A1223D73DA0000E8F0 /* GoogleService-Info.plist */; };
+		ABFBA4A4223D749C0000E8F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA4A3223D749C0000E8F0 /* Constants.swift */; };
 		DDDB403AD5C9A0CCCC15595B /* Pods_Tiny_ConverterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,12 +55,11 @@
 		AB93D767223A449B00A4378C /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		AB93D769223A5FFA00A4378C /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
 		AB93D76B223A740300A4378C /* UiViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiViewExtensions.swift; sourceTree = "<group>"; };
-		AB93D76D223A7C6000A4378C /* SelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionMode.swift; sourceTree = "<group>"; };
+		AB93D76D223A7C6000A4378C /* ModalSelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSelectionMode.swift; sourceTree = "<group>"; };
 		ABE208B222397E2300E0F013 /* Tiny Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE208B522397E2300E0F013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE208B722397E2300E0F013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABE208BA22397E2300E0F013 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ABE208BD22397E2300E0F013 /* Tiny_Converter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiny_Converter.xcdatamodel; sourceTree = "<group>"; };
 		ABE208BF22397E2400E0F013 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABE208C222397E2400E0F013 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABE208C422397E2400E0F013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,10 +70,13 @@
 		ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		ABE208DC2239A46800E0F013 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityConversion.swift; sourceTree = "<group>"; };
-		ABFBA495223C12160000E8F0 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
+		ABFBA495223C12160000E8F0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ABFBA499223D205A0000E8F0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		ABFBA49B223D221B0000E8F0 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		ABFBA49D223D3F380000E8F0 /* EmbeddedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTableViewController.swift; sourceTree = "<group>"; };
+		ABFBA49F223D60C60000E8F0 /* CalculationDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationDirection.swift; sourceTree = "<group>"; };
+		ABFBA4A1223D73DA0000E8F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABFBA4A3223D749C0000E8F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B924BD8DCD97570BC01447E2 /* Pods-Tiny ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Tiny ConverterTests/Pods-Tiny ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		B998FCEC2D4B3ECDC81C06F7 /* Pods-Tiny Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Converter.release.xcconfig"; path = "Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter.release.xcconfig"; sourceTree = "<group>"; };
 		C4F8017F7C94C71A0A28221A /* Pods_Tiny_ConverterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_ConverterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,18 +163,20 @@
 				AB799F23223BB6B400C94803 /* Conversion */,
 				AB799F22223BB67200C94803 /* UI */,
 				ABE208B522397E2300E0F013 /* AppDelegate.swift */,
+				ABFBA4A1223D73DA0000E8F0 /* GoogleService-Info.plist */,
 				ABE208B722397E2300E0F013 /* ViewController.swift */,
 				ABE208B922397E2300E0F013 /* Main.storyboard */,
 				ABE208BF22397E2400E0F013 /* Assets.xcassets */,
 				ABE208C122397E2400E0F013 /* LaunchScreen.storyboard */,
 				ABE208C422397E2400E0F013 /* Info.plist */,
-				ABE208BC22397E2300E0F013 /* Tiny_Converter.xcdatamodeld */,
 				ABE208DC2239A46800E0F013 /* ModalViewController.swift */,
-				AB93D76D223A7C6000A4378C /* SelectionMode.swift */,
-				ABFBA495223C12160000E8F0 /* SettingsModalViewController.swift */,
+				AB93D76D223A7C6000A4378C /* ModalSelectionMode.swift */,
+				ABFBA495223C12160000E8F0 /* SettingsViewController.swift */,
 				ABFBA499223D205A0000E8F0 /* Settings.bundle */,
 				ABFBA49B223D221B0000E8F0 /* SettingsBundleHelper.swift */,
 				ABFBA49D223D3F380000E8F0 /* EmbeddedTableViewController.swift */,
+				ABFBA49F223D60C60000E8F0 /* CalculationDirection.swift */,
+				ABFBA4A3223D749C0000E8F0 /* Constants.swift */,
 			);
 			path = "Tiny Converter";
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 			files = (
 				ABFBA49A223D205A0000E8F0 /* Settings.bundle in Resources */,
 				ABE208C322397E2400E0F013 /* LaunchScreen.storyboard in Resources */,
+				ABFBA4A2223D73DA0000E8F0 /* GoogleService-Info.plist in Resources */,
 				ABE208C022397E2400E0F013 /* Assets.xcassets in Resources */,
 				ABE208BB22397E2300E0F013 /* Main.storyboard in Resources */,
 			);
@@ -305,15 +312,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tiny Converter/Pods-Tiny Converter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
 				"${BUILT_PRODUCTS_DIR}/SparrowKit/SparrowKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SparrowKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -372,18 +383,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */,
+				ABFBA4A4223D749C0000E8F0 /* Constants.swift in Sources */,
 				ABE208B822397E2300E0F013 /* ViewController.swift in Sources */,
-				ABE208BE22397E2300E0F013 /* Tiny_Converter.xcdatamodeld in Sources */,
 				AB799F21223BB65F00C94803 /* SimpleConversion.swift in Sources */,
 				ABE208D92239846E00E0F013 /* GradientView.swift in Sources */,
 				ABFBA49C223D221B0000E8F0 /* SettingsBundleHelper.swift in Sources */,
 				ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */,
-				AB93D76E223A7C6000A4378C /* SelectionMode.swift in Sources */,
+				ABFBA4A0223D60C60000E8F0 /* CalculationDirection.swift in Sources */,
+				AB93D76E223A7C6000A4378C /* ModalSelectionMode.swift in Sources */,
 				AB799F25223BBA0A00C94803 /* TipInCellAnimator.swift in Sources */,
 				AB799F1B223B7A7400C94803 /* ComplexConversion.swift in Sources */,
 				AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */,
 				ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */,
-				ABFBA496223C12160000E8F0 /* SettingsModalViewController.swift in Sources */,
+				ABFBA496223C12160000E8F0 /* SettingsViewController.swift in Sources */,
 				AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */,
 				ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */,
 				AB93D768223A449B00A4378C /* BorderButton.swift in Sources */,
@@ -661,19 +673,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		ABE208BC22397E2300E0F013 /* Tiny_Converter.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				ABE208BD22397E2300E0F013 /* Tiny_Converter.xcdatamodel */,
-			);
-			currentVersion = ABE208BD22397E2300E0F013 /* Tiny_Converter.xcdatamodel */;
-			path = Tiny_Converter.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = ABE208AA22397E2300E0F013 /* Project object */;
 }

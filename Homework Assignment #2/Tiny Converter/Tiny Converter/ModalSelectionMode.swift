@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SelectionMode {
+enum ModalSelectionMode {
     case Quantity
     case SourceUnit
     case DestinationUnit

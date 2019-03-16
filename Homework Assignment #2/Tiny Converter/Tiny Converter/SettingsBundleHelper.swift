@@ -16,19 +16,7 @@ class SettingsBundleHelper {
         static let AppVersionKey = "version"
     }
     
-    class func checkAndExecuteSettings() {
-        
-//        if UserDefaults.standard.bool(forKey: SettingsBundleKeys.Reset) {
-//            UserDefaults.standard.set(false, forKey: SettingsBundleKeys.Reset)
-//            let appDomain: String? = Bundle.main.bundleIdentifier
-//            UserDefaults.standard.removePersistentDomain(forName: appDomain!)
-//            // reset userDefaults..
-//            // CoreDatsaDataModel().deleteAllData()
-//            // delete all other user data here..
-//        }
-    }
-    
-    class func setVersionAndBuildNumber() {
+    class func initialize() {
         let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         UserDefaults.standard.set(version, forKey: SettingsBundleKeys.AppVersionKey)
         
@@ -53,4 +41,3 @@ class SettingsBundleHelper {
     }
 
 }
-

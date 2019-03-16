@@ -7,6 +7,7 @@ target 'Tiny Converter' do
 
   pod 'SPStorkController'
   pod 'SparrowKit'
+  pod 'Firebase/Core'
 
   # Pods for Tiny Converter
 

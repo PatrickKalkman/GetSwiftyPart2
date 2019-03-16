@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         sourceTextField.delegate = self
         destinationTextField.delegate = self
         converter.setDefault()
-        refresh()
+        refresh(direction: CalculationDirection.SourceToDestination)
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,46 +46,52 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.present(settingsViewController, animated:true, completion:nil)
     }
     
+    @IBAction func sourceNumberChanged(_ sender: UITextView) {
+        convert(direction: CalculationDirection.SourceToDestination)
+    }
+    
+    @IBAction func destinationNumberChanged(_ sender: UITextField) {
+        convert(direction: CalculationDirection.DestinationToSource)
+    }
+    
     @IBAction func convertButtonAction(_ sender: Any) {
+        convert(direction: CalculationDirection.SourceToDestination)
+    }
+    
+    func convert(direction: CalculationDirection) {
         
-        guard let inputString : String = sourceTextField.text else {
-            print("No input available")
-            return
+        var inputString : String
+        
+        if direction == CalculationDirection.SourceToDestination {
+            guard let inputStringFromSource : String = sourceTextField.text else {
+                print("No source input available")
+                return
+            }
+            inputString = inputStringFromSource
+        } else {
+            guard let inputStringFromDestination : String = destinationTextField.text else {
+                print("No destination input available")
+                return
+            }
+            inputString = inputStringFromDestination
         }
-        
+
         guard let input = Double(inputString) else {
             print("Cannot convert \(inputString)")
             return
         }
         
-        guard var quantity : String = quantityButton.titleLabel?.text else {
-            print("No quantity chosen")
-            return
-        }
-        quantity = quantity.replace("  ▾", with: "")
-        
-        guard var sourceUnit : String = sourceUnitButton.titleLabel?.text else {
-            print("No source unit chosen")
-            return
-        }
-        sourceUnit = sourceUnit.replace("▾ ", with: "")
-        
-        guard var destinationUnit : String = destinationUnitButton.titleLabel?.text else {
-            print("No destination unit chosen")
-            return
-        }
-        destinationUnit = destinationUnit.replace("▾ ", with: "")
-        
-        let result : Double = converter.Convert(quantity: quantity,
-                          sourceUnit: sourceUnit,
-                          destinationUnit: destinationUnit,
-                          input: input)
+        let result : Double = converter.Convert(input: input, direction: direction)
         
         let numberOfDecimals : Int = SettingsBundleHelper.getNumberOfDecimals()
+        let formattedResult : String = String(format: "%.\(numberOfDecimals)f", result)
         
-        destinationTextField.text = String(format: "%.\(numberOfDecimals)f", result)
+        if direction == CalculationDirection.SourceToDestination {
+            destinationTextField.text = formattedResult
+        } else {
+            sourceTextField.text = formattedResult
+        }
     }
-    
     
     private func setupKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIControl.keyboardWillShowNotification, object: nil)
@@ -114,23 +120,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func SelectQuantity(_ sender: Any) {
-        showModal(selectionMode: SelectionMode.Quantity, functionToFinish: setDefaultAndRefresh)
+        showModal(selectionMode: ModalSelectionMode.Quantity, functionToFinish: setDefaultAndRefresh)
     }
     
     @IBAction func SelectSourceUnit(_ sender: Any) {
-        showModal(selectionMode: SelectionMode.SourceUnit, functionToFinish: refresh)
+        showModal(selectionMode: ModalSelectionMode.SourceUnit, functionToFinish: refresh)
     }
     
     @IBAction func SelectDestinationUnit(_ sender: Any) {
-        showModal(selectionMode: SelectionMode.DestinationUnit, functionToFinish: refresh)
+        showModal(selectionMode: ModalSelectionMode.DestinationUnit, functionToFinish: refresh)
     }
     
-    func showModal(selectionMode: SelectionMode, functionToFinish: @escaping (() -> Void)) {
+    func showModal(selectionMode: ModalSelectionMode, functionToFinish: @escaping ((_ direction: CalculationDirection) -> Void)) {
         
         guard var quantity : String = quantityButton.titleLabel?.text else {
             print("No quantity chosen")
             return
         }
+        
         quantity = quantity.replace("  ▾", with: "")
         
         let modal = ModalTableViewController(unitConverter: converter, selectionMode: selectionMode, selectedQuantity: quantity, functionToFinish: functionToFinish)
@@ -140,8 +147,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.present(modal, animated: true, completion: nil)
     }
     
-    func refresh() {
+    func refresh(direction: CalculationDirection) {
+        
        let transitionTime : Double = 1.2
+        
         UIView.transition(with: quantityButton, duration: transitionTime, options: .transitionCrossDissolve, animations: {
             self.quantityButton.setTitle("\(self.converter.SelectedQuantity)  ▾")
         }, completion: nil)
@@ -153,9 +162,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         UIView.transition(with: destinationUnitButton, duration: transitionTime, options: .transitionCrossDissolve, animations: {
             self.destinationUnitButton.setTitle("▾ \(self.converter.SelectedDestinationUnit)")
         }, completion: nil)
+        
+        convert(direction: direction)
     }
     
-    func setDefaultAndRefresh() {
+    func setDefaultAndRefresh(direction: CalculationDirection) {
         
         guard var quantity : String = quantityButton.titleLabel?.text else {
             print("No quantity chosen")
@@ -167,12 +178,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.converter.setDefault(selectedQuantity: self.converter.SelectedQuantity)
         }
         
-        refresh()
+        refresh(direction: CalculationDirection.SourceToDestination)
     }
     
+    // Allow only numbers and . ,
     let numbers = "0123456789.,";
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return string.count > 0 ? numbers.contains(string) : true
     }
 }
-
