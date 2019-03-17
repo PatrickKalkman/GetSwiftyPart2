@@ -9,6 +9,6 @@
 import Foundation
 
 enum CalculationDirection {
-    case SourceToDestination
-    case DestinationToSource
+    case sourceToDestination
+    case destinationToSource
 }

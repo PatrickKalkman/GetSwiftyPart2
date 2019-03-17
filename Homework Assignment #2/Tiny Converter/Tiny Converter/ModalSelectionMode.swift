@@ -9,7 +9,7 @@
 import Foundation
 
 enum ModalSelectionMode {
-    case Quantity
-    case SourceUnit
-    case DestinationUnit
+    case quantity
+    case sourceUnit
+    case destinationUnit
 }

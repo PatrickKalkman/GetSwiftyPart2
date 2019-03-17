@@ -9,33 +9,35 @@
 import Foundation
 
 class SettingsBundleHelper {
-    
+
     struct SettingsBundleKeys {
         static let NumberOfDecimals = "numberOfDecimals"
         static let BuildVersionKey = "build"
         static let AppVersionKey = "version"
     }
-    
+
     class func initialize() {
-        let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        UserDefaults.standard.set(version, forKey: SettingsBundleKeys.AppVersionKey)
-        
-        let build: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        UserDefaults.standard.set(build, forKey: SettingsBundleKeys.BuildVersionKey)
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            UserDefaults.standard.set(version, forKey: SettingsBundleKeys.AppVersionKey)
+        }
+
+        if let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
+            UserDefaults.standard.set(build, forKey: SettingsBundleKeys.BuildVersionKey)
+        }
     }
-    
+
     class func getVersion() -> String {
         return UserDefaults.standard.string(forKey: SettingsBundleKeys.AppVersionKey) ?? ""
     }
-    
+
     class func getBuild() -> String {
         return UserDefaults.standard.string(forKey: SettingsBundleKeys.BuildVersionKey) ?? ""
     }
-    
+
     class func getNumberOfDecimals() -> Int {
         return UserDefaults.standard.integer(forKey: SettingsBundleKeys.NumberOfDecimals)
     }
-    
+
     class func setNumberOfDecimals(numberOfDecimals: Int) {
         UserDefaults.standard.set(numberOfDecimals, forKey: SettingsBundleKeys.NumberOfDecimals)
     }

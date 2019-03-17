@@ -11,13 +11,13 @@ import Foundation
 class SimpleConversion {
     var sourceUnit: String
     var destinationUnit: String
-    var conversionFactor: Double?
-    
+    var factor: Double?
+
     init(sourceUnit: String,
          destinationUnit: String,
-         conversionFactor: Double?) {
+         factor: Double?) {
         self.sourceUnit = sourceUnit
         self.destinationUnit = destinationUnit
-        self.conversionFactor = conversionFactor
+        self.factor = factor
     }
 }

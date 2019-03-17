@@ -8,19 +8,19 @@
 
 import Foundation
 
-class ComplexConversion : SimpleConversion {
+class ComplexConversion: SimpleConversion {
 
     var conversionFunctionSourceDestination: ((Double) -> (Double))
     var conversionFunctionDestinationSource: ((Double) -> (Double))
-    
+
     init(sourceUnit: String,
          destinationUnit: String,
          conversionFunctionSourceDestination: @escaping ((Double) -> (Double)),
          conversionFunctionDestinationSource: @escaping ((Double) -> (Double))) {
-        
+
         self.conversionFunctionSourceDestination = conversionFunctionSourceDestination
         self.conversionFunctionDestinationSource = conversionFunctionDestinationSource
-        
-        super.init(sourceUnit: sourceUnit, destinationUnit: destinationUnit, conversionFactor: nil)
+
+        super.init(sourceUnit: sourceUnit, destinationUnit: destinationUnit, factor: nil)
     }
 }

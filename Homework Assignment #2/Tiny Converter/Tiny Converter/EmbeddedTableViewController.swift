@@ -34,8 +34,9 @@ class EmbeddedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = Constants.Colors.LightColor
-        header.textLabel?.textColor = Constants.Colors.SelectedColor
+        if let header = view as? UITableViewHeaderFooterView {
+            header.contentView.backgroundColor = Constants.Colors.LightColor
+            header.textLabel?.textColor = Constants.Colors.SelectedColor
+        }
     }
 }

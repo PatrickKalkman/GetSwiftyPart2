@@ -25,6 +25,12 @@
 		ABE208D92239846E00E0F013 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208D82239846E00E0F013 /* GradientView.swift */; };
 		ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */; };
 		ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208DC2239A46800E0F013 /* ModalViewController.swift */; };
+		ABE30C0E223E1B7800149963 /* WeightConversionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE30C0D223E1B7800149963 /* WeightConversionBuilder.swift */; };
+		ABE30C10223E1D8D00149963 /* LengthConversionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE30C0F223E1D8D00149963 /* LengthConversionBuilder.swift */; };
+		ABE30C12223E1E6D00149963 /* TemperatureConversionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE30C11223E1E6D00149963 /* TemperatureConversionBuilder.swift */; };
+		ABE30C14223E1FE600149963 /* PowerConversionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE30C13223E1FE600149963 /* PowerConversionBuilder.swift */; };
+		ABE30C16223E26EF00149963 /* VolumeConversionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE30C15223E26EF00149963 /* VolumeConversionBuilder.swift */; };
+		ABE30C18223E27B800149963 /* AreaConversionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE30C17223E27B800149963 /* AreaConversionBuilder.swift */; };
 		ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */; };
 		ABFBA496223C12160000E8F0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBA495223C12160000E8F0 /* SettingsViewController.swift */; };
 		ABFBA49A223D205A0000E8F0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ABFBA499223D205A0000E8F0 /* Settings.bundle */; };
@@ -69,6 +75,12 @@
 		ABE208D82239846E00E0F013 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		ABE208DA223989C500E0F013 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		ABE208DC2239A46800E0F013 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		ABE30C0D223E1B7800149963 /* WeightConversionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightConversionBuilder.swift; sourceTree = "<group>"; };
+		ABE30C0F223E1D8D00149963 /* LengthConversionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthConversionBuilder.swift; sourceTree = "<group>"; };
+		ABE30C11223E1E6D00149963 /* TemperatureConversionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureConversionBuilder.swift; sourceTree = "<group>"; };
+		ABE30C13223E1FE600149963 /* PowerConversionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerConversionBuilder.swift; sourceTree = "<group>"; };
+		ABE30C15223E26EF00149963 /* VolumeConversionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeConversionBuilder.swift; sourceTree = "<group>"; };
+		ABE30C17223E27B800149963 /* AreaConversionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaConversionBuilder.swift; sourceTree = "<group>"; };
 		ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityConversion.swift; sourceTree = "<group>"; };
 		ABFBA495223C12160000E8F0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		ABFBA499223D205A0000E8F0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -130,9 +142,15 @@
 			isa = PBXGroup;
 			children = (
 				AB93D769223A5FFA00A4378C /* UnitConverter.swift */,
+				ABE30C0D223E1B7800149963 /* WeightConversionBuilder.swift */,
 				ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */,
 				AB799F20223BB65F00C94803 /* SimpleConversion.swift */,
 				AB799F1A223B7A7400C94803 /* ComplexConversion.swift */,
+				ABE30C0F223E1D8D00149963 /* LengthConversionBuilder.swift */,
+				ABE30C11223E1E6D00149963 /* TemperatureConversionBuilder.swift */,
+				ABE30C13223E1FE600149963 /* PowerConversionBuilder.swift */,
+				ABE30C15223E26EF00149963 /* VolumeConversionBuilder.swift */,
+				ABE30C17223E27B800149963 /* AreaConversionBuilder.swift */,
 			);
 			path = Conversion;
 			sourceTree = "<group>";
@@ -382,13 +400,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE30C14223E1FE600149963 /* PowerConversionBuilder.swift in Sources */,
 				ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */,
 				ABFBA4A4223D749C0000E8F0 /* Constants.swift in Sources */,
 				ABE208B822397E2300E0F013 /* ViewController.swift in Sources */,
 				AB799F21223BB65F00C94803 /* SimpleConversion.swift in Sources */,
+				ABE30C16223E26EF00149963 /* VolumeConversionBuilder.swift in Sources */,
 				ABE208D92239846E00E0F013 /* GradientView.swift in Sources */,
 				ABFBA49C223D221B0000E8F0 /* SettingsBundleHelper.swift in Sources */,
 				ABE208DD2239A46800E0F013 /* ModalViewController.swift in Sources */,
+				ABE30C18223E27B800149963 /* AreaConversionBuilder.swift in Sources */,
 				ABFBA4A0223D60C60000E8F0 /* CalculationDirection.swift in Sources */,
 				AB93D76E223A7C6000A4378C /* ModalSelectionMode.swift in Sources */,
 				AB799F25223BBA0A00C94803 /* TipInCellAnimator.swift in Sources */,
@@ -396,9 +417,12 @@
 				AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */,
 				ABFA7EA6223ACF5D00A574A3 /* QuantityConversion.swift in Sources */,
 				ABFBA496223C12160000E8F0 /* SettingsViewController.swift in Sources */,
+				ABE30C12223E1E6D00149963 /* TemperatureConversionBuilder.swift in Sources */,
 				AB93D76A223A5FFA00A4378C /* UnitConverter.swift in Sources */,
 				ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */,
 				AB93D768223A449B00A4378C /* BorderButton.swift in Sources */,
+				ABE30C0E223E1B7800149963 /* WeightConversionBuilder.swift in Sources */,
+				ABE30C10223E1D8D00149963 /* LengthConversionBuilder.swift in Sources */,
 				AB799F1F223BA8AD00C94803 /* ZfRippleButton.swift in Sources */,
 				ABFBA49E223D3F380000E8F0 /* EmbeddedTableViewController.swift in Sources */,
 			);
