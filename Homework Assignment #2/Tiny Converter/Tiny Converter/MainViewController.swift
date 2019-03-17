@@ -11,8 +11,6 @@ import SPStorkController
 
 class MainViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var topGradient: GradientView!
-    @IBOutlet weak var bottomGradient: GradientView!
     @IBOutlet weak var quantityButton: UIButton!
     @IBOutlet weak var sourceUnitButton: UIButton!
     @IBOutlet weak var destinationUnitButton: UIButton!
@@ -20,6 +18,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var destinationTextField: DesignableUITextField!
     @IBOutlet weak var scrollView: UIScrollView!
 
+    // The model of the application, performs the actual unit conversion
     let converter: UnitConverter = UnitConverter()
 
     override func viewDidLoad() {
@@ -37,7 +36,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func showSettingButton(_ sender: Any) {
-
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let settingsViewController = storyBoard.instantiateViewController(withIdentifier: "SettingsViewId")
             as? SettingsViewController {

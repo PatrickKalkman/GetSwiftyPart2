@@ -17,7 +17,7 @@
 		AB93D76C223A740300A4378C /* UiViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76B223A740300A4378C /* UiViewExtensions.swift */; };
 		AB93D76E223A7C6000A4378C /* ModalSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93D76D223A7C6000A4378C /* ModalSelectionMode.swift */; };
 		ABE208B622397E2300E0F013 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B522397E2300E0F013 /* AppDelegate.swift */; };
-		ABE208B822397E2300E0F013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B722397E2300E0F013 /* ViewController.swift */; };
+		ABE208B822397E2300E0F013 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE208B722397E2300E0F013 /* MainViewController.swift */; };
 		ABE208BB22397E2300E0F013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE208B922397E2300E0F013 /* Main.storyboard */; };
 		ABE208C022397E2400E0F013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE208BF22397E2400E0F013 /* Assets.xcassets */; };
 		ABE208C322397E2400E0F013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE208C122397E2400E0F013 /* LaunchScreen.storyboard */; };
@@ -64,7 +64,7 @@
 		AB93D76D223A7C6000A4378C /* ModalSelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSelectionMode.swift; sourceTree = "<group>"; };
 		ABE208B222397E2300E0F013 /* Tiny Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE208B522397E2300E0F013 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ABE208B722397E2300E0F013 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ABE208B722397E2300E0F013 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ABE208BA22397E2300E0F013 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABE208BF22397E2400E0F013 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABE208C222397E2400E0F013 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -141,18 +141,26 @@
 		AB799F23223BB6B400C94803 /* Conversion */ = {
 			isa = PBXGroup;
 			children = (
+				ABCC24AD223E7AAD00049685 /* Builders */,
 				AB93D769223A5FFA00A4378C /* UnitConverter.swift */,
-				ABE30C0D223E1B7800149963 /* WeightConversionBuilder.swift */,
 				ABFA7EA5223ACF5D00A574A3 /* QuantityConversion.swift */,
 				AB799F20223BB65F00C94803 /* SimpleConversion.swift */,
 				AB799F1A223B7A7400C94803 /* ComplexConversion.swift */,
-				ABE30C0F223E1D8D00149963 /* LengthConversionBuilder.swift */,
-				ABE30C11223E1E6D00149963 /* TemperatureConversionBuilder.swift */,
-				ABE30C13223E1FE600149963 /* PowerConversionBuilder.swift */,
-				ABE30C15223E26EF00149963 /* VolumeConversionBuilder.swift */,
-				ABE30C17223E27B800149963 /* AreaConversionBuilder.swift */,
 			);
 			path = Conversion;
+			sourceTree = "<group>";
+		};
+		ABCC24AD223E7AAD00049685 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				ABE30C0F223E1D8D00149963 /* LengthConversionBuilder.swift */,
+				ABE30C15223E26EF00149963 /* VolumeConversionBuilder.swift */,
+				ABE30C11223E1E6D00149963 /* TemperatureConversionBuilder.swift */,
+				ABE30C13223E1FE600149963 /* PowerConversionBuilder.swift */,
+				ABE30C17223E27B800149963 /* AreaConversionBuilder.swift */,
+				ABE30C0D223E1B7800149963 /* WeightConversionBuilder.swift */,
+			);
+			path = Builders;
 			sourceTree = "<group>";
 		};
 		ABE208A922397E2300E0F013 = {
@@ -182,7 +190,7 @@
 				AB799F22223BB67200C94803 /* UI */,
 				ABE208B522397E2300E0F013 /* AppDelegate.swift */,
 				ABFBA4A1223D73DA0000E8F0 /* GoogleService-Info.plist */,
-				ABE208B722397E2300E0F013 /* ViewController.swift */,
+				ABE208B722397E2300E0F013 /* MainViewController.swift */,
 				ABE208B922397E2300E0F013 /* Main.storyboard */,
 				ABE208BF22397E2400E0F013 /* Assets.xcassets */,
 				ABE208C122397E2400E0F013 /* LaunchScreen.storyboard */,
@@ -403,7 +411,7 @@
 				ABE30C14223E1FE600149963 /* PowerConversionBuilder.swift in Sources */,
 				ABE208DB223989C500E0F013 /* UnderlinedTextField.swift in Sources */,
 				ABFBA4A4223D749C0000E8F0 /* Constants.swift in Sources */,
-				ABE208B822397E2300E0F013 /* ViewController.swift in Sources */,
+				ABE208B822397E2300E0F013 /* MainViewController.swift in Sources */,
 				AB799F21223BB65F00C94803 /* SimpleConversion.swift in Sources */,
 				ABE30C16223E26EF00149963 /* VolumeConversionBuilder.swift in Sources */,
 				ABE208D92239846E00E0F013 /* GradientView.swift in Sources */,

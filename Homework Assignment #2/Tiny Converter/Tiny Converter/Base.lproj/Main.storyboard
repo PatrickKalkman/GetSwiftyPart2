@@ -39,7 +39,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="SelectQuantity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ocL-qe-E9e"/>
+                                                    <action selector="selectQuantity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HJv-K8-uO4"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.0" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="6rw-BT-rgo" customClass="DesignableUITextField" customModule="Tiny_Converter" customModuleProvider="target">
@@ -67,7 +67,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="SelectSourceUnit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OSr-rp-z6f"/>
+                                                    <action selector="selectSourceUnit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mUn-Lz-ctY"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-WE-DKA">
@@ -152,7 +152,7 @@
                                                     <color key="titleColor" red="0.83568816639999999" green="0.51818046910000004" blue="0.50422189910000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="SelectDestinationUnit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E7s-LX-jJc"/>
+                                                    <action selector="selectDestinationUnit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qc0-Yw-9bV"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -237,14 +237,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="bottomGradient" destination="YOx-Sf-aEt" id="hxO-Kz-8D6"/>
                         <outlet property="destinationTextField" destination="V0m-Ge-IaG" id="GOi-F6-vwf"/>
                         <outlet property="destinationUnitButton" destination="ajU-xY-hCV" id="D4k-CA-Aql"/>
                         <outlet property="quantityButton" destination="P1b-Bx-Oio" id="vmZ-JB-fo1"/>
                         <outlet property="scrollView" destination="Va2-Yb-IDO" id="4ft-hZ-Tkz"/>
                         <outlet property="sourceTextField" destination="6rw-BT-rgo" id="WcU-zD-SPW"/>
                         <outlet property="sourceUnitButton" destination="9D8-Hh-pV8" id="L25-HS-rDt"/>
-                        <outlet property="topGradient" destination="u8i-N0-Z0J" id="lR9-Vm-LoG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
