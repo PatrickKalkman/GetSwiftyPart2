@@ -58,7 +58,7 @@ class ModalTableViewController: UIViewController, UITableViewDataSource, UITable
         self.navBar.titleLabel.textColor = Constants.Colors.SelectedColor
         self.navBar.backgroundColor = Constants.Colors.LightColor
 
-        self.navBar.leftButton.setImage(UIImage(named: "backButton")!)
+        self.navBar.leftButton.setImage(UIImage(named: Constants.ImageNames.BackButtonImageName)!)
         self.navBar.leftButton.setTitleColor(Constants.Colors.SelectedColor)
         self.navBar.leftButton.addTarget(self, action: #selector(self.dismissAction), for: .touchUpInside)
         self.view.addSubview(self.navBar)

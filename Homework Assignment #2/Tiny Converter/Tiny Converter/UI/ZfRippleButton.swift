@@ -50,15 +50,13 @@ open class ZFRippleButton: UIButton {
     fileprivate var touchCenterLocation: CGPoint?
 
     fileprivate var rippleMask: CAShapeLayer? {
-        get {
-            if !rippleOverBounds {
-                let maskLayer = CAShapeLayer()
-                maskLayer.path = UIBezierPath(roundedRect: bounds,
-                    cornerRadius: layer.cornerRadius).cgPath
-                return maskLayer
-            } else {
-                return nil
-            }
+        if !rippleOverBounds {
+            let maskLayer = CAShapeLayer()
+            maskLayer.path = UIBezierPath(roundedRect: bounds,
+                cornerRadius: layer.cornerRadius).cgPath
+            return maskLayer
+        } else {
+            return nil
         }
     }
 
@@ -115,7 +113,6 @@ open class ZFRippleButton: UIButton {
 
         rippleView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
-
         UIView.animate(withDuration: 0.7, delay: 0, options: [UIView.AnimationOptions.curveEaseOut,
                                                               UIView.AnimationOptions.allowUserInteraction],
             animations: {
@@ -157,14 +154,13 @@ open class ZFRippleButton: UIButton {
         UIView.animate(withDuration: 0.1, delay: 0, options: UIView.AnimationOptions.allowUserInteraction,
                        animations: {
             self.rippleBackgroundView.alpha = 1
-        }, completion: { (success: Bool) -> () in
+        }, completion: { (_) in
                 UIView.animate(withDuration: self.touchUpAnimationTime, delay: 0,
                     options: UIView.AnimationOptions.allowUserInteraction,
                     animations: {
                     self.rippleBackgroundView.alpha = 0
                 }, completion: nil)
             })
-
 
         UIView.animate(withDuration: 0.7, delay: 0,
             options: [.curveEaseOut, .beginFromCurrentState, .allowUserInteraction],

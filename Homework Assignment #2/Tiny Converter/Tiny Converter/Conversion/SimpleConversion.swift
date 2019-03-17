@@ -8,6 +8,8 @@
 
 import Foundation
 
+// This class defines a unit conversion in which case the unit can be converted
+// using multiplying it by a factor
 class SimpleConversion {
     var sourceUnit: String
     var destinationUnit: String

@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 struct Constants {
-    struct NotificationKey {
-        static let Welcome = "kWelcomeNotif"
+    struct Colors {
+        static let LightColor: UIColor = UIColor.init(hex: "E1D3D3")
+        static let SelectedColor: UIColor = UIColor.init(hex: "C55856")
     }
     
-    struct Colors {
-        static let LightColor : UIColor = UIColor.init(hex: "E1D3D3")
-        static let SelectedColor : UIColor = UIColor.init(hex: "C55856")
+    struct ImageNames {
+        static let BackButtonImageName: String = "backButton"
     }
 }

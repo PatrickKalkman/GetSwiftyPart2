@@ -8,6 +8,8 @@
 
 import Foundation
 
+// This class defines a conversion between two units that need a specialized
+// function. For example, the Celcius to Fahrenheit conversion
 class ComplexConversion: SimpleConversion {
 
     var conversionFunctionSourceDestination: ((Double) -> (Double))

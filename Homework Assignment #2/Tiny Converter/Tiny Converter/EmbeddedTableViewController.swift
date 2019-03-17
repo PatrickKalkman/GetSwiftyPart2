@@ -9,14 +9,14 @@
 import UIKit
 
 // TableViewController used to show settings
-// The controller is embedded in the 
+// The controller is embedded in the
 class EmbeddedTableViewController: UITableViewController {
 
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var buildLabel: UILabel!
     @IBOutlet weak var numberOfDecimalsLabel: UILabel!
     @IBOutlet weak var numberOfDecimalStepper: UIStepper!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,15 +24,15 @@ class EmbeddedTableViewController: UITableViewController {
         buildLabel.text = SettingsBundleHelper.getBuild()
         let numberOfDecimals = SettingsBundleHelper.getNumberOfDecimals()
         numberOfDecimalStepper.value = Double(numberOfDecimals)
-        numberOfDecimalsLabel.text = String( numberOfDecimals)
+        numberOfDecimalsLabel.text = String(numberOfDecimals)
     }
 
     @IBAction func numberOfDecimalsValueChanges(_ sender: UIStepper) {
-        let numberOfDecimals : Int = Int(sender.value)
+        let numberOfDecimals: Int = Int(sender.value)
         SettingsBundleHelper.setNumberOfDecimals(numberOfDecimals: numberOfDecimals)
         numberOfDecimalsLabel.text = numberOfDecimals.description
     }
-    
+
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
             header.contentView.backgroundColor = Constants.Colors.LightColor

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Deinfes the type of selection the modal dialog should use
 enum ModalSelectionMode {
     case quantity
     case sourceUnit
