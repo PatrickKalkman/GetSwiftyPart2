@@ -7,5 +7,7 @@ target 'Tiny Timer' do
 
   # Pods for Tiny Timer
   pod 'Firebase/Core'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 end

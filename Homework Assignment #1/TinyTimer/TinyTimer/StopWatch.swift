@@ -7,16 +7,33 @@
 //
 
 import Foundation
+import RxSwift
 
 // The model of the application
 class StopWatch {
    
+   private let disposeBag = DisposeBag()
+   
    var currentState : TinyTimerState = TinyTimerState.Init
    var currentTime : TimeSpan = TimeSpan()
-   var timer : Timer = Timer()
    var stopWatchElapsedDelegate: StopWatchElapsedDelegate?
    
+   var timerO: Observable<Int>
+   
    init() {
+      // create the timer
+      timerO = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+      
+      timerO.subscribe { (_) in
+         if self.currentState == TinyTimerState.Running {
+            self.currentTime.addSecond()
+            // If no delegate is set we do nothing, otherwise we call the elapsed
+            // function on the delegate
+            if let delegate = self.stopWatchElapsedDelegate {
+               delegate.elapsed()
+            }
+         }
+      }
    }
    
    func setElapsedDelegate(stopWatchElapsedDelegate: StopWatchElapsedDelegate) {
@@ -25,27 +42,17 @@ class StopWatch {
    
    func start() {
      currentState = TinyTimerState.Running
-     timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
    }
    
    func stop() {
       currentState = TinyTimerState.Paused
-      timer.invalidate()
    }
    
    func reset() {
       currentState = TinyTimerState.Init
-      timer.invalidate()
-      currentTime.reset()
-   }
-   
-   @objc func UpdateTimer() {
-      currentTime.addSecond()
-      // If no delegate is set we do nothing, otherwise we call the elapsed
-      // function on the delegate
-      if let delegate = self.stopWatchElapsedDelegate {
-         delegate.elapsed()
-      }
+      currentTime.hours = 0
+      currentTime.minutes = 0
+      currentTime.seconds = 0
    }
    
    func formattedSeconds() -> String {

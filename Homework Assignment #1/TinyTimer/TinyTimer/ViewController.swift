@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 // The main and single view controller of the application
 class ViewController: UIViewController, StopWatchElapsedDelegate {
 
+   private let disposeBag = DisposeBag()
+   
    // Stopwatch labels
    @IBOutlet weak var hoursLabel: UILabel!
    @IBOutlet weak var hoursUnitLabel: UILabel!
@@ -31,14 +35,15 @@ class ViewController: UIViewController, StopWatchElapsedDelegate {
    var stopWatch : StopWatch = StopWatch()
    
    override func viewDidLoad() {
+      
+      startButton.rx.tap.subscribe(onNext: { _ in
+         self.stopWatch.start()
+         self.refreshUI()
+      }).disposed(by: disposeBag)
+      
       stopWatch.setElapsedDelegate(stopWatchElapsedDelegate: self)
       refreshUI()
       super.viewDidLoad()
-   }
-   
-   @IBAction func startAction(_ sender: UIButton) {
-      stopWatch.start()
-      refreshUI()
    }
 
    @IBAction func stopAction(_ sender: UIButton) {
