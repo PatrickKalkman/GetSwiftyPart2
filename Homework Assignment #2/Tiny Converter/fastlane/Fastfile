@@ -53,5 +53,6 @@ desc "Submit a new Beta Build to Apple TestFlight"
 
     # commit to git the changes from bumping version number
     commit_version_bump(message: "Committed version bump",
-                        include: "CHANGELOG.md")
+                        include: "CHANGELOG.md", 
+                        xcodeproj: "Homework Assignment #2/Tiny Converter/Tiny Converter.xcodeproj")
   end
