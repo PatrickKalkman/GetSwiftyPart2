@@ -1,0 +1,87 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+update_fastlane
+
+default_platform(:ios)
+
+desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+
+    ensure_git_status_clean
+
+    increment_build_number(
+      build_number: Time.now.to_i
+    )
+   
+    increment_version_number
+    build_number = get_build_number
+    version_number = get_version_number
+    changelog = read_changelog
+
+    sync_code_signing(type: "appstore",
+      app_identifier: "nl.simpletechture.Tiny-Converter")
+
+    build_app(scheme: "Tiny Converter",
+      clean: true,
+      export_method: "app-store",)
+
+    upload_to_testflight(wait_for_uploaded_build: true,
+                            changelog: changelog,
+                            distribute_external: true)
+
+    stamp_changelog(section_identifier: "Version #{version_number}, Build #{build_number}") # Stamp Unreleased section with newly released build number
+
+    clean_build_artifacts
+
+    # commit to git the changes from bumping version number
+    commit_version_bump(message: "Committed version bump",
+                        include: "CHANGELOG.md")
+  end
+
+lane :build_tinyconverter do
+    # get the production certificates from Apple Developer       
+    get_certificates(
+       development:false,    
+       force:false,          
+       username: 'patrick@simpletechture.nl',   
+       team_name: '',
+       filename: '', 
+       output_path: 'fastlane_result/dev/release'
+    )        
+    
+    # get the production certificates from Apple Developer
+    get_provisioning_profile(
+       adhoc: true,    
+       app_identifier: 'nl.simpletechture.Tiny-Converter',          
+       username: 'patrick@simpletechture.nl', 
+       output_path: 'fastlane_result/dev/release'
+    )
+
+    cocoapods()
+
+    # build the app
+     build_app(
+        scheme: "Tiny Converter",
+        workspace: "Tiny Converter.xcworkspace",
+        clean: true,
+        configuration: "Release",
+        build_path: "fastlane_delivery/dev/release/",
+        archive_path: "fastlane_delivery/dev/release/tinyconverter",
+        derived_data_path: "fastlane_delivery/release/",
+        output_directory: "fastlane_delivery/release/"
+     )
+
+     upload_to_app_store
+end
