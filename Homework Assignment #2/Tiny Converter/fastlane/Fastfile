@@ -11,7 +11,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-update_fastlane
+#update_fastlane(nightly: true)
 
 default_platform(:ios)
 
@@ -54,39 +54,3 @@ desc "Submit a new Beta Build to Apple TestFlight"
     commit_version_bump(message: "Committed version bump",
                         include: "CHANGELOG.md")
   end
-
-lane :build_tinyconverter do
-    # get the production certificates from Apple Developer       
-    get_certificates(
-       development:false,    
-       force:false,          
-       username: 'patrick@simpletechture.nl',   
-       team_name: '',
-       filename: '', 
-       output_path: 'fastlane_result/dev/release'
-    )        
-    
-    # get the production certificates from Apple Developer
-    get_provisioning_profile(
-       adhoc: true,    
-       app_identifier: 'nl.simpletechture.Tiny-Converter',          
-       username: 'patrick@simpletechture.nl', 
-       output_path: 'fastlane_result/dev/release'
-    )
-
-    cocoapods()
-
-    # build the app
-     build_app(
-        scheme: "Tiny Converter",
-        workspace: "Tiny Converter.xcworkspace",
-        clean: true,
-        configuration: "Release",
-        build_path: "fastlane_delivery/dev/release/",
-        archive_path: "fastlane_delivery/dev/release/tinyconverter",
-        derived_data_path: "fastlane_delivery/release/",
-        output_directory: "fastlane_delivery/release/"
-     )
-
-     upload_to_app_store
-end
