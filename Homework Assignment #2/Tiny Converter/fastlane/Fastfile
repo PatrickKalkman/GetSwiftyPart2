@@ -34,7 +34,7 @@ desc "Submit a new Beta Build to Apple TestFlight"
       app_identifier: "nl.simpletechture.Tiny-Converter",
       git_url: "https://github.com/PatrickKalkman/certificates",
       username: "patrick@simpletechture.nl", 
-      team: "Patrick Kalkman")
+      team_name: "Patrick Kalkman")
 
     build_app(scheme: "Tiny Converter",
       clean: true,
