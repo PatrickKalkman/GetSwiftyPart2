@@ -31,7 +31,8 @@ desc "Submit a new Beta Build to Apple TestFlight"
     changelog = read_changelog
 
     sync_code_signing(type: "appstore",
-      app_identifier: "nl.simpletechture.Tiny-Converter")
+      app_identifier: "nl.simpletechture.Tiny-Converter",
+      git_url: "https://github.com/PatrickKalkman/certificates")
 
     build_app(scheme: "Tiny Converter",
       clean: true,
