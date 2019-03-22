@@ -14,6 +14,10 @@
 		AB97EFC122453BEC00E45E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB97EFC022453BEC00E45E6F /* Assets.xcassets */; };
 		AB97EFC422453BEC00E45E6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97EFC222453BEC00E45E6F /* LaunchScreen.storyboard */; };
 		AB97EFCF22453BEC00E45E6F /* Tiny_BlackjackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFCE22453BEC00E45E6F /* Tiny_BlackjackTests.swift */; };
+		AB97EFDA22453DA400E45E6F /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFD922453DA400E45E6F /* CardTests.swift */; };
+		AB97EFDD224557D300E45E6F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFDC224557D300E45E6F /* Card.swift */; };
+		AB97EFDF2245580700E45E6F /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFDE2245580700E45E6F /* Suit.swift */; };
+		AB97EFE12245583900E45E6F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFE02245583900E45E6F /* Rank.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		AB97EFCA22453BEC00E45E6F /* Tiny BlackjackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tiny BlackjackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB97EFCE22453BEC00E45E6F /* Tiny_BlackjackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiny_BlackjackTests.swift; sourceTree = "<group>"; };
 		AB97EFD022453BEC00E45E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB97EFD922453DA400E45E6F /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
+		AB97EFDC224557D300E45E6F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		AB97EFDE2245580700E45E6F /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
+		AB97EFE02245583900E45E6F /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 		AB97EFB522453BEB00E45E6F /* Tiny Blackjack */ = {
 			isa = PBXGroup;
 			children = (
+				AB97EFDB224557A800E45E6F /* Model */,
 				AB97EFB622453BEB00E45E6F /* AppDelegate.swift */,
 				AB97EFB822453BEB00E45E6F /* ViewController.swift */,
 				AB97EFBA22453BEB00E45E6F /* Main.storyboard */,
@@ -95,8 +104,19 @@
 			children = (
 				AB97EFCE22453BEC00E45E6F /* Tiny_BlackjackTests.swift */,
 				AB97EFD022453BEC00E45E6F /* Info.plist */,
+				AB97EFD922453DA400E45E6F /* CardTests.swift */,
 			);
 			path = "Tiny BlackjackTests";
+			sourceTree = "<group>";
+		};
+		AB97EFDB224557A800E45E6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB97EFDC224557D300E45E6F /* Card.swift */,
+				AB97EFDE2245580700E45E6F /* Suit.swift */,
+				AB97EFE02245583900E45E6F /* Rank.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +221,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB97EFB922453BEB00E45E6F /* ViewController.swift in Sources */,
+				AB97EFDF2245580700E45E6F /* Suit.swift in Sources */,
 				AB97EFBF22453BEB00E45E6F /* Tiny_Blackjack.xcdatamodeld in Sources */,
+				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
+				AB97EFDD224557D300E45E6F /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB97EFCF22453BEC00E45E6F /* Tiny_BlackjackTests.swift in Sources */,
+				AB97EFDA22453DA400E45E6F /* CardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
