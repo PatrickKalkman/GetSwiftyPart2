@@ -40,7 +40,7 @@ desc "Submit a new Beta Build to Apple TestFlight"
       clean: true,
       export_method: "app-store",)
 
-    upload_to_testflight(wait_for_uploaded_build: true,
+    upload_to_testflight(wait_for_uploaded_build: false,
                             changelog: changelog,
                             distribute_external: true,
                             username: "patrick@simpletechture.nl",
