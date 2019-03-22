@@ -42,7 +42,9 @@ desc "Submit a new Beta Build to Apple TestFlight"
 
     upload_to_testflight(wait_for_uploaded_build: true,
                             changelog: changelog,
-                            distribute_external: true)
+                            distribute_external: true,
+                            username: "patrick@simpletechture.nl",
+                            team_name: "Patrick Kalkman")
 
     stamp_changelog(section_identifier: "Version #{version_number}, Build #{build_number}") # Stamp Unreleased section with newly released build number
 

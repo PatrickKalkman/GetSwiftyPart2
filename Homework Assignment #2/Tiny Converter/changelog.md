@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Change version label to include the build number
+- Added ITSAppUsesNonExemptEncryption => No to plist
 
 ## [1.0.0] - 2019-03-16
 ### Added
