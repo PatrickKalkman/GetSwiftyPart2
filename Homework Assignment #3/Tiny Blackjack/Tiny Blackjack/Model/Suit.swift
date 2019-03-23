@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum Suit {
-    case Spade
-    case Heart
-    case Diamond
-    case Club
+enum Suit: CaseIterable {
+    case spade
+    case heart
+    case diamond
+    case club
 }

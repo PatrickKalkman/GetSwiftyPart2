@@ -11,16 +11,20 @@ import XCTest
 
 class CardTests: XCTestCase {
 
-    override func setUp() {
-
+    func test_Returns_11_For_Ace_Card_highValue() {
+        let card: Card = Card(Suit.spade, Rank.ace)
+        XCTAssertEqual(card.highValue, 11)
     }
 
-    override func tearDown() {
+    func test_Returns_10_For_Face_Cards() {
+        var cards: [Card] = [Card]()
+        cards.append(Card(Suit.club, Rank.jack))
+        cards.append(Card(Suit.club, Rank.queen))
+        cards.append(Card(Suit.club, Rank.king))
 
-    }
-
-    func test_cardValueReturnsTheCorrectValue() {
-        let card : Card = Card(suit: Suit.Spade, rank: Rank.Ace)
-        XCTAssertEqual(card.value, 11)
+        for card in cards {
+            XCTAssertEqual(card.lowValue, 10)
+            XCTAssertEqual(card.highValue, 10)
+        }
     }
 }

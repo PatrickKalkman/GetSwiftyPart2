@@ -8,19 +8,18 @@
 
 import Foundation
 
-enum Rank: UInt8 {
-    case Ace
-    case Two
-    case Three
-    case Four
-    case Five
-    case Fix
-    case Six
-    case Seven
-    case Eight
-    case Nine
-    case Ten
-    case Jack
-    case Queen
-    case King
+enum Rank: CaseIterable {
+    case ace
+    case two
+    case three
+    case four
+    case five
+    case six
+    case seven
+    case eight
+    case nine
+    case ten
+    case jack
+    case queen
+    case king
 }
