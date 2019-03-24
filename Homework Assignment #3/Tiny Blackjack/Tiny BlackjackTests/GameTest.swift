@@ -36,5 +36,6 @@ class GameTest: XCTestCase {
         game.showState()
         try? game.start(numberOfPlayers: 2)
         game.showState()
+        game.nextRound()
     }
 }

@@ -12,6 +12,7 @@ class Game {
 
     private let deck: Deck
     private var players: [Player] = [Player]()
+    private var dealer: Player = Player(hand: Hand(), strategy: SimpleStrategy())
     private var gameState: GameState = GameState()
 
     var numberOfPlayers: Int {
@@ -31,6 +32,14 @@ class Game {
         }
     }
 
+    func nextRound() {
+        for player in players {
+            let action: ProposedAction = player.askAction(dealerHand: dealer.hand)
+            print("player says: \(action)")
+        }
+
+    }
+    
     private func start() {
         gameState.setState(stateToSet: GameStates.started)
         // The game is started by dealing every player 2 cards
@@ -40,6 +49,7 @@ class Game {
                 player.add(card: card)
             }
         }
+        dealer.add(card: deck.draw())
     }
 
     private func addPlayers(_ numberOfPlayersToAdd: UInt8) {
@@ -47,9 +57,11 @@ class Game {
             players.append(Player(hand: Hand(), strategy: SimpleStrategy()))
         }
     }
-
+    
     func showState() {
         print("Game state: \(gameState.getState()) players: \(numberOfPlayers)")
+        print("dealer: ")
+        dealer.showState()
         var playerIndex: UInt8 = 1
         for player in players {
             print("player: \(playerIndex)")

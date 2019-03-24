@@ -21,6 +21,10 @@ class Player {
         self.hand = hand
         self.strategy = strategy
     }
+    
+    func askAction(dealerHand: Hand) -> ProposedAction {
+        return strategy.calculateProposedAction(playerHand: hand, dealerHand: dealerHand)
+    }
 
     func add(card: Card) {
         self.hand.add(card)

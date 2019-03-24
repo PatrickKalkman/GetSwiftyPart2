@@ -14,7 +14,6 @@ class SimpleStrategy: BlackjackStrategy {
     
     func calculateProposedAction(playerHand: Hand, dealerHand: Hand) -> ProposedAction {
         
-
         // Split when double ace or double eight
         if playerHand.count == 2 &&
             (playerHand.getRank(cardIndex: 0) == Rank.ace &&
@@ -43,7 +42,6 @@ class SimpleStrategy: BlackjackStrategy {
             }
         }
         
-        
         // Stand when above 11 and Dealer 2 t/m 6
         if dealerHand.isHard() && dealerHand.lowValue() <= 6 {
             if playerHand.isHard() && playerHand.lowValue() >= 12 {
@@ -62,8 +60,7 @@ class SimpleStrategy: BlackjackStrategy {
             }
         }
         
-        
-        return ProposedAction.dontknow
+        return ProposedAction.hit
     }
 
 }

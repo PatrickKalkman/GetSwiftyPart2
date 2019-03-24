@@ -157,13 +157,13 @@ class SimpleStrategyTest: XCTestCase {
         playerHand.add(card1)
         playerHand.add(card2)
         
-        let card3: Card = Card(Suit.club, Rank.two)
+        let card3: Card = Card(Suit.club, Rank.seven)
         let dealerHand: Hand = Hand()
         dealerHand.add(card3)
         
         let strategy: SimpleStrategy = SimpleStrategy()
         let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
-        XCTAssertFalse(action == ProposedAction.split)
+        XCTAssertNotEqual(action, ProposedAction.split)
     }
     
 }
