@@ -26,4 +26,28 @@ class Hand {
     func lowValue() -> UInt8 {
         return cards.reduce(0) { (total, card) in total + card.lowValue }
     }
+    
+    func isSoft() -> Bool {
+        return lowValue() != highValue()
+    }
+    
+    func isHard() -> Bool {
+        return !isSoft()
+    }
+    
+    func getRank(cardIndex: Int) -> Rank {
+        return cards[cardIndex].rank
+    }
+
+    func showState() {
+        if cards.count == 0 {
+            print("hand contains no cards")
+        } else {
+            print("hand: ----->")
+            for card in cards {
+                print("\(card.showState())")
+            }
+            print("<--------")
+        }
+    }
 }

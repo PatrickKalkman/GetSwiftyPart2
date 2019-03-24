@@ -40,4 +40,8 @@ class Card {
         Rank.queen: (10, 10),
         Rank.king: (10, 10)
     ]
+
+    func showState() {
+        print("card: \(self.suit) \(self.rank) \(self.lowValue) \(self.highValue)")
+    }
 }

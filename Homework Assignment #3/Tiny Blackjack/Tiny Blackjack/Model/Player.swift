@@ -9,5 +9,24 @@
 import Foundation
 
 class Player {
-    
+
+    let hand: Hand
+    let strategy: BlackjackStrategy
+
+    var numberOfCards: Int {
+        return hand.count
+    }
+
+    init(hand: Hand, strategy: BlackjackStrategy) {
+        self.hand = hand
+        self.strategy = strategy
+    }
+
+    func add(card: Card) {
+        self.hand.add(card)
+    }
+
+    func showState() {
+        self.hand.showState()
+    }
 }
