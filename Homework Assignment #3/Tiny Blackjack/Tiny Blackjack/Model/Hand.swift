@@ -20,21 +20,21 @@ class Hand {
     }
 
     func highValue() -> UInt8 {
-        return cards.reduce(0) { (total, card) in total + card.highValue }
+        return cards.reduce(0) { (total, card) in total + (card.visible ? card.highValue : 0) }
     }
 
     func lowValue() -> UInt8 {
-        return cards.reduce(0) { (total, card) in total + card.lowValue }
+        return cards.reduce(0) { (total, card) in total + (card.visible ? card.lowValue : 0) }
     }
-    
+
     func isSoft() -> Bool {
         return lowValue() != highValue()
     }
-    
+
     func isHard() -> Bool {
         return !isSoft()
     }
-    
+
     func getRank(cardIndex: Int) -> Rank {
         return cards[cardIndex].rank
     }
@@ -45,7 +45,9 @@ class Hand {
         } else {
             print("hand: ----->")
             for card in cards {
-                print("\(card.showState())")
+                if (card.visible) {
+                    print("\(card.showState())")
+                }
             }
             print("<--------")
         }

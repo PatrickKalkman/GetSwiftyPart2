@@ -11,6 +11,7 @@ import Foundation
 class Card {
     let suit: Suit
     let rank: Rank
+    var visible: Bool = true
 
     init(_ suit: Suit, _ rank: Rank) {
         self.suit = suit
@@ -23,6 +24,10 @@ class Card {
 
     var highValue: UInt8 {
         return Card.values[self.rank]!.highValue
+    }
+
+    func setInvisible() {
+        visible = false
     }
 
     static var values: [Rank: (lowValue: UInt8, highValue: UInt8)] = [
@@ -41,7 +46,7 @@ class Card {
         Rank.king: (10, 10)
     ]
 
-    func showState() {
-        print("card: \(self.suit) \(self.rank) \(self.lowValue) \(self.highValue)")
+    func showState() -> String {
+        return "card: \(self.suit) \(self.rank) \(self.lowValue) \(self.highValue)"
     }
 }

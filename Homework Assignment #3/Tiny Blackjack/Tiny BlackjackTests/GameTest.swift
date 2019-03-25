@@ -15,17 +15,17 @@ class GameTest: XCTestCase {
         let game: Game = Game(Deck())
         XCTAssertEqual(0, game.numberOfPlayers)
     }
-    
+
     func test_newGame_can_start() {
         let game: Game = Game(Deck())
         try? game.start(numberOfPlayers: 1)
         XCTAssertEqual(1, game.numberOfPlayers)
     }
-    
+
     func test_whenStarted_cant_startAgain() {
         let game: Game = Game(Deck())
         try? game.start(numberOfPlayers: 1)
-        
+
         XCTAssertThrowsError(try game.start(numberOfPlayers: 1)) { error in
             XCTAssertEqual(error as! GameError, GameError.cannotStartStartedGame)
         }
@@ -36,6 +36,10 @@ class GameTest: XCTestCase {
         game.showState()
         try? game.start(numberOfPlayers: 2)
         game.showState()
-        game.nextRound()
+        game.playNextRound()
+        game.showState()
+        game.playNextRound()
+        game.showState()
+        
     }
 }

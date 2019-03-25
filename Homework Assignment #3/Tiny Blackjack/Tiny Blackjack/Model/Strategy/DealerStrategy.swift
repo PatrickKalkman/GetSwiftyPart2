@@ -8,11 +8,9 @@
 
 import Foundation
 
-class DealerStrategy : BlackjackStrategy {
-    
+class DealerStrategy: BlackjackStrategy {
+
     func calculateProposedAction(playerHand: Hand, dealerHand: Hand) -> ProposedAction {
         return ProposedAction.stand
     }
-    
-    
 }

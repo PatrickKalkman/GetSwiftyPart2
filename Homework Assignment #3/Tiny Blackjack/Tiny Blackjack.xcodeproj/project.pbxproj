@@ -32,6 +32,7 @@
 		AB97EFFD2247CBB000E45E6F /* BlackjackStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFC2247CBB000E45E6F /* BlackjackStrategy.swift */; };
 		AB97EFFF2247CBD400E45E6F /* ProposedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */; };
 		AB97F0012247F95600E45E6F /* DealerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97F0002247F95600E45E6F /* DealerStrategy.swift */; };
+		AB97F00322495F2E00E45E6F /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97F00222495F2E00E45E6F /* PlayerState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		AB97EFFC2247CBB000E45E6F /* BlackjackStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackStrategy.swift; sourceTree = "<group>"; };
 		AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposedAction.swift; sourceTree = "<group>"; };
 		AB97F0002247F95600E45E6F /* DealerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerStrategy.swift; sourceTree = "<group>"; };
+		AB97F00222495F2E00E45E6F /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				AB97EFEE22461EFF00E45E6F /* Game.swift */,
 				AB97EFF22247562500E45E6F /* GameState.swift */,
 				AB97EFF422475E1200E45E6F /* GameError.swift */,
+				AB97F00222495F2E00E45E6F /* PlayerState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				AB97EFF522475E1200E45E6F /* GameError.swift in Sources */,
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
 				AB97EFED22461D6C00E45E6F /* Player.swift in Sources */,
+				AB97F00322495F2E00E45E6F /* PlayerState.swift in Sources */,
 				AB97EFEF22461EFF00E45E6F /* Game.swift in Sources */,
 				AB97EFFD2247CBB000E45E6F /* BlackjackStrategy.swift in Sources */,
 				AB97EFDD224557D300E45E6F /* Card.swift in Sources */,

@@ -12,6 +12,8 @@ class Player {
 
     let hand: Hand
     let strategy: BlackjackStrategy
+    var state: PlayerState = PlayerState.none
+    var lastProposedAction: ProposedAction = ProposedAction.dontknow
 
     var numberOfCards: Int {
         return hand.count
@@ -23,7 +25,9 @@ class Player {
     }
     
     func askAction(dealerHand: Hand) -> ProposedAction {
-        return strategy.calculateProposedAction(playerHand: hand, dealerHand: dealerHand)
+        lastProposedAction = strategy.calculateProposedAction(playerHand: hand, dealerHand: dealerHand)
+        print("Player calculated proposed action \(lastProposedAction)")
+        return lastProposedAction
     }
 
     func add(card: Card) {
@@ -32,5 +36,18 @@ class Player {
 
     func showState() {
         self.hand.showState()
+    }
+    
+    func isBusted() -> Bool {
+        if hand.isHard() && hand.highValue() > 21 {
+            return true
+        } else if hand.isSoft() && hand.lowValue() > 21 {
+            return true
+        }
+        return false
+    }
+    
+    func setState(_ state: PlayerState) {
+        self.state = state
     }
 }
