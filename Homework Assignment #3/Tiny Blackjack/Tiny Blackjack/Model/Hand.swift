@@ -20,11 +20,11 @@ class Hand {
     }
 
     func highValue() -> UInt8 {
-        return cards.reduce(0) { (total, card) in total + (card.visible ? card.highValue : 0) }
+        return cards.reduce(0) { (total, card) in total + (card.faceUp ? card.highValue : 0) }
     }
 
     func lowValue() -> UInt8 {
-        return cards.reduce(0) { (total, card) in total + (card.visible ? card.lowValue : 0) }
+        return cards.reduce(0) { (total, card) in total + (card.faceUp ? card.lowValue : 0) }
     }
 
     func isSoft() -> Bool {
@@ -38,18 +38,24 @@ class Hand {
     func getRank(cardIndex: Int) -> Rank {
         return cards[cardIndex].rank
     }
+    
+    func setCardsFaceUp() {
+        for card in cards {
+            card.turnFaceUp()
+        }
+    }
 
     func showState() {
         if cards.count == 0 {
             print("hand contains no cards")
         } else {
-            print("hand: ----->")
+            print("hand:")
             for card in cards {
-                if (card.visible) {
+                if (card.faceUp) {
                     print("\(card.showState())")
                 }
             }
-            print("<--------")
+            print("total value low:\(lowValue()) high:\(highValue())")
         }
     }
 }

@@ -222,9 +222,11 @@
 				TargetAttributes = {
 					AB97EFB222453BEB00E45E6F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					AB97EFC922453BEC00E45E6F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = AB97EFB222453BEB00E45E6F;
 					};
 				};
@@ -465,7 +467,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.simpletechture.Tiny-Blackjack";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -483,7 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.simpletechture.Tiny-Blackjack";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -503,7 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.simpletechture.Tiny-BlackjackTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tiny Blackjack.app/Tiny Blackjack";
 			};
@@ -524,7 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.simpletechture.Tiny-BlackjackTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tiny Blackjack.app/Tiny Blackjack";
 			};

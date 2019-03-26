@@ -12,8 +12,9 @@ class Game {
 
     private let deck: Deck
     private var players: [Player] = [Player]()
-    private var dealer: Player = Player(hand: Hand(), strategy: SimpleStrategy())
-    private var gameState: GameState = GameState()
+    private var dealer: Player = Player(name: "dealer", hand: Hand(), strategy: DealerStrategy())
+    
+    var gameState: GameState = GameState()
 
     var numberOfPlayers: Int {
         return players.count
@@ -35,27 +36,59 @@ class Game {
     var currentPlayerIndex: Int = 0
 
     func playNextRound() {
-        let player: Player = players[currentPlayerIndex]
-        var action: ProposedAction = player.askAction(dealerHand: dealer.hand)
-        while action != ProposedAction.stand && action != ProposedAction.surrender && player.state != PlayerState.busted {
+
+        if currentPlayerIndex < players.count {
+            gameState.setState(stateToSet: GameStates.playingPlayer)
+
+            let player: Player = players[currentPlayerIndex]
+            var action: ProposedAction = player.askAction(dealerHand: dealer.hand)
+            while action != ProposedAction.stand &&
+                action != ProposedAction.surrender &&
+                player.state != PlayerState.busted &&
+                action != ProposedAction.blackjack {
+
+                    if action == ProposedAction.hit {
+                        let card = deck.draw()
+                        player.add(card: card)
+                        print("\(player.name) draw \(card.showState())")
+                    }
+
+                    if (!player.isBusted()) {
+                        action = player.askAction(dealerHand: dealer.hand)
+                    } else {
+                        print("\(player.name) is busted")
+                        player.setState(PlayerState.busted)
+                    }
+            }
+
+            currentPlayerIndex += 1
+        } else {
+            gameState.setState(stateToSet: GameStates.playingDealer)
+            print("dealers turns second card face up")
+            dealer.hand.setCardsFaceUp()
+            dealer.showState()
             
-            if action == ProposedAction.hit && player.state != PlayerState.busted {
-                let card = deck.draw()
-                player.add(card: card)
-                print("Player got a \(card.showState())")
+            var action: ProposedAction = dealer.askAction(dealerHand: players[0].hand)
+            while action != ProposedAction.stand &&
+                action != ProposedAction.surrender &&
+                dealer.state != PlayerState.busted &&
+                action != ProposedAction.blackjack {
+
+                    if action == ProposedAction.hit {
+                        let card = deck.draw()
+                        dealer.add(card: card)
+                        print("\(dealer.name) draw \(card.showState())")
+                    }
+
+                    if (!dealer.isBusted()) {
+                        action = dealer.askAction(dealerHand: dealer.hand)
+                    } else {
+                        print("\(dealer.name) is busted")
+                        dealer.setState(PlayerState.busted)
+                    }
             }
             
-            if (!player.isBusted()) {
-                action = player.askAction(dealerHand: dealer.hand)
-            }
-            else {
-                player.setState(PlayerState.busted)
-            }
-        }
-        
-        currentPlayerIndex += 1
-        if currentPlayerIndex > players.count - 1 {
-            currentPlayerIndex = 0
+            gameState.setState(stateToSet: GameStates.finished)
         }
     }
 
@@ -70,13 +103,13 @@ class Game {
         }
         dealer.add(card: deck.draw())
         let dealerCard2: Card = deck.draw()
-        dealerCard2.setInvisible()
+        dealerCard2.turnFaceDown()
         dealer.add(card: dealerCard2)
     }
 
     private func addPlayers(_ numberOfPlayersToAdd: UInt8) {
-        for _ in 1...numberOfPlayersToAdd {
-            players.append(Player(hand: Hand(), strategy: SimpleStrategy()))
+        for playerNumber in 1...numberOfPlayersToAdd {
+            players.append(Player(name: "Player \(playerNumber)", hand: Hand(), strategy: SimpleStrategy()))
         }
     }
 
@@ -86,7 +119,7 @@ class Game {
         dealer.showState()
         var playerIndex: UInt8 = 1
         for player in players {
-            print("player: \(playerIndex)")
+            print("player: \(player.name)")
             player.showState()
             playerIndex += 1
         }

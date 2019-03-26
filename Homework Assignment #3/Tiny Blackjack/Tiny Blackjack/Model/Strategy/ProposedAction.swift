@@ -15,4 +15,5 @@ enum ProposedAction {
     case split
     case surrender
     case dontknow
+    case blackjack
 }

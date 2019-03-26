@@ -11,7 +11,7 @@ import Foundation
 class Card {
     let suit: Suit
     let rank: Rank
-    var visible: Bool = true
+    var faceUp: Bool = true
 
     init(_ suit: Suit, _ rank: Rank) {
         self.suit = suit
@@ -26,8 +26,12 @@ class Card {
         return Card.values[self.rank]!.highValue
     }
 
-    func setInvisible() {
-        visible = false
+    func turnFaceDown() {
+        faceUp = false
+    }
+    
+    func turnFaceUp() {
+        faceUp = true
     }
 
     static var values: [Rank: (lowValue: UInt8, highValue: UInt8)] = [
@@ -47,6 +51,6 @@ class Card {
     ]
 
     func showState() -> String {
-        return "card: \(self.suit) \(self.rank) \(self.lowValue) \(self.highValue)"
+        return "\(self.suit) \(self.rank) \(self.lowValue) \(self.highValue)"
     }
 }

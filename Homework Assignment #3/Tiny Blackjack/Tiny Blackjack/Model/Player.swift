@@ -10,6 +10,7 @@ import Foundation
 
 class Player {
 
+    let name: String
     let hand: Hand
     let strategy: BlackjackStrategy
     var state: PlayerState = PlayerState.none
@@ -19,14 +20,15 @@ class Player {
         return hand.count
     }
 
-    init(hand: Hand, strategy: BlackjackStrategy) {
+    init(name: String, hand: Hand, strategy: BlackjackStrategy) {
+        self.name = name
         self.hand = hand
         self.strategy = strategy
     }
     
     func askAction(dealerHand: Hand) -> ProposedAction {
-        lastProposedAction = strategy.calculateProposedAction(playerHand: hand, dealerHand: dealerHand)
-        print("Player calculated proposed action \(lastProposedAction)")
+        lastProposedAction = strategy.calculateProposedAction(ownHand: hand, otherHand: dealerHand)
+        print("\(name) proposed action -> \(lastProposedAction)")
         return lastProposedAction
     }
 

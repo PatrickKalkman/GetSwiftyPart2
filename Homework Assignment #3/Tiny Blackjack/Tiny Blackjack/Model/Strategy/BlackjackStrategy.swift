@@ -9,5 +9,5 @@
 import Foundation
 
 protocol BlackjackStrategy {
-    func calculateProposedAction(playerHand: Hand, dealerHand: Hand) -> ProposedAction
+    func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction
 }

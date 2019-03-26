@@ -12,7 +12,7 @@ import XCTest
 class PlayerTest: XCTestCase {
 
     func test_player_contains_hand() {
-        let player: Player = Player(hand: Hand(), strategy: SimpleStrategy())
+        let player: Player = Player(name: "Testplayer", hand: Hand(), strategy: SimpleStrategy())
         XCTAssert(player.numberOfCards == 0)
     }
 

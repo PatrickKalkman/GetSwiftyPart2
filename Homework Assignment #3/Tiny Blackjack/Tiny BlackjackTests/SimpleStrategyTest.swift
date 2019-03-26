@@ -27,7 +27,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.stand)
     }
 
@@ -43,7 +43,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.stand)
     }
 
@@ -59,7 +59,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.stand)
     }
 
@@ -75,7 +75,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.stand)
     }
 
@@ -96,7 +96,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.split)
     }
 
@@ -112,7 +112,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.split)
     }
 
@@ -130,7 +130,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.split)
     }
 
@@ -146,7 +146,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.split)
     }
 
@@ -162,7 +162,7 @@ class SimpleStrategyTest: XCTestCase {
         dealerHand.add(card3)
 
         let strategy: SimpleStrategy = SimpleStrategy()
-        let action: ProposedAction = strategy.calculateProposedAction(playerHand: playerHand, dealerHand: dealerHand)
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertNotEqual(action, ProposedAction.split)
     }
 

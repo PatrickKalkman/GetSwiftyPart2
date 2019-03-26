@@ -10,52 +10,60 @@ import Foundation
 
 class SimpleStrategy: BlackjackStrategy {
 
-    func calculateProposedAction(playerHand: Hand, dealerHand: Hand) -> ProposedAction {
+    func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction {
+        
+        if ownHand.count == 2 && ownHand.highValue() == 21 {
+            return ProposedAction.blackjack
+        }
         
         // Split when double ace or double eight
-        if playerHand.count == 2 &&
-            (playerHand.getRank(cardIndex: 0) == Rank.ace &&
-                    playerHand.getRank(cardIndex: 1) == Rank.ace) ||
-            (playerHand.getRank(cardIndex: 0) == Rank.eight &&
-                    playerHand.getRank(cardIndex: 1) == Rank.eight) {
+        if ownHand.count == 2 &&
+            (ownHand.getRank(cardIndex: 0) == Rank.ace &&
+                    ownHand.getRank(cardIndex: 1) == Rank.ace) ||
+            (ownHand.getRank(cardIndex: 0) == Rank.eight &&
+                    ownHand.getRank(cardIndex: 1) == Rank.eight) {
             return ProposedAction.split
         }
 
         // 2-2, 3-3, 6-6, 7-7, 9-9: alleen splitsen als de bank 2 t/m 6 heeft
         // Split when double ace or double eight
-        if playerHand.count == 2 &&
-            (playerHand.getRank(cardIndex: 0) == Rank.two &&
-                    playerHand.getRank(cardIndex: 1) == Rank.two) ||
-            (playerHand.getRank(cardIndex: 0) == Rank.three &&
-                    playerHand.getRank(cardIndex: 1) == Rank.three) ||
-            (playerHand.getRank(cardIndex: 0) == Rank.six &&
-                    playerHand.getRank(cardIndex: 1) == Rank.six) ||
-            (playerHand.getRank(cardIndex: 0) == Rank.seven &&
-                    playerHand.getRank(cardIndex: 1) == Rank.seven) ||
-            (playerHand.getRank(cardIndex: 0) == Rank.nine &&
-                    playerHand.getRank(cardIndex: 1) == Rank.nine) {
+        if ownHand.count == 2 &&
+            (ownHand.getRank(cardIndex: 0) == Rank.two &&
+                    ownHand.getRank(cardIndex: 1) == Rank.two) ||
+            (ownHand.getRank(cardIndex: 0) == Rank.three &&
+                    ownHand.getRank(cardIndex: 1) == Rank.three) ||
+            (ownHand.getRank(cardIndex: 0) == Rank.six &&
+                    ownHand.getRank(cardIndex: 1) == Rank.six) ||
+            (ownHand.getRank(cardIndex: 0) == Rank.seven &&
+                    ownHand.getRank(cardIndex: 1) == Rank.seven) ||
+            (ownHand.getRank(cardIndex: 0) == Rank.nine &&
+                    ownHand.getRank(cardIndex: 1) == Rank.nine) {
 
-            if dealerHand.isHard() && dealerHand.lowValue() <= 6 {
+            if otherHand.isHard() && otherHand.highValue() <= 6 {
                 return ProposedAction.split
             }
         }
 
         // Stand when above 11 and Dealer 2 t/m 6
-        if dealerHand.isHard() && dealerHand.lowValue() <= 6 {
-            if playerHand.isHard() && playerHand.lowValue() >= 12 {
+        if otherHand.isHard() && otherHand.lowValue() <= 6 {
+            if ownHand.isHard() && ownHand.lowValue() >= 12 {
                 return ProposedAction.stand
-            } else if playerHand.isSoft() && playerHand.highValue() >= 18 {
+            } else if ownHand.isSoft() && ownHand.highValue() >= 18 {
                 return ProposedAction.stand
             }
         }
 
         // Stand when above 16 and Dealer 7 t/m A
-        if dealerHand.highValue() <= 11 {
-            if playerHand.isHard() && playerHand.lowValue() >= 17 {
+        if otherHand.highValue() <= 11 {
+            if ownHand.isHard() && ownHand.lowValue() >= 17 {
                 return ProposedAction.stand
-            } else if playerHand.isSoft() && playerHand.highValue() >= 19 {
+            } else if ownHand.isSoft() && ownHand.highValue() >= 19 {
                 return ProposedAction.stand
             }
+        }
+        
+        if ownHand.highValue() == 21 || ownHand.lowValue() == 21 {
+            return ProposedAction.stand
         }
 
         return ProposedAction.hit

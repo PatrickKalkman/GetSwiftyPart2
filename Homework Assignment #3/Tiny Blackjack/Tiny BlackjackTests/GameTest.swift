@@ -34,12 +34,14 @@ class GameTest: XCTestCase {
     func test_start_deals_every_player_two_cards() {
         let game: Game = Game(Deck())
         game.showState()
-        try? game.start(numberOfPlayers: 2)
-        game.showState()
-        game.playNextRound()
-        game.showState()
-        game.playNextRound()
-        game.showState()
+        try? game.start(numberOfPlayers: 1)
+        
+        while game.gameState.getState() != GameStates.finished {
+            game.showState()
+            game.playNextRound()
+        }
+
+        
         
     }
 }
