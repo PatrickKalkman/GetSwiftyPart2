@@ -29,7 +29,7 @@ class Card {
     func turnFaceDown() {
         faceUp = false
     }
-    
+
     func turnFaceUp() {
         faceUp = true
     }
@@ -53,4 +53,5 @@ class Card {
     func showState() -> String {
         return "\(self.suit) \(self.rank) \(self.lowValue) \(self.highValue)"
     }
+
 }

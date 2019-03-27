@@ -15,25 +15,25 @@ import Foundation
 class DealerStrategy: BlackjackStrategy {
 
     func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction {
-        
+
         if ownHand.count == 2 && (ownHand.highValue() == 21 || ownHand.lowValue() == 21) {
             return ProposedAction.blackjack
         }
-        
+
         if ownHand.isHard() && otherHand.isHard() {
             if ownHand.highValue() <= 21 && ownHand.highValue() > otherHand.highValue() {
                 return ProposedAction.stand
             }
-            
+
             if ownHand.highValue() <= 16 {
                 return ProposedAction.hit
             }
-            
+
             if ownHand.highValue() >= 17 {
                 return ProposedAction.stand
             }
         }
-        
+
         if ownHand.isHard() && otherHand.isSoft() {
             if ownHand.highValue() <= 21 && ownHand.highValue() > otherHand.lowValue() {
                 return ProposedAction.stand
@@ -42,40 +42,41 @@ class DealerStrategy: BlackjackStrategy {
             if ownHand.highValue() <= 16 {
                 return ProposedAction.hit
             }
-            
+
             if ownHand.highValue() >= 17 {
                 return ProposedAction.stand
             }
         }
-        
+
         if ownHand.isSoft() && otherHand.isHard() {
             if ownHand.lowValue() <= 21 && ownHand.lowValue() > otherHand.highValue() {
                 return ProposedAction.stand
             }
-            
+
             if ownHand.lowValue() <= 16 {
                 return ProposedAction.hit
             }
-            
+
             if ownHand.lowValue() >= 17 {
                 return ProposedAction.stand
             }
         }
-        
+
         if ownHand.isSoft() && otherHand.isSoft() {
             if ownHand.lowValue() <= 21 && ownHand.lowValue() > otherHand.lowValue() {
                 return ProposedAction.stand
             }
-            
+
             if ownHand.lowValue() <= 16 {
                 return ProposedAction.hit
             }
-            
+
             if ownHand.lowValue() >= 17 {
                 return ProposedAction.stand
             }
         }
-        
+
         return ProposedAction.dontknow
     }
+
 }

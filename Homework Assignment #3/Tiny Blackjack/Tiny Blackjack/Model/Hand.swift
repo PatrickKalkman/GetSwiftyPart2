@@ -38,7 +38,7 @@ class Hand {
     func getRank(cardIndex: Int) -> Rank {
         return cards[cardIndex].rank
     }
-    
+
     func setCardsFaceUp() {
         for card in cards {
             card.turnFaceUp()
@@ -51,11 +51,12 @@ class Hand {
         } else {
             print("hand:")
             for card in cards {
-                if (card.faceUp) {
+                if card.faceUp {
                     print("\(card.showState())")
                 }
             }
             print("total value low:\(lowValue()) high:\(highValue())")
         }
     }
+
 }

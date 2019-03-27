@@ -27,4 +27,5 @@ class GameState {
     func getState() -> GameStates {
         return self.state
     }
+
 }

@@ -11,11 +11,11 @@ import Foundation
 class SimpleStrategy: BlackjackStrategy {
 
     func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction {
-        
+
         if ownHand.count == 2 && ownHand.highValue() == 21 {
             return ProposedAction.blackjack
         }
-        
+
         // Split when double ace or double eight
         if ownHand.count == 2 &&
             (ownHand.getRank(cardIndex: 0) == Rank.ace &&
@@ -61,12 +61,12 @@ class SimpleStrategy: BlackjackStrategy {
                 return ProposedAction.stand
             }
         }
-        
+
         if ownHand.highValue() == 21 || ownHand.lowValue() == 21 {
             return ProposedAction.stand
         }
 
         return ProposedAction.hit
     }
-}
 
+}

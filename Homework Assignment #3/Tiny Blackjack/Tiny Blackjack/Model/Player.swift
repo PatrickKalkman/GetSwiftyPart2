@@ -25,7 +25,7 @@ class Player {
         self.hand = hand
         self.strategy = strategy
     }
-    
+
     func askAction(dealerHand: Hand) -> ProposedAction {
         lastProposedAction = strategy.calculateProposedAction(ownHand: hand, otherHand: dealerHand)
         print("\(name) proposed action -> \(lastProposedAction)")
@@ -39,7 +39,7 @@ class Player {
     func showState() {
         self.hand.showState()
     }
-    
+
     func isBusted() -> Bool {
         if hand.isHard() && hand.highValue() > 21 {
             return true
@@ -48,8 +48,9 @@ class Player {
         }
         return false
     }
-    
+
     func setState(_ state: PlayerState) {
         self.state = state
     }
+
 }

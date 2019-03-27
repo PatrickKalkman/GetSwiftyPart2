@@ -13,7 +13,7 @@ class Game {
     private let deck: Deck
     private var players: [Player] = [Player]()
     private var dealer: Player = Player(name: "dealer", hand: Hand(), strategy: DealerStrategy())
-    
+
     var gameState: GameState = GameState()
 
     var numberOfPlayers: Int {
@@ -53,7 +53,7 @@ class Game {
                         print("\(player.name) draw \(card.showState())")
                     }
 
-                    if (!player.isBusted()) {
+                    if !player.isBusted() {
                         action = player.askAction(dealerHand: dealer.hand)
                     } else {
                         print("\(player.name) is busted")
@@ -67,7 +67,7 @@ class Game {
             print("dealers turns second card face up")
             dealer.hand.setCardsFaceUp()
             dealer.showState()
-            
+
             var action: ProposedAction = dealer.askAction(dealerHand: players[0].hand)
             while action != ProposedAction.stand &&
                 action != ProposedAction.surrender &&
@@ -80,14 +80,14 @@ class Game {
                         print("\(dealer.name) draw \(card.showState())")
                     }
 
-                    if (!dealer.isBusted()) {
+                    if !dealer.isBusted() {
                         action = dealer.askAction(dealerHand: dealer.hand)
                     } else {
                         print("\(dealer.name) is busted")
                         dealer.setState(PlayerState.busted)
                     }
             }
-            
+
             gameState.setState(stateToSet: GameStates.finished)
         }
     }
@@ -114,7 +114,7 @@ class Game {
     }
 
     func showState() {
-        print("Game state: \(gameState.getState()) players: \(numberOfPlayers)")
+        print("Game state: \(gameState.getState())")
         print("dealer: ")
         dealer.showState()
         var playerIndex: UInt8 = 1
@@ -124,4 +124,28 @@ class Game {
             playerIndex += 1
         }
     }
+
+    func IsDealerWinner() -> Bool {
+        
+        if dealer.isBusted() {
+            return false
+        }
+        
+        let player: Player = players[0]
+        
+        if player.isBusted() {
+            return true
+        }
+
+        let playerValue: UInt8 = player.hand.isHard() ? player.hand.highValue() : player.hand.lowValue()
+        
+        let dealerValue: UInt8 = dealer.hand.isHard() ? dealer.hand.highValue() : dealer.hand.lowValue()
+        
+        if dealerValue >  playerValue {
+            return true
+        }
+    
+        return false
+    }
+    
 }

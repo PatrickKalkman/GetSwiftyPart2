@@ -40,4 +40,5 @@ class Deck {
     func draw() -> Card {
         return cards.removeFirst()
     }
+
 }
