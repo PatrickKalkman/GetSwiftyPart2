@@ -50,8 +50,8 @@ class Card {
         Rank.king: (10, 10)
     ]
 
-    func showState() -> String {
-        return "\(self.suit) \(self.rank) \(self.lowValue) \(self.highValue)"
+    func getState() -> String {
+        return "(\(self.rank) \(self.suit))"
     }
 
 }

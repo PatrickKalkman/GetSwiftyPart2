@@ -59,4 +59,21 @@ class HandTest: XCTestCase {
         XCTAssertEqual(hand.lowValue(), 17)
         XCTAssertEqual(hand.highValue(), 27)
     }
+    
+    func test_handWithTwoCardsIncludingAce_isSoft() {
+        let hand: Hand = Hand()
+        hand.add(Card(Suit.club, Rank.ace))
+        hand.add(Card(Suit.diamond, Rank.six))
+        
+        XCTAssertTrue(hand.isSoft())
+    }
+    
+    func test_containsOnly_handWithTwoEqualCards_returns_true() {
+        let hand: Hand = Hand()
+        hand.add(Card(Suit.club, Rank.ace))
+        hand.add(Card(Suit.diamond, Rank.ace))
+        
+        XCTAssertTrue(hand.containsOnly(Rank.ace))
+    }
+
 }

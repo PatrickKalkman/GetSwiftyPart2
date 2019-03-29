@@ -31,17 +31,20 @@ class GameTest: XCTestCase {
         }
     }
 
+//    dealer hand: (seven diamond)
+//    Player 1 hand: (four diamond)(ace heart)(ace club)
+//    dealer proposed action -> stand
+//    player 6, dealer 12
+
     func test_start_deals_every_player_two_cards() {
         let game: Game = Game(Deck())
-        game.showState()
         try? game.start(numberOfPlayers: 1)
-        
+
         while game.gameState.getState() != GameStates.finished {
             game.showState()
             game.playNextRound()
         }
 
-        
-        
+        print(game.result())
     }
 }

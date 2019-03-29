@@ -20,15 +20,43 @@ class Hand {
     }
 
     func highValue() -> UInt8 {
-        return cards.reduce(0) { (total, card) in total + (card.faceUp ? card.highValue : 0) }
+        let faceUpCards: [Card] = cards.filter { $0.faceUp }
+        return faceUpCards.reduce(0) { $0 + $1.highValue }
     }
 
     func lowValue() -> UInt8 {
-        return cards.reduce(0) { (total, card) in total + (card.faceUp ? card.lowValue : 0) }
+        let faceUpCards: [Card] = cards.filter { $0.faceUp }
+        return faceUpCards.reduce(0) { $0 + $1.lowValue }
+    }
+    
+    func containsOnly(_ rank: Rank) -> Bool {
+        return cards.allSatisfy { $0.rank == rank }
+    }
+    
+    func containsSameRank() -> Bool {
+        if let firstRank = cards.first?.rank {
+            return cards.allSatisfy { $0.rank == firstRank }
+        }
+        return false
+    }
+
+    func isBusted() -> Bool {
+        return getValue() > 21
+    }
+
+    func getValue() -> UInt8 {
+        if isSoft() {
+            if highValue() > lowValue() && highValue() < 22 {
+               return highValue()
+            }
+            return lowValue()
+        } else {
+            return highValue()
+        }
     }
 
     func isSoft() -> Bool {
-        return lowValue() != highValue()
+        return lowValue() != highValue() && highValue() <= 21
     }
 
     func isHard() -> Bool {
@@ -45,18 +73,20 @@ class Hand {
         }
     }
 
-    func showState() {
+    func getState() -> String {
+        var state: String = ""
         if cards.count == 0 {
-            print("hand contains no cards")
+            return "no cards"
         } else {
-            print("hand:")
-            for card in cards {
-                if card.faceUp {
-                    print("\(card.showState())")
-                }
+            for card in cards where card.faceUp {
+                state += card.getState()
             }
-            print("total value low:\(lowValue()) high:\(highValue())")
         }
+        return state
+    }
+    
+    func remove(at: Int) -> Card {
+        return cards.remove(at: at)
     }
 
 }

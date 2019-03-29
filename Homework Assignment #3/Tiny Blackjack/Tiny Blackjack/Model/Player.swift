@@ -11,46 +11,54 @@ import Foundation
 class Player {
 
     let name: String
-    let hand: Hand
+    private var hands: [Hand] = [Hand]()
     let strategy: BlackjackStrategy
-    var state: PlayerState = PlayerState.none
     var lastProposedAction: ProposedAction = ProposedAction.dontknow
-
+    var isDealer: Bool
+    
     var numberOfCards: Int {
-        return hand.count
+        return hands[0].count
+    }
+    
+    var hand: Hand {
+        return hands[0]
     }
 
-    init(name: String, hand: Hand, strategy: BlackjackStrategy) {
+    init(name: String, hand: Hand, strategy: BlackjackStrategy, isDealer: Bool) {
         self.name = name
-        self.hand = hand
+        self.hands.append(hand)
         self.strategy = strategy
+        self.isDealer = isDealer
     }
 
     func askAction(dealerHand: Hand) -> ProposedAction {
-        lastProposedAction = strategy.calculateProposedAction(ownHand: hand, otherHand: dealerHand)
-        print("\(name) proposed action -> \(lastProposedAction)")
-        return lastProposedAction
+        return strategy.calculateProposedAction(ownHand: hands[0], otherHand: dealerHand)
     }
 
     func add(card: Card) {
-        self.hand.add(card)
+        self.hands[0].add(card)
     }
 
-    func showState() {
-        self.hand.showState()
+    func showState() -> String {
+        if hands[0].isBusted() {
+            return "\(name) Busted! hand: \(hands[0].getState())"
+        } else {
+            return "\(name) hand: \(hands[0].getState())"
+        }
     }
 
     func isBusted() -> Bool {
-        if hand.isHard() && hand.highValue() > 21 {
-            return true
-        } else if hand.isSoft() && hand.lowValue() > 21 {
-            return true
+        return hands[0].isBusted()
+    }
+    
+    func split() {
+        if hand.count == 2 {
+            if hand.containsSameRank() {
+                let card: Card = hand.remove(at: 1)
+                let splittedHand: Hand = Hand()
+                splittedHand.add(card)
+                hands.append(splittedHand)
+            }
         }
-        return false
     }
-
-    func setState(_ state: PlayerState) {
-        self.state = state
-    }
-
 }

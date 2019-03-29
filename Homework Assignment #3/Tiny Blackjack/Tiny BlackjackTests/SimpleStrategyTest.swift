@@ -11,7 +11,6 @@ import XCTest
 
 class SimpleStrategyTest: XCTestCase {
 
-
 //    Bank 2 t/m 6: je past bij 12 punten of hoger
 //    Bank 7 t/m A: je past bij 17 punten of hoger
 
@@ -20,11 +19,11 @@ class SimpleStrategyTest: XCTestCase {
         let card2: Card = Card(Suit.club, Rank.four)
         let playerHand: Hand = Hand()
         playerHand.add(card1)
-        playerHand.add(card2)
+        playerHand.add(card2) // 14
 
         let card3: Card = Card(Suit.club, Rank.five)
         let dealerHand: Hand = Hand()
-        dealerHand.add(card3)
+        dealerHand.add(card3) // 5
 
         let strategy: SimpleStrategy = SimpleStrategy()
         let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
@@ -42,6 +41,22 @@ class SimpleStrategyTest: XCTestCase {
         let dealerHand: Hand = Hand()
         dealerHand.add(card3)
 
+        let strategy: SimpleStrategy = SimpleStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.stand)
+    }
+    
+    func test_stand_when_dealer_has_ace_hand_is_17_or_higher() {
+        let card1: Card = Card(Suit.heart, Rank.eight)
+        let card2: Card = Card(Suit.club, Rank.nine)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2)
+        
+        let card3: Card = Card(Suit.club, Rank.ace)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3)
+        
         let strategy: SimpleStrategy = SimpleStrategy()
         let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.stand)
@@ -165,5 +180,39 @@ class SimpleStrategyTest: XCTestCase {
         let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertNotEqual(action, ProposedAction.split)
     }
+
+    func test_stand_when_value_20() {
+        let card1: Card = Card(Suit.heart, Rank.king)
+        let card2: Card = Card(Suit.club, Rank.queen)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2)
+        
+        let card3: Card = Card(Suit.diamond, Rank.king)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3)
+        
+        let card4: Card = Card(Suit.diamond, Rank.five)
+        card4.faceUp = false
+        dealerHand.add(card4)
+        
+        let strategy: SimpleStrategy = SimpleStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.stand)
+    }
+
+//
+//    Dealer hand: (king heart)
+//    Player 1 hand: (king diamond)(queen diamond)
+//    Player 1 -> hit -> (king diamond)(queen diamond)(nine club)
+//    Player 1 -> hit
+//    Game state: playingPlayer
+//    Dealer hand: (king heart)
+//    Player 1 Busted! hand: (king diamond)(queen diamond)(nine club)
+//    Dealer -> hit -> (king heart)(five heart)(jack spade)
+//    Dealer -> hit
+//    Player 1 value: 29 hand: (king diamond)(queen diamond)(nine club)
+//    Dealer value: 25 hand: (king heart)(five heart)(jack spade)
+//    playerWins
 
 }

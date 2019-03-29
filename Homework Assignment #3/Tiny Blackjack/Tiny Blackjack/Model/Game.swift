@@ -12,7 +12,7 @@ class Game {
 
     private let deck: Deck
     private var players: [Player] = [Player]()
-    private var dealer: Player = Player(name: "dealer", hand: Hand(), strategy: DealerStrategy())
+    private var dealer: Player = Player(name: "Dealer", hand: Hand(), strategy: DealerStrategy(), isDealer: true)
 
     var gameState: GameState = GameState()
 
@@ -37,58 +37,51 @@ class Game {
 
     func playNextRound() {
 
-        if currentPlayerIndex < players.count {
+        let player: Player = getPlayer()
+
+        var action: ProposedAction
+        if player.isDealer {
+            player.hand.setCardsFaceUp()
+            gameState.setState(stateToSet: GameStates.playingDealer)
+            action = player.askAction(dealerHand: players[0].hand)
+        } else {
             gameState.setState(stateToSet: GameStates.playingPlayer)
+            action = player.askAction(dealerHand: dealer.hand)
+        }
 
-            let player: Player = players[currentPlayerIndex]
-            var action: ProposedAction = player.askAction(dealerHand: dealer.hand)
-            while action != ProposedAction.stand &&
-                action != ProposedAction.surrender &&
-                player.state != PlayerState.busted &&
-                action != ProposedAction.blackjack {
+        while action != ProposedAction.stand && action != ProposedAction.surrender &&
+              !player.hand.isBusted() && action != ProposedAction.blackjack {
 
-                    if action == ProposedAction.hit {
-                        let card = deck.draw()
-                        player.add(card: card)
-                        print("\(player.name) draw \(card.showState())")
-                    }
+                if action == ProposedAction.hit {
+                    player.add(card: deck.draw())
+                    print("\(player.name) -> hit -> \(player.hand.getState())")
+                }
 
-                    if !player.isBusted() {
+                if !player.isBusted() {
+                    if !player.isDealer {
                         action = player.askAction(dealerHand: dealer.hand)
                     } else {
-                        print("\(player.name) is busted")
-                        player.setState(PlayerState.busted)
+                        action = dealer.askAction(dealerHand: players[0].hand)
                     }
-            }
+                }
+                print("Playing another round \(gameState)")
+        }
+        if !player.isBusted() {
+            print("\(player.name) -> \(action)")
+        }
 
-            currentPlayerIndex += 1
-        } else {
-            gameState.setState(stateToSet: GameStates.playingDealer)
-            print("dealers turns second card face up")
-            dealer.hand.setCardsFaceUp()
-            dealer.showState()
-
-            var action: ProposedAction = dealer.askAction(dealerHand: players[0].hand)
-            while action != ProposedAction.stand &&
-                action != ProposedAction.surrender &&
-                dealer.state != PlayerState.busted &&
-                action != ProposedAction.blackjack {
-
-                    if action == ProposedAction.hit {
-                        let card = deck.draw()
-                        dealer.add(card: card)
-                        print("\(dealer.name) draw \(card.showState())")
-                    }
-
-                    if !dealer.isBusted() {
-                        action = dealer.askAction(dealerHand: dealer.hand)
-                    } else {
-                        print("\(dealer.name) is busted")
-                        dealer.setState(PlayerState.busted)
-                    }
-            }
-
+        if player.isDealer {
             gameState.setState(stateToSet: GameStates.finished)
+        }
+        currentPlayerIndex += 1
+
+    }
+
+    private func getPlayer() -> Player {
+        if currentPlayerIndex >= players.count {
+            return dealer
+        } else {
+            return players[currentPlayerIndex]
         }
     }
 
@@ -109,43 +102,48 @@ class Game {
 
     private func addPlayers(_ numberOfPlayersToAdd: UInt8) {
         for playerNumber in 1...numberOfPlayersToAdd {
-            players.append(Player(name: "Player \(playerNumber)", hand: Hand(), strategy: SimpleStrategy()))
+            players.append(Player(name: "Player \(playerNumber)", hand: Hand(),
+                strategy: SimpleStrategy(), isDealer: false))
         }
     }
 
     func showState() {
         print("Game state: \(gameState.getState())")
-        print("dealer: ")
-        dealer.showState()
+        print(dealer.showState())
         var playerIndex: UInt8 = 1
         for player in players {
-            print("player: \(player.name)")
-            player.showState()
+            print(player.showState())
             playerIndex += 1
         }
     }
 
-    func IsDealerWinner() -> Bool {
-        
-        if dealer.isBusted() {
-            return false
-        }
-        
+    func result() -> GameResult {
+
         let player: Player = players[0]
-        
-        if player.isBusted() {
-            return true
+
+        let playerValue: UInt8 = player.hand.getValue()
+        let dealerValue: UInt8 = dealer.hand.getValue()
+
+        print("\(player.name) value: \(playerValue) hand: \(player.hand.getState())")
+        print("\(dealer.name) value: \(dealerValue) hand: \(dealer.hand.getState())")
+
+        if dealer.isBusted() {
+            return GameResult.playerWins
         }
 
-        let playerValue: UInt8 = player.hand.isHard() ? player.hand.highValue() : player.hand.lowValue()
-        
-        let dealerValue: UInt8 = dealer.hand.isHard() ? dealer.hand.highValue() : dealer.hand.lowValue()
-        
-        if dealerValue >  playerValue {
-            return true
+        if player.isBusted() {
+            return GameResult.dealerWins
         }
-    
-        return false
+
+        if dealerValue > playerValue {
+            return GameResult.dealerWins
+        }
+
+        if dealerValue == playerValue {
+            return GameResult.push
+        }
+
+        return GameResult.playerWins
     }
-    
+
 }

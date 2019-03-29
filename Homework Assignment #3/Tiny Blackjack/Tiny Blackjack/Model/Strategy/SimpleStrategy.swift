@@ -15,58 +15,105 @@ class SimpleStrategy: BlackjackStrategy {
         if ownHand.count == 2 && ownHand.highValue() == 21 {
             return ProposedAction.blackjack
         }
+        
+        if ownHand.getValue() == 21 {
+            return ProposedAction.stand
+        }
 
-        // Split when double ace or double eight
-        if ownHand.count == 2 &&
-            (ownHand.getRank(cardIndex: 0) == Rank.ace &&
-                    ownHand.getRank(cardIndex: 1) == Rank.ace) ||
-            (ownHand.getRank(cardIndex: 0) == Rank.eight &&
-                    ownHand.getRank(cardIndex: 1) == Rank.eight) {
+        if shouldSplit(ownHand, otherHand) {
             return ProposedAction.split
         }
 
-        // 2-2, 3-3, 6-6, 7-7, 9-9: alleen splitsen als de bank 2 t/m 6 heeft
-        // Split when double ace or double eight
-        if ownHand.count == 2 &&
-            (ownHand.getRank(cardIndex: 0) == Rank.two &&
-                    ownHand.getRank(cardIndex: 1) == Rank.two) ||
-            (ownHand.getRank(cardIndex: 0) == Rank.three &&
-                    ownHand.getRank(cardIndex: 1) == Rank.three) ||
-            (ownHand.getRank(cardIndex: 0) == Rank.six &&
-                    ownHand.getRank(cardIndex: 1) == Rank.six) ||
-            (ownHand.getRank(cardIndex: 0) == Rank.seven &&
-                    ownHand.getRank(cardIndex: 1) == Rank.seven) ||
-            (ownHand.getRank(cardIndex: 0) == Rank.nine &&
-                    ownHand.getRank(cardIndex: 1) == Rank.nine) {
-
-            if otherHand.isHard() && otherHand.highValue() <= 6 {
-                return ProposedAction.split
-            }
+        if shouldStand(ownHand, otherHand) {
+            return ProposedAction.stand
         }
-
-        // Stand when above 11 and Dealer 2 t/m 6
-        if otherHand.isHard() && otherHand.lowValue() <= 6 {
-            if ownHand.isHard() && ownHand.lowValue() >= 12 {
-                return ProposedAction.stand
-            } else if ownHand.isSoft() && ownHand.highValue() >= 18 {
-                return ProposedAction.stand
-            }
-        }
-
-        // Stand when above 16 and Dealer 7 t/m A
-        if otherHand.highValue() <= 11 {
-            if ownHand.isHard() && ownHand.lowValue() >= 17 {
-                return ProposedAction.stand
-            } else if ownHand.isSoft() && ownHand.highValue() >= 19 {
-                return ProposedAction.stand
-            }
-        }
-
-        if ownHand.highValue() == 21 || ownHand.lowValue() == 21 {
+        
+        if shouldStandWithAce(ownHand, otherHand) {
             return ProposedAction.stand
         }
 
         return ProposedAction.hit
+    }
+
+    func shouldSplit(_ ownHand: Hand, _ otherHand: Hand) -> Bool {
+//        4) Wanneer splits je?
+//        4-4, 5-5, 10-10: nooit splitsen
+//        8-8, Aas-Aas: altijd splitsen
+//        2-2, 3-3, 6-6, 7-7, 9-9: alleen splitsen als de bank 2 t/m 6 heeft
+        
+        if ownHand.count != 2 {
+            return false
+        }
+        
+        if ownHand.containsOnly(Rank.ace) || ownHand.containsOnly(Rank.eight) {
+            return true
+        }
+        
+        if ownHand.containsOnly(Rank.four) || ownHand.containsOnly(Rank.five) || ownHand.containsOnly(Rank.ten) {
+            return false
+        }
+        
+        if ownHand.containsSameRank() {
+            if otherHand.getValue() <= 6 {
+                return true
+            }
+        }
+        
+        return false
+    }
+
+
+    func shouldStandWithAce(_ ownHand: Hand, _ otherHand: Hand) -> Bool {
+//        2) Wanneer pas je met een Aas?
+//        Heb je een Aas in je kaarten die je voor 1 of 11 punten kan tellen
+//       (een ‘zachte’ hand), dan pas je iets minder snel:
+//
+//        Bank 2 t/m 6: passen bij 18 punten of hoger
+//        Bank 7 t/m A: passen bij 19 of punten hoger
+        
+        let ownValue: UInt8 = ownHand.getValue()
+        if ownHand.isSoft() {
+            let otherValue: UInt8 = otherHand.getValue()
+            
+            if otherValue <= 6 {
+                if ownValue >= 18 {
+                    return true
+                }
+            }
+            
+            if otherValue <= 11 {
+                if ownValue >= 19 {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    func shouldStand(_ ownHand: Hand, _ otherHand: Hand) -> Bool {
+        
+//        1) Wanneer pas je?
+//        Bank 2 t/m 6: je past bij 12 punten of hoger
+//        Bank 7 t/m A: je past bij 17 punten of hoger
+        
+        if ownHand.isHard() {
+            let otherValue: UInt8 = otherHand.getValue()
+            let ownValue: UInt8 = ownHand.getValue()
+            
+            if otherValue <= 6 {
+                if ownValue >= 12 {
+                    return true
+                }
+            }
+            
+            if otherValue <= 11 {
+                if ownValue >= 17 {
+                    return true
+                }
+            }
+        }
+
+        return false
     }
 
 }
