@@ -18,17 +18,18 @@ enum GameEvents: EventType {
     case betsPlaced
     case dealt
     case dealerBlackjackTest
-    case dealerNoBlackjack
+    case dealerHasNoBlackjack
     case dealerHasBlackjack
     case allPlayersFinished
     case playerSelected
     case playerHandSelected
     case playerHandsFinished
-    case playerNoBlackjack
+    case playerHasBlackjack
     case playerChoose
     case hitPlayer
     case standPlayer
     case bustPlayer
+    case doublePlayer
     case splitPlayerHand
     case playerHandSplitted
     case surrenderPlayer

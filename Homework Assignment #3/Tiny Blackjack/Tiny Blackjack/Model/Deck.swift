@@ -22,7 +22,6 @@ class Deck {
 
     init() {
         generateDeck()
-        shuffle()
     }
 
     private func generateDeck() {
@@ -33,7 +32,7 @@ class Deck {
         }
     }
 
-    private func shuffle() {
+    func shuffle() {
         self.cards.shuffle()
     }
 

@@ -38,6 +38,10 @@ class Player {
     func askAction(handIndex: Int, dealerHand: Hand) -> ProposedAction {
         return strategy.calculateProposedAction(ownHand: hands[handIndex], otherHand: dealerHand)
     }
+    
+    func askAction(ownHand: Hand, dealerHand: Hand) -> ProposedAction {
+        return strategy.calculateProposedAction(ownHand: ownHand, otherHand: dealerHand)
+    }
 
     func add(handIndex: Int, card: Card) {
         self.hands[handIndex].add(card)
@@ -71,5 +75,9 @@ class Player {
             splittedHand.add(card)
             hands.append(splittedHand)
         }
+    }
+    
+    func placeBets() {
+        // Place the bets
     }
 }

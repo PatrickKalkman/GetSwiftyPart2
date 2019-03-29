@@ -13,116 +13,125 @@ class GameStateMachine {
     
     let gameEngine: BlackjackProtocol
 
-    let blackjackStateMachine = StateMachine<GameStates, GameEvents>(state: .waitingForStart) {
-        // Define blackjack game state machine
-        $0.addRoutes(event: .start, transitions: [GameStates.waitingForStart => GameStates.started])
-        $0.addRoutes(event: .shuffle, transitions: [GameStates.started => GameStates.shuffleDeck])
-        $0.addRoutes(event: .shuffled, transitions: [GameStates.shuffleDeck => GameStates.checkingDeck])
-        $0.addRoutes(event: .checked, transitions: [GameStates.checkingDeck => GameStates.placeBets])
-        $0.addRoutes(event: .betsPlaced, transitions: [GameStates.placeBets => GameStates.dealCards])
-        $0.addRoutes(event: .dealt, transitions: [GameStates.dealCards => GameStates.dealerBlackjackTest])
-        $0.addRoutes(event: .dealerNoBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.playersPlay_selectPlayer])
-        $0.addRoutes(event: .dealerHasBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.calculateResult])
-        $0.addRoutes(event: .playerSelected, transitions: [GameStates.playersPlay_selectPlayer => GameStates.playersPlay_selectHand])
-        $0.addRoutes(event: .allPlayersFinished, transitions: [GameStates.playersPlay_selectPlayer => GameStates.dealerPlay_getChoice])
-        $0.addRoutes(event: .playerHandSelected, transitions: [GameStates.playersPlay_selectHand => GameStates.playersPlay_getChoice])
-        $0.addRoutes(event: .playerHandsFinished, transitions: [GameStates.playersPlay_selectHand => GameStates.playersPlay_selectPlayer])
-        $0.addRoutes(event: .hitPlayer, transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_hit])
-        $0.addRoutes(event: .playerChoose, transitions: [GameStates.playersPlay_hit => GameStates.playersPlay_getChoice])
-        $0.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_selectHand])
-        $0.addRoutes(event: .bustPlayer, transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_selectHand])
-        $0.addRoutes(event: .splitPlayerHand, transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_splitHand])
-        $0.addRoutes(event: .playerHandSplitted, transitions: [GameStates.playersPlay_splitHand => GameStates.playersPlay_selectHand])
-        $0.addRoutes(event: .hitDealer, transitions: [GameStates.dealerPlay_getChoice => GameStates.dealerPlay_hit])
-        $0.addRoutes(event: .standDealer, transitions: [GameStates.dealerPlay_getChoice => GameStates.calculateResult])
-        $0.addRoutes(event: .dealerChoose, transitions: [GameStates.dealerPlay_hit => GameStates.dealerPlay_getChoice])
-        $0.addRoutes(event: .bustDealer, transitions: [GameStates.dealerPlay_getChoice => GameStates.calculateResult])
-        $0.addRoutes(event: .resultsCalculated, transitions: [GameStates.dealerPlay_getChoice => GameStates.distributeBets])
-        $0.addRoutes(event: .nextRound, transitions: [GameStates.distributeBets => GameStates.checkingDeck])
-    }
+    let machine = StateMachine<GameStates, GameEvents>(state: .waitingForStart)
     
     init(gameEngine: BlackjackProtocol) {
         self.gameEngine = gameEngine
         
-        // Add function calls when state is entered
-        blackjackStateMachine.addRoute(.any => .started) { context in self.start(context) }
-        blackjackStateMachine.addRoute(.any => .shuffleDeck) { context in self.shuffle(context) }
-        blackjackStateMachine.addRoute(.any => .checkingDeck) { context in self.checkDeck(context) }
-        blackjackStateMachine.addRoute(.any => .placeBets) { context in self.placeBets(context) }
-        blackjackStateMachine.addRoute(.any => .dealCards) { context in self.dealCards(context) }
-        blackjackStateMachine.addRoute(.any => .dealerBlackjackTest) { context in self.dealerBlackjackTest(context) }
-        blackjackStateMachine.addRoute(.any => .playersPlay_selectPlayer) { context in self.selectPlayer(context) }
-        blackjackStateMachine.addRoute(.any => .calculateResult) { context in self.calculateResult(context) }
-        blackjackStateMachine.addRoute(.any => .playersPlay_selectHand) { context in self.selectHand(context) }
-        blackjackStateMachine.addRoute(.any => .playersPlay_getChoice) { context in self.playerGetChoice(context) }
-        blackjackStateMachine.addRoute(.any => .dealerPlay_getChoice) { context in self.dealerGetChoice(context) }
-        blackjackStateMachine.addRoute(.any => .playersPlay_hit) { context in self.hitPlayer(context) }
-        blackjackStateMachine.addRoute(.any => .playersPlay_splitHand) { context in self.splitHand(context) }
-        blackjackStateMachine.addRoute(.any => .dealerPlay_hit) { context in self.hitDealer(context) }
-        blackjackStateMachine.addRoute(.any => .distributeBets) { context in self.distributeBets(context) }
+        machine.addRoutes(event: .start,
+                          transitions: [GameStates.waitingForStart => GameStates.started]) { _ in self.start() }
+        machine.addRoutes(event: .shuffle,
+                          transitions: [GameStates.started => GameStates.shuffleDeck]) { _ in self.shuffle() }
+        machine.addRoutes(event: .shuffled,
+                          transitions: [GameStates.shuffleDeck => GameStates.checkingDeck]) { _ in self.checkDeck() }
+        machine.addRoutes(event: .checked,
+                          transitions: [GameStates.checkingDeck => GameStates.placeBets]) { _ in self.placeBets() }
+        machine.addRoutes(event: .betsPlaced,
+                          transitions: [GameStates.placeBets => GameStates.dealCards]) { _ in self.dealCards() }
+        machine.addRoutes(event: .dealt,
+                          transitions: [GameStates.dealCards => GameStates.dealerBlackjackTest]) { _ in self.dealerBlackjackTest() }
+        machine.addRoutes(event: .dealerHasNoBlackjack,
+                          transitions: [GameStates.dealerBlackjackTest => GameStates.playersPlay_selectPlayer]) { _ in self.selectPlayer() }
+        machine.addRoutes(event: .dealerHasBlackjack,
+                          transitions: [GameStates.dealerBlackjackTest => GameStates.calculateResult]) { _ in self.calculateResult() }
+        machine.addRoutes(event: .playerSelected,
+                          transitions: [GameStates.playersPlay_selectPlayer => GameStates.playersPlay_selectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .allPlayersFinished,
+                          transitions: [GameStates.playersPlay_selectPlayer => GameStates.dealerPlay_getChoice])  { _ in self.dealerGetChoice() }
+        machine.addRoutes(event: .playerHandSelected,
+                          transitions: [GameStates.playersPlay_selectHand => GameStates.playersPlay_getChoice]) { _ in self.playerGetChoice() }
+        machine.addRoutes(event: .playerHandsFinished,
+                          transitions: [GameStates.playersPlay_selectHand => GameStates.playersPlay_selectPlayer]) { _ in self.selectPlayer() }
+        machine.addRoutes(event: .hitPlayer,
+                          transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_hit]) { _ in self.hitPlayer() }
+        machine.addRoutes(event: .playerChoose,
+                          transitions: [GameStates.playersPlay_hit => GameStates.playersPlay_getChoice]) { _ in self.playerGetChoice() }
+        machine.addRoutes(event: .playerHasBlackjack,
+                          transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_selectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .standPlayer,
+                          transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_selectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .bustPlayer,
+                          transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_selectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .splitPlayerHand,
+                          transitions: [GameStates.playersPlay_getChoice => GameStates.playersPlay_splitHand]) { _ in self.splitHand() }
+        machine.addRoutes(event: .playerHandSplitted,
+                          transitions: [GameStates.playersPlay_splitHand => GameStates.playersPlay_selectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .hitDealer,
+                          transitions: [GameStates.dealerPlay_getChoice => GameStates.dealerPlay_hit])  { _ in self.hitDealer() }
+        machine.addRoutes(event: .standDealer,
+                          transitions: [GameStates.dealerPlay_getChoice => GameStates.calculateResult]) { context in self.calculateResult() }
+        machine.addRoutes(event: .dealerChoose,
+                          transitions: [GameStates.dealerPlay_hit => GameStates.dealerPlay_getChoice]) { _ in self.dealerGetChoice() }
+        machine.addRoutes(event: .bustDealer,
+                          transitions: [GameStates.dealerPlay_getChoice => GameStates.calculateResult]) { context in self.calculateResult() }
+        machine.addRoutes(event: .resultsCalculated,
+                          transitions: [GameStates.dealerPlay_getChoice => GameStates.distributeBets]) { _ in self.distributeBets() }
+        machine.addRoutes(event: .nextRound,
+                          transitions: [GameStates.distributeBets => GameStates.checkingDeck]) { _ in self.checkDeck() }
     }
     
     func triggerEvent(_ event: GameEvents) {
-        self.blackjackStateMachine <-! event
+        print("Trigger \(event)")
+        self.machine <-! event
     }
     
-    func start(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.start(context)
+    func start() {
+        self.gameEngine.start()
     }
     
-    func shuffle(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.shuffle(context)
+    func shuffle() {
+        self.gameEngine.shuffle()
     }
     
-    func checkDeck(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.checkDeck(context)
+    func checkDeck() {
+        self.gameEngine.checkDeck()
     }
     
-    func placeBets(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.placeBets(context)
+    func placeBets() {
+        self.gameEngine.placeBets()
     }
     
-    func dealCards(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.dealCards(context)
+    func dealCards() {
+        self.gameEngine.dealCards()
     }
     
-    func dealerBlackjackTest(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.dealerBlackjackTest(context)
+    func dealerBlackjackTest() {
+        self.gameEngine.dealerBlackjackTest()
     }
     
-    func selectPlayer(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.selectPlayer(context)
+    func selectPlayer() {
+        self.gameEngine.selectPlayer()
     }
     
-    func calculateResult(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.calculateResult(context)
+    func calculateResult() {
+        self.gameEngine.calculateResult()
     }
     
-    func selectHand(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.selectHand(context)
+    func selectHand() {
+        self.gameEngine.selectHand()
     }
     
-    func playerGetChoice(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.playerGetChoice(context)
+    func playerGetChoice() {
+        self.gameEngine.playerGetChoice()
     }
     
-    func dealerGetChoice(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.dealerGetChoice(context)
+    func dealerGetChoice() {
+        self.gameEngine.dealerGetChoice()
     }
     
-    func hitPlayer(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.hitPlayer(context)
+    func hitPlayer() {
+        self.gameEngine.hitPlayer()
     }
     
-    func splitHand(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.splitHand(context)
+    func splitHand() {
+        self.gameEngine.splitHand()
     }
     
-    func hitDealer(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.hitDealer(context)
+    func hitDealer() {
+        self.gameEngine.hitDealer()
     }
 
-    func distributeBets(_ context: StateMachine<GameStates, GameEvents>.Context) {
-        self.gameEngine.distributeBets(context)
+    func distributeBets() {
+        self.gameEngine.distributeBets()
     }
 }

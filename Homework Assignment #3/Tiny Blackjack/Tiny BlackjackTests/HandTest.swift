@@ -75,5 +75,28 @@ class HandTest: XCTestCase {
         
         XCTAssertTrue(hand.containsOnly(Rank.ace))
     }
+    
+    func test_isBlackjack_AceAndTen_returns_true() {
+        let hand: Hand = Hand()
+        hand.add(Card(Suit.club, Rank.ace))
+        hand.add(Card(Suit.diamond, Rank.jack))
+        
+        XCTAssertTrue(hand.isBlackjack())
+    }
+    
+    func test_isBlackjack_AceAndSeven_returns_true() {
+        let hand: Hand = Hand()
+        hand.add(Card(Suit.club, Rank.ace))
+        hand.add(Card(Suit.diamond, Rank.seven))
+        
+        XCTAssertFalse(hand.isBlackjack())
+    }
+    
+    func test_isBlackjack_Seven_returns_true() {
+        let hand: Hand = Hand()
+        hand.add(Card(Suit.diamond, Rank.seven))
+        
+        XCTAssertFalse(hand.isBlackjack())
+    }
 
 }

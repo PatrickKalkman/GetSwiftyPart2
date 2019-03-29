@@ -16,4 +16,5 @@ enum ProposedAction {
     case surrender
     case dontknow
     case blackjack
+    case bust
 }

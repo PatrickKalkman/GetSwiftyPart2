@@ -11,12 +11,23 @@ import Foundation
 class Hand {
     private var cards: [Card] = [Card]()
 
+    func isBlackjack() -> Bool {
+        if cards.count == 2 && highValueAllCards() == 21 {
+            return true
+        }
+        return false
+    }
+    
     var count: Int {
         return cards.count
     }
 
     func add(_ card: Card) {
         cards.append(card)
+    }
+    
+    private func highValueAllCards() -> UInt8 {
+        return cards.reduce(0) { $0 + $1.highValue }
     }
 
     func highValue() -> UInt8 {
