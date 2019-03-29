@@ -1,0 +1,6 @@
+framework module Pods_Tiny_BlackjackTests {
+  umbrella header "Pods-Tiny BlackjackTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
