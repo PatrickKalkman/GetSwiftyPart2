@@ -66,6 +66,10 @@ class Hand {
     func getRank(cardIndex: Int) -> Rank {
         return cards[cardIndex].rank
     }
+    
+    func getSuit(cardIndex: Int) -> Suit {
+        return cards[cardIndex].suit
+    }
 
     func setCardsFaceUp() {
         for card in cards {
@@ -88,5 +92,4 @@ class Hand {
     func remove(at: Int) -> Card {
         return cards.remove(at: at)
     }
-
 }

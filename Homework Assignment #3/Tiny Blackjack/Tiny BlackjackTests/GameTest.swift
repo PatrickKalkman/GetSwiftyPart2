@@ -42,7 +42,7 @@ class GameTest: XCTestCase {
 
         while game.gameState.getState() != GameStates.finished {
             game.showState()
-            game.playNextRound()
+            game.playRound()
         }
 
         print(game.result())

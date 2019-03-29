@@ -16,12 +16,16 @@ class Player {
     var lastProposedAction: ProposedAction = ProposedAction.dontknow
     var isDealer: Bool
     
-    var numberOfCards: Int {
-        return hands[0].count
+    func numberOfCards(handIndex: Int) -> Int {
+        return hands[handIndex].count
     }
     
-    var hand: Hand {
-        return hands[0]
+    func numberOfHands() -> Int {
+        return hands.count
+    }
+    
+    func getHand(handIndex: Int) -> Hand {
+        return hands[handIndex]
     }
 
     init(name: String, hand: Hand, strategy: BlackjackStrategy, isDealer: Bool) {
@@ -31,34 +35,41 @@ class Player {
         self.isDealer = isDealer
     }
 
-    func askAction(dealerHand: Hand) -> ProposedAction {
-        return strategy.calculateProposedAction(ownHand: hands[0], otherHand: dealerHand)
+    func askAction(handIndex: Int, dealerHand: Hand) -> ProposedAction {
+        return strategy.calculateProposedAction(ownHand: hands[handIndex], otherHand: dealerHand)
     }
 
-    func add(card: Card) {
-        self.hands[0].add(card)
+    func add(handIndex: Int, card: Card) {
+        self.hands[handIndex].add(card)
     }
 
-    func showState() -> String {
-        if hands[0].isBusted() {
-            return "\(name) Busted! hand: \(hands[0].getState())"
-        } else {
-            return "\(name) hand: \(hands[0].getState())"
+    func getState() -> String {
+        var stateString: String = ""
+        for hand in hands {
+            if hand.isBusted() {
+                stateString += "\(name) Busted! hand: \(hand.getState())"
+            } else {
+                stateString += "\(name) hand: \(hand.getState())"
+            }
         }
+        return stateString
     }
 
-    func isBusted() -> Bool {
-        return hands[0].isBusted()
+    func isBusted(handIndex: Int) -> Bool {
+        return hands[handIndex].isBusted()
     }
     
-    func split() {
-        if hand.count == 2 {
-            if hand.containsSameRank() {
-                let card: Card = hand.remove(at: 1)
-                let splittedHand: Hand = Hand()
-                splittedHand.add(card)
-                hands.append(splittedHand)
-            }
+    func split(handIndex: Int) {
+        if handIndex > hands.count - 1 {
+            print("Cannot split")
+        }
+        
+        let handToSplit: Hand = hands[handIndex]
+        if handToSplit.count == 2 && hands[handIndex].containsSameRank() {
+            let card: Card = handToSplit.remove(at: 1)
+            let splittedHand: Hand = Hand()
+            splittedHand.add(card)
+            hands.append(splittedHand)
         }
     }
 }
