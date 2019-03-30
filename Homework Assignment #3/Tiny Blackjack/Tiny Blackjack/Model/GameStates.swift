@@ -17,15 +17,16 @@ enum GameStates: StateType {
     case placeBets
     case dealCards
     case dealerBlackjackTest
-    case playersPlay_selectPlayer
-    case playersPlay_selectHand
-    case playersPlay_blackjack
-    case playersPlay_getChoice
-    case playersPlay_hit
-    case playersPlay_splitHand
-    case playersPlay_surrender
-    case dealerPlay_getChoice
-    case dealerPlay_hit
+    case playersPlaySelectPlayer
+    case playersPlaySelectHand
+    case playersPlayBlackjack
+    case playersPlayGetChoice
+    case playersPlayDoubleDown
+    case playersPlayHit
+    case playersPlaySplitHand
+    case playersPlaySurrender
+    case dealerPlayGetChoice
+    case dealerPlayHit
     case calculateResult
     case distributeBets
 }

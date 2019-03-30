@@ -15,15 +15,15 @@ class Player {
     let strategy: BlackjackStrategy
     var lastProposedAction: ProposedAction = ProposedAction.dontknow
     var isDealer: Bool
-    
+
     func numberOfCards(handIndex: Int) -> Int {
         return hands[handIndex].count
     }
-    
+
     func numberOfHands() -> Int {
         return hands.count
     }
-    
+
     func getHand(handIndex: Int) -> Hand {
         return hands[handIndex]
     }
@@ -38,7 +38,7 @@ class Player {
     func askAction(handIndex: Int, dealerHand: Hand) -> ProposedAction {
         return strategy.calculateProposedAction(ownHand: hands[handIndex], otherHand: dealerHand)
     }
-    
+
     func askAction(ownHand: Hand, dealerHand: Hand) -> ProposedAction {
         return strategy.calculateProposedAction(ownHand: ownHand, otherHand: dealerHand)
     }
@@ -49,12 +49,14 @@ class Player {
 
     func getState() -> String {
         var stateString: String = ""
+        var handIndex: Int = 0
         for hand in hands {
             if hand.isBusted() {
-                stateString += "\(name) Busted! hand: \(hand.getState())"
+                stateString += " hand \(handIndex): (Busted!) \(hand.getState())"
             } else {
-                stateString += "\(name) hand: \(hand.getState())"
+                stateString += " hand \(handIndex): \(hand.getState())"
             }
+            handIndex += 1
         }
         return stateString
     }
@@ -62,21 +64,21 @@ class Player {
     func isBusted(handIndex: Int) -> Bool {
         return hands[handIndex].isBusted()
     }
-    
+
     func split(handIndex: Int) {
         if handIndex > hands.count - 1 {
             print("Cannot split")
         }
-        
+
         let handToSplit: Hand = hands[handIndex]
         if handToSplit.count == 2 && hands[handIndex].containsSameRank() {
-            let card: Card = handToSplit.remove(at: 1)
+            let card: Card = handToSplit.remove(cardIndex: 1)
             let splittedHand: Hand = Hand()
             splittedHand.add(card)
             hands.append(splittedHand)
         }
     }
-    
+
     func placeBets() {
         // Place the bets
     }

@@ -29,8 +29,8 @@ enum GameEvents: EventType {
     case hitPlayer
     case standPlayer
     case bustPlayer
-    case doublePlayer
     case splitPlayerHand
+    case doubleDownPlayer
     case playerHandSplitted
     case surrenderPlayer
     case dealerPlays
