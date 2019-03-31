@@ -85,6 +85,10 @@ class Hand {
     func getSuit(cardIndex: Int) -> Suit {
         return cards[cardIndex].suit
     }
+    
+    func getCard(cardIndex: Int) -> Card {
+        return cards[cardIndex]
+    }
 
     func setCardsFaceUp() {
         for card in cards {

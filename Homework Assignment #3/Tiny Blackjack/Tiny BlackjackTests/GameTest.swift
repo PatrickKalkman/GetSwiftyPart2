@@ -11,14 +11,11 @@ import XCTest
 
 class GameTest: XCTestCase {
 
-    func test_numberOfPlayers_returns_the_number_of_players() {
-        let game: Game = Game()
-        XCTAssertEqual(1, game.numberOfPlayers)
-    }
-
     func test_start_deals_every_player_two_cards() {
-        let game: Game = Game()
-        game.triggerEvent(GameEvents.start)
-        print(game.getState())
+        for _ in 1...30 {
+            let game: GameEngine = GameEngine(gameResultCalculator: GameResultCalculator())
+            game.start(numberOfPlayers: 5)
+            print(game.getState())
+        }
     }
 }

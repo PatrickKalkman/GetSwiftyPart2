@@ -98,5 +98,22 @@ class HandTest: XCTestCase {
         
         XCTAssertFalse(hand.isBlackjack())
     }
+    
+    func test_hasAce_value_should_return_lowValue() {
+        let hand: Hand = Hand()
+        hand.add(Card(Suit.heart, Rank.five))
+        hand.add(Card(Suit.heart, Rank.ace))
+        hand.add(Card(Suit.diamond, Rank.three))
+        hand.add(Card(Suit.spade, Rank.six))
 
+        XCTAssertEqual(hand.getValue(), 15)
+    }
+    
+    func test_hasAce_value_should_return_highValue() {
+        let hand: Hand = Hand()
+        hand.add(Card(Suit.heart, Rank.six))
+        hand.add(Card(Suit.heart, Rank.ace))
+        
+        XCTAssertEqual(hand.getValue(), 17)
+    }
 }

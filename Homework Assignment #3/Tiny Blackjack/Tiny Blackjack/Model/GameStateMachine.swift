@@ -5,17 +5,17 @@
 //  Created by Patrick Kalkman on 29/03/2019.
 //  Copyright © 2019 SimpleTechture. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 import SwiftState
 
-// swiftlint:disable: all
 class GameStateMachine {
 
     let gameEngine: BlackjackProtocol
 
     let machine = StateMachine<GameStates, GameEvents>(state: .waitingForStart)
-
+    
     init(gameEngine: BlackjackProtocol) {
         self.gameEngine = gameEngine
 
@@ -50,7 +50,7 @@ class GameStateMachine {
 
     func triggerEvent(_ event: GameEvents) {
         print("Trigger \(event)")
-        self.machine <- ! event
+        self.machine <-! event
     }
 
     func start() {
