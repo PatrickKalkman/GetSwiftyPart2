@@ -21,6 +21,7 @@ enum GameEvents: EventType {
     case dealerHasNoBlackjack
     case dealerHasBlackjack
     case allPlayersFinished
+    case turnDealerCardFaceUp
     case playerSelected
     case playerHandSelected
     case playerHandsFinished

@@ -22,11 +22,13 @@ class GameEngine: BlackjackProtocol {
     private var currentPlayerHandIndex: Int = 0
     private var gameResultCalculator: GameResultCalculator
     private var numberOfPlayers: UInt8 = 0
+    
 
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
         self.gameResultCalculator = gameResultCalculator
         self.gameState = GameStateMachine(gameEngine: self)
         self.blackjackView = blackjackView
+        
     }
 
     func getState() -> GameStates {
@@ -41,18 +43,38 @@ class GameEngine: BlackjackProtocol {
         return players[playerIndex].getHand(handIndex: handIndex).getCard(cardIndex: cardIndex)
     }
     
+    func getPlayerValue(playerIndex: Int, handIndex: Int) -> UInt8 {
+        return players[playerIndex].getHand(handIndex: handIndex).getValue()
+    }
+    
+    func getDealerValue() -> UInt8 {
+        return dealer.getHand(handIndex: 0).getValue()
+    }
+    
+    func getDealerCard(cardIndex: Int) -> Card {
+        return dealer.getHand(handIndex: 0).getCard(cardIndex: cardIndex)
+    }
+    
     func start(numberOfPlayers: UInt8) {
         self.numberOfPlayers = numberOfPlayers
         triggerEvent(GameEvents.start)
     }
+    
+    func restart() {
+        dealer.clear()
+        for player in players {
+            player.clear()
+        }
+        triggerEvent(GameEvents.nextRound)
+    }
 
     func start() {
         // Add the dealer
-        dealer = Player(name: "Dealer", hand: Hand(), strategy: DealerStrategy(), isDealer: true)
+        dealer = Player(name: "Dealer", strategy: DealerStrategy(), isDealer: true, isHuman: false)
         // Add the players
         for playerNumber in 1...numberOfPlayers {
-            players.append(Player(name: "Player \(playerNumber)", hand: Hand(), strategy: SimpleStrategy(),
-                                  isDealer: false))
+            players.append(Player(name: "Player \(playerNumber)", strategy: SimpleStrategy(),
+                                  isDealer: false, isHuman: true))
         }
 
         triggerEvent(GameEvents.shuffle)
@@ -127,26 +149,29 @@ class GameEngine: BlackjackProtocol {
             triggerEvent(GameEvents.playerHandsFinished)
         }
     }
+    
+    let waitUntilUserInput = DispatchSemaphore(value: 1)
 
     func playerGetChoice() {
-        let action: ProposedAction = currentPlayer.askAction(ownHand: currentHand,
-            dealerHand: dealer.getHand(handIndex: 0))
-
-        switch action {
-        case ProposedAction.hit:
-            triggerEvent(GameEvents.hitPlayer)
-        case ProposedAction.stand:
-            triggerEvent(GameEvents.standPlayer)
-        case ProposedAction.split:
-            triggerEvent(GameEvents.splitPlayerHand)
-        case ProposedAction.bust:
-            triggerEvent(GameEvents.bustPlayer)
-        case ProposedAction.blackjack:
-            triggerEvent(GameEvents.playerHasBlackjack)
-        case ProposedAction.double:
-            triggerEvent(GameEvents.doubleDownPlayer)
-        default:
-            triggerEvent(GameEvents.standPlayer)
+        if !currentPlayer.isHuman {
+            let action: ProposedAction = currentPlayer.askAction(ownHand: currentHand,
+                                                                 dealerHand: dealer.getHand(handIndex: 0))
+            switch action {
+            case ProposedAction.hit:
+                triggerEvent(GameEvents.hitPlayer)
+            case ProposedAction.stand:
+                triggerEvent(GameEvents.standPlayer)
+            case ProposedAction.split:
+                triggerEvent(GameEvents.splitPlayerHand)
+            case ProposedAction.bust:
+                triggerEvent(GameEvents.bustPlayer)
+            case ProposedAction.blackjack:
+                triggerEvent(GameEvents.playerHasBlackjack)
+            case ProposedAction.double:
+                triggerEvent(GameEvents.doubleDownPlayer)
+            default:
+                triggerEvent(GameEvents.standPlayer)
+            }
         }
     }
 
@@ -174,6 +199,7 @@ class GameEngine: BlackjackProtocol {
     func hitPlayer() {
         let card: Card = deck.draw()
         currentPlayer.add(handIndex: currentPlayerHandIndex - 1, card: card)
+        blackjackView?.hitPlayer()
         triggerEvent(GameEvents.playerChoose)
     }
 
@@ -195,6 +221,7 @@ class GameEngine: BlackjackProtocol {
     func hitDealer() {
         let card: Card = deck.draw()
         dealer.add(handIndex: 0, card: card)
+        blackjackView?.hitDealer()
         triggerEvent(GameEvents.dealerChoose)
     }
 
@@ -202,8 +229,14 @@ class GameEngine: BlackjackProtocol {
         gameResultCalculator.calculateAndShowResults(players: players, dealer: dealer)
         triggerEvent(GameEvents.resultsCalculated)
     }
+    
+    func dealerStart() {
+        blackjackView?.dealerStart()
+        triggerEvent(GameEvents.dealerChoose)
+    }
 
     func distributeBets() {
+        blackjackView?.distributeBets()
         // TODO
     }
 

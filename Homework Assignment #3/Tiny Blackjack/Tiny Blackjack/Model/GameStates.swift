@@ -25,6 +25,7 @@ enum GameStates: StateType {
     case playersPlayHit
     case playersPlaySplitHand
     case playersPlaySurrender
+    case dealerStart
     case dealerPlayGetChoice
     case dealerPlayHit
     case calculateResult

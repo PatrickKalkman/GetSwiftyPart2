@@ -15,6 +15,7 @@ class Player {
     let strategy: BlackjackStrategy
     var lastProposedAction: ProposedAction = ProposedAction.dontknow
     var isDealer: Bool
+    var isHuman: Bool
 
     func numberOfCards(handIndex: Int) -> Int {
         return hands[handIndex].count
@@ -28,11 +29,17 @@ class Player {
         return hands[handIndex]
     }
 
-    init(name: String, hand: Hand, strategy: BlackjackStrategy, isDealer: Bool) {
+    init(name: String, strategy: BlackjackStrategy, isDealer: Bool, isHuman: Bool) {
         self.name = name
-        self.hands.append(hand)
+        self.hands.append(Hand())
         self.strategy = strategy
         self.isDealer = isDealer
+        self.isHuman = isHuman
+    }
+    
+    func clear() {
+        self.hands.removeAll()
+        self.hands.append(Hand())
     }
 
     func askAction(handIndex: Int, dealerHand: Hand) -> ProposedAction {

@@ -200,9 +200,53 @@
                                     <constraint firstAttribute="width" constant="120" id="b6D-Y4-9KI"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[ 18 ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v79-TG-NBY">
+                                <rect key="frame" x="470" y="452" width="71" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[ 18 ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Za6-7j-185">
+                                <rect key="frame" x="554" y="448" width="71" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuH-DW-St2" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
+                                <rect key="frame" x="462" y="334" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="nW1-t3-8Nv"/>
+                                    <constraint firstAttribute="width" constant="100" id="pCr-2V-71h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Restart">
+                                    <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.29416942410000002" green="0.71142801759999996" blue="0.69142684089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oaZ-E8-5Il"/>
+                                    <action selector="splitPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9NM-Pc-x9v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.096528628070999836" green="0.41155379398826974" blue="0.21755319629968015" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="RuH-DW-St2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="11r-6V-CB9"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="14j-5G-2QS"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1Jc-t9-e5W"/>
                             <constraint firstItem="7wo-61-CcP" firstAttribute="leading" secondItem="fLw-Od-RqD" secondAttribute="leading" id="2rg-SU-UU3"/>
@@ -230,6 +274,7 @@
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="trailing" constant="-130" id="pj7-KS-rg8"/>
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="leading" secondItem="J1q-u4-aPO" secondAttribute="trailing" constant="27" id="rLh-OY-IyH"/>
                             <constraint firstItem="MNT-hy-DPg" firstAttribute="leading" secondItem="QkX-II-pEF" secondAttribute="leading" id="sbR-Fr-vDW"/>
+                            <constraint firstItem="RuH-DW-St2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tBs-pv-2nW"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uYQ-ND-WYN"/>
                             <constraint firstItem="o5c-dw-dse" firstAttribute="leading" secondItem="J1q-u4-aPO" secondAttribute="leading" id="xz4-4p-t8d"/>
                             <constraint firstItem="NZt-DB-Vgh" firstAttribute="top" secondItem="fLw-Od-RqD" secondAttribute="top" id="ye8-TP-kNN"/>
@@ -237,9 +282,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="dealerValueLabel" destination="Za6-7j-185" id="8gN-Ab-Uj1"/>
                         <outlet property="deckCard" destination="ihX-dx-uKN" id="ZPh-4M-slK"/>
                         <outlet property="doubleButton" destination="Ac5-7Q-Lb0" id="FZt-gn-mOr"/>
                         <outlet property="hitButton" destination="J1q-u4-aPO" id="edh-kj-rIn"/>
+                        <outlet property="playerValueLabel" destination="v79-TG-NBY" id="IET-8k-MrC"/>
+                        <outlet property="restartButton" destination="RuH-DW-St2" id="io6-2Y-Ddk"/>
                         <outlet property="splitButton" destination="o5c-dw-dse" id="J7P-uw-zmn"/>
                         <outlet property="standButton" destination="Ane-wD-tRU" id="Zs5-EE-0SV"/>
                         <outlet property="startButton" destination="Lho-mF-RCB" id="zMj-gJ-IUN"/>
@@ -247,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.51079136690649" y="96.402877697841731"/>
+            <point key="canvasLocation" x="135.9375" y="96.09375"/>
         </scene>
     </scenes>
     <resources>
