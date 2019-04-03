@@ -134,6 +134,8 @@ class GameEngine: BlackjackProtocol {
             triggerEvent(GameEvents.playerSelected)
         } else {
             triggerEvent(GameEvents.allPlayersFinished)
+            currentPlayerIndex = 0
+            currentPlayerHandIndex = 0
         }
     }
 
