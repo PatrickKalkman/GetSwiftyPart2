@@ -30,22 +30,21 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
-        organizeUiBasedOnState()
+        self.organizeUiBasedOnState(state: GameStates.waitingForStart)
+       
     }
 
     @IBAction func startGame(_ sender: Any) {
         DispatchQueue.main.async {
             self.gameEngine.start(numberOfPlayers: 1)
+            self.organizeUiBasedOnState(state: GameStates.started)
         }
-        startButton.isHidden = true
     }
     
     @IBAction func restartGame(_ sender: UIButton) {
         
         playerCardIndex = 2
         dealerCardIndex = 1
-        startButton.isHidden = true
-        restartButton.isHidden = true
         
         for subview in addedCards {
             subview.removeFromSuperview()
@@ -53,7 +52,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         
         DispatchQueue.main.async {
             self.gameEngine.restart()
-            self.organizeUiBasedOnState()
+            self.organizeUiBasedOnState(state: GameStates.started)
         }
     }
 
@@ -73,8 +72,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         gameEngine.triggerEvent(GameEvents.splitPlayerHand)
     }
 
-    func organizeUiBasedOnState() {
-        let state: GameStates = gameEngine.getState()
+    func organizeUiBasedOnState(state: GameStates) {
         print("Organizing UI for state: \(state)")
         switch state {
         case GameStates.waitingForStart:
@@ -119,7 +117,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     func dealCards() {
         
         self.startButton.isHidden = true
-        self.organizeUiBasedOnState()
+        self.organizeUiBasedOnState(state: GameStates.dealCards)
 
         let imageName: String = cardToImageNameMapper.map(gameEngine.getPlayerCard(playerIndex: 0, handIndex: 0, cardIndex: 0))
         let imageCardFaceUp: UIImage = UIImage(named: imageName)!
@@ -194,6 +192,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                                                             self.dealerValueLabel.frame.origin.y = 20
                                                             self.playerValueLabel.isHidden = false
                                                             self.dealerValueLabel.isHidden = false
+                                                            self.gameEngine.triggerEvent(GameEvents.dealt)
                                                         })
                                                         
                                                     })
@@ -293,6 +292,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                                    completion: { _ in
                                     self.dealerCardIndex += 1
                                     self.dealerValueLabel.text = String(self.gameEngine.getDealerValue())
+                                    self.gameEngine.triggerEvent(GameEvents.dealerChoose)
                                     
             })
             
@@ -300,7 +300,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     }
 
     func distributeBets() {
-        organizeUiBasedOnState()
+        organizeUiBasedOnState(state: GameStates.distributeBets)
     }
 
 }

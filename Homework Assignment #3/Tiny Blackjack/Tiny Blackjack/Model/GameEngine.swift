@@ -116,7 +116,6 @@ class GameEngine: BlackjackProtocol {
         if let view = blackjackView {
             view.dealCards()
         }
-        triggerEvent(GameEvents.dealt)
     }
 
     func dealerBlackjackTest() {
@@ -186,6 +185,7 @@ class GameEngine: BlackjackProtocol {
 
         switch action {
         case ProposedAction.hit:
+            
             triggerEvent(GameEvents.hitDealer)
         case ProposedAction.stand:
             triggerEvent(GameEvents.standDealer)
@@ -222,7 +222,6 @@ class GameEngine: BlackjackProtocol {
         let card: Card = deck.draw()
         dealer.add(handIndex: 0, card: card)
         blackjackView?.hitDealer()
-        triggerEvent(GameEvents.dealerChoose)
     }
 
     func calculateResult() {
