@@ -1,6 +1,6 @@
 //
 //  BorderButton.swift
-//  TinyTimer
+//  Tiny Blackjack
 //
 //  Created by Patrick Kalkman on 08/03/2019.
 //  Copyright © 2019 SimpleTechture. All rights reserved.

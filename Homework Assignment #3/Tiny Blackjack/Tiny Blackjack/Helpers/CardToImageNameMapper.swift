@@ -69,10 +69,5 @@ class CardToImageNameMapper {
         
         return suitString
     }
-    
-    
-   
-    
-    
-    
+ 
 }
