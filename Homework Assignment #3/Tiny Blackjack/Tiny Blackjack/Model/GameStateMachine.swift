@@ -26,7 +26,8 @@ class GameStateMachine {
         machine.addRoutes(event: .betsPlaced, transitions: [GameStates.placeBets => GameStates.dealCards]) { _ in self.dealCards() }
         machine.addRoutes(event: .dealt, transitions: [GameStates.dealCards => GameStates.dealerBlackjackTest]) { _ in self.dealerBlackjackTest() }
         machine.addRoutes(event: .dealerHasNoBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.playersPlaySelectPlayer]) { _ in self.selectPlayer() }
-        machine.addRoutes(event: .dealerHasBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.calculateResult]) { _ in self.calculateResult() }
+        machine.addRoutes(event: .dealerHasBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.showDealerBlackjack]) { _ in self.showDealerBlackjack() }
+        machine.addRoutes(event: .dealerHasBlackjackIsShown, transitions: [GameStates.showDealerBlackjack => GameStates.calculateResult]) { _ in self.calculateResult() }
         machine.addRoutes(event: .playerSelected, transitions: [GameStates.playersPlaySelectPlayer => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
         machine.addRoutes(event: .allPlayersFinished, transitions: [GameStates.playersPlaySelectPlayer => GameStates.dealerStart]) { _ in self.dealerStart() }
         machine.addRoutes(event: .turnDealerCardFaceUp, transitions: [GameStates.dealerStart => GameStates.dealerPlayGetChoice]) { _ in self.dealerGetChoice() }
@@ -77,6 +78,10 @@ class GameStateMachine {
 
     func dealerBlackjackTest() {
         self.gameEngine.dealerBlackjackTest()
+    }
+    
+    func showDealerBlackjack() {
+        self.gameEngine.showDealerBlackjack()
     }
 
     func selectPlayer() {

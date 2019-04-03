@@ -20,6 +20,7 @@ enum GameEvents: EventType {
     case dealerBlackjackTest
     case dealerHasNoBlackjack
     case dealerHasBlackjack
+    case dealerHasBlackjackIsShown
     case allPlayersFinished
     case turnDealerCardFaceUp
     case playerSelected

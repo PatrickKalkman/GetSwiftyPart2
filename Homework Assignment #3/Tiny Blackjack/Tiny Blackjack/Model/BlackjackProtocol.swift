@@ -16,6 +16,7 @@ protocol BlackjackProtocol {
     func placeBets()
     func dealCards()
     func dealerBlackjackTest()
+    func showDealerBlackjack()
     func selectPlayer()
     func calculateResult()
     func selectHand()

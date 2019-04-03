@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, BlackjackViewProtocol {
 
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
-    private let imageCardFaceDown: UIImage = UIImage(named: Constant.Assets.FacedownCard)!
+    private let imageCardFaceDown: UIImage = UIImage(named: Constants.Assets.FacedownCard)!
     private var gameEngine: GameEngine!
     
     private var addedCards: [UIImageView] = [UIImageView]()
@@ -25,6 +25,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     @IBOutlet weak var playerValueLabel: UILabel!
     @IBOutlet weak var dealerValueLabel: UILabel!
     @IBOutlet weak var restartButton: BorderButton!
+    @IBOutlet weak var playResultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,13 +84,17 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             playerValueLabel.isHidden = true
             dealerValueLabel.isHidden = true
             restartButton.isHidden = true
+            playResultLabel.isHidden = true
         case GameStates.dealCards:
+            playerValueLabel.isHidden = true
+            dealerValueLabel.isHidden = true
             startButton.isHidden = true
             splitButton.isHidden = true
             doubleButton.isHidden = true
             hitButton.isHidden = false
             standButton.isHidden = false
             restartButton.isHidden = true
+            playResultLabel.isHidden = true
         case GameStates.distributeBets:
             startButton.isHidden = true
             splitButton.isHidden = true
@@ -97,6 +102,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             hitButton.isHidden = true
             standButton.isHidden = true
             restartButton.isHidden = false
+            playResultLabel.isHidden = false
         default:
             print("do nothing")
         }
@@ -128,15 +134,15 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             player1Card1ImageView.setOrigin(Constants.Positions.FirstPlayerCard)
         }, completion: { _ in
 
-                UIImageView.transition(with: player1CardImageView, duration: Constants.Animation.FlipCardDuration,
-                    options: .transitionFlipFromLeft, animations: { player1CardImageView.image = imageCardFaceUp },
+                UIImageView.transition(with: player1Card1ImageView, duration: Constants.Animation.FlipCardDuration,
+                    options: .transitionFlipFromLeft, animations: { player1Card1ImageView.image = imageCardFaceUp },
                     completion: { _ in
 
-                        let dealerCard1ImageView: UIImageView = getNewCardFromDeckFaceDown()
-                        let dealerCard1FaceUp: UIImage = getCardImage(self.gameEngine.getDealerCard(cardIndex: 0))
+                        let dealerCard1ImageView: UIImageView = self.getNewCardFromDeckFaceDown()
+                        let dealerCard1FaceUp: UIImage = self.getCardImage(self.gameEngine.getDealerCard(cardIndex: 0))
 
                         UIImageView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: { 
-                            dealerCard1.setOrigin(Constants.Positions.FirstDealerCard)
+                            dealerCard1ImageView.setOrigin(Constants.Positions.FirstDealerCard)
                         }, completion: { _ in
 
                                 UIImageView.transition(with: dealerCard1ImageView, duration: 0.5, options: .transitionFlipFromLeft,
@@ -152,13 +158,11 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                                                     animations: { player1Card2ImageView.image = imageCard2FaceUp },
                                                     completion: { _ in
                                                         
-                                                        self.dealerCard2ImageView = getNewCardFromDeckFaceDown()
+                                                        self.dealerCard2ImageView = self.getNewCardFromDeckFaceDown()
                                                         
                                                         UIImageView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
                                                             self.dealerCard2ImageView.setOrigin(Constants.Positions.SecondDealerCard)
                                                         }, completion: { _ in
-                                                            self.playerValueLabel.setOrigin(Constants.Positions.PlayerValueLabel)
-                                                            self.dealerValueLabel.setOrigin(Constants.Positions.DealerValueLabel)
                                                             self.playerValueLabel.text = String(self.gameEngine.getPlayerValue(playerIndex: 0, handIndex: 0))
                                                             self.dealerValueLabel.text = String(self.gameEngine.getDealerValue())
                                                             self.playerValueLabel.isHidden = false
@@ -180,9 +184,19 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     }
 
     func calculateResult() {
+        self.dealerValueLabel.text = String(self.gameEngine.getDealerValue())
         // Calculate results
-
-
+        let result: [HandResult] = gameEngine.getPlayResult()
+        var resultString: String
+        switch result[0].result {
+        case GameResult.DealerWins:
+            resultString = "The dealer wins"
+        case GameResult.PlayerWins:
+            resultString = "You win!"
+        case GameResult.Push:
+            resultString = "Push"
+        }
+        playResultLabel.text = resultString
     }
 
     func selectHand() {
@@ -207,6 +221,19 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         
     }
     
+    func showDealerHasBlackjack() {
+        let dealerCardFaceUp: UIImage = getCardImage(self.gameEngine.getDealerCard(cardIndex: dealerCardIndex))
+        
+        UIImageView.transition(with: dealerCard2ImageView, duration: 0.5,
+                               options: .transitionFlipFromLeft, animations: { self.dealerCard2ImageView.image = dealerCardFaceUp },
+                               completion: { _ in
+                                self.dealerValueLabel.text = String(self.gameEngine.getDealerValue())
+                                self.gameEngine.triggerEvent(GameEvents.dealerHasBlackjackIsShown)
+        })
+    }
+    
+
+    
     func dealerGetChoice() {
     }
 
@@ -223,9 +250,16 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             
             UIImageView.transition(with: playerCardImageView, duration: 0.5, options: .transitionFlipFromLeft, 
                                    animations: { playerCardImageView.image = imageCardFaceUp }, completion: { _ in
-                                    self.playerCardIndex += 1
-                                    self.playerValueLabel.text = String(self.gameEngine.getPlayerValue(playerIndex: 0, handIndex: 0))
                                     
+                                    self.playerCardIndex += 1
+                                    var valueString: String = String(self.gameEngine.getPlayerValue(playerIndex: 0, handIndex: 0))
+                                    
+                                    if self.gameEngine.isCurrentHandBusted() {
+                                        self.gameEngine.triggerEvent(GameEvents.bustPlayer)
+                                        valueString += " (Busted!)"
+                                    }
+                                    
+                                    self.playerValueLabel.text = valueString
             })
             
         })
@@ -267,10 +301,11 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         cardImageView.frame = CGRect(x: deckCard.frame.origin.x, y: deckCard.frame.origin.y, width: deckCard.frame.size.width, height: deckCard.frame.size.height)
         addedCards.append(cardImageView)
         view.addSubview(cardImageView)
+        return cardImageView
     }
 
-    func getCardImage(_ card: Card) -> UIImageView {
-        let imageName: String = cardToImageNameMapper.map(card: card)
+    func getCardImage(_ card: Card) -> UIImage {
+        let imageName: String = cardToImageNameMapper.map(card)
         return UIImage(named: imageName)!
     }
 }

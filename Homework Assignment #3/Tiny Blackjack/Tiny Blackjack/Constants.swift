@@ -6,8 +6,9 @@
 //  Copyright © 2019 SimpleTechture. All rights reserved.
 //
 
-// Defines global constants for the application
+import UIKit
 
+// Defines global constants for the application
 struct Constants {
 
     struct Animation {

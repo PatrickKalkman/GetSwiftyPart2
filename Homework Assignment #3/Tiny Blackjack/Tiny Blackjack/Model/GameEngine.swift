@@ -25,10 +25,10 @@ class GameEngine: BlackjackProtocol {
     
 
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
+                self.playResult = [HandResult]()
         self.gameResultCalculator = gameResultCalculator
         self.gameState = GameStateMachine(gameEngine: self)
         self.blackjackView = blackjackView
-        
     }
 
     func getState() -> GameStates {
@@ -126,6 +126,10 @@ class GameEngine: BlackjackProtocol {
             triggerEvent(GameEvents.dealerHasNoBlackjack)
         }
     }
+    
+    func showDealerBlackjack() {
+        blackjackView?.showDealerHasBlackjack()
+    }
 
     func selectPlayer() {
         if currentPlayerIndex < players.count {
@@ -173,7 +177,17 @@ class GameEngine: BlackjackProtocol {
             default:
                 triggerEvent(GameEvents.standPlayer)
             }
+        } else if isCurrentHandBlackjack() {
+            triggerEvent(GameEvents.playerHasBlackjack)
         }
+    }
+    
+    func isCurrentHandBusted() -> Bool {
+        return currentHand.isBusted()
+    }
+    
+    func isCurrentHandBlackjack() -> Bool {
+        return currentHand.isBlackjack()
     }
 
     func dealerGetChoice() {
@@ -187,7 +201,6 @@ class GameEngine: BlackjackProtocol {
 
         switch action {
         case ProposedAction.hit:
-            
             triggerEvent(GameEvents.hitDealer)
         case ProposedAction.stand:
             triggerEvent(GameEvents.standDealer)
@@ -226,9 +239,16 @@ class GameEngine: BlackjackProtocol {
         blackjackView?.hitDealer()
     }
 
+    var playResult: [HandResult]
+    
     func calculateResult() {
-        gameResultCalculator.calculateAndShowResults(players: players, dealer: dealer)
+        playResult = gameResultCalculator.calculateAndShowResults(players: players, dealer: dealer)
+        blackjackView?.calculateResult()
         triggerEvent(GameEvents.resultsCalculated)
+    }
+    
+    func getPlayResult() -> [HandResult] {
+        return playResult
     }
     
     func dealerStart() {
