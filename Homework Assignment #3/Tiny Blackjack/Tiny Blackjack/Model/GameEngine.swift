@@ -179,6 +179,8 @@ class GameEngine: BlackjackProtocol {
             }
         } else if isCurrentHandBlackjack() {
             triggerEvent(GameEvents.playerHasBlackjack)
+        } else if currentHandCanSplit() {
+            blackjackView?.enableSplit()
         }
     }
     
@@ -188,6 +190,11 @@ class GameEngine: BlackjackProtocol {
     
     func isCurrentHandBlackjack() -> Bool {
         return currentHand.isBlackjack()
+    }
+    
+    func currentHandCanSplit() -> Bool {
+        return currentHand.count == 2 &&
+            currentHand.getCard(cardIndex: 0).rank == currentHand.getCard(cardIndex: 1).rank
     }
     
     func isDealerBusted() -> Bool {

@@ -22,6 +22,7 @@ protocol BlackjackViewProtocol {
     func dealerGetChoice()
     func hitPlayer()
     func playerDoubleDown()
+    func enableSplit()
     func splitHand()
     func hitDealer()
     func distributeBets()

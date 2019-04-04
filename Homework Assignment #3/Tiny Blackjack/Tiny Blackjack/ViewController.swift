@@ -115,6 +115,10 @@ class ViewController: UIViewController, BlackjackViewProtocol {
 
     func placeBets() {
     }
+    
+    func enableSplit() {
+        splitButton.isHidden = false
+    }
 
     var dealerCard2ImageView: UIImageView!
 
@@ -185,7 +189,13 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     }
 
     func calculateResult() {
-        self.dealerValueLabel.text = String(self.gameEngine.getDealerValue())
+        var valueString: String = String(self.gameEngine.getDealerValue())
+        
+        if self.gameEngine.isDealerBusted() {
+            valueString += " (bust)"
+        }
+        
+        self.dealerValueLabel.text = valueString
         // Calculate results
         let result: [HandResult] = gameEngine.getPlayResult()
         var resultString: String
@@ -235,8 +245,6 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         })
     }
     
-
-    
     func dealerGetChoice() {
     }
 
@@ -262,7 +270,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                                         valueString += " (bust)"
                                     }
                                     
-                                    self.playerValueLabel.text = valueString
+                                    self.playerValueLabel.text = valueString                                    
             })
             
         })
@@ -294,7 +302,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                                         valueString += " (bust)"
                                     }
                                     
-                                    self.dealerValueLabel.text = String(self.gameEngine.getDealerValue())
+                                    self.dealerValueLabel.text = valueString
                                     self.gameEngine.triggerEvent(GameEvents.dealerChoose)
                                     
             })
@@ -308,7 +316,8 @@ class ViewController: UIViewController, BlackjackViewProtocol {
 
     func getNewCardFromDeckFaceDown() -> UIImageView {
         let cardImageView: UIImageView = UIImageView(image: imageCardFaceDown)
-        cardImageView.frame = CGRect(x: deckCard.frame.origin.x, y: deckCard.frame.origin.y, width: deckCard.frame.size.width, height: deckCard.frame.size.height)
+        cardImageView.frame = CGRect(x: deckCard.frame.origin.x, y: deckCard.frame.origin.y, width: deckCard.frame.size.width,
+                                     height: deckCard.frame.size.height)
         addedCards.append(cardImageView)
         view.addSubview(cardImageView)
         return cardImageView
