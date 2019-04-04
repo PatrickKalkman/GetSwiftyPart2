@@ -54,7 +54,7 @@ class GameEngine: BlackjackProtocol {
     func getDealerCard(cardIndex: Int) -> Card {
         return dealer.getHand(handIndex: 0).getCard(cardIndex: cardIndex)
     }
-    
+
     func start(numberOfPlayers: UInt8) {
         self.numberOfPlayers = numberOfPlayers
         triggerEvent(GameEvents.start)
@@ -189,7 +189,11 @@ class GameEngine: BlackjackProtocol {
     func isCurrentHandBlackjack() -> Bool {
         return currentHand.isBlackjack()
     }
-
+    
+    func isDealerBusted() -> Bool {
+        return dealer.getHand(handIndex: 0).isBusted()
+    }
+    
     func dealerGetChoice() {
 
         let opponent: (Player, Int) = getPlayerWithHighestScore()

@@ -12,8 +12,8 @@ import UIKit
 struct Constants {
 
     struct Animation {
-        static let FlipCardDuration: Double = 0.5
-        static let DealCardDuraction: Double = 1
+        static let FlipCardDuration: Double = 0.4
+        static let DealCardDuraction: Double = 0.8
     }
 
     struct Positions {
