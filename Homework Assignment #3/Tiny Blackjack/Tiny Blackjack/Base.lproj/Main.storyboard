@@ -75,7 +75,7 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -101,7 +101,7 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -127,7 +127,7 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -153,7 +153,7 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -180,7 +180,7 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -206,7 +206,7 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -228,7 +228,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ 18 ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v79-TG-NBY">
-                                <rect key="frame" x="0.0" y="450" width="1024" height="30"/>
+                                <rect key="frame" x="0.0" y="403" width="1024" height="30"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -273,12 +273,12 @@
                             <constraint firstItem="eD2-Er-9xA" firstAttribute="centerX" secondItem="RuH-DW-St2" secondAttribute="centerX" id="XMN-NO-fTV"/>
                             <constraint firstItem="Ac5-7Q-Lb0" firstAttribute="leading" secondItem="Ane-wD-tRU" secondAttribute="leading" id="aBq-Wd-aFY"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="top" secondItem="o5c-dw-dse" secondAttribute="bottom" constant="26" id="aoY-kg-6fC"/>
+                            <constraint firstItem="v79-TG-NBY" firstAttribute="firstBaseline" secondItem="RuH-DW-St2" secondAttribute="baseline" constant="34" symbolType="layoutAnchor" id="b1z-LM-CZg"/>
                             <constraint firstItem="QtO-Zz-Wv6" firstAttribute="top" secondItem="7wo-61-CcP" secondAttribute="top" id="bn8-cw-tfF"/>
                             <constraint firstItem="QtO-Zz-Wv6" firstAttribute="leading" secondItem="7wo-61-CcP" secondAttribute="trailing" constant="10" id="fSd-qV-iqM"/>
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="top" secondItem="S8t-Qw-lMN" secondAttribute="bottom" constant="-173" id="gS6-2Z-xmT"/>
                             <constraint firstItem="fLw-Od-RqD" firstAttribute="top" secondItem="MNT-hy-DPg" secondAttribute="top" id="gbp-bX-Zmx"/>
                             <constraint firstItem="ihX-dx-uKN" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="trailing" constant="-160" id="hOw-aJ-frz"/>
-                            <constraint firstItem="v79-TG-NBY" firstAttribute="top" secondItem="S8t-Qw-lMN" secondAttribute="bottom" constant="-318" id="iLU-0X-zF7"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="kJA-gz-Dmh"/>
                             <constraint firstItem="Za6-7j-185" firstAttribute="width" secondItem="S8t-Qw-lMN" secondAttribute="width" id="lxk-Gf-Oib"/>
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="top" secondItem="Ac5-7Q-Lb0" secondAttribute="bottom" constant="28" id="miX-y5-NSL"/>

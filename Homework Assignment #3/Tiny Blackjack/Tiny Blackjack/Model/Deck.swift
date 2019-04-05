@@ -25,9 +25,11 @@ class Deck {
     }
 
     private func generateDeck() {
+        var cardIndex: Int = 1
         for suit in Suit.allCases {
             for rank in Rank.allCases {
-                cards.append(Card(suit, rank))
+                cards.append(Card(suit, rank, cardIndex))
+                cardIndex += 1
             }
         }
     }

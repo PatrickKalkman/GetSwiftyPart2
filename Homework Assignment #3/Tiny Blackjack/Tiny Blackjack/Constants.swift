@@ -14,14 +14,18 @@ struct Constants {
     struct Animation {
         static let FlipCardDuration: Double = 0.4
         static let DealCardDuraction: Double = 0.8
+        static let SplitMoveCardDuration: Double = 0.4
     }
 
     struct Positions {
-        static let FirstDealerCard: CGPoint = CGPoint(x: 400, y: 80)
+        static let FirstCardX: CGFloat = 400
+        static let CardXDifference: CGFloat = 40
+        static let FirstCardY: CGFloat = 450
+        static let FirstDealerCard: CGPoint = CGPoint(x: FirstCardX, y: 80)
         static let SecondDealerCard: CGPoint = CGPoint(x: 440, y: 80)
-        static let FirstPlayerCard: CGPoint = CGPoint(x: 400, y: 500)
-        static let SecondPlayerCard: CGPoint = CGPoint(x: 440, y: 500)
-        static let PlayerValueLabel: CGPoint = CGPoint(x: 450, y: 450)
+        static let FirstPlayerCard: CGPoint = CGPoint(x: FirstCardX, y: FirstCardY)
+        static let SecondPlayerCard: CGPoint = CGPoint(x: FirstCardX + CardXDifference, y: FirstCardY)
+        static let PlayerValueLabel: CGPoint = CGPoint(x: 450, y: FirstCardY - 50)
         static let DealerValueLabel: CGPoint = CGPoint(x: 450, y: 20)
     }
 

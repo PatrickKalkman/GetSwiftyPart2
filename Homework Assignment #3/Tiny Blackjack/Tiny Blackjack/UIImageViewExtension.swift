@@ -12,6 +12,11 @@ extension UIImageView {
     func setOrigin(_ originToSet: CGPoint) {
         self.frame.origin = originToSet
     }
+    
+    func moveXY(_ toMoveX: CGFloat, _ toMoveY: CGFloat) {
+        self.frame.origin.x += toMoveX
+        self.frame.origin.y += toMoveY
+    }
 
 }
 

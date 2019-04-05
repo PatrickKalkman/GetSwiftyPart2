@@ -39,7 +39,8 @@ class GameStateMachine {
         machine.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
         machine.addRoutes(event: .bustPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
         machine.addRoutes(event: .splitPlayerHand, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySplitHand]) { _ in self.splitHand() }
-        machine.addRoutes(event: .playerHandSplitted, transitions: [GameStates.playersPlaySplitHand => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .playerHandSplitted, transitions: [GameStates.playersPlaySplitHand => GameStates.showSplittedHand]) { _ in self.showSplittedHand() }
+        machine.addRoutes(event: .playerShowSplittedHandFinished, transitions: [GameStates.showSplittedHand => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
         machine.addRoutes(event: .doubleDownPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlayDoubleDown]) { _ in self.playerDoubleDown() }
         machine.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlayDoubleDown => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
         machine.addRoutes(event: .hitDealer, transitions: [GameStates.dealerPlayGetChoice => GameStates.dealerPlayHit]) { _ in self.hitDealer() }
@@ -114,6 +115,10 @@ class GameStateMachine {
 
     func splitHand() {
         self.gameEngine.splitHand()
+    }
+    
+    func showSplittedHand() {
+        self.gameEngine.showSplittedHand()
     }
 
     func hitDealer() {

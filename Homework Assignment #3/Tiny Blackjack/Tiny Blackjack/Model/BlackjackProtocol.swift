@@ -25,6 +25,7 @@ protocol BlackjackProtocol {
     func hitPlayer()
     func playerDoubleDown()
     func splitHand()
+    func showSplittedHand()
     func hitDealer()
     func distributeBets()
     func dealerStart()

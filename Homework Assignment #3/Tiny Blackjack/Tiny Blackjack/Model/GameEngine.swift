@@ -23,7 +23,6 @@ class GameEngine: BlackjackProtocol {
     private var gameResultCalculator: GameResultCalculator
     private var numberOfPlayers: UInt8 = 0
     
-
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
                 self.playResult = [HandResult]()
         self.gameResultCalculator = gameResultCalculator
@@ -43,12 +42,32 @@ class GameEngine: BlackjackProtocol {
         return players[playerIndex].getHand(handIndex: handIndex).getCard(cardIndex: cardIndex)
     }
     
-    func getPlayerValue(playerIndex: Int, handIndex: Int) -> UInt8 {
-        return players[playerIndex].getHand(handIndex: handIndex).getValue()
+    func getCurrentHand() -> Hand {
+        return currentHand
     }
     
-    func getDealerValue() -> UInt8 {
-        return dealer.getHand(handIndex: 0).getValue()
+    func getNextHand() -> Hand {
+        return currentPlayer.getHand(handIndex: currentPlayerHandIndex)
+    }
+    
+    func getPlayerValueString() -> String {
+        return getHandValueString(hand: currentHand)
+    }
+    
+    func getDealerValueString() -> String {
+        return getHandValueString(hand: dealer.getHand(handIndex: 0))
+    }
+    
+    private func getHandValueString(hand: Hand) ->  String {
+        var valueString: String = String(hand.getValue())
+        
+        if hand.isBusted() {
+            valueString += " (busted)"
+        } else if hand.isBlackjack() {
+            valueString += " (blackjack)"
+        }
+        
+        return valueString
     }
     
     func getDealerCard(cardIndex: Int) -> Card {
@@ -105,7 +124,8 @@ class GameEngine: BlackjackProtocol {
         for cardCount in 1...2 {
             for player in players {
                 let card: Card = deck.draw()
-                player.add(handIndex: 0, card: card)
+                let card2: Card = Card(card.suit, Rank.king, card.index)
+                player.add(handIndex: 0, card: card2)
             }
             let card: Card = deck.draw()
             if cardCount == 2 {
@@ -143,7 +163,6 @@ class GameEngine: BlackjackProtocol {
         }
     }
 
-
     func selectHand() {
         if currentPlayerHandIndex < currentPlayer.numberOfHands() {
             currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
@@ -153,6 +172,7 @@ class GameEngine: BlackjackProtocol {
             currentPlayerIndex += 1
             triggerEvent(GameEvents.playerHandsFinished)
         }
+        blackjackView?.selectHand()
     }
     
     let waitUntilUserInput = DispatchSemaphore(value: 1)
@@ -179,9 +199,15 @@ class GameEngine: BlackjackProtocol {
             }
         } else if isCurrentHandBlackjack() {
             triggerEvent(GameEvents.playerHasBlackjack)
+        } else if isCurrentHandBusted() {
+            triggerEvent(GameEvents.bustPlayer)
         } else if currentHandCanSplit() {
             blackjackView?.enableSplit()
         }
+    }
+    
+    func showSplittedHand() {
+        blackjackView?.showSplittedHand()
     }
     
     func isCurrentHandBusted() -> Bool {
@@ -192,13 +218,13 @@ class GameEngine: BlackjackProtocol {
         return currentHand.isBlackjack()
     }
     
+    func isDealerBusted() -> Bool {
+        return dealer.getHand(handIndex: 0).isBusted()
+    }
+    
     func currentHandCanSplit() -> Bool {
         return currentHand.count == 2 &&
             currentHand.getCard(cardIndex: 0).rank == currentHand.getCard(cardIndex: 1).rank
-    }
-    
-    func isDealerBusted() -> Bool {
-        return dealer.getHand(handIndex: 0).isBusted()
     }
     
     func dealerGetChoice() {
@@ -226,7 +252,6 @@ class GameEngine: BlackjackProtocol {
         let card: Card = deck.draw()
         currentPlayer.add(handIndex: currentPlayerHandIndex - 1, card: card)
         blackjackView?.hitPlayer()
-        triggerEvent(GameEvents.playerChoose)
     }
 
     func playerDoubleDown() {
@@ -238,9 +263,11 @@ class GameEngine: BlackjackProtocol {
     }
 
     func splitHand() {
-        // double the bet on the new hand
+        // TODO add the current bet also on the new hand
         currentPlayer.split(handIndex: currentPlayerHandIndex - 1)
         currentPlayerHandIndex = 0
+        currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
+        currentPlayerHandIndex = 1
         triggerEvent(GameEvents.playerHandSplitted)
     }
 

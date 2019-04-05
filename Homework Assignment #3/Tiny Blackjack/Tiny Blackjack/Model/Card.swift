@@ -11,11 +11,13 @@ import Foundation
 class Card {
     let suit: Suit
     let rank: Rank
+    let index: Int
     var faceUp: Bool = true
 
-    init(_ suit: Suit, _ rank: Rank) {
+    init(_ suit: Suit, _ rank: Rank, _ index: Int) {
         self.suit = suit
         self.rank = rank
+        self.index = index
     }
 
     var lowValue: UInt8 {
