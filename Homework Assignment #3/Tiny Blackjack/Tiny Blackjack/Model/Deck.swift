@@ -32,6 +32,7 @@ class Deck {
                 cardIndex += 1
             }
         }
+        print("max cardIndex: \(cardIndex)")
     }
 
     func shuffle() {

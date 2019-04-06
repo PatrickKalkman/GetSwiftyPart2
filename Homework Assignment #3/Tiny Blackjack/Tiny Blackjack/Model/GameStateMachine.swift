@@ -50,11 +50,18 @@ class GameStateMachine {
         machine.addRoutes(event: .resultsCalculated, transitions: [GameStates.calculateResult => GameStates.distributeBets]) { _ in self.distributeBets() }
         machine.addRoutes(event: .resultsCalculated, transitions: [GameStates.dealerPlayGetChoice => GameStates.distributeBets]) { _ in self.distributeBets() }
         machine.addRoutes(event: .nextRound, transitions: [GameStates.distributeBets => GameStates.checkingDeck]) { _ in self.checkDeck() }
+        
+        // add errorHandler
+        machine.addErrorHandler { context in
+            print("[ERROR] \(context.fromState) => \(context.toState) => \(context.event ?? GameEvents.start)")
+        }
     }
 
     func triggerEvent(_ event: GameEvents) {
+        print("In state: \(self.machine.state)")
         print("Trigger \(event)")
         self.machine <-! event
+        print("In state: \(self.machine.state)")
     }
 
     func start() {

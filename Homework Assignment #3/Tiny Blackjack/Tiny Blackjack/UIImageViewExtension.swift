@@ -17,6 +17,15 @@ extension UIImageView {
         self.frame.origin.x += toMoveX
         self.frame.origin.y += toMoveY
     }
+    
+    func moveX(_ toMoveX: CGFloat) {
+        self.frame.origin.x += toMoveX
+    }
+    
+    func moveToXDeltaY(_ toX: CGFloat, _ toMoveY: CGFloat) {
+        self.frame.origin.x = toX
+        self.frame.origin.y += toMoveY
+    }
 
 }
 

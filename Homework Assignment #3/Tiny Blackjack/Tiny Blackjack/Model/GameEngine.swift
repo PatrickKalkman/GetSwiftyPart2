@@ -18,7 +18,7 @@ class GameEngine: BlackjackProtocol {
     private var blackjackView: BlackjackViewProtocol?
     private var currentPlayerIndex: Int = 0
     private var currentPlayer: Player!
-    private var currentHand: Hand!
+    private var currentHand: Hand?
     private var currentPlayerHandIndex: Int = 0
     private var gameResultCalculator: GameResultCalculator
     private var numberOfPlayers: UInt8 = 0
@@ -42,16 +42,23 @@ class GameEngine: BlackjackProtocol {
         return players[playerIndex].getHand(handIndex: handIndex).getCard(cardIndex: cardIndex)
     }
     
-    func getCurrentHand() -> Hand {
+    func getCurrentHand() -> Hand? {
         return currentHand
     }
     
     func getNextHand() -> Hand {
-        return currentPlayer.getHand(handIndex: currentPlayerHandIndex)
+        return currentPlayer.getHand(handIndex: currentPlayerHandIndex + 1)
+    }
+    
+    func getPreviousHand() -> Hand {
+        return currentPlayer.getHand(handIndex: currentPlayerHandIndex - 1)
     }
     
     func getPlayerValueString() -> String {
-        return getHandValueString(hand: currentHand)
+        if let hand = currentHand {
+            return getHandValueString(hand: hand)
+        }
+        return ""
     }
     
     func getDealerValueString() -> String {
@@ -164,22 +171,34 @@ class GameEngine: BlackjackProtocol {
     }
 
     func selectHand() {
+        print("CurrentPlayerHandIndex \(currentPlayerHandIndex )")
         if currentPlayerHandIndex < currentPlayer.numberOfHands() {
+            
             currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
+            
             currentPlayerHandIndex += 1
             triggerEvent(GameEvents.playerHandSelected)
+            
+            if currentPlayerHandIndex > 1 {
+                let previousHand: Hand = currentPlayer.getHand(handIndex: currentPlayerHandIndex - 2)
+                blackjackView?.selectHand(cardIndex: 1, previousHand: previousHand, currentHand: currentHand)
+            } else {
+                blackjackView?.selectHand(cardIndex: 1, previousHand: nil, currentHand: nil)
+            }
+  
         } else {
             currentPlayerIndex += 1
             triggerEvent(GameEvents.playerHandsFinished)
         }
-        blackjackView?.selectHand()
     }
     
     let waitUntilUserInput = DispatchSemaphore(value: 1)
 
     func playerGetChoice() {
         if !currentPlayer.isHuman {
-            let action: ProposedAction = currentPlayer.askAction(ownHand: currentHand,
+            guard let hand = currentHand else { return }
+            
+            let action: ProposedAction = currentPlayer.askAction(ownHand: hand,
                                                                  dealerHand: dealer.getHand(handIndex: 0))
             switch action {
             case ProposedAction.hit:
@@ -211,11 +230,17 @@ class GameEngine: BlackjackProtocol {
     }
     
     func isCurrentHandBusted() -> Bool {
-        return currentHand.isBusted()
+        if let hand = currentHand {
+            return hand.isBusted()
+        }
+        return false
     }
     
     func isCurrentHandBlackjack() -> Bool {
-        return currentHand.isBlackjack()
+        if let hand = currentHand {
+            return hand.isBlackjack()
+        }
+        return false
     }
     
     func isDealerBusted() -> Bool {
@@ -223,8 +248,10 @@ class GameEngine: BlackjackProtocol {
     }
     
     func currentHandCanSplit() -> Bool {
-        return currentHand.count == 2 &&
-            currentHand.getCard(cardIndex: 0).rank == currentHand.getCard(cardIndex: 1).rank
+        if let hand = currentHand {
+            return hand.canSplit()
+        }
+        return false
     }
     
     func dealerGetChoice() {
@@ -250,7 +277,8 @@ class GameEngine: BlackjackProtocol {
 
     func hitPlayer() {
         let card: Card = deck.draw()
-        currentPlayer.add(handIndex: currentPlayerHandIndex - 1, card: card)
+        let cardTest: Card = Card(card.suit, Rank.king, card.index)
+        currentPlayer.add(handIndex: currentPlayerHandIndex - 1, card: cardTest)
         blackjackView?.hitPlayer()
     }
 
@@ -267,7 +295,7 @@ class GameEngine: BlackjackProtocol {
         currentPlayer.split(handIndex: currentPlayerHandIndex - 1)
         currentPlayerHandIndex = 0
         currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
-        currentPlayerHandIndex = 1
+        //currentPlayerHandIndex = 1
         triggerEvent(GameEvents.playerHandSplitted)
     }
 

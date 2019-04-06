@@ -16,7 +16,8 @@ class Player {
     var lastProposedAction: ProposedAction = ProposedAction.dontknow
     var isDealer: Bool
     var isHuman: Bool
-
+    var currentHandIndex: Int = 0
+    
     func numberOfCards(handIndex: Int) -> Int {
         return hands[handIndex].count
     }
@@ -79,10 +80,10 @@ class Player {
 
         let handToSplit: Hand = hands[handIndex]
         if handToSplit.count == 2 && hands[handIndex].containsSameRank() {
-            let card: Card = handToSplit.remove(cardIndex: 1)
+            let card: Card = handToSplit.remove(cardIndex: 0)
             let splittedHand: Hand = Hand()
             splittedHand.add(card)
-            hands.append(splittedHand)
+            hands.insert(splittedHand, at: handIndex + 1)
         }
     }
 

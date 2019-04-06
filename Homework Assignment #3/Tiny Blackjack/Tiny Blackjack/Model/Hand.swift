@@ -111,4 +111,13 @@ class Hand {
     func remove(cardIndex: Int) -> Card {
         return cards.remove(at: cardIndex)
     }
+    
+    func getAllCardsIndex() -> [Int] {
+        return cards.map { $0.index }
+    }
+    
+    func canSplit() -> Bool {
+        return cards.count == 2 &&
+           cards[0].rank == cards[0].rank
+    }
 }

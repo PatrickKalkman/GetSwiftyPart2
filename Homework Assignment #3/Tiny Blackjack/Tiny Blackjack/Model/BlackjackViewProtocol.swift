@@ -17,7 +17,7 @@ protocol BlackjackViewProtocol {
     func showDealerHasBlackjack()
     func selectPlayer()
     func calculateResult()
-    func selectHand()
+    func selectHand(cardIndex: Int, previousHand: Hand?, currentHand: Hand?)
     func playerGetChoice()
     func dealerGetChoice()
     func hitPlayer()
