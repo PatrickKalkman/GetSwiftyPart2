@@ -28,21 +28,27 @@ class GameStateMachine {
         machine.addRoutes(event: .dealerHasNoBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.playersPlaySelectPlayer]) { _ in self.selectPlayer() }
         machine.addRoutes(event: .dealerHasBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.showDealerBlackjack]) { _ in self.showDealerBlackjack() }
         machine.addRoutes(event: .dealerHasBlackjackIsShown, transitions: [GameStates.showDealerBlackjack => GameStates.calculateResult]) { _ in self.calculateResult() }
-        machine.addRoutes(event: .playerSelected, transitions: [GameStates.playersPlaySelectPlayer => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .playerSelected, transitions: [GameStates.playersPlaySelectPlayer => GameStates.playersPlaySelectHand]) { _ in self.selectHand(justSplitted: false) }
         machine.addRoutes(event: .allPlayersFinished, transitions: [GameStates.playersPlaySelectPlayer => GameStates.dealerStart]) { _ in self.dealerStart() }
         machine.addRoutes(event: .turnDealerCardFaceUp, transitions: [GameStates.dealerStart => GameStates.dealerPlayGetChoice]) { _ in self.dealerGetChoice() }
+        
         machine.addRoutes(event: .playerHandSelected, transitions: [GameStates.playersPlaySelectHand => GameStates.playersPlayGetChoice]) { _ in self.playerGetChoice() }
         machine.addRoutes(event: .playerHandsFinished, transitions: [GameStates.playersPlaySelectHand => GameStates.playersPlaySelectPlayer]) { _ in self.selectPlayer() }
         machine.addRoutes(event: .hitPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlayHit]) { _ in self.hitPlayer() }
+        
         machine.addRoutes(event: .playerChoose, transitions: [GameStates.playersPlayHit => GameStates.playersPlayGetChoice]) { _ in self.playerGetChoice() }
-        machine.addRoutes(event: .playerHasBlackjack, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
-        machine.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
-        machine.addRoutes(event: .bustPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
+        
+        machine.addRoutes(event: .playerHasBlackjack, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand(justSplitted: false) }
+        machine.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand(justSplitted: false) }
+        machine.addRoutes(event: .bustPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySelectHand]) { _ in self.selectHand(justSplitted: false) }
         machine.addRoutes(event: .splitPlayerHand, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlaySplitHand]) { _ in self.splitHand() }
+        
         machine.addRoutes(event: .playerHandSplitted, transitions: [GameStates.playersPlaySplitHand => GameStates.showSplittedHand]) { _ in self.showSplittedHand() }
-        machine.addRoutes(event: .playerShowSplittedHandFinished, transitions: [GameStates.showSplittedHand => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
-        machine.addRoutes(event: .doubleDownPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlayDoubleDown]) { _ in self.playerDoubleDown() }
-        machine.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlayDoubleDown => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
+        machine.addRoutes(event: .playerShowSplittedHandFinished, transitions: [GameStates.showSplittedHand => GameStates.playersPlaySelectHand]) { _ in self.selectHand(justSplitted: true) }
+        
+//        machine.addRoutes(event: .doubleDownPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlayDoubleDown]) { _ in self.playerDoubleDown() }
+//        machine.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlayDoubleDown => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
+//
         machine.addRoutes(event: .hitDealer, transitions: [GameStates.dealerPlayGetChoice => GameStates.dealerPlayHit]) { _ in self.hitDealer() }
         machine.addRoutes(event: .standDealer, transitions: [GameStates.dealerPlayGetChoice => GameStates.calculateResult]) { _ in self.calculateResult() }
         machine.addRoutes(event: .dealerChoose, transitions: [GameStates.dealerPlayHit => GameStates.dealerPlayGetChoice]) { _ in self.dealerGetChoice() }
@@ -58,10 +64,8 @@ class GameStateMachine {
     }
 
     func triggerEvent(_ event: GameEvents) {
-        print("In state: \(self.machine.state)")
-        print("Trigger \(event)")
+        print("--< In state: \(self.machine.state), trigger \(event)")
         self.machine <-! event
-        print("In state: \(self.machine.state)")
     }
 
     func start() {
@@ -100,8 +104,8 @@ class GameStateMachine {
         self.gameEngine.calculateResult()
     }
 
-    func selectHand() {
-        self.gameEngine.selectHand()
+    func selectHand(justSplitted: Bool) {
+        self.gameEngine.selectHand(justSplitted: justSplitted)
     }
 
     func playerGetChoice() {

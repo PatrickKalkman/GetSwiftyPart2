@@ -131,8 +131,7 @@ class GameEngine: BlackjackProtocol {
         for cardCount in 1...2 {
             for player in players {
                 let card: Card = deck.draw()
-                let card2: Card = Card(card.suit, Rank.king, card.index)
-                player.add(handIndex: 0, card: card2)
+                player.add(handIndex: 0, card: card)
             }
             let card: Card = deck.draw()
             if cardCount == 2 {
@@ -170,16 +169,15 @@ class GameEngine: BlackjackProtocol {
         }
     }
 
-    func selectHand() {
+    func selectHand(justSplitted: Bool) {
         print("CurrentPlayerHandIndex \(currentPlayerHandIndex )")
         if currentPlayerHandIndex < currentPlayer.numberOfHands() {
             
             currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
             
             currentPlayerHandIndex += 1
-            triggerEvent(GameEvents.playerHandSelected)
             
-            if currentPlayerHandIndex > 1 {
+            if currentPlayerHandIndex > 1 && !justSplitted {
                 let previousHand: Hand = currentPlayer.getHand(handIndex: currentPlayerHandIndex - 2)
                 blackjackView?.selectHand(cardIndex: 1, previousHand: previousHand, currentHand: currentHand)
             } else {
@@ -191,8 +189,6 @@ class GameEngine: BlackjackProtocol {
             triggerEvent(GameEvents.playerHandsFinished)
         }
     }
-    
-    let waitUntilUserInput = DispatchSemaphore(value: 1)
 
     func playerGetChoice() {
         if !currentPlayer.isHuman {
@@ -292,10 +288,10 @@ class GameEngine: BlackjackProtocol {
 
     func splitHand() {
         // TODO add the current bet also on the new hand
+        print("Splitting hand \(currentPlayerHandIndex - 1)")
         currentPlayer.split(handIndex: currentPlayerHandIndex - 1)
-        currentPlayerHandIndex = 0
+        currentPlayerHandIndex = currentPlayerHandIndex - 1
         currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
-        //currentPlayerHandIndex = 1
         triggerEvent(GameEvents.playerHandSplitted)
     }
 

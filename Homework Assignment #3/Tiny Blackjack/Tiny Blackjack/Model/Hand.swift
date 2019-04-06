@@ -118,6 +118,6 @@ class Hand {
     
     func canSplit() -> Bool {
         return cards.count == 2 &&
-           cards[0].rank == cards[0].rank
+           cards[0].rank == cards[1].rank
     }
 }

@@ -19,7 +19,7 @@ protocol BlackjackProtocol {
     func showDealerBlackjack()
     func selectPlayer()
     func calculateResult()
-    func selectHand()
+    func selectHand(justSplitted: Bool)
     func playerGetChoice()
     func dealerGetChoice()
     func hitPlayer()

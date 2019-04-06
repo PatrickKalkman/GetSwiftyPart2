@@ -120,6 +120,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         splitButton.isHidden = false
     }
 
+
     var dealerCard2ImageView: UIImageView!
 
     func dealCards() {
@@ -187,13 +188,13 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         // Hand is splitted
         let nextHand = gameEngine.getNextHand()
         moveHand(handToMove: nextHand, xMove: 0, yMove: 210, completion: { _ in
-            self.gameEngine.triggerEvent(GameEvents.playerShowSplittedHandFinished)
-            self.organizeUiBasedOnState(state: GameStates.dealCards)
-            self.playerCardIndex = 1
+            let currentHand = self.gameEngine.getCurrentHand()
+            self.moveHand(handToMove: currentHand, xMove: -40, yMove: 0, completion: { _ in
+                self.gameEngine.triggerEvent(GameEvents.playerShowSplittedHandFinished)
+                self.organizeUiBasedOnState(state: GameStates.dealCards)
+                self.playerCardIndex = 1
+            })
         })
-        
-        let currentHand = gameEngine.getCurrentHand()
-        moveHand(handToMove: currentHand, xMove: -40, yMove: 0)
     }
 
     func dealerBlackjackTest() {
@@ -220,16 +221,22 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     }
 
     func selectHand(cardIndex: Int, previousHand: Hand?, currentHand: Hand?) {
-        playerCardIndex = cardIndex
-
-        moveHand(handToMove: previousHand, xMove: -360, yMove: -130)
         
-        moveHand(handToMove: currentHand, xMove: 0, yMove: -190, completion: { _ in
+
+        self.moveHand(handToMove: previousHand, xMove: -360, yMove: -130, completion: { _ in
+            self.playerCardIndex = cardIndex
             self.showAndRefreshValues()
         })
+        
+        moveHand(handToMove: currentHand, xMove: 0, yMove: -210, completion: { _ in
 
+        })
+        
         // Move previous hand to side spot and move current to main spot
         print("Select hand with cardIndex \(cardIndex)")
+        
+        self.gameEngine.triggerEvent(GameEvents.playerHandSelected)
+        
     }
     
 
