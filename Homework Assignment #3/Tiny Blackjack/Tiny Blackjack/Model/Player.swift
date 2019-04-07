@@ -18,8 +18,35 @@ class Player {
     var isHuman: Bool
     var currentHandIndex: Int = 0
     
+    var moneyAvailable: Wallet = Wallet()
+    var moneyBet: Wallet = Wallet()
+    
     func numberOfCards(handIndex: Int) -> Int {
         return hands[handIndex].count
+    }
+    
+    func addChipsToWallet(chipsToAdd: [Chip]) {
+        moneyAvailable.add(chipsToAdd)
+    }
+    
+    func betChip(chipToBet: Chip) -> Bool {
+        if moneyAvailable.hasChip(chipToBet) {
+            moneyAvailable.remove(chipToBet)
+            moneyBet.add(chipToBet)
+            return true
+        }
+        return false
+    }
+    
+    func removeBet(chipToRemove: Chip) {
+        if moneyBet.hasChip(chipToRemove) {
+            moneyBet.remove(chipToRemove)
+            moneyAvailable.add(chipToRemove)
+        }
+    }
+    
+    func clearBet() {
+        moneyBet.clear()
     }
 
     func numberOfHands() -> Int {

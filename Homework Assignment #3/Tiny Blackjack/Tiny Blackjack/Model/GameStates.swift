@@ -14,7 +14,8 @@ enum GameStates: StateType {
     case started
     case shuffleDeck
     case checkingDeck
-    case placeBets
+    case playersBetSelectPlayer
+    case allBetsPlaced
     case dealCards
     case dealerBlackjackTest
     case showDealerBlackjack

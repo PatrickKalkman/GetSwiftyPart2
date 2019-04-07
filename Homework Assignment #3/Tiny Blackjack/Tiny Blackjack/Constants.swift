@@ -15,6 +15,7 @@ struct Constants {
         static let FlipCardDuration: Double = 0.4
         static let DealCardDuraction: Double = 0.8
         static let SplitMoveCardDuration: Double = 0.4
+        static let PlaceBetDuraction: Double = 0.3
     }
 
     struct Positions {

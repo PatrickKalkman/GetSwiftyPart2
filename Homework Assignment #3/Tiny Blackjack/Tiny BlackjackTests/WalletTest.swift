@@ -13,33 +13,60 @@ import XCTest
 
 class WalletTest: XCTestCase {
     
-    func test_add_ChipRed() {
+    func test_emptyWallet_returns_totalValue_0() {
+        let wallet: Wallet = Wallet()
+        XCTAssertEqual(wallet.totalValue(), 0)
+    }
+    
+    func test_add_chipDarkBlue() {
         let wallet: Wallet = Wallet()
         wallet.add(Chip.DarkBlue)
         XCTAssertEqual(wallet.totalValue(), 100)
     }
     
-}
-
-class Wallet {
-    
-    var chips: [Chip] = [Chip]()
-    
-    func add(_ chip: Chip) {
-        chips.append(chip)
+    func test_add_two_chips() {
+        let wallet: Wallet = Wallet()
+        wallet.add(Chip.DarkBlue)
+        wallet.add(Chip.LightRed)
+        XCTAssertEqual(wallet.totalValue(), 101)
     }
     
-    func totalValue() -> UInt8 {
-        return chips.reduce(0) { $0 + $1.rawValue }
+    func test_remove_chip() {
+        let wallet: Wallet = Wallet()
+        wallet.add(Chip.DarkBlue)
+        wallet.remove(Chip.DarkBlue)
+        XCTAssertEqual(wallet.totalValue(), 0)
     }
     
-}
+    func test_hasChip_whenChipExists() {
+        let wallet: Wallet = Wallet()
+        wallet.add(Chip.DarkBlue)
+        XCTAssertTrue(wallet.hasChip(Chip.DarkBlue))
+    }
+    
+    func test_hasChip_whenChipDoesNotExists() {
+        let wallet: Wallet = Wallet()
+        wallet.add(Chip.DarkBlue)
+        XCTAssertFalse(wallet.hasChip(Chip.DarkRed))
+    }
+    
+    func test_clear_removesAllFromWallet() {
+        let wallet: Wallet = Wallet()
+        wallet.add(Chip.DarkBlue)
+        wallet.add(Chip.LightRed)
+        wallet.clear()
+        XCTAssertEqual(wallet.totalValue(), 0)
+    }
+    
+    func test_canAddMultipleChipsAtOnce() {
+        
+        var chips: [Chip] = [Chip]()
+        chips.append(Chip.DarkRed)
+        chips.append(Chip.LightBlue)
+        
+        let wallet: Wallet = Wallet()
+        wallet.add(chips)
 
-enum Chip: UInt8 {
-    case LightRed = 1
-    case Pink = 5
-    case LightBlue = 10
-    case Purple = 25
-    case DarkRed = 50
-    case DarkBlue = 100
+        XCTAssertTrue(wallet.hasChip(Chip.DarkRed))
+    }
 }

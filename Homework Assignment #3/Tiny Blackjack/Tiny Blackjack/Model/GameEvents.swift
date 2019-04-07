@@ -15,7 +15,9 @@ enum GameEvents: EventType {
     case checked
     case shuffle
     case shuffled
+    case playerBetPlaced
     case betsPlaced
+    case dealCards
     case dealt
     case dealerBlackjackTest
     case dealerHasNoBlackjack

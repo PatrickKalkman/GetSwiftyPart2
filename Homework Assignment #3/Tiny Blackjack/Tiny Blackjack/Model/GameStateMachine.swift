@@ -22,8 +22,12 @@ class GameStateMachine {
         machine.addRoutes(event: .start, transitions: [GameStates.waitingForStart => GameStates.started]) { _ in self.start() }
         machine.addRoutes(event: .shuffle, transitions: [GameStates.started => GameStates.shuffleDeck]) { _ in self.shuffle() }
         machine.addRoutes(event: .shuffled, transitions: [GameStates.shuffleDeck => GameStates.checkingDeck]) { _ in self.checkDeck() }
-        machine.addRoutes(event: .checked, transitions: [GameStates.checkingDeck => GameStates.placeBets]) { _ in self.placeBets() }
-        machine.addRoutes(event: .betsPlaced, transitions: [GameStates.placeBets => GameStates.dealCards]) { _ in self.dealCards() }
+
+        machine.addRoutes(event: .checked, transitions: [GameStates.checkingDeck => GameStates.playersBetSelectPlayer]) { _ in self.placeBet() }
+        machine.addRoutes(event: .playerBetPlaced, transitions: [GameStates.playersBetSelectPlayer => GameStates.playersBetSelectPlayer]) { _ in self.placeBet() }
+        machine.addRoutes(event: .betsPlaced, transitions: [GameStates.playersBetSelectPlayer => GameStates.allBetsPlaced]) { _ in self.allBetsPlaced() }
+        machine.addRoutes(event: .dealCards, transitions: [GameStates.allBetsPlaced => GameStates.dealCards]) { _ in self.dealCards() }
+        
         machine.addRoutes(event: .dealt, transitions: [GameStates.dealCards => GameStates.dealerBlackjackTest]) { _ in self.dealerBlackjackTest() }
         machine.addRoutes(event: .dealerHasNoBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.playersPlaySelectPlayer]) { _ in self.selectPlayer() }
         machine.addRoutes(event: .dealerHasBlackjack, transitions: [GameStates.dealerBlackjackTest => GameStates.showDealerBlackjack]) { _ in self.showDealerBlackjack() }
@@ -80,8 +84,12 @@ class GameStateMachine {
         self.gameEngine.checkDeck()
     }
 
-    func placeBets() {
-        self.gameEngine.placeBets()
+    func placeBet() {
+        self.gameEngine.placeBet()
+    }
+    
+    func allBetsPlaced() {
+        self.gameEngine.allBetsPlaced()
     }
 
     func dealCards() {

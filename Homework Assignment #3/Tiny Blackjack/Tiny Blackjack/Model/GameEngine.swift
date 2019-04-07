@@ -38,6 +38,26 @@ class GameEngine: BlackjackProtocol {
         gameState.triggerEvent(event)
     }
     
+    func addBet(chip: Chip) -> Bool {
+        return currentPlayer.betChip(chipToBet: chip)
+    }
+    
+    func removeBet(chip: Chip) {
+        currentPlayer.removeBet(chipToRemove: chip)
+    }
+
+    func isLastChip(chip: Chip) -> Bool {
+        return currentPlayer.moneyAvailable.isLastChip(chip)
+    }
+    
+    func getPlayerWalletTotal() -> UInt {
+        return currentPlayer.moneyAvailable.totalValue()
+    }
+    
+    func getPlayerBetTotal() -> UInt {
+        return currentPlayer.moneyBet.totalValue()
+    }
+    
     func getPlayerCard(playerIndex: Int, handIndex: Int, cardIndex: Int) -> Card {
         return players[playerIndex].getHand(handIndex: handIndex).getCard(cardIndex: cardIndex)
     }
@@ -99,8 +119,10 @@ class GameEngine: BlackjackProtocol {
         dealer = Player(name: "Dealer", strategy: DealerStrategy(), isDealer: true, isHuman: false)
         // Add the players
         for playerNumber in 1...numberOfPlayers {
-            players.append(Player(name: "Player \(playerNumber)", strategy: SimpleStrategy(),
-                                  isDealer: false, isHuman: true))
+            let player: Player = Player(name: "Player \(playerNumber)", strategy: SimpleStrategy(),
+                   isDealer: false, isHuman: true)
+            player.addChipsToWallet(chipsToAdd: generateInitialChips())
+            players.append(player)
         }
 
         triggerEvent(GameEvents.shuffle)
@@ -155,6 +177,24 @@ class GameEngine: BlackjackProtocol {
     
     func showDealerBlackjack() {
         blackjackView?.showDealerHasBlackjack()
+    }
+    
+    func placeBet() {
+        if currentPlayerIndex < players.count {
+            currentPlayer = players[currentPlayerIndex]
+            if !currentPlayer.isHuman {
+                currentPlayer.placeBets()
+                triggerEvent(GameEvents.playerBetPlaced)
+            } else {
+                // do nothing wait until signal from ui
+            }
+        } else {
+            triggerEvent(GameEvents.betsPlaced)
+        }
+    }
+    
+    func allBetsPlaced() {
+        
     }
 
     func selectPlayer() {
@@ -339,5 +379,50 @@ class GameEngine: BlackjackProtocol {
         }
         return (highestPlayer, highestHandIndex)
     }
+    
+    func getCurrentPlayerTotal() -> UInt {
+        if let player = currentPlayer {
+            return player.moneyAvailable.totalValue()
+        }
+        return 0
+    }
 
+    func generateInitialChips() -> [Chip] {
+        var chips: [Chip] = [Chip]()
+        
+        for _ in 1...5 {
+            chips.append(Chip.DarkBlue) // 500
+        }
+        
+        for _ in 1...5 {
+            chips.append(Chip.DarkRed) // 250
+        }
+        
+        for _ in 1...10 {
+            chips.append(Chip.Purple) // 250
+        }
+        
+        for _ in 1...14 {
+            chips.append(Chip.LightBlue) // 250
+        }
+        
+        for _ in 1...10 {
+            chips.append(Chip.Pink) // 250
+        }
+        
+        for _ in 1...10 {
+            chips.append(Chip.LightRed) // 250
+        }
+        
+        return chips
+    }
 }
+
+//enum Chip: UInt8 {
+//    case LightRed = 1
+//    case Pink = 5
+//    case LightBlue = 10
+//    case Purple = 25
+//    case DarkRed = 50
+//    case DarkBlue = 100
+//}

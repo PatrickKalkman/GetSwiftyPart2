@@ -192,6 +192,13 @@
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place your bets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9d-kw-iyy">
+                                <rect key="frame" x="408.5" y="167.5" width="207" height="33.5"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dealer wins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD2-Er-9xA">
                                 <rect key="frame" x="362" y="262" width="1024" height="30"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -206,7 +213,7 @@
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vck-sZ-kob">
+                            <button opaque="NO" tag="10100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vck-sZ-kob">
                                 <rect key="frame" x="220" y="568" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="DLj-kS-EMO"/>
@@ -219,7 +226,7 @@
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ifu-LK-lzF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRZ-3s-M2A">
+                            <button opaque="NO" tag="10050" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRZ-3s-M2A">
                                 <rect key="frame" x="120" y="568" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="FV3-uF-duz"/>
@@ -232,7 +239,7 @@
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ay-uq-mLT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-MD-UkA">
+                            <button opaque="NO" tag="10025" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-MD-UkA">
                                 <rect key="frame" x="20" y="568" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="0G1-AW-g8P"/>
@@ -245,7 +252,7 @@
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hsh-Yz-c8I"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5Y-Hv-JnN">
+                            <button opaque="NO" tag="10010" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5Y-Hv-JnN">
                                 <rect key="frame" x="220" y="668" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="EiS-2U-W2C"/>
@@ -258,7 +265,7 @@
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWw-Tf-gZT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bd-Uh-nPd">
+                            <button opaque="NO" tag="10005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bd-Uh-nPd">
                                 <rect key="frame" x="120" y="668" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="NXJ-rD-hca"/>
@@ -271,7 +278,7 @@
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUm-a0-kOM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-RF-qTg">
+                            <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-RF-qTg">
                                 <rect key="frame" x="20" y="668" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="12q-bz-sBT"/>
@@ -291,10 +298,10 @@
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place your bets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9d-kw-iyy">
-                                <rect key="frame" x="408.5" y="167.5" width="207" height="33.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag5-qC-PmX">
+                                <rect key="frame" x="120" y="227" width="63" height="30"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -308,6 +315,7 @@
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="top" secondItem="Ane-wD-tRU" secondAttribute="top" id="3y2-I3-ota"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="centerY" secondItem="Ane-wD-tRU" secondAttribute="centerY" id="4nU-3b-ZZU"/>
                             <constraint firstItem="RuH-DW-St2" firstAttribute="trailing" secondItem="S8t-Qw-lMN" secondAttribute="trailing" constant="-100" id="7ws-vP-1Fv"/>
+                            <constraint firstItem="S8t-Qw-lMN" firstAttribute="top" secondItem="Ag5-qC-PmX" secondAttribute="bottom" constant="-257" id="7yU-tP-osg"/>
                             <constraint firstItem="Za6-7j-185" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="leading" id="D0I-az-VWw"/>
                             <constraint firstItem="7Lx-SH-2wJ" firstAttribute="leading" secondItem="B5Y-Hv-JnN" secondAttribute="trailing" constant="20" id="EgN-nj-1xq"/>
                             <constraint firstItem="ihX-dx-uKN" firstAttribute="top" secondItem="S8t-Qw-lMN" secondAttribute="top" constant="40" id="GV4-4n-I1X"/>
@@ -339,6 +347,7 @@
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="top" secondItem="Ac5-7Q-Lb0" secondAttribute="bottom" constant="28" id="miX-y5-NSL"/>
                             <constraint firstItem="DRZ-3s-M2A" firstAttribute="leading" secondItem="aeu-MD-UkA" secondAttribute="trailing" constant="20" id="oUW-bd-XqS"/>
                             <constraint firstItem="fwA-RF-qTg" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="leading" constant="20" id="obI-3p-U9e"/>
+                            <constraint firstItem="S8t-Qw-lMN" firstAttribute="leading" secondItem="Ag5-qC-PmX" secondAttribute="trailing" constant="-183" id="pBS-V5-dEh"/>
                             <constraint firstItem="Za6-7j-185" firstAttribute="bottom" secondItem="S8t-Qw-lMN" secondAttribute="top" constant="50" id="pdU-b4-uiQ"/>
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="trailing" constant="-130" id="pj7-KS-rg8"/>
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="leading" secondItem="J1q-u4-aPO" secondAttribute="trailing" constant="27" id="rLh-OY-IyH"/>
@@ -361,6 +370,8 @@
                         <outlet property="lightRedChip" destination="fwA-RF-qTg" id="a3q-eQ-FMo"/>
                         <outlet property="pinkChip" destination="3Bd-Uh-nPd" id="3y9-Ra-Is0"/>
                         <outlet property="playResultLabel" destination="eD2-Er-9xA" id="CII-kz-C07"/>
+                        <outlet property="playerBetLabel" destination="Ag5-qC-PmX" id="YMk-ls-6PF"/>
+                        <outlet property="playerTotalLabel" destination="7Lx-SH-2wJ" id="ByZ-y3-cHz"/>
                         <outlet property="playerValueLabel" destination="v79-TG-NBY" id="IET-8k-MrC"/>
                         <outlet property="purpleChip" destination="aeu-MD-UkA" id="LVk-k4-sSo"/>
                         <outlet property="restartButton" destination="RuH-DW-St2" id="io6-2Y-Ddk"/>

@@ -45,6 +45,8 @@
 		AB97EFFF2247CBD400E45E6F /* ProposedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */; };
 		AB97F0012247F95600E45E6F /* DealerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97F0002247F95600E45E6F /* DealerStrategy.swift */; };
 		AB9955012259FFB300FB9596 /* WalletTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9955002259FFB300FB9596 /* WalletTest.swift */; };
+		AB995503225A161C00FB9596 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995502225A161C00FB9596 /* Wallet.swift */; };
+		AB995505225A164F00FB9596 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995504225A164F00FB9596 /* Chip.swift */; };
 		B207F370475E8E0BB123C1AC /* Pods_Tiny_BlackjackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +105,8 @@
 		AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposedAction.swift; sourceTree = "<group>"; };
 		AB97F0002247F95600E45E6F /* DealerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerStrategy.swift; sourceTree = "<group>"; };
 		AB9955002259FFB300FB9596 /* WalletTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTest.swift; sourceTree = "<group>"; };
+		AB995502225A161C00FB9596 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		AB995504225A164F00FB9596 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		CA38E29F8A3BAFED2058E669 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.release.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
 		E0C60877A48C2B275BA4AE84 /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_BlackjackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +217,7 @@
 			children = (
 				AB97EFFB2247CB8600E45E6F /* Strategy */,
 				AB97EFDC224557D300E45E6F /* Card.swift */,
+				AB995504225A164F00FB9596 /* Chip.swift */,
 				AB97EFDE2245580700E45E6F /* Suit.swift */,
 				AB97EFE02245583900E45E6F /* Rank.swift */,
 				AB97EFE4224563FE00E45E6F /* Deck.swift */,
@@ -227,6 +232,7 @@
 				AB129F4C22508B960025ECA1 /* GameResultCalculator.swift */,
 				AB129F522251438C0025ECA1 /* BlackjackViewProtocol.swift */,
 				AB129F5B225518550025ECA1 /* HandResult.swift */,
+				AB995502225A161C00FB9596 /* Wallet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,8 +447,10 @@
 				AB129F47224E4AF30025ECA1 /* GameStateMachine.swift in Sources */,
 				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
 				AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */,
+				AB995505225A164F00FB9596 /* Chip.swift in Sources */,
 				AB97EFF522475E1200E45E6F /* GameError.swift in Sources */,
 				AB129F49224E5E780025ECA1 /* GameEvents.swift in Sources */,
+				AB995503225A161C00FB9596 /* Wallet.swift in Sources */,
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
 				AB129F582255045C0025ECA1 /* UIImageViewExtension.swift in Sources */,
 				AB97EFED22461D6C00E45E6F /* Player.swift in Sources */,
