@@ -25,7 +25,7 @@
 		AB97EFBF22453BEB00E45E6F /* Tiny_Blackjack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFBD22453BEB00E45E6F /* Tiny_Blackjack.xcdatamodeld */; };
 		AB97EFC122453BEC00E45E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB97EFC022453BEC00E45E6F /* Assets.xcassets */; };
 		AB97EFC422453BEC00E45E6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97EFC222453BEC00E45E6F /* LaunchScreen.storyboard */; };
-		AB97EFDA22453DA400E45E6F /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFD922453DA400E45E6F /* CardTests.swift */; };
+		AB97EFDA22453DA400E45E6F /* CardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFD922453DA400E45E6F /* CardTest.swift */; };
 		AB97EFDD224557D300E45E6F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFDC224557D300E45E6F /* Card.swift */; };
 		AB97EFDF2245580700E45E6F /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFDE2245580700E45E6F /* Suit.swift */; };
 		AB97EFE12245583900E45E6F /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFE02245583900E45E6F /* Rank.swift */; };
@@ -44,6 +44,7 @@
 		AB97EFFD2247CBB000E45E6F /* BlackjackStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFC2247CBB000E45E6F /* BlackjackStrategy.swift */; };
 		AB97EFFF2247CBD400E45E6F /* ProposedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */; };
 		AB97F0012247F95600E45E6F /* DealerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97F0002247F95600E45E6F /* DealerStrategy.swift */; };
+		AB9955012259FFB300FB9596 /* WalletTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9955002259FFB300FB9596 /* WalletTest.swift */; };
 		B207F370475E8E0BB123C1AC /* Pods_Tiny_BlackjackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +83,7 @@
 		AB97EFC522453BEC00E45E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB97EFCA22453BEC00E45E6F /* Tiny BlackjackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tiny BlackjackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB97EFD022453BEC00E45E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB97EFD922453DA400E45E6F /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
+		AB97EFD922453DA400E45E6F /* CardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTest.swift; sourceTree = "<group>"; };
 		AB97EFDC224557D300E45E6F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AB97EFDE2245580700E45E6F /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		AB97EFE02245583900E45E6F /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		AB97EFFC2247CBB000E45E6F /* BlackjackStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackStrategy.swift; sourceTree = "<group>"; };
 		AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposedAction.swift; sourceTree = "<group>"; };
 		AB97F0002247F95600E45E6F /* DealerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerStrategy.swift; sourceTree = "<group>"; };
+		AB9955002259FFB300FB9596 /* WalletTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTest.swift; sourceTree = "<group>"; };
 		CA38E29F8A3BAFED2058E669 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.release.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
 		E0C60877A48C2B275BA4AE84 /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_BlackjackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,13 +196,14 @@
 			isa = PBXGroup;
 			children = (
 				AB97EFD022453BEC00E45E6F /* Info.plist */,
-				AB97EFD922453DA400E45E6F /* CardTests.swift */,
+				AB97EFD922453DA400E45E6F /* CardTest.swift */,
 				AB97EFE2224562D900E45E6F /* DeckTest.swift */,
 				AB97EFE82246048100E45E6F /* HandTest.swift */,
 				AB97EFEA22461CCB00E45E6F /* PlayerTest.swift */,
 				AB97EFF022461FC200E45E6F /* GameTest.swift */,
 				AB97EFF82247C7CD00E45E6F /* SimpleStrategyTest.swift */,
 				AB601D5D224DF48700B140D7 /* DealerStrategyTest.swift */,
+				AB9955002259FFB300FB9596 /* WalletTest.swift */,
 			);
 			path = "Tiny BlackjackTests";
 			sourceTree = "<group>";
@@ -462,8 +465,9 @@
 				AB97EFE92246048100E45E6F /* HandTest.swift in Sources */,
 				AB97EFF92247C7CD00E45E6F /* SimpleStrategyTest.swift in Sources */,
 				AB97EFF122461FC200E45E6F /* GameTest.swift in Sources */,
+				AB9955012259FFB300FB9596 /* WalletTest.swift in Sources */,
 				AB601D5E224DF48700B140D7 /* DealerStrategyTest.swift in Sources */,
-				AB97EFDA22453DA400E45E6F /* CardTests.swift in Sources */,
+				AB97EFDA22453DA400E45E6F /* CardTest.swift in Sources */,
 				AB97EFE3224562D900E45E6F /* DeckTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

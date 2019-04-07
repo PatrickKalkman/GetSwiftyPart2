@@ -22,13 +22,13 @@ class DealerStrategyTest: XCTestCase {
 // taking more cards—until the house’s hand either becomes a hard 17 or higher, or the hand goes over 21 and goes bust.
 
     func test_hit_when_dealer_total_is_16_or_lower() {
-        let card1: Card = Card(Suit.heart, Rank.eight)
-        let card2: Card = Card(Suit.club, Rank.four)
+        let card1: Card = Card(Suit.heart, Rank.eight, 1)
+        let card2: Card = Card(Suit.club, Rank.four, 2)
         let playerHand: Hand = Hand()
         playerHand.add(card1)
         playerHand.add(card2)
         
-        let card3: Card = Card(Suit.club, Rank.five)
+        let card3: Card = Card(Suit.club, Rank.five, 1)
         let dealerHand: Hand = Hand()
         dealerHand.add(card3)
         
@@ -38,15 +38,15 @@ class DealerStrategyTest: XCTestCase {
     }
     
     func test_stand_when_dealer_total_is_17_or_higher() {
-        let card1: Card = Card(Suit.heart, Rank.eight)
-        let card2: Card = Card(Suit.club, Rank.jack)
+        let card1: Card = Card(Suit.heart, Rank.eight, 1)
+        let card2: Card = Card(Suit.club, Rank.jack, 2)
         let playerHand: Hand = Hand()
         playerHand.add(card1)
         playerHand.add(card2)
         
         let dealerHand: Hand = Hand()
-        let card3: Card = Card(Suit.club, Rank.jack)
-        let card4: Card = Card(Suit.diamond, Rank.seven)
+        let card3: Card = Card(Suit.club, Rank.jack, 1)
+        let card4: Card = Card(Suit.diamond, Rank.seven, 2)
         dealerHand.add(card3)
         dealerHand.add(card4)
         
@@ -56,15 +56,15 @@ class DealerStrategyTest: XCTestCase {
     }
     
     func test_stand_when_dealer_total_is_17_soft() {
-        let card1: Card = Card(Suit.heart, Rank.eight)
-        let card2: Card = Card(Suit.club, Rank.jack)
+        let card1: Card = Card(Suit.heart, Rank.eight, 1)
+        let card2: Card = Card(Suit.club, Rank.jack, 2)
         let playerHand: Hand = Hand()
         playerHand.add(card1)
         playerHand.add(card2)
         
         let dealerHand: Hand = Hand()
-        let card3: Card = Card(Suit.club, Rank.ace)
-        let card4: Card = Card(Suit.diamond, Rank.six)
+        let card3: Card = Card(Suit.club, Rank.ace, 1)
+        let card4: Card = Card(Suit.diamond, Rank.six, 2)
         dealerHand.add(card3)
         dealerHand.add(card4)
         
@@ -74,16 +74,16 @@ class DealerStrategyTest: XCTestCase {
     }
     
     func test_stand_when_dealer_total_is_17_hard_from_soft() {
-        let card1: Card = Card(Suit.heart, Rank.eight)
-        let card2: Card = Card(Suit.club, Rank.jack)
+        let card1: Card = Card(Suit.heart, Rank.eight, 1)
+        let card2: Card = Card(Suit.club, Rank.jack, 2)
         let playerHand: Hand = Hand()
         playerHand.add(card1)
         playerHand.add(card2)
         
         let dealerHand: Hand = Hand()
-        let card3: Card = Card(Suit.club, Rank.ace)
-        let card4: Card = Card(Suit.diamond, Rank.six)
-        let card5: Card = Card(Suit.diamond, Rank.king)
+        let card3: Card = Card(Suit.club, Rank.ace, 1)
+        let card4: Card = Card(Suit.diamond, Rank.six, 2)
+        let card5: Card = Card(Suit.diamond, Rank.king, 3)
         dealerHand.add(card3)
         dealerHand.add(card4)
         dealerHand.add(card5)

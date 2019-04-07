@@ -26,6 +26,25 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     @IBOutlet weak var dealerValueLabel: UILabel!
     @IBOutlet weak var restartButton: BorderButton!
     @IBOutlet weak var playResultLabel: UILabel!
+    
+    @IBOutlet weak var darkBlueChip: UIButton!
+    @IBOutlet weak var darkRedChip: UIButton!
+    @IBOutlet weak var purpleChip: UIButton!
+    @IBOutlet weak var lightBlueChip: UIButton!
+    @IBOutlet weak var pinkChip: UIButton!
+    @IBOutlet weak var lightRedChip: UIButton!
+    
+
+    @IBAction func chipAddAction(_ sender: UIButton) {
+        // gameEngine.addToBet()
+    
+    }
+    
+    @IBAction func chipRemoveAction(_ sender: UIButton) {
+        // gameEngine.removeFromBet()
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
