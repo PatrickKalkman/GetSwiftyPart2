@@ -44,7 +44,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="startGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsS-Hz-4rJ"/>
+                                    <action selector="deal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsS-Hz-4rJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-wD-tRU" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
@@ -291,15 +291,15 @@
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PEg-j7-iDr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Lx-SH-2wJ">
-                                <rect key="frame" x="320" y="718" width="63" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag5-qC-PmX">
+                                <rect key="frame" x="120" y="125" width="63" height="30"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ag5-qC-PmX">
-                                <rect key="frame" x="120" y="227" width="63" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Lx-SH-2wJ">
+                                <rect key="frame" x="128.5" y="513" width="63" height="30"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -309,15 +309,15 @@
                         <color key="backgroundColor" red="0.096528628070999836" green="0.41155379398826974" blue="0.21755319629968015" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="RuH-DW-St2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="11r-6V-CB9"/>
+                            <constraint firstItem="S8t-Qw-lMN" firstAttribute="top" secondItem="Ag5-qC-PmX" secondAttribute="bottom" constant="-155" id="13j-qs-wXI"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="14j-5G-2QS"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1Jc-t9-e5W"/>
                             <constraint firstItem="fwA-RF-qTg" firstAttribute="top" secondItem="aeu-MD-UkA" secondAttribute="bottom" constant="20" id="2qM-Z8-d3G"/>
+                            <constraint firstItem="7Lx-SH-2wJ" firstAttribute="bottom" secondItem="DRZ-3s-M2A" secondAttribute="top" constant="-25" id="3OF-Gi-du3"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="top" secondItem="Ane-wD-tRU" secondAttribute="top" id="3y2-I3-ota"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="centerY" secondItem="Ane-wD-tRU" secondAttribute="centerY" id="4nU-3b-ZZU"/>
                             <constraint firstItem="RuH-DW-St2" firstAttribute="trailing" secondItem="S8t-Qw-lMN" secondAttribute="trailing" constant="-100" id="7ws-vP-1Fv"/>
-                            <constraint firstItem="S8t-Qw-lMN" firstAttribute="top" secondItem="Ag5-qC-PmX" secondAttribute="bottom" constant="-257" id="7yU-tP-osg"/>
                             <constraint firstItem="Za6-7j-185" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="leading" id="D0I-az-VWw"/>
-                            <constraint firstItem="7Lx-SH-2wJ" firstAttribute="leading" secondItem="B5Y-Hv-JnN" secondAttribute="trailing" constant="20" id="EgN-nj-1xq"/>
                             <constraint firstItem="ihX-dx-uKN" firstAttribute="top" secondItem="S8t-Qw-lMN" secondAttribute="top" constant="40" id="GV4-4n-I1X"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="centerY" secondItem="Ane-wD-tRU" secondAttribute="centerY" id="JkG-vG-2ad"/>
                             <constraint firstItem="RuH-DW-St2" firstAttribute="top" secondItem="eD2-Er-9xA" secondAttribute="bottom" constant="42" id="Jkj-oQ-W5k"/>
@@ -335,12 +335,12 @@
                             <constraint firstItem="Ac5-7Q-Lb0" firstAttribute="leading" secondItem="Ane-wD-tRU" secondAttribute="leading" id="aBq-Wd-aFY"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="top" secondItem="o5c-dw-dse" secondAttribute="bottom" constant="26" id="aoY-kg-6fC"/>
                             <constraint firstItem="vck-sZ-kob" firstAttribute="leading" secondItem="DRZ-3s-M2A" secondAttribute="trailing" constant="20" id="arM-7G-InH"/>
-                            <constraint firstItem="v79-TG-NBY" firstAttribute="firstBaseline" secondItem="RuH-DW-St2" secondAttribute="baseline" constant="34" symbolType="layoutAnchor" id="b1z-LM-CZg"/>
+                            <constraint firstItem="v79-TG-NBY" firstAttribute="firstBaseline" secondItem="RuH-DW-St2" secondAttribute="baseline" constant="30.5" id="b1z-LM-CZg"/>
                             <constraint firstItem="3Bd-Uh-nPd" firstAttribute="centerX" secondItem="DRZ-3s-M2A" secondAttribute="centerX" id="deb-We-yIX"/>
                             <constraint firstItem="B5Y-Hv-JnN" firstAttribute="centerY" secondItem="3Bd-Uh-nPd" secondAttribute="centerY" id="fZu-sW-qqC"/>
-                            <constraint firstItem="7Lx-SH-2wJ" firstAttribute="bottom" secondItem="B5Y-Hv-JnN" secondAttribute="bottom" id="gGj-Ea-1IJ"/>
                             <constraint firstItem="Ane-wD-tRU" firstAttribute="top" secondItem="S8t-Qw-lMN" secondAttribute="bottom" constant="-173" id="gS6-2Z-xmT"/>
                             <constraint firstItem="ihX-dx-uKN" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="trailing" constant="-160" id="hOw-aJ-frz"/>
+                            <constraint firstItem="Ag5-qC-PmX" firstAttribute="centerX" secondItem="DRZ-3s-M2A" secondAttribute="centerX" constant="-8.5" id="iO3-mZ-tPJ"/>
                             <constraint firstItem="V9d-kw-iyy" firstAttribute="centerX" secondItem="S8t-Qw-lMN" secondAttribute="centerX" id="kEU-W1-1gH"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="kJA-gz-Dmh"/>
                             <constraint firstItem="Za6-7j-185" firstAttribute="width" secondItem="S8t-Qw-lMN" secondAttribute="width" id="lxk-Gf-Oib"/>
@@ -354,6 +354,7 @@
                             <constraint firstItem="fwA-RF-qTg" firstAttribute="bottom" secondItem="S8t-Qw-lMN" secondAttribute="bottom" constant="-20" id="tXr-kk-u0V"/>
                             <constraint firstItem="S8t-Qw-lMN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uYQ-ND-WYN"/>
                             <constraint firstItem="v79-TG-NBY" firstAttribute="width" secondItem="S8t-Qw-lMN" secondAttribute="width" id="vUY-ou-L22"/>
+                            <constraint firstItem="7Lx-SH-2wJ" firstAttribute="centerX" secondItem="DRZ-3s-M2A" secondAttribute="centerX" id="vpI-YA-bPk"/>
                             <constraint firstItem="o5c-dw-dse" firstAttribute="leading" secondItem="J1q-u4-aPO" secondAttribute="leading" id="xz4-4p-t8d"/>
                             <constraint firstItem="V9d-kw-iyy" firstAttribute="centerY" secondItem="S8t-Qw-lMN" secondAttribute="centerY" constant="-200" id="yy1-TO-b6W"/>
                         </constraints>
@@ -362,6 +363,7 @@
                     <connections>
                         <outlet property="darkBlueChip" destination="vck-sZ-kob" id="i2G-rl-1ay"/>
                         <outlet property="darkRedChip" destination="DRZ-3s-M2A" id="rTs-7O-k2H"/>
+                        <outlet property="dealButton" destination="Lho-mF-RCB" id="zMj-gJ-IUN"/>
                         <outlet property="dealerValueLabel" destination="Za6-7j-185" id="8gN-Ab-Uj1"/>
                         <outlet property="deckCard" destination="ihX-dx-uKN" id="ZPh-4M-slK"/>
                         <outlet property="doubleButton" destination="Ac5-7Q-Lb0" id="FZt-gn-mOr"/>
@@ -369,6 +371,7 @@
                         <outlet property="lightBlueChip" destination="B5Y-Hv-JnN" id="ThF-Dk-6gH"/>
                         <outlet property="lightRedChip" destination="fwA-RF-qTg" id="a3q-eQ-FMo"/>
                         <outlet property="pinkChip" destination="3Bd-Uh-nPd" id="3y9-Ra-Is0"/>
+                        <outlet property="placeYourBetsTitle" destination="V9d-kw-iyy" id="nFP-sh-6Ma"/>
                         <outlet property="playResultLabel" destination="eD2-Er-9xA" id="CII-kz-C07"/>
                         <outlet property="playerBetLabel" destination="Ag5-qC-PmX" id="YMk-ls-6PF"/>
                         <outlet property="playerTotalLabel" destination="7Lx-SH-2wJ" id="ByZ-y3-cHz"/>
@@ -377,7 +380,6 @@
                         <outlet property="restartButton" destination="RuH-DW-St2" id="io6-2Y-Ddk"/>
                         <outlet property="splitButton" destination="o5c-dw-dse" id="J7P-uw-zmn"/>
                         <outlet property="standButton" destination="Ane-wD-tRU" id="Zs5-EE-0SV"/>
-                        <outlet property="startButton" destination="Lho-mF-RCB" id="zMj-gJ-IUN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -49,6 +49,10 @@ class Wallet {
         return chips.reduce(0) { $0 + $1.rawValue }
     }
     
+    func getAll() -> [Chip] {
+        return chips
+    }
+    
     func clear() {
         chips.removeAll()
     }

@@ -47,6 +47,9 @@
 		AB9955012259FFB300FB9596 /* WalletTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9955002259FFB300FB9596 /* WalletTest.swift */; };
 		AB995503225A161C00FB9596 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995502225A161C00FB9596 /* Wallet.swift */; };
 		AB995505225A164F00FB9596 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995504225A164F00FB9596 /* Chip.swift */; };
+		AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */; };
+		AB995509225BBA0300FB9596 /* ChipTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995507225BBA0300FB9596 /* ChipTag.swift */; };
+		AB99550B225BE95E00FB9596 /* AddChip.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB99550A225BE95E00FB9596 /* AddChip.wav */; };
 		B207F370475E8E0BB123C1AC /* Pods_Tiny_BlackjackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +110,9 @@
 		AB9955002259FFB300FB9596 /* WalletTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTest.swift; sourceTree = "<group>"; };
 		AB995502225A161C00FB9596 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		AB995504225A164F00FB9596 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
+		AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueToChipMapper.swift; sourceTree = "<group>"; };
+		AB995507225BBA0300FB9596 /* ChipTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipTag.swift; sourceTree = "<group>"; };
+		AB99550A225BE95E00FB9596 /* AddChip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AddChip.wav; sourceTree = "<group>"; };
 		CA38E29F8A3BAFED2058E669 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.release.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
 		E0C60877A48C2B275BA4AE84 /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_BlackjackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +159,8 @@
 		AB129F5422514F810025ECA1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AB995507225BBA0300FB9596 /* ChipTag.swift */,
+				AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */,
 				AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */,
 			);
 			path = Helpers;
@@ -181,6 +189,7 @@
 		AB97EFB522453BEB00E45E6F /* Tiny Blackjack */ = {
 			isa = PBXGroup;
 			children = (
+				AB99550A225BE95E00FB9596 /* AddChip.wav */,
 				AB129F59225504680025ECA1 /* Constants.swift */,
 				AB129F5422514F810025ECA1 /* Helpers */,
 				AB129F512250EE000025ECA1 /* Ui */,
@@ -345,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB99550B225BE95E00FB9596 /* AddChip.wav in Resources */,
 				AB97EFC422453BEC00E45E6F /* LaunchScreen.storyboard in Resources */,
 				AB97EFC122453BEC00E45E6F /* Assets.xcassets in Resources */,
 				AB97EFBC22453BEB00E45E6F /* Main.storyboard in Resources */,
@@ -393,12 +403,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftState/SwiftState.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftySound/SwiftySound.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftState.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftySound.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -440,10 +452,12 @@
 				AB97EFF72247683400E45E6F /* SimpleStrategy.swift in Sources */,
 				AB97EFB922453BEB00E45E6F /* ViewController.swift in Sources */,
 				AB97EFDF2245580700E45E6F /* Suit.swift in Sources */,
+				AB995509225BBA0300FB9596 /* ChipTag.swift in Sources */,
 				AB97EFFF2247CBD400E45E6F /* ProposedAction.swift in Sources */,
 				AB97EFBF22453BEB00E45E6F /* Tiny_Blackjack.xcdatamodeld in Sources */,
 				AB129F532251438C0025ECA1 /* BlackjackViewProtocol.swift in Sources */,
 				AB129F5C225518550025ECA1 /* HandResult.swift in Sources */,
+				AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */,
 				AB129F47224E4AF30025ECA1 /* GameStateMachine.swift in Sources */,
 				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
 				AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */,

@@ -68,7 +68,7 @@ class GameStateMachine {
     }
 
     func triggerEvent(_ event: GameEvents) {
-        // print("--< In state: \(self.machine.state), trigger \(event)")
+        print("--< In state: \(self.machine.state), trigger \(event)")
         self.machine <-! event
     }
 

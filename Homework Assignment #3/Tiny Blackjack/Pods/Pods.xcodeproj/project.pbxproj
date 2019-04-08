@@ -3,98 +3,127 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06D3EB80C04462212B79B71449BE8014 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		125B64C610AF3B17EE2E203CFB6856B2 /* _HandlerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBDE63A875A84D8B064D72DB2FEC1A0 /* _HandlerInfo.swift */; };
-		15BC81022219FB7986767DAB68B15BB1 /* _Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089925B3AF63E49A49898B1C64875CD3 /* _Random.swift */; };
-		277B06F50234922A49C875E1F9529597 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E6615BFD57C72EED007D4CAAA8545 /* Disposable.swift */; };
-		2B35DD6A9CFB7764D421477753CD4A36 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC84F3F8235EED81A62060E70913C6 /* Transition.swift */; };
+		06D3EB80C04462212B79B71449BE8014 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
+		1655662E9C7C864C0EEF5D6F236DE579 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
+		25DB0E3075665D258955D0E9E6DAFFFC /* SwiftySound-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60361E4552A4E77FBFAFA5AB5DB852FD /* SwiftySound-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31B9C1B9D09FC522BB71938D3984641C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
+		3E765927B051CB5A7BBF60DC8D96C5E5 /* SwiftState-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CF55932D69D262F82400F82BE7B7A0 /* SwiftState-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FCD62C2BFA4C0E06E5426AB1585306C /* Pods-Tiny BlackjackTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DAA0D2CBB812E5BC0E3B8BB0931AE1A /* Pods-Tiny BlackjackTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		41B0260BDBAF8641B0D5587F9440B4E4 /* SwiftState-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4513239385D19F230BDA6EC2395CD8 /* SwiftState-dummy.m */; };
-		490FB6F1C8DDF2371B0FB837F76A3A37 /* SwiftState-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 25B3D9DA98FACD4BF7F74C1F36A44EDE /* SwiftState-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D908246D8588AD80580DF473247F9D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		62AA3786AF3BC7CB3E2A9237543BB8A9 /* _RouteMappingID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E9110EA8A5786BA81E744964E77C1 /* _RouteMappingID.swift */; };
-		62C9685541F3CE0D6285A4AB35E4D6FA /* StateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258AFEF3E99067E2BDDF4F6CDD33D59F /* StateType.swift */; };
-		66231C83684B62EBF9750191B79B6C05 /* Pods-Tiny Blackjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDEA8C56317D6F955EE080467428271 /* Pods-Tiny Blackjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A18949B6DAF9FA9EF846D3FBD41E746 /* Pods-Tiny Blackjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32C069DBC2C0D31183B262F547CA29 /* Pods-Tiny Blackjack-dummy.m */; };
-		9A73B05C0ECF347B0EC17E0D0298C0DA /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEC13FB4C39EAF22FC79475EEFC5E8C /* StateMachine.swift */; };
-		A950ABEFB023CF9E47F1379A8E2A7E80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		CF8841E334C7489DC4AD17BAA0972FF3 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F51D3BE1F6C3186968BFF49C7BA48 /* Machine.swift */; };
-		D6CF27F80B44C381A7892D0067907673 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32767A16D4C766F1FE4AA82F9787EB11 /* EventType.swift */; };
-		D9B07727699ECC3BC949F0B3823D25B5 /* _HandlerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84DD6A78DD27E2C8A1419E7B6326673 /* _HandlerID.swift */; };
+		401161F33401AEEE1807D4F0D27D215A /* SwiftState-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFAF14CB99AE2F6156F9AD213AD06AE /* SwiftState-dummy.m */; };
+		4A35B77E6102AE3C1B58BF3B98819020 /* StateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25380AEB00A871B841F6805239EDE77B /* StateType.swift */; };
+		6376D06973491DA8555F1D1FEDFB66C8 /* _RouteMappingID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5302F54EF885D14A619A0E386E6474A5 /* _RouteMappingID.swift */; };
+		67EF93FCE491EB9EB0E1D98CC0F0D85E /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3CCF317117A062812E42A7C6F1B9DF /* Sound.swift */; };
+		6A3D16781DD34D85909661A9869DC625 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870547EBAB87133820EAC525A2827409 /* Machine.swift */; };
+		6EF2F33F200F43A55BB059DDACEE3630 /* Pods-Tiny Blackjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDEA8C56317D6F955EE080467428271 /* Pods-Tiny Blackjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		715FE842A9853F6930E539FFF5E3259F /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B2BCB0A83C6D49E42F4D067FA853B0 /* EventType.swift */; };
+		7CD23782632ADFBD5661BE7567718442 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C8DBBFEBBC38A4176175E97CC5424 /* Disposable.swift */; };
+		7ED3C4D256DD0338541C80C7635E95C3 /* Pods-Tiny Blackjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32C069DBC2C0D31183B262F547CA29 /* Pods-Tiny Blackjack-dummy.m */; };
+		801E49D3971104DEF6EF0FAF0748DC56 /* _Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2AA67449CC79EF2CFE9CC2CDF559F /* _Random.swift */; };
+		83BA88BEECB1DC1BB4EBA7BCB1C5B6EE /* _RouteID.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDF966D6D4F65F04657470053FAA86 /* _RouteID.swift */; };
+		8965D53F953601F3EE52173922C8BE88 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E752965CD2516859F6572F798D6744 /* Route.swift */; };
+		99D06AC4B71565CC45A457841283728E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8B077304B6FAD57228480E9C187D59 /* AVFoundation.framework */; };
+		A01A938FF7EF3B27F5E32DA40889A4B5 /* TransitionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF100019BCB0658F8F660949BA5D516 /* TransitionChain.swift */; };
+		BAF3D7297774BC019ACA5C79DA634805 /* SwiftySound-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C86B3B688C467E22BE568E60D015DD6 /* SwiftySound-dummy.m */; };
+		C60DD8D6B43D9A28F968EF70DD4EA6B8 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B4436D417D167D982970932B82059E /* Transition.swift */; };
+		CE9C460F7EDDFB5C444CE47E3031E7A5 /* _HandlerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E407F251E3B11CD1DA4EA2F683CB4DEA /* _HandlerID.swift */; };
+		DB7E94E942565210B2AF66AD0D8208AB /* _HandlerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4707376740DB6387A10C2F123091B76 /* _HandlerInfo.swift */; };
+		DD8D093F2062C132744CC39A963399CD /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9354C0D176DD38E4BF10857A34266 /* StateMachine.swift */; };
 		E0DD23561207592607002D9795B69652 /* Pods-Tiny BlackjackTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6D5615BF708680D6F428D7CB90BC82 /* Pods-Tiny BlackjackTests-dummy.m */; };
-		E9169E3FE5193B82A68E711F14D368AC /* TransitionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307D5152ACB27AA9B79054873228B72 /* TransitionChain.swift */; };
-		EB6019A7A629D837CD180695E5C709CB /* _RouteID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694939BBD0FB52F98697DC0F92FEB3D4 /* _RouteID.swift */; };
-		EB88241E4DEA5DFDBE36BC7D572C9397 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0B0B35FAF6E3DF03E34CD4981A0B81 /* Route.swift */; };
-		F42E300169B21F81E87C7B8F12A4E99E /* RouteChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7378F5A4BD492494CC495DDEF16CD1 /* RouteChain.swift */; };
+		ECB5EFC6C2D50D7379FEAD20C5D7C579 /* RouteChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A597429D3AF0F6282BB7F83F82B8C15E /* RouteChain.swift */; };
+		FC3D7C9F334456A3734DF6EB5004D9E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		044BF368441B76DA5D23650D1936450A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E542B3D0443B719A9B8106F6F19CF87;
+			remoteInfo = SwiftySound;
+		};
 		0C6197C5F77CBE4D7D6DA2CF613C3E69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 16B2E43652F6CB1EF774265F7DE1FDDA;
+			remoteGlobalIDString = C110AA665C50D1004C9D1CC47E51F483;
 			remoteInfo = "Pods-Tiny Blackjack";
 		};
-		A0EA9BE6D65C698DD761618FF5A7DFF1 /* PBXContainerItemProxy */ = {
+		A7B6763CC70ABB7A7BD1B9596FBB1ADA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F72B171B3FB818BF1EA414B1A52BC070;
+			remoteGlobalIDString = A2D720457607023A374326C060F23869;
 			remoteInfo = SwiftState;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0307D5152ACB27AA9B79054873228B72 /* TransitionChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionChain.swift; path = Sources/TransitionChain.swift; sourceTree = "<group>"; };
+		0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftState.xcconfig; sourceTree = "<group>"; };
 		06DF1EA44ADAE2081FF0CFC3C1FA8969 /* Pods-Tiny BlackjackTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny BlackjackTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		089661F49DE065B36370BCF9A0C019E2 /* SwiftState.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftState.xcconfig; sourceTree = "<group>"; };
-		089925B3AF63E49A49898B1C64875CD3 /* _Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _Random.swift; path = Sources/_Random.swift; sourceTree = "<group>"; };
-		1AEC13FB4C39EAF22FC79475EEFC5E8C /* StateMachine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Sources/StateMachine.swift; sourceTree = "<group>"; };
-		1D7378F5A4BD492494CC495DDEF16CD1 /* RouteChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RouteChain.swift; path = Sources/RouteChain.swift; sourceTree = "<group>"; };
-		1D7E6615BFD57C72EED007D4CAAA8545 /* Disposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposable.swift; path = Sources/Disposable.swift; sourceTree = "<group>"; };
+		1ABCCCE140C2DDA28B7CA023E20EEAD9 /* SwiftySound.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftySound.modulemap; sourceTree = "<group>"; };
+		23B4436D417D167D982970932B82059E /* Transition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transition.swift; path = Sources/Transition.swift; sourceTree = "<group>"; };
+		25380AEB00A871B841F6805239EDE77B /* StateType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateType.swift; path = Sources/StateType.swift; sourceTree = "<group>"; };
 		253E3D6F6C1FC07F04661C571BD3354F /* Pods-Tiny Blackjack-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny Blackjack-acknowledgements.plist"; sourceTree = "<group>"; };
-		258AFEF3E99067E2BDDF4F6CDD33D59F /* StateType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateType.swift; path = Sources/StateType.swift; sourceTree = "<group>"; };
-		25B3D9DA98FACD4BF7F74C1F36A44EDE /* SwiftState-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-umbrella.h"; sourceTree = "<group>"; };
-		2600C8E08E861FE1F8DE1AC5E90E01A8 /* SwiftState-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftState-Info.plist"; sourceTree = "<group>"; };
 		260D71D7D6E4DA7731A0113577C61DE0 /* Pods-Tiny BlackjackTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tiny BlackjackTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2853069A03D6F0FBD5DD113080008FD5 /* Pods-Tiny Blackjack-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tiny Blackjack-acknowledgements.markdown"; sourceTree = "<group>"; };
-		32767A16D4C766F1FE4AA82F9787EB11 /* EventType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventType.swift; path = Sources/EventType.swift; sourceTree = "<group>"; };
-		38274AB7EF7B1CFB62CC0AFE952D1F45 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_BlackjackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B973D058F13E5651BBE6CC7E13BFEE /* Pods-Tiny BlackjackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny BlackjackTests.release.xcconfig"; sourceTree = "<group>"; };
 		4DAA0D2CBB812E5BC0E3B8BB0931AE1A /* Pods-Tiny BlackjackTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tiny BlackjackTests-umbrella.h"; sourceTree = "<group>"; };
-		541E9110EA8A5786BA81E744964E77C1 /* _RouteMappingID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteMappingID.swift; path = Sources/_RouteMappingID.swift; sourceTree = "<group>"; };
-		571E52D580C87BE98AEBF016976FE360 /* Pods_Tiny_Blackjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_Blackjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52E752965CD2516859F6572F798D6744 /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Sources/Route.swift; sourceTree = "<group>"; };
+		5302F54EF885D14A619A0E386E6474A5 /* _RouteMappingID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteMappingID.swift; path = Sources/_RouteMappingID.swift; sourceTree = "<group>"; };
+		60361E4552A4E77FBFAFA5AB5DB852FD /* SwiftySound-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySound-umbrella.h"; sourceTree = "<group>"; };
+		61F70E2E1CBBA1595D8E6258FB0B1AE8 /* SwiftState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftState.framework; path = SwiftState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66413D242B5F9986D911634CB99DEF45 /* Pods-Tiny BlackjackTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny BlackjackTests-Info.plist"; sourceTree = "<group>"; };
-		694939BBD0FB52F98697DC0F92FEB3D4 /* _RouteID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteID.swift; path = Sources/_RouteID.swift; sourceTree = "<group>"; };
+		6986AE64C15B891ADC6241C8DC196ED8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Tiny_BlackjackTests.framework; path = "Pods-Tiny BlackjackTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B32C069DBC2C0D31183B262F547CA29 /* Pods-Tiny Blackjack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tiny Blackjack-dummy.m"; sourceTree = "<group>"; };
 		6C3802E3A1374119AE3D004D30A85711 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
-		6E4513239385D19F230BDA6EC2395CD8 /* SwiftState-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftState-dummy.m"; sourceTree = "<group>"; };
+		6E35761B82B71864FCCF3E4CE24FDAEF /* Pods_Tiny_Blackjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Tiny_Blackjack.framework; path = "Pods-Tiny Blackjack.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C86B3B688C467E22BE568E60D015DD6 /* SwiftySound-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftySound-dummy.m"; sourceTree = "<group>"; };
 		7E6D5615BF708680D6F428D7CB90BC82 /* Pods-Tiny BlackjackTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tiny BlackjackTests-dummy.m"; sourceTree = "<group>"; };
+		7EB2AA67449CC79EF2CFE9CC2CDF559F /* _Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _Random.swift; path = Sources/_Random.swift; sourceTree = "<group>"; };
 		818A08EC8DE3E5926C638070C011DD69 /* Pods-Tiny Blackjack-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tiny Blackjack-frameworks.sh"; sourceTree = "<group>"; };
 		85FA540AEC1A8B43B4227DE0BC46CACA /* Pods-Tiny BlackjackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny BlackjackTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9B97662FDDBD7186C65CB96A6390E7E2 /* SwiftState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A5FC84F3F8235EED81A62060E70913C6 /* Transition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transition.swift; path = Sources/Transition.swift; sourceTree = "<group>"; };
-		A67F51D3BE1F6C3186968BFF49C7BA48 /* Machine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Machine.swift; path = Sources/Machine.swift; sourceTree = "<group>"; };
-		A84DD6A78DD27E2C8A1419E7B6326673 /* _HandlerID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerID.swift; path = Sources/_HandlerID.swift; sourceTree = "<group>"; };
-		ADBDE63A875A84D8B064D72DB2FEC1A0 /* _HandlerInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerInfo.swift; path = Sources/_HandlerInfo.swift; sourceTree = "<group>"; };
+		870547EBAB87133820EAC525A2827409 /* Machine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Machine.swift; path = Sources/Machine.swift; sourceTree = "<group>"; };
+		8AB506F28A9BAC04E0489EEE1A8F340D /* SwiftySound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftySound.framework; path = SwiftySound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF100019BCB0658F8F660949BA5D516 /* TransitionChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionChain.swift; path = Sources/TransitionChain.swift; sourceTree = "<group>"; };
+		8F8B077304B6FAD57228480E9C187D59 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		90CF55932D69D262F82400F82BE7B7A0 /* SwiftState-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-umbrella.h"; sourceTree = "<group>"; };
+		9226566E5CED186D5C43CBFAB7575230 /* SwiftySound-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftySound-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9EC3710E1AEFD80EB8BE6A184EFCF138 /* SwiftySound-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySound-prefix.pch"; sourceTree = "<group>"; };
+		A597429D3AF0F6282BB7F83F82B8C15E /* RouteChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RouteChain.swift; path = Sources/RouteChain.swift; sourceTree = "<group>"; };
+		AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		ADD9354C0D176DD38E4BF10857A34266 /* StateMachine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Sources/StateMachine.swift; sourceTree = "<group>"; };
+		B0B2BCB0A83C6D49E42F4D067FA853B0 /* EventType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventType.swift; path = Sources/EventType.swift; sourceTree = "<group>"; };
+		BB3CCF317117A062812E42A7C6F1B9DF /* Sound.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sound.swift; path = Sources/Sound.swift; sourceTree = "<group>"; };
+		BF484B136EA0018437B3A4278AE68B52 /* SwiftState.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftState.modulemap; sourceTree = "<group>"; };
+		BFFAF14CB99AE2F6156F9AD213AD06AE /* SwiftState-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftState-dummy.m"; sourceTree = "<group>"; };
 		C0E49C1360DC3D3236720E6568DF67A3 /* Pods-Tiny Blackjack-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny Blackjack-Info.plist"; sourceTree = "<group>"; };
-		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C4707376740DB6387A10C2F123091B76 /* _HandlerInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerInfo.swift; path = Sources/_HandlerInfo.swift; sourceTree = "<group>"; };
+		CA0244EAA04DC7E22A30C76C63FCBAFE /* SwiftState-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftState-Info.plist"; sourceTree = "<group>"; };
+		D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftySound.xcconfig; sourceTree = "<group>"; };
 		D5C27EE6E174B6B8B436F5644A935A4E /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
+		D5DDF966D6D4F65F04657470053FAA86 /* _RouteID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteID.swift; path = Sources/_RouteID.swift; sourceTree = "<group>"; };
+		DD6CC012ED3BE1AB39AB37000ACDF489 /* SwiftState-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-prefix.pch"; sourceTree = "<group>"; };
 		DFDEA8C56317D6F955EE080467428271 /* Pods-Tiny Blackjack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tiny Blackjack-umbrella.h"; sourceTree = "<group>"; };
-		E3347972B003D7A5A3C51BDCB47122A7 /* SwiftState-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-prefix.pch"; sourceTree = "<group>"; };
-		E4EE8CDA248D5108CB0B0C7623B42828 /* SwiftState.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftState.modulemap; sourceTree = "<group>"; };
-		EA0B0B35FAF6E3DF03E34CD4981A0B81 /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Sources/Route.swift; sourceTree = "<group>"; };
+		E407F251E3B11CD1DA4EA2F683CB4DEA /* _HandlerID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerID.swift; path = Sources/_HandlerID.swift; sourceTree = "<group>"; };
+		EA6C8DBBFEBBC38A4176175E97CC5424 /* Disposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposable.swift; path = Sources/Disposable.swift; sourceTree = "<group>"; };
 		F5D806348194E3C66EC0FF09DBD6CE9B /* Pods-Tiny BlackjackTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Tiny BlackjackTests.modulemap"; sourceTree = "<group>"; };
 		F61F602791F5AA1DC1588494237E0BA8 /* Pods-Tiny Blackjack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Tiny Blackjack.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0CC382A568F9152E0B357FCEF6DECE2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC3D7C9F334456A3734DF6EB5004D9E7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		187819171701CB089A738D1AF4B3AB16 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,19 +132,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8F1F1075F86876BB10CACA933BADBACB /* Frameworks */ = {
+		608B5512FEAAED4974AEB8FC5EFAFBF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A950ABEFB023CF9E47F1379A8E2A7E80 /* Foundation.framework in Frameworks */,
+				99D06AC4B71565CC45A457841283728E /* AVFoundation.framework in Frameworks */,
+				1655662E9C7C864C0EEF5D6F236DE579 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB468F2B670CFF7CEA5A2216998B47AC /* Frameworks */ = {
+		62AD5ECA7AE204BE8009690CEED63A86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D908246D8588AD80580DF473247F9D1 /* Foundation.framework in Frameworks */,
+				31B9C1B9D09FC522BB71938D3984641C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,48 +178,79 @@
 			path = "Target Support Files/Pods-Tiny Blackjack";
 			sourceTree = "<group>";
 		};
-		30B055D18FAB13CF08E4B83D653D4367 /* Pods */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				48791161E976EC417433A76FF4CF1A89 /* SwiftState */,
+				E2FA75308FAE7D777CB172FB0AE44E3A /* iOS */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		38FA8CEAF69C41FA931D26B700AE6A38 /* Support Files */ = {
+		39EC6253D6F90F04668362BA88597F76 /* SwiftState */ = {
 			isa = PBXGroup;
 			children = (
-				E4EE8CDA248D5108CB0B0C7623B42828 /* SwiftState.modulemap */,
-				089661F49DE065B36370BCF9A0C019E2 /* SwiftState.xcconfig */,
-				6E4513239385D19F230BDA6EC2395CD8 /* SwiftState-dummy.m */,
-				2600C8E08E861FE1F8DE1AC5E90E01A8 /* SwiftState-Info.plist */,
-				E3347972B003D7A5A3C51BDCB47122A7 /* SwiftState-prefix.pch */,
-				25B3D9DA98FACD4BF7F74C1F36A44EDE /* SwiftState-umbrella.h */,
+				E407F251E3B11CD1DA4EA2F683CB4DEA /* _HandlerID.swift */,
+				C4707376740DB6387A10C2F123091B76 /* _HandlerInfo.swift */,
+				7EB2AA67449CC79EF2CFE9CC2CDF559F /* _Random.swift */,
+				D5DDF966D6D4F65F04657470053FAA86 /* _RouteID.swift */,
+				5302F54EF885D14A619A0E386E6474A5 /* _RouteMappingID.swift */,
+				EA6C8DBBFEBBC38A4176175E97CC5424 /* Disposable.swift */,
+				B0B2BCB0A83C6D49E42F4D067FA853B0 /* EventType.swift */,
+				870547EBAB87133820EAC525A2827409 /* Machine.swift */,
+				52E752965CD2516859F6572F798D6744 /* Route.swift */,
+				A597429D3AF0F6282BB7F83F82B8C15E /* RouteChain.swift */,
+				ADD9354C0D176DD38E4BF10857A34266 /* StateMachine.swift */,
+				25380AEB00A871B841F6805239EDE77B /* StateType.swift */,
+				23B4436D417D167D982970932B82059E /* Transition.swift */,
+				8EF100019BCB0658F8F660949BA5D516 /* TransitionChain.swift */,
+				C0EA7173B4B846BC395C82C224EEAE98 /* Support Files */,
+			);
+			name = SwiftState;
+			path = SwiftState;
+			sourceTree = "<group>";
+		};
+		3B6F7EB7CC97F81002F7F9BA9DC6761B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E35761B82B71864FCCF3E4CE24FDAEF /* Pods_Tiny_Blackjack.framework */,
+				6986AE64C15B891ADC6241C8DC196ED8 /* Pods_Tiny_BlackjackTests.framework */,
+				61F70E2E1CBBA1595D8E6258FB0B1AE8 /* SwiftState.framework */,
+				8AB506F28A9BAC04E0489EEE1A8F340D /* SwiftySound.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A6D91438BFCE3D0CE025AC1E9BB6655 /* SwiftySound */ = {
+			isa = PBXGroup;
+			children = (
+				BB3CCF317117A062812E42A7C6F1B9DF /* Sound.swift */,
+				58A6B845067707D1B6225D105B2EE8E5 /* Support Files */,
+			);
+			name = SwiftySound;
+			path = SwiftySound;
+			sourceTree = "<group>";
+		};
+		58A6B845067707D1B6225D105B2EE8E5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1ABCCCE140C2DDA28B7CA023E20EEAD9 /* SwiftySound.modulemap */,
+				D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */,
+				7C86B3B688C467E22BE568E60D015DD6 /* SwiftySound-dummy.m */,
+				9226566E5CED186D5C43CBFAB7575230 /* SwiftySound-Info.plist */,
+				9EC3710E1AEFD80EB8BE6A184EFCF138 /* SwiftySound-prefix.pch */,
+				60361E4552A4E77FBFAFA5AB5DB852FD /* SwiftySound-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftState";
+			path = "../Target Support Files/SwiftySound";
 			sourceTree = "<group>";
 		};
-		48791161E976EC417433A76FF4CF1A89 /* SwiftState */ = {
+		80B68D80A48364D0F30C07C5B5E524F6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A84DD6A78DD27E2C8A1419E7B6326673 /* _HandlerID.swift */,
-				ADBDE63A875A84D8B064D72DB2FEC1A0 /* _HandlerInfo.swift */,
-				089925B3AF63E49A49898B1C64875CD3 /* _Random.swift */,
-				694939BBD0FB52F98697DC0F92FEB3D4 /* _RouteID.swift */,
-				541E9110EA8A5786BA81E744964E77C1 /* _RouteMappingID.swift */,
-				1D7E6615BFD57C72EED007D4CAAA8545 /* Disposable.swift */,
-				32767A16D4C766F1FE4AA82F9787EB11 /* EventType.swift */,
-				A67F51D3BE1F6C3186968BFF49C7BA48 /* Machine.swift */,
-				EA0B0B35FAF6E3DF03E34CD4981A0B81 /* Route.swift */,
-				1D7378F5A4BD492494CC495DDEF16CD1 /* RouteChain.swift */,
-				1AEC13FB4C39EAF22FC79475EEFC5E8C /* StateMachine.swift */,
-				258AFEF3E99067E2BDDF4F6CDD33D59F /* StateType.swift */,
-				A5FC84F3F8235EED81A62060E70913C6 /* Transition.swift */,
-				0307D5152ACB27AA9B79054873228B72 /* TransitionChain.swift */,
-				38FA8CEAF69C41FA931D26B700AE6A38 /* Support Files */,
+				39EC6253D6F90F04668362BA88597F76 /* SwiftState */,
+				4A6D91438BFCE3D0CE025AC1E9BB6655 /* SwiftySound */,
 			);
-			path = SwiftState;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		8DD94BEC2FC7E335E08318D902D665DB /* Pods-Tiny BlackjackTests */ = {
@@ -208,59 +269,64 @@
 			path = "Target Support Files/Pods-Tiny BlackjackTests";
 			sourceTree = "<group>";
 		};
-		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+		C0EA7173B4B846BC395C82C224EEAE98 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+				BF484B136EA0018437B3A4278AE68B52 /* SwiftState.modulemap */,
+				0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */,
+				BFFAF14CB99AE2F6156F9AD213AD06AE /* SwiftState-dummy.m */,
+				CA0244EAA04DC7E22A30C76C63FCBAFE /* SwiftState-Info.plist */,
+				DD6CC012ED3BE1AB39AB37000ACDF489 /* SwiftState-prefix.pch */,
+				90CF55932D69D262F82400F82BE7B7A0 /* SwiftState-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftState";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				30B055D18FAB13CF08E4B83D653D4367 /* Pods */,
-				DFB3192A35D0EF4E1DDB73E83018155F /* Products */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				80B68D80A48364D0F30C07C5B5E524F6 /* Pods */,
+				3B6F7EB7CC97F81002F7F9BA9DC6761B /* Products */,
 				03E9507772BB503C83CC8BE77FB9A460 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		E2FA75308FAE7D777CB172FB0AE44E3A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+				8F8B077304B6FAD57228480E9C187D59 /* AVFoundation.framework */,
+				AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DFB3192A35D0EF4E1DDB73E83018155F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				571E52D580C87BE98AEBF016976FE360 /* Pods_Tiny_Blackjack.framework */,
-				38274AB7EF7B1CFB62CC0AFE952D1F45 /* Pods_Tiny_BlackjackTests.framework */,
-				9B97662FDDBD7186C65CB96A6390E7E2 /* SwiftState.framework */,
-			);
-			name = Products;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		93B9257640E1A0EAC6E824BBFB6A5061 /* Headers */ = {
+		1BA6519AE52EFCCF5587FDCF2E355901 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				490FB6F1C8DDF2371B0FB837F76A3A37 /* SwiftState-umbrella.h in Headers */,
+				25DB0E3075665D258955D0E9E6DAFFFC /* SwiftySound-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AF55ED1B435EF952096C3910D00C7A83 /* Headers */ = {
+		2272263AB61A1838B1E64B5FBAA8DEBB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66231C83684B62EBF9750191B79B6C05 /* Pods-Tiny Blackjack-umbrella.h in Headers */,
+				6EF2F33F200F43A55BB059DDACEE3630 /* Pods-Tiny Blackjack-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54281F83FFB04992C35D645FAB7F6C77 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E765927B051CB5A7BBF60DC8D96C5E5 /* SwiftState-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,23 +341,40 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		16B2E43652F6CB1EF774265F7DE1FDDA /* Pods-Tiny Blackjack */ = {
+		2E542B3D0443B719A9B8106F6F19CF87 /* SwiftySound */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC1E191BDC07791D8CAA925F052AA089 /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */;
+			buildConfigurationList = 097915A0DE0B4B6920B7F05B29606C55 /* Build configuration list for PBXNativeTarget "SwiftySound" */;
 			buildPhases = (
-				AF55ED1B435EF952096C3910D00C7A83 /* Headers */,
-				9E11FC026DA64479840A39DC1E8E622C /* Sources */,
-				AB468F2B670CFF7CEA5A2216998B47AC /* Frameworks */,
-				CE778D47D3CDC5992C9AEF92B21FE54D /* Resources */,
+				1BA6519AE52EFCCF5587FDCF2E355901 /* Headers */,
+				2C1A48D8CCFD9D3BF7B8A91D83494B5B /* Sources */,
+				608B5512FEAAED4974AEB8FC5EFAFBF1 /* Frameworks */,
+				A5FCB76D90F9A78E32B09E55704FA3EF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				57EC4746321982130CEAF6030054F7F4 /* PBXTargetDependency */,
 			);
-			name = "Pods-Tiny Blackjack";
-			productName = "Pods-Tiny Blackjack";
-			productReference = 571E52D580C87BE98AEBF016976FE360 /* Pods_Tiny_Blackjack.framework */;
+			name = SwiftySound;
+			productName = SwiftySound;
+			productReference = 8AB506F28A9BAC04E0489EEE1A8F340D /* SwiftySound.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A2D720457607023A374326C060F23869 /* SwiftState */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEA0174B956C25D1C3CD65DEBBB7C9DD /* Build configuration list for PBXNativeTarget "SwiftState" */;
+			buildPhases = (
+				54281F83FFB04992C35D645FAB7F6C77 /* Headers */,
+				59DD0419EA8116D8494BA4071D323E3B /* Sources */,
+				0CC382A568F9152E0B357FCEF6DECE2B /* Frameworks */,
+				A5F72DD913D5EA0DDA0D54C452A23875 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftState;
+			productName = SwiftState;
+			productReference = 61F70E2E1CBBA1595D8E6258FB0B1AE8 /* SwiftState.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BA6F16A0984D19D48D295D25BD089D35 /* Pods-Tiny BlackjackTests */ = {
@@ -310,25 +393,27 @@
 			);
 			name = "Pods-Tiny BlackjackTests";
 			productName = "Pods-Tiny BlackjackTests";
-			productReference = 38274AB7EF7B1CFB62CC0AFE952D1F45 /* Pods_Tiny_BlackjackTests.framework */;
+			productReference = 6986AE64C15B891ADC6241C8DC196ED8 /* Pods_Tiny_BlackjackTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F72B171B3FB818BF1EA414B1A52BC070 /* SwiftState */ = {
+		C110AA665C50D1004C9D1CC47E51F483 /* Pods-Tiny Blackjack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C1319C2307B97FBEC057E00D7798F8CD /* Build configuration list for PBXNativeTarget "SwiftState" */;
+			buildConfigurationList = 2F06CF41A813076ED731F2A1DE8CBD15 /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */;
 			buildPhases = (
-				93B9257640E1A0EAC6E824BBFB6A5061 /* Headers */,
-				1D495E9895DF6EF7907FCAF1678D2E5B /* Sources */,
-				8F1F1075F86876BB10CACA933BADBACB /* Frameworks */,
-				1C6751BE482395FA137ABF9E081E6E62 /* Resources */,
+				2272263AB61A1838B1E64B5FBAA8DEBB /* Headers */,
+				E537AE50C66776CB816CF34030EFFA58 /* Sources */,
+				62AD5ECA7AE204BE8009690CEED63A86 /* Frameworks */,
+				6E5261FF54B410849F2BE4070E7B297F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B0EC9DF16DE068227F38F7D092E50B70 /* PBXTargetDependency */,
+				E2327315782781336547673F6903DFF8 /* PBXTargetDependency */,
 			);
-			name = SwiftState;
-			productName = SwiftState;
-			productReference = 9B97662FDDBD7186C65CB96A6390E7E2 /* SwiftState.framework */;
+			name = "Pods-Tiny Blackjack";
+			productName = "Pods-Tiny Blackjack";
+			productReference = 6E35761B82B71864FCCF3E4CE24FDAEF /* Pods_Tiny_Blackjack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -338,30 +423,30 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = DFB3192A35D0EF4E1DDB73E83018155F /* Products */;
+			productRefGroup = 3B6F7EB7CC97F81002F7F9BA9DC6761B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				16B2E43652F6CB1EF774265F7DE1FDDA /* Pods-Tiny Blackjack */,
+				C110AA665C50D1004C9D1CC47E51F483 /* Pods-Tiny Blackjack */,
 				BA6F16A0984D19D48D295D25BD089D35 /* Pods-Tiny BlackjackTests */,
-				F72B171B3FB818BF1EA414B1A52BC070 /* SwiftState */,
+				A2D720457607023A374326C060F23869 /* SwiftState */,
+				2E542B3D0443B719A9B8106F6F19CF87 /* SwiftySound */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1C6751BE482395FA137ABF9E081E6E62 /* Resources */ = {
+		6E5261FF54B410849F2BE4070E7B297F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,7 +460,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE778D47D3CDC5992C9AEF92B21FE54D /* Resources */ = {
+		A5F72DD913D5EA0DDA0D54C452A23875 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FCB76D90F9A78E32B09E55704FA3EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,50 +485,65 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1D495E9895DF6EF7907FCAF1678D2E5B /* Sources */ = {
+		2C1A48D8CCFD9D3BF7B8A91D83494B5B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9B07727699ECC3BC949F0B3823D25B5 /* _HandlerID.swift in Sources */,
-				125B64C610AF3B17EE2E203CFB6856B2 /* _HandlerInfo.swift in Sources */,
-				15BC81022219FB7986767DAB68B15BB1 /* _Random.swift in Sources */,
-				EB6019A7A629D837CD180695E5C709CB /* _RouteID.swift in Sources */,
-				62AA3786AF3BC7CB3E2A9237543BB8A9 /* _RouteMappingID.swift in Sources */,
-				277B06F50234922A49C875E1F9529597 /* Disposable.swift in Sources */,
-				D6CF27F80B44C381A7892D0067907673 /* EventType.swift in Sources */,
-				CF8841E334C7489DC4AD17BAA0972FF3 /* Machine.swift in Sources */,
-				EB88241E4DEA5DFDBE36BC7D572C9397 /* Route.swift in Sources */,
-				F42E300169B21F81E87C7B8F12A4E99E /* RouteChain.swift in Sources */,
-				9A73B05C0ECF347B0EC17E0D0298C0DA /* StateMachine.swift in Sources */,
-				62C9685541F3CE0D6285A4AB35E4D6FA /* StateType.swift in Sources */,
-				41B0260BDBAF8641B0D5587F9440B4E4 /* SwiftState-dummy.m in Sources */,
-				2B35DD6A9CFB7764D421477753CD4A36 /* Transition.swift in Sources */,
-				E9169E3FE5193B82A68E711F14D368AC /* TransitionChain.swift in Sources */,
+				67EF93FCE491EB9EB0E1D98CC0F0D85E /* Sound.swift in Sources */,
+				BAF3D7297774BC019ACA5C79DA634805 /* SwiftySound-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E11FC026DA64479840A39DC1E8E622C /* Sources */ = {
+		59DD0419EA8116D8494BA4071D323E3B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A18949B6DAF9FA9EF846D3FBD41E746 /* Pods-Tiny Blackjack-dummy.m in Sources */,
+				CE9C460F7EDDFB5C444CE47E3031E7A5 /* _HandlerID.swift in Sources */,
+				DB7E94E942565210B2AF66AD0D8208AB /* _HandlerInfo.swift in Sources */,
+				801E49D3971104DEF6EF0FAF0748DC56 /* _Random.swift in Sources */,
+				83BA88BEECB1DC1BB4EBA7BCB1C5B6EE /* _RouteID.swift in Sources */,
+				6376D06973491DA8555F1D1FEDFB66C8 /* _RouteMappingID.swift in Sources */,
+				7CD23782632ADFBD5661BE7567718442 /* Disposable.swift in Sources */,
+				715FE842A9853F6930E539FFF5E3259F /* EventType.swift in Sources */,
+				6A3D16781DD34D85909661A9869DC625 /* Machine.swift in Sources */,
+				8965D53F953601F3EE52173922C8BE88 /* Route.swift in Sources */,
+				ECB5EFC6C2D50D7379FEAD20C5D7C579 /* RouteChain.swift in Sources */,
+				DD8D093F2062C132744CC39A963399CD /* StateMachine.swift in Sources */,
+				4A35B77E6102AE3C1B58BF3B98819020 /* StateType.swift in Sources */,
+				401161F33401AEEE1807D4F0D27D215A /* SwiftState-dummy.m in Sources */,
+				C60DD8D6B43D9A28F968EF70DD4EA6B8 /* Transition.swift in Sources */,
+				A01A938FF7EF3B27F5E32DA40889A4B5 /* TransitionChain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E537AE50C66776CB816CF34030EFFA58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED3C4D256DD0338541C80C7635E95C3 /* Pods-Tiny Blackjack-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		57EC4746321982130CEAF6030054F7F4 /* PBXTargetDependency */ = {
+		B0EC9DF16DE068227F38F7D092E50B70 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftState;
-			target = F72B171B3FB818BF1EA414B1A52BC070 /* SwiftState */;
-			targetProxy = A0EA9BE6D65C698DD761618FF5A7DFF1 /* PBXContainerItemProxy */;
+			target = A2D720457607023A374326C060F23869 /* SwiftState */;
+			targetProxy = A7B6763CC70ABB7A7BD1B9596FBB1ADA /* PBXContainerItemProxy */;
 		};
 		C6E38952EEC5DD133EC3898E89FB4A9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Tiny Blackjack";
-			target = 16B2E43652F6CB1EF774265F7DE1FDDA /* Pods-Tiny Blackjack */;
+			target = C110AA665C50D1004C9D1CC47E51F483 /* Pods-Tiny Blackjack */;
 			targetProxy = 0C6197C5F77CBE4D7D6DA2CF613C3E69 /* PBXContainerItemProxy */;
+		};
+		E2327315782781336547673F6903DFF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftySound;
+			target = 2E542B3D0443B719A9B8106F6F19CF87 /* SwiftySound */;
+			targetProxy = 044BF368441B76DA5D23650D1936450A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -459,7 +566,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Tiny BlackjackTests/Pods-Tiny BlackjackTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Tiny BlackjackTests/Pods-Tiny BlackjackTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -475,9 +586,9 @@
 			};
 			name = Debug;
 		};
-		0A6490986E0644BFB18BD5A8D5246DAB /* Debug */ = {
+		2CEA27E5FC4C871101600B2A100B653E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 089661F49DE065B36370BCF9A0C019E2 /* SwiftState.xcconfig */;
+			baseConfigurationReference = 0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -492,7 +603,11 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftState/SwiftState-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/SwiftState/SwiftState.modulemap";
 				PRODUCT_MODULE_NAME = SwiftState;
 				PRODUCT_NAME = SwiftState;
@@ -501,16 +616,16 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		3048B0C5C704DFFF688DA57F5380ED58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -560,44 +675,10 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		387E743DEB31CD8B2220D4EAE8D5BFEC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C3802E3A1374119AE3D004D30A85711 /* Pods-Tiny Blackjack.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -605,7 +686,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -666,7 +746,7 @@
 			};
 			name = Debug;
 		};
-		7440FD0259ABCD9B5047EFFEA1E1CB99 /* Debug */ = {
+		64D03DA826AA64EAC27055BE5F3A625D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D5C27EE6E174B6B8B436F5644A935A4E /* Pods-Tiny Blackjack.debug.xcconfig */;
 			buildSettings = {
@@ -684,7 +764,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.modulemap";
 				OTHER_LDFLAGS = "";
@@ -700,9 +784,48 @@
 			};
 			name = Debug;
 		};
-		BD503EE8EA981B98C5D4CAB4E2995CD3 /* Release */ = {
+		70EF9BBF351845C9BED227B2E307C951 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 089661F49DE065B36370BCF9A0C019E2 /* SwiftState.xcconfig */;
+			baseConfigurationReference = 6C3802E3A1374119AE3D004D30A85711 /* Pods-Tiny Blackjack.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7CAF398B8B86BFD083F3513D16CC0829 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -713,18 +836,57 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftState/SwiftState-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftState/SwiftState-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftySound/SwiftySound-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftySound/SwiftySound-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftState/SwiftState.modulemap";
-				PRODUCT_MODULE_NAME = SwiftState;
-				PRODUCT_NAME = SwiftState;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftySound/SwiftySound.modulemap";
+				PRODUCT_MODULE_NAME = SwiftySound;
+				PRODUCT_NAME = SwiftySound;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DCE7E7585A93E2C1DA2C37E98A15BC1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftySound/SwiftySound-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftySound/SwiftySound-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftySound/SwiftySound.modulemap";
+				PRODUCT_MODULE_NAME = SwiftySound;
+				PRODUCT_NAME = SwiftySound;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -750,7 +912,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Tiny BlackjackTests/Pods-Tiny BlackjackTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Tiny BlackjackTests/Pods-Tiny BlackjackTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -767,23 +933,67 @@
 			};
 			name = Release;
 		};
+		E9368562D8517711C3FA8E6492F8E3BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftState/SwiftState-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftState/SwiftState-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftState/SwiftState.modulemap";
+				PRODUCT_MODULE_NAME = SwiftState;
+				PRODUCT_NAME = SwiftState;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		097915A0DE0B4B6920B7F05B29606C55 /* Build configuration list for PBXNativeTarget "SwiftySound" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CAF398B8B86BFD083F3513D16CC0829 /* Debug */,
+				DCE7E7585A93E2C1DA2C37E98A15BC1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F06CF41A813076ED731F2A1DE8CBD15 /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D03DA826AA64EAC27055BE5F3A625D /* Debug */,
+				70EF9BBF351845C9BED227B2E307C951 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B0C8287D755FD95091CF35D87FB8B2D /* Debug */,
 				3048B0C5C704DFFF688DA57F5380ED58 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C1319C2307B97FBEC057E00D7798F8CD /* Build configuration list for PBXNativeTarget "SwiftState" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0A6490986E0644BFB18BD5A8D5246DAB /* Debug */,
-				BD503EE8EA981B98C5D4CAB4E2995CD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -797,11 +1007,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC1E191BDC07791D8CAA925F052AA089 /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */ = {
+		EEA0174B956C25D1C3CD65DEBBB7C9DD /* Build configuration list for PBXNativeTarget "SwiftState" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7440FD0259ABCD9B5047EFFEA1E1CB99 /* Debug */,
-				387E743DEB31CD8B2220D4EAE8D5BFEC /* Release */,
+				E9368562D8517711C3FA8E6492F8E3BF /* Debug */,
+				2CEA27E5FC4C871101600B2A100B653E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -24,7 +24,7 @@ class GameEngine: BlackjackProtocol {
     private var numberOfPlayers: UInt8 = 0
     
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
-                self.playResult = [HandResult]()
+        self.playResult = [HandResult]()
         self.gameResultCalculator = gameResultCalculator
         self.gameState = GameStateMachine(gameEngine: self)
         self.blackjackView = blackjackView
@@ -48,6 +48,10 @@ class GameEngine: BlackjackProtocol {
 
     func isLastChip(chip: Chip) -> Bool {
         return currentPlayer.moneyAvailable.isLastChip(chip)
+    }
+    
+    func walletContains(_ chip: Chip) -> Bool {
+        return currentPlayer.moneyAvailable.hasChip(chip)
     }
     
     func getPlayerWalletTotal() -> UInt {
@@ -359,8 +363,28 @@ class GameEngine: BlackjackProtocol {
     }
 
     func distributeBets() {
+        for handResult in playResult {
+            switch handResult.result {
+            case GameResult.DealerWins:
+                // Just remove the bet from the bet wallet
+                players[handResult.playerIndex].clearBet()
+            case GameResult.PlayerWins:
+                let chips: [Chip] = players[handResult.playerIndex].moneyBet.getAll()
+                for _ in 1...2 {
+                    for chip in chips {
+                        players[handResult.playerIndex].moneyAvailable.add(chip)
+                    }
+                }
+                players[handResult.playerIndex].clearBet()
+            case GameResult.Push:
+                let chips: [Chip] = players[handResult.playerIndex].moneyBet.getAll()
+                for chip in chips {
+                    players[handResult.playerIndex].moneyAvailable.add(chip)
+                }
+                players[handResult.playerIndex].clearBet()
+            }
+        }
         blackjackView?.distributeBets()
-        // TODO
     }
 
     func getPlayerWithHighestScore() -> (Player, Int) {
@@ -417,12 +441,3 @@ class GameEngine: BlackjackProtocol {
         return chips
     }
 }
-
-//enum Chip: UInt8 {
-//    case LightRed = 1
-//    case Pink = 5
-//    case LightBlue = 10
-//    case Purple = 25
-//    case DarkRed = 50
-//    case DarkBlue = 100
-//}
