@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, BlackjackViewProtocol {
 
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
+    private let valueToChipMapper: ValueToChipMapper = ValueToChipMapper()
     private let imageCardFaceDown: UIImage = UIImage(named: Constants.Assets.FacedownCard)!
     private var gameEngine: GameEngine!
 
@@ -40,24 +41,9 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     @IBAction func chipAddAction(_ sender: UIButton) {
 
         if let title = sender.titleLabel?.text {
-            var chip: Chip
-            switch title {
-            case "1":
-                chip = Chip.LightRed
-            case "5":
-                chip = Chip.Pink
-            case "10":
-                chip = Chip.LightBlue
-            case "25":
-                chip = Chip.Purple
-            case "50":
-                chip = Chip.DarkRed
-            case "100":
-                chip = Chip.DarkBlue
-            default:
-                chip = Chip.Unknown
-            }
-            
+
+            let chip: Chip = valueToChipMapper.map(title)
+
             if gameEngine.isLastChip(chip: chip) {
                 sender.isHidden = true
             }
@@ -88,29 +74,14 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     }
     
     @IBAction func chipRemoveAction(_ sender: UIButton) {
-        // gameEngine.removeFromBet()
+    
+        // Remove the chip from the bets by animating it back to the wallet of the player
         if let title = sender.titleLabel?.text {
-            var chip: Chip
-            switch title {
-            case "1":
-                chip = Chip.LightRed
-            case "5":
-                chip = Chip.Pink
-            case "10":
-                chip = Chip.LightBlue
-            case "25":
-                chip = Chip.Purple
-            case "50":
-                chip = Chip.DarkRed
-            case "100":
-                chip = Chip.DarkBlue
-            default:
-                chip = Chip.Unknown
-            }
-            
+
+            let chip: Chip = valueToChipMapper.map(title)
             gameEngine.removeBet(chip: chip)
             
-            if let originalChip = view.viewWithTag(Int(10000 + chip.rawValue)) {
+            if let originalChip = view.viewWithTag(ChipTag.create(chip)) {
                 let newOrigin = originalChip.frame.origin
                 UIButton.animate(withDuration: Constants.Animation.PlaceBetDuraction, delay: 0, options: .curveEaseInOut, animations: {
                     sender.frame.origin = newOrigin
@@ -124,7 +95,6 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             }
                 
         }
-        
     }
     
     override func viewDidLoad() {
