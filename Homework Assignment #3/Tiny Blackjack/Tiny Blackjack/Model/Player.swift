@@ -18,35 +18,46 @@ class Player {
     var isHuman: Bool
     var currentHandIndex: Int = 0
     
-    var moneyAvailable: Wallet = Wallet()
-    var moneyBet: Wallet = Wallet()
+    var wallet: Wallet = Wallet()
+    var betWallets: [Wallet] = [Wallet]()
+    
+    init(name: String, strategy: BlackjackStrategy, isDealer: Bool, isHuman: Bool) {
+        self.name = name
+        self.hands.append(Hand())
+        self.betWallets.append(Wallet())
+        self.strategy = strategy
+        self.isDealer = isDealer
+        self.isHuman = isHuman
+    }
     
     func numberOfCards(handIndex: Int) -> Int {
         return hands[handIndex].count
     }
     
     func addChipsToWallet(chipsToAdd: [Chip]) {
-        moneyAvailable.add(chipsToAdd)
+        wallet.add(chipsToAdd)
     }
     
     func betChip(chipToBet: Chip) -> Bool {
-        if moneyAvailable.hasChip(chipToBet) {
-            moneyAvailable.remove(chipToBet)
-            moneyBet.add(chipToBet)
+        if wallet.hasChip(chipToBet) {
+            wallet.remove(chipToBet)
+            betWallets[0].add(chipToBet)
             return true
         }
         return false
     }
     
     func removeBet(chipToRemove: Chip) {
-        if moneyBet.hasChip(chipToRemove) {
-            moneyBet.remove(chipToRemove)
-            moneyAvailable.add(chipToRemove)
+        if betWallets[0].hasChip(chipToRemove) {
+            betWallets[0].remove(chipToRemove)
+            wallet.add(chipToRemove)
         }
     }
     
     func clearBet() {
-        moneyBet.clear()
+        for betWallet in betWallets {
+            betWallet.clear()
+        }
     }
 
     func numberOfHands() -> Int {
@@ -57,14 +68,6 @@ class Player {
         return hands[handIndex]
     }
 
-    init(name: String, strategy: BlackjackStrategy, isDealer: Bool, isHuman: Bool) {
-        self.name = name
-        self.hands.append(Hand())
-        self.strategy = strategy
-        self.isDealer = isDealer
-        self.isHuman = isHuman
-    }
-    
     func clear() {
         self.hands.removeAll()
         self.hands.append(Hand())
@@ -111,6 +114,14 @@ class Player {
             let splittedHand: Hand = Hand()
             splittedHand.add(card)
             hands.insert(splittedHand, at: handIndex + 1)
+            
+            // Double the bet in a new waller
+            let newBetWallet: Wallet = Wallet()
+            betWallets.append(newBetWallet)
+            for chip in betWallets[handIndex].chips {
+                wallet.remove(chip)
+                newBetWallet.add(chip)
+            }
         }
     }
 

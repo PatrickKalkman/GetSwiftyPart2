@@ -15,6 +15,8 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     private let valueToChipMapper: ValueToChipMapper = ValueToChipMapper()
     private let imageCardFaceDown: UIImage = UIImage(named: Constants.Assets.FacedownCard)!
     private var gameEngine: GameEngine!
+    private var shuffleSound: Sound?
+    private var dealCardSound: Sound?
 
     private var addedCards: [UIImageView] = [UIImageView]()
     private var addedChips: [UIButton] = [UIButton]()
@@ -29,19 +31,23 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     @IBOutlet weak var dealerValueLabel: UILabel!
     @IBOutlet weak var restartButton: BorderButton!
     @IBOutlet weak var playResultLabel: UILabel!
-    
+
     @IBOutlet weak var darkBlueChip: UIButton!
     @IBOutlet weak var darkRedChip: UIButton!
     @IBOutlet weak var purpleChip: UIButton!
     @IBOutlet weak var lightBlueChip: UIButton!
     @IBOutlet weak var pinkChip: UIButton!
     @IBOutlet weak var lightRedChip: UIButton!
-    
+
     @IBOutlet weak var playerBetLabel: UILabel!
     @IBOutlet weak var playerTotalLabel: UILabel!
     @IBOutlet weak var placeYourBetsTitle: UILabel!
-    
+
     @IBAction func chipAddAction(_ sender: UIButton) {
+
+        if gameEngine.getState() != GameStates.playersBetSelectPlayer {
+            return
+        }
 
         if let title = sender.titleLabel?.text {
 
@@ -50,9 +56,9 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             if gameEngine.isLastChip(chip: chip) {
                 sender.isHidden = true
             }
-            
+
             if gameEngine.addBet(chip: chip) {
-                
+
                 let newChip: UIButton = UIButton()
                 if let image = sender.imageView?.image {
                     newChip.setImage(image, for: UIControl.State.normal)
@@ -62,60 +68,62 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                 newChip.setTitleColor(sender.titleColor(for: UIControl.State.normal), for: UIControl.State.normal)
                 newChip.setTitle(sender.title(for: UIControl.State.normal), for: UIControl.State.normal)
                 newChip.titleLabel?.font = sender.titleLabel?.font
-    
+
                 newChip.addTarget(self, action: #selector(chipRemoveAction), for: .touchUpInside)
-                
+
                 view.addSubview(newChip)
                 addedChips.append(newChip)
-                
+
                 UIButton.animate(withDuration: Constants.Animation.PlaceBetDuraction, delay: 0, options: .curveEaseInOut, animations: {
                     newChip.frame.origin.x = 20
                     newChip.frame.origin.y = 100
                 }, completion: { _ in
-                    self.refreshWallet()
-                    self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
-                    self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
-                    Sound.play(file: "AddChip.wav")
+                        self.refreshWallet()
+                        self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
+                        self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
+                        Sound.play(file: "AddChip.wav")
 
-                    newChip.shake(duration: 0.05)
-                })
-                
-                
+                        newChip.shake(duration: 0.05)
+                    })
+
+
             }
         }
     }
-    
+
     @IBAction func chipRemoveAction(_ sender: UIButton) {
-    
+
         // Remove the chip from the bets by animating it back to the wallet of the player
         if let title = sender.titleLabel?.text {
 
             let chip: Chip = valueToChipMapper.map(title)
             gameEngine.removeBet(chip: chip)
-            
+
             if let originalChip = view.viewWithTag(ChipTag.create(chip)) {
                 let newOrigin = originalChip.frame.origin
                 UIButton.animate(withDuration: Constants.Animation.PlaceBetDuraction, delay: 0, options: .curveEaseInOut, animations: {
                     sender.frame.origin = newOrigin
                 }, completion: { _ in
-                    self.refreshWallet()
-                    self.addedChips.removeFirst()
-                    sender.isHidden = true
-                    originalChip.isHidden = false
-                    sender.removeFromSuperview()
-                    self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
-                    self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
-                    Sound.play(file: "AddChip.wav")
-                    originalChip.shake(duration: 0.05)
-                })
+                        self.refreshWallet()
+                        self.addedChips.removeFirst()
+                        sender.isHidden = true
+                        originalChip.isHidden = false
+                        sender.removeFromSuperview()
+                        self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
+                        self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
+                        Sound.play(file: "AddChip.wav")
+                        originalChip.shake(duration: 0.05)
+                    })
             }
         }
     }
-    
+
     func refreshWallet() {
         self.playerTotalLabel.text = String(self.gameEngine.getPlayerWalletTotal())
-        self.playerBetLabel.text = String(self.gameEngine.getPlayerBetTotal())
-        
+        let playerTotal: UInt = self.gameEngine.getPlayerBetTotal()
+        self.playerBetLabel.text = String(playerTotal)
+        self.playerBetLabel.isHidden = playerTotal <= 0
+
         darkBlueChip.isHidden = !self.gameEngine.walletContains(Chip.DarkBlue)
         darkRedChip.isHidden = !self.gameEngine.walletContains(Chip.DarkRed)
         purpleChip.isHidden = !self.gameEngine.walletContains(Chip.Purple)
@@ -123,9 +131,18 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         pinkChip.isHidden = !self.gameEngine.walletContains(Chip.Pink)
         lightRedChip.isHidden = !self.gameEngine.walletContains(Chip.LightRed)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let shuffleSoundUrl = Bundle.main.url(forResource: "Shuffle", withExtension: "wav") {
+            shuffleSound = Sound(url: shuffleSoundUrl)!
+        }
+
+        if let dealCardSoundUrl = Bundle.main.url(forResource: "Card1", withExtension: "wav") {
+            dealCardSound = Sound(url: dealCardSoundUrl)!
+        }
+
         // Do any additional setup after loading the view, typically from a nib.
         gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
         self.organizeUiBasedOnState(state: GameStates.waitingForStart)
@@ -135,9 +152,14 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         }
     }
 
+
     @IBAction func deal(_ sender: Any) {
-        gameEngine.triggerEvent(GameEvents.betsPlaced)
-        gameEngine.triggerEvent(GameEvents.dealCards)
+
+        shuffleSound!.play(numberOfLoops: 0, completion: { _ in
+            self.gameEngine.triggerEvent(GameEvents.betsPlaced)
+            self.gameEngine.triggerEvent(GameEvents.dealCards)
+        })
+
     }
 
     @IBAction func restartGame(_ sender: UIButton) {
@@ -190,6 +212,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             playResultLabel.isHidden = true
             playerValueLabel.isHidden = true
             dealerValueLabel.isHidden = true
+            playerBetLabel.isHidden = true
         case GameStates.dealCards:
             playerValueLabel.isHidden = true
             dealerValueLabel.isHidden = true
@@ -200,7 +223,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             standButton.isHidden = false
             restartButton.isHidden = true
             playResultLabel.isHidden = true
-            
+
         case GameStates.distributeBets:
             dealButton.isHidden = true
             splitButton.isHidden = true
@@ -227,11 +250,10 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         splitButton.isHidden = false
     }
 
-
     var dealerCard2ImageView: UIImageView!
 
     func dealCards() {
- 
+
         self.dealButton.isHidden = true
         self.organizeUiBasedOnState(state: GameStates.dealCards)
 
@@ -253,6 +275,8 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                     options: .transitionFlipFromLeft, animations: { player1Card1ImageView.image = imageCardFaceUp },
                     completion: { _ in
 
+                        self.dealCardSound!.play(numberOfLoops: 0)
+
                         let dealerCard1ImageView: UIImageView = self.getNewCardFromDeckFaceDown()
                         let dealerCard1FaceUp: UIImage = self.getCardImage(self.gameEngine.getDealerCard(cardIndex: 0))
 
@@ -260,6 +284,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                             dealerCard1ImageView.setOrigin(Constants.Positions.FirstDealerCard)
                         }, completion: { _ in
 
+                                self.dealCardSound!.play(numberOfLoops: 0)
                                 UIImageView.transition(with: dealerCard1ImageView, duration: Constants.Animation.FlipCardDuration, options: .transitionFlipFromLeft,
                                     animations: { dealerCard1ImageView.image = dealerCard1FaceUp },
                                     completion: { _ in
@@ -267,7 +292,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                                         UIImageView.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
                                             player1Card2ImageView.setOrigin(Constants.Positions.SecondPlayerCard)
                                         }, completion: { _ in
-
+                                                self.dealCardSound!.play(numberOfLoops: 0)
                                                 UIImageView.transition(with: player1Card2ImageView,
                                                     duration: Constants.Animation.FlipCardDuration, options: .transitionFlipFromLeft,
                                                     animations: { player1Card2ImageView.image = imageCard2FaceUp },
@@ -328,19 +353,19 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     }
 
     func selectHand(cardIndex: Int, previousHand: Hand?, currentHand: Hand?) {
-        
+
         self.moveHand(handToMove: previousHand, xMove: -360, yMove: -130, completion: { _ in
             self.playerCardIndex = cardIndex
             self.showAndRefreshValues()
         })
-        
+
         moveHand(handToMove: currentHand, xMove: 0, yMove: -210, completion: { _ in
 
         })
-        
+
         // Move previous hand to side spot and move current to main spot
         print("Select hand with cardIndex \(cardIndex)")
-        
+
         self.gameEngine.triggerEvent(GameEvents.playerHandSelected)
     }
 
@@ -350,9 +375,8 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     var dealerCardIndex: Int = 1
 
     func dealerStart() {
-
         let dealerCardFaceUp: UIImage = getCardImage(self.gameEngine.getDealerCard(cardIndex: dealerCardIndex))
-
+        self.dealCardSound!.play(numberOfLoops: 0)
         UIImageView.transition(with: dealerCard2ImageView, duration: Constants.Animation.FlipCardDuration,
             options: .transitionFlipFromLeft, animations: { self.dealerCard2ImageView.image = dealerCardFaceUp },
             completion: { _ in
@@ -360,7 +384,6 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                 self.showAndRefreshValues()
                 self.gameEngine.triggerEvent(GameEvents.turnDealerCardFaceUp)
             })
-
     }
 
     func showDealerHasBlackjack() {
@@ -390,7 +413,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             playerCardImageView.frame.origin.y = Constants.Positions.FirstCardY
             playerCardImageView.frame.origin.x = CGFloat(Constants.Positions.FirstCardX + CGFloat(self.playerCardIndex) * Constants.Positions.CardXDifference)
         }, completion: { _ in
-
+                self.dealCardSound!.play(numberOfLoops: 0)
                 UIImageView.transition(with: playerCardImageView, duration: Constants.Animation.FlipCardDuration, options: .transitionFlipFromLeft,
                     animations: { playerCardImageView.image = imageCardFaceUp }, completion: { _ in
 
@@ -416,7 +439,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             dealerCardImageView.frame.origin.y = 80
             dealerCardImageView.frame.origin.x = CGFloat(400 + self.dealerCardIndex * 40)
         }, completion: { _ in
-
+                self.dealCardSound!.play(numberOfLoops: 0)
                 UIImageView.transition(with: dealerCardImageView, duration: Constants.Animation.FlipCardDuration,
                     options: .transitionFlipFromLeft, animations: { dealerCardImageView.image = imageCardFaceUp },
                     completion: { _ in
@@ -458,20 +481,20 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         self.playerValueLabel.isHidden = false
         self.dealerValueLabel.isHidden = false
     }
-    
+
     func moveHand(handToMove: Hand?, xMove: CGFloat, yMove: CGFloat, completion: ((Bool) -> Void)? = nil) {
         if let hand = handToMove {
             let cardViewIndex: [Int] = hand.getAllCardsIndex()
-            
+
             for cardIndex in cardViewIndex {
                 if let cardImage = view.viewWithTag(cardIndex) as? UIImageView {
                     UIImageView.animate(withDuration: Constants.Animation.SplitMoveCardDuration, delay: 0, options: .curveEaseInOut, animations: {
                         cardImage.moveXY(xMove, yMove)
                     }, completion: { input in
-                        if let complete = completion {
-                            complete(input)
-                        }
-                    })
+                            if let complete = completion {
+                                complete(input)
+                            }
+                        })
                 }
             }
         }

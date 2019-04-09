@@ -50,6 +50,9 @@
 		AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */; };
 		AB995509225BBA0300FB9596 /* ChipTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995507225BBA0300FB9596 /* ChipTag.swift */; };
 		AB99550B225BE95E00FB9596 /* AddChip.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB99550A225BE95E00FB9596 /* AddChip.wav */; };
+		AB99550D225D1DE200FB9596 /* Shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB99550C225D1DE100FB9596 /* Shuffle.wav */; };
+		AB99550F225D23A200FB9596 /* Card1.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB99550E225D23A200FB9596 /* Card1.wav */; };
+		AB995511225D375200FB9596 /* InitialChipsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995510225D375200FB9596 /* InitialChipsGenerator.swift */; };
 		B207F370475E8E0BB123C1AC /* Pods_Tiny_BlackjackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +116,9 @@
 		AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueToChipMapper.swift; sourceTree = "<group>"; };
 		AB995507225BBA0300FB9596 /* ChipTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipTag.swift; sourceTree = "<group>"; };
 		AB99550A225BE95E00FB9596 /* AddChip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AddChip.wav; sourceTree = "<group>"; };
+		AB99550C225D1DE100FB9596 /* Shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Shuffle.wav; sourceTree = "<group>"; };
+		AB99550E225D23A200FB9596 /* Card1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Card1.wav; sourceTree = "<group>"; };
+		AB995510225D375200FB9596 /* InitialChipsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialChipsGenerator.swift; sourceTree = "<group>"; };
 		CA38E29F8A3BAFED2058E669 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.release.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
 		E0C60877A48C2B275BA4AE84 /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_BlackjackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +168,7 @@
 				AB995507225BBA0300FB9596 /* ChipTag.swift */,
 				AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */,
 				AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */,
+				AB995510225D375200FB9596 /* InitialChipsGenerator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -189,6 +196,8 @@
 		AB97EFB522453BEB00E45E6F /* Tiny Blackjack */ = {
 			isa = PBXGroup;
 			children = (
+				AB99550E225D23A200FB9596 /* Card1.wav */,
+				AB99550C225D1DE100FB9596 /* Shuffle.wav */,
 				AB99550A225BE95E00FB9596 /* AddChip.wav */,
 				AB129F59225504680025ECA1 /* Constants.swift */,
 				AB129F5422514F810025ECA1 /* Helpers */,
@@ -356,8 +365,10 @@
 			files = (
 				AB99550B225BE95E00FB9596 /* AddChip.wav in Resources */,
 				AB97EFC422453BEC00E45E6F /* LaunchScreen.storyboard in Resources */,
+				AB99550F225D23A200FB9596 /* Card1.wav in Resources */,
 				AB97EFC122453BEC00E45E6F /* Assets.xcassets in Resources */,
 				AB97EFBC22453BEB00E45E6F /* Main.storyboard in Resources */,
+				AB99550D225D1DE200FB9596 /* Shuffle.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +469,7 @@
 				AB129F532251438C0025ECA1 /* BlackjackViewProtocol.swift in Sources */,
 				AB129F5C225518550025ECA1 /* HandResult.swift in Sources */,
 				AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */,
+				AB995511225D375200FB9596 /* InitialChipsGenerator.swift in Sources */,
 				AB129F47224E4AF30025ECA1 /* GameStateMachine.swift in Sources */,
 				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
 				AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */,

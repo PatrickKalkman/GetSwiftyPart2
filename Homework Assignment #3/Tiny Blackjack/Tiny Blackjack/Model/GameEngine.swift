@@ -22,6 +22,7 @@ class GameEngine: BlackjackProtocol {
     private var currentPlayerHandIndex: Int = 0
     private var gameResultCalculator: GameResultCalculator
     private var numberOfPlayers: UInt8 = 0
+    private var initialChipsGenerator: InitialChipsGenerator = InitialChipsGenerator()
     
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
         self.playResult = [HandResult]()
@@ -47,19 +48,19 @@ class GameEngine: BlackjackProtocol {
     }
 
     func isLastChip(chip: Chip) -> Bool {
-        return currentPlayer.moneyAvailable.isLastChip(chip)
+        return currentPlayer.wallet.isLastChip(chip)
     }
     
     func walletContains(_ chip: Chip) -> Bool {
-        return currentPlayer.moneyAvailable.hasChip(chip)
+        return currentPlayer.wallet.hasChip(chip)
     }
     
     func getPlayerWalletTotal() -> UInt {
-        return currentPlayer.moneyAvailable.totalValue()
+        return currentPlayer.wallet.totalValue()
     }
     
     func getPlayerBetTotal() -> UInt {
-        return currentPlayer.moneyBet.totalValue()
+        return currentPlayer.betWallets.reduce(0) { $0 + $1.totalValue()}
     }
     
     func getPlayerCard(playerIndex: Int, handIndex: Int, cardIndex: Int) -> Card {
@@ -125,7 +126,7 @@ class GameEngine: BlackjackProtocol {
         for playerNumber in 1...numberOfPlayers {
             let player: Player = Player(name: "Player \(playerNumber)", strategy: SimpleStrategy(),
                    isDealer: false, isHuman: true)
-            player.addChipsToWallet(chipsToAdd: generateInitialChips())
+            player.addChipsToWallet(chipsToAdd: initialChipsGenerator.generateInitialChips())
             players.append(player)
         }
 
@@ -317,8 +318,7 @@ class GameEngine: BlackjackProtocol {
 
     func hitPlayer() {
         let card: Card = deck.draw()
-        let cardTest: Card = Card(card.suit, Rank.king, card.index)
-        currentPlayer.add(handIndex: currentPlayerHandIndex - 1, card: cardTest)
+        currentPlayer.add(handIndex: currentPlayerHandIndex - 1, card: card)
         blackjackView?.hitPlayer()
     }
 
@@ -369,17 +369,17 @@ class GameEngine: BlackjackProtocol {
                 // Just remove the bet from the bet wallet
                 players[handResult.playerIndex].clearBet()
             case GameResult.PlayerWins:
-                let chips: [Chip] = players[handResult.playerIndex].moneyBet.getAll()
+                let chips: [Chip] = players[handResult.playerIndex].betWallets[handResult.handIndex].getAll()
                 for _ in 1...2 {
                     for chip in chips {
-                        players[handResult.playerIndex].moneyAvailable.add(chip)
+                        players[handResult.playerIndex].wallet.add(chip)
                     }
                 }
                 players[handResult.playerIndex].clearBet()
             case GameResult.Push:
-                let chips: [Chip] = players[handResult.playerIndex].moneyBet.getAll()
+                let chips: [Chip] = players[handResult.playerIndex].betWallets[handResult.handIndex].getAll()
                 for chip in chips {
-                    players[handResult.playerIndex].moneyAvailable.add(chip)
+                    players[handResult.playerIndex].wallet.add(chip)
                 }
                 players[handResult.playerIndex].clearBet()
             }
@@ -406,38 +406,9 @@ class GameEngine: BlackjackProtocol {
     
     func getCurrentPlayerTotal() -> UInt {
         if let player = currentPlayer {
-            return player.moneyAvailable.totalValue()
+            return player.wallet.totalValue()
         }
         return 0
     }
 
-    func generateInitialChips() -> [Chip] {
-        var chips: [Chip] = [Chip]()
-        
-        for _ in 1...5 {
-            chips.append(Chip.DarkBlue) // 500
-        }
-        
-        for _ in 1...5 {
-            chips.append(Chip.DarkRed) // 250
-        }
-        
-        for _ in 1...10 {
-            chips.append(Chip.Purple) // 250
-        }
-        
-        for _ in 1...14 {
-            chips.append(Chip.LightBlue) // 250
-        }
-        
-        for _ in 1...10 {
-            chips.append(Chip.Pink) // 250
-        }
-        
-        for _ in 1...10 {
-            chips.append(Chip.LightRed) // 250
-        }
-        
-        return chips
-    }
 }
