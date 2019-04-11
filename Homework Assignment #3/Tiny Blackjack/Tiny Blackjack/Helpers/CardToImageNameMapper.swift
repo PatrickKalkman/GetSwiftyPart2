@@ -8,6 +8,8 @@
 
 import Foundation
 
+// This class is responsible for mapping a Card from the model to the name of
+// an asset(image)
 class CardToImageNameMapper {
     
     func map(_ card: Card) -> String {

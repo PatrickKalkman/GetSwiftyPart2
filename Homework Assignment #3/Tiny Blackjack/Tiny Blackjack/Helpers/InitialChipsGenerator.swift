@@ -8,6 +8,7 @@
 
 import Foundation
 
+// This class is responsible for generating the initial chips of a player
 class InitialChipsGenerator {
     
     func generateInitialChips() -> [Chip] {

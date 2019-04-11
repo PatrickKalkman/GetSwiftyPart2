@@ -16,6 +16,7 @@ struct HandResult {
 
 enum GameResult {
     case PlayerWins
+    case PlayerWinsWithBlackjack
     case DealerWins
     case Push
 }

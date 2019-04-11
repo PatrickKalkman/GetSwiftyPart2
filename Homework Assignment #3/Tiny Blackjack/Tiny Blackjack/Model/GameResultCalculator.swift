@@ -29,33 +29,35 @@ class GameResultCalculator {
                 if dealer.isBusted(handIndex: 0) {
                     handResult.result = GameResult.PlayerWins
                     result.append(handResult)
-                    print("\(player.name) wins")
+                    print("\(player.name) \(handIndex) wins")
                     break;
                 }
                 
                 if player.isBusted(handIndex: handIndex) {
                     handResult.result = GameResult.DealerWins
                     result.append(handResult)
-                    print("\(dealer.name) wins")
+                    print("\(dealer.name) \(handIndex) wins")
                     break
                 }
                 
                 if dealerValue > playerValue {
                     handResult.result = GameResult.DealerWins
                     result.append(handResult)
-                    print("\(dealer.name) wins")
+                    print("\(dealer.name) \(handIndex) wins")
                     break
                 }
                 
                 if dealerValue == playerValue {
                     handResult.result = GameResult.Push
                     result.append(handResult)
-                    print("Push")
+                    print("Push \(handIndex)")
                     break
                 }
                 
                 if playerValue > dealerValue {
-                    handResult.result = GameResult.PlayerWins
+                    handResult.result = player.getHand(handIndex: handIndex).isBlackjack() ? 
+                                            GameResult.PlayerWinsWithBlackjack : GameResult.PlayerWins
+                    
                     result.append(handResult)
                     print("\(player.name) wins")
                 }

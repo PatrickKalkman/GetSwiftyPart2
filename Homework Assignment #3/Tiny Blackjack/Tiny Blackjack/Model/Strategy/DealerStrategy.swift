@@ -18,6 +18,7 @@ import Foundation
 // require dealers to take at least one more card with the dealer has a soft 17 showing. The dealer will continue
 // taking more cards—until the house’s hand either becomes a hard 17 or higher, or the hand goes over 21 and goes bust.
 
+// This class defines the strategy of the dealer
 class DealerStrategy: BlackjackStrategy {
 
     func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction {
