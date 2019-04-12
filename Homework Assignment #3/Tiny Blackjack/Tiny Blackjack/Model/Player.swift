@@ -17,10 +17,10 @@ class Player {
     var isDealer: Bool
     var isHuman: Bool
     var currentHandIndex: Int = 0
-    
+
     var wallet: Wallet = Wallet()
     var betWallets: [Wallet] = [Wallet]()
-    
+
     init(name: String, strategy: BlackjackStrategyProtocol, isDealer: Bool, isHuman: Bool) {
         self.name = name
         self.hands.append(Hand())
@@ -29,29 +29,29 @@ class Player {
         self.isDealer = isDealer
         self.isHuman = isHuman
     }
-    
+
     func numberOfCards(handIndex: Int) -> Int {
         return hands[handIndex].count
     }
-    
+
     func addChipsToWallet(chipsToAdd: [Chip]) {
         wallet.add(chipsToAdd)
     }
-    
+
     func betChip(chipToBet: Chip) {
         if wallet.hasChip(chipToBet) {
             wallet.remove(chipToBet)
             betWallets[0].add(chipToBet)
         }
     }
-    
+
     func removeBet(chipToRemove: Chip) {
         if betWallets[0].hasChip(chipToRemove) {
             betWallets[0].remove(chipToRemove)
             wallet.add(chipToRemove)
         }
     }
-    
+
     func clearBet() {
         for betWallet in betWallets {
             betWallet.clear()
@@ -112,7 +112,7 @@ class Player {
             let splittedHand: Hand = Hand()
             splittedHand.add(card)
             hands.insert(splittedHand, at: handIndex + 1)
-            
+
             // Double the bet in a new waller
             let newBetWallet: Wallet = Wallet()
             betWallets.append(newBetWallet)

@@ -1,29 +1,29 @@
 import Foundation
 
 class ValueToChipMapper {
-    
+
     func map(_ value: String) -> Chip {
-        
+
         var chip: Chip
 
         switch value {
         case "1":
-            chip = Chip.LightRed
+            chip = Chip.lightRed
         case "5":
-            chip = Chip.Pink
+            chip = Chip.pink
         case "10":
-            chip = Chip.LightBlue
+            chip = Chip.lightBlue
         case "25":
-            chip = Chip.Purple
+            chip = Chip.purple
         case "50":
-            chip = Chip.DarkRed
+            chip = Chip.darkRed
         case "100":
-            chip = Chip.DarkBlue
+            chip = Chip.darkBlue
         default:
-            chip = Chip.Unknown
+            chip = Chip.unknown
         }
 
         return chip
     }
 }
-    
+

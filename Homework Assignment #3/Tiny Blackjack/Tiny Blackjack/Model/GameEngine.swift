@@ -23,7 +23,7 @@ class GameEngine: BlackjackProtocol {
     private var gameResultCalculator: GameResultCalculator
     private var numberOfPlayers: UInt8 = 0
     private var initialChipsGenerator: InitialChipsGenerator = InitialChipsGenerator()
-    
+
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
         self.playResult = [HandResult]()
         self.gameResultCalculator = gameResultCalculator
@@ -38,11 +38,11 @@ class GameEngine: BlackjackProtocol {
     func triggerEvent(_ event: GameEvents) {
         gameState.triggerEvent(event)
     }
-    
+
     func addBet(chip: Chip) {
         currentPlayer.betChip(chipToBet: chip)
     }
-    
+
     func removeBet(chip: Chip) {
         currentPlayer.removeBet(chipToRemove: chip)
     }
@@ -50,58 +50,58 @@ class GameEngine: BlackjackProtocol {
     func isLastChip(chip: Chip) -> Bool {
         return currentPlayer.wallet.isLastChip(chip)
     }
-    
+
     func walletContains(_ chip: Chip) -> Bool {
         return currentPlayer.wallet.hasChip(chip)
     }
-    
+
     func getPlayerWalletTotal() -> UInt {
         return currentPlayer.wallet.totalValue()
     }
-    
+
     func getPlayerBetTotal() -> UInt {
-        return currentPlayer.betWallets.reduce(0) { $0 + $1.totalValue()}
+        return currentPlayer.betWallets.reduce(0) { $0 + $1.totalValue() }
     }
-    
+
     func getPlayerCard(playerIndex: Int, handIndex: Int, cardIndex: Int) -> Card {
         return players[playerIndex].getHand(handIndex: handIndex).getCard(cardIndex: cardIndex)
     }
-    
+
     func getCurrentHand() -> Hand? {
         return currentHand
     }
-    
+
     func getNextHand() -> Hand {
         return currentPlayer.getHand(handIndex: currentPlayerHandIndex + 1)
     }
-    
+
     func getPreviousHand() -> Hand {
         return currentPlayer.getHand(handIndex: currentPlayerHandIndex - 1)
     }
-    
+
     func getPlayerValueString() -> String {
         if let hand = currentHand {
             return getHandValueString(hand: hand)
         }
         return ""
     }
-    
+
     func getDealerValueString() -> String {
         return getHandValueString(hand: dealer.getHand(handIndex: 0))
     }
-    
-    private func getHandValueString(hand: Hand) ->  String {
+
+    private func getHandValueString(hand: Hand) -> String {
         var valueString: String = String(hand.getValue())
-        
+
         if hand.isBusted() {
             valueString += " (busted)"
         } else if hand.isBlackjack() {
             valueString += " (blackjack)"
         }
-        
+
         return valueString
     }
-    
+
     func getDealerCard(cardIndex: Int) -> Card {
         return dealer.getHand(handIndex: 0).getCard(cardIndex: cardIndex)
     }
@@ -110,7 +110,7 @@ class GameEngine: BlackjackProtocol {
         self.numberOfPlayers = numberOfPlayers
         triggerEvent(GameEvents.start)
     }
-    
+
     func restart() {
         dealer.clear()
         for player in players {
@@ -125,7 +125,7 @@ class GameEngine: BlackjackProtocol {
         // Add the players
         for playerNumber in 1...numberOfPlayers {
             let player: Player = Player(name: "Player \(playerNumber)", strategy: SimpleStrategy(),
-                   isDealer: false, isHuman: true)
+                isDealer: false, isHuman: true)
             player.addChipsToWallet(chipsToAdd: initialChipsGenerator.generateInitialChips())
             players.append(player)
         }
@@ -178,11 +178,11 @@ class GameEngine: BlackjackProtocol {
             triggerEvent(GameEvents.dealerHasNoBlackjack)
         }
     }
-    
+
     func showDealerBlackjack() {
         blackjackView?.showDealerHasBlackjack()
     }
-    
+
     func placeBet() {
         if currentPlayerIndex < players.count {
             currentPlayer = players[currentPlayerIndex]
@@ -196,9 +196,9 @@ class GameEngine: BlackjackProtocol {
             triggerEvent(GameEvents.betsPlaced)
         }
     }
-    
+
     func allBetsPlaced() {
-        
+
     }
 
     func selectPlayer() {
@@ -214,20 +214,20 @@ class GameEngine: BlackjackProtocol {
     }
 
     func selectHand(justSplitted: Bool) {
-        print("CurrentPlayerHandIndex \(currentPlayerHandIndex )")
+        print("CurrentPlayerHandIndex \(currentPlayerHandIndex)")
         if currentPlayerHandIndex < currentPlayer.numberOfHands() {
-            
+
             currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
-            
+
             currentPlayerHandIndex += 1
-            
+
             if currentPlayerHandIndex > 1 && !justSplitted {
                 let previousHand: Hand = currentPlayer.getHand(handIndex: currentPlayerHandIndex - 2)
                 blackjackView?.selectHand(cardIndex: 1, previousHand: previousHand, currentHand: currentHand)
             } else {
                 blackjackView?.selectHand(cardIndex: 1, previousHand: nil, currentHand: nil)
             }
-  
+
         } else {
             currentPlayerIndex += 1
             triggerEvent(GameEvents.playerHandsFinished)
@@ -237,9 +237,9 @@ class GameEngine: BlackjackProtocol {
     func playerGetChoice() {
         if !currentPlayer.isHuman {
             guard let hand = currentHand else { return }
-            
+
             let action: ProposedAction = currentPlayer.askAction(ownHand: hand,
-                                                                 dealerHand: dealer.getHand(handIndex: 0))
+                dealerHand: dealer.getHand(handIndex: 0))
             switch action {
             case ProposedAction.hit:
                 triggerEvent(GameEvents.hitPlayer)
@@ -264,36 +264,36 @@ class GameEngine: BlackjackProtocol {
             blackjackView?.enableSplit()
         }
     }
-    
+
     func showSplittedHand() {
         blackjackView?.showSplittedHand()
     }
-    
+
     func isCurrentHandBusted() -> Bool {
         if let hand = currentHand {
             return hand.isBusted()
         }
         return false
     }
-    
+
     func isCurrentHandBlackjack() -> Bool {
         if let hand = currentHand {
             return hand.isBlackjack()
         }
         return false
     }
-    
+
     func isDealerBusted() -> Bool {
         return dealer.getHand(handIndex: 0).isBusted()
     }
-    
+
     func currentHandCanSplit() -> Bool {
         if let hand = currentHand {
             return hand.canSplit()
         }
         return false
     }
-    
+
     func dealerGetChoice() {
 
         let opponent: (Player, Int) = getPlayerWithHighestScore()
@@ -345,17 +345,17 @@ class GameEngine: BlackjackProtocol {
     }
 
     var playResult: [HandResult]
-    
+
     func calculateResult() {
         playResult = gameResultCalculator.calculateAndShowResults(players: players, dealer: dealer)
         blackjackView?.calculateResult()
         triggerEvent(GameEvents.resultsCalculated)
     }
-    
+
     func getPlayResult() -> [HandResult] {
         return playResult
     }
-    
+
     func dealerStart() {
         blackjackView?.dealerStart()
         triggerEvent(GameEvents.dealerChoose)
@@ -388,7 +388,7 @@ class GameEngine: BlackjackProtocol {
                     let lowerChips: [Chip] = getHalveChip(chip)
                     players[handResult.playerIndex].wallet.add(lowerChips)
                 }
-                
+
                 players[handResult.playerIndex].clearBet()
                 print("Total: \(players[handResult.playerIndex].wallet.totalValue())")
             case GameResult.Push:
@@ -418,41 +418,41 @@ class GameEngine: BlackjackProtocol {
         }
         return (highestPlayer, highestHandIndex)
     }
-    
+
     func getCurrentPlayerTotal() -> UInt {
         if let player = currentPlayer {
             return player.wallet.totalValue()
         }
         return 0
     }
-    
+
     func getHalveChip(_ chip: Chip) -> [Chip] {
         var chips: [Chip] = [Chip]()
-        
+
         switch chip {
-        case Chip.DarkBlue:
-            chips.append(Chip.DarkRed)
-        case Chip.DarkRed:
-            chips.append(Chip.Purple)
-        case Chip.LightBlue:
-            chips.append(Chip.Pink)
-        case Chip.LightRed:
-            chips.append(Chip.LightRed)
-        case Chip.Pink:
-            chips.append(Chip.LightRed)
-            chips.append(Chip.LightRed)
-            chips.append(Chip.LightRed)
-        case Chip.Purple:
-            chips.append(Chip.LightBlue)
-            chips.append(Chip.LightBlue)
-            chips.append(Chip.LightRed)
-            chips.append(Chip.LightRed)
-            chips.append(Chip.LightRed)
-        case Chip.Unknown:
+        case Chip.darkBlue:
+            chips.append(Chip.darkRed)
+        case Chip.darkRed:
+            chips.append(Chip.purple)
+        case Chip.lightBlue:
+            chips.append(Chip.pink)
+        case Chip.lightRed:
+            chips.append(Chip.lightRed)
+        case Chip.pink:
+            chips.append(Chip.lightRed)
+            chips.append(Chip.lightRed)
+            chips.append(Chip.lightRed)
+        case Chip.purple:
+            chips.append(Chip.lightBlue)
+            chips.append(Chip.lightBlue)
+            chips.append(Chip.lightRed)
+            chips.append(Chip.lightRed)
+            chips.append(Chip.lightRed)
+        case Chip.unknown:
             print("Unknown type of chip")
         }
-        
+
         return chips
     }
-    
+
 }

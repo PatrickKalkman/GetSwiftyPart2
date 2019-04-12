@@ -193,7 +193,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place your bets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9d-kw-iyy">
-                                <rect key="frame" x="408.5" y="167.5" width="207" height="33.5"/>
+                                <rect key="frame" x="408.5" y="367.5" width="207" height="33.5"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -356,7 +356,7 @@
                             <constraint firstItem="v79-TG-NBY" firstAttribute="width" secondItem="S8t-Qw-lMN" secondAttribute="width" id="vUY-ou-L22"/>
                             <constraint firstItem="7Lx-SH-2wJ" firstAttribute="centerX" secondItem="DRZ-3s-M2A" secondAttribute="centerX" id="vpI-YA-bPk"/>
                             <constraint firstItem="o5c-dw-dse" firstAttribute="leading" secondItem="J1q-u4-aPO" secondAttribute="leading" id="xz4-4p-t8d"/>
-                            <constraint firstItem="V9d-kw-iyy" firstAttribute="centerY" secondItem="S8t-Qw-lMN" secondAttribute="centerY" constant="-200" id="yy1-TO-b6W"/>
+                            <constraint firstItem="V9d-kw-iyy" firstAttribute="centerY" secondItem="S8t-Qw-lMN" secondAttribute="centerY" id="yy1-TO-b6W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

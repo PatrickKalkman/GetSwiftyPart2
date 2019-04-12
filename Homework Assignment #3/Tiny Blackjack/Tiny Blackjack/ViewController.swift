@@ -66,7 +66,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                 newChip.frame.origin.y = 100
             }, completion: { _ in
                     self.refreshWalletInformation()
-                self.chipSound?.play()
+                    self.chipSound?.play()
                     newChip.shake(duration: 0.05)
                 })
         }
@@ -90,9 +90,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                         sender.isHidden = true
                         originalChip.isHidden = false
                         sender.removeFromSuperview()
-                        self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
-                        self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
-                    self.chipSound?.play()
+                        self.chipSound?.play()
                         originalChip.shake(duration: 0.05)
                     })
             }
@@ -102,18 +100,18 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     func refreshWalletInformation() {
 
         self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
-        self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden        
+        self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
         self.playerTotalLabel.text = String(self.gameEngine.getPlayerWalletTotal())
         let playerTotal: UInt = self.gameEngine.getPlayerBetTotal()
         self.playerBetLabel.text = String(playerTotal)
         self.playerBetLabel.isHidden = playerTotal <= 0
 
-        darkBlueChip.isHidden = !self.gameEngine.walletContains(Chip.DarkBlue)
-        darkRedChip.isHidden = !self.gameEngine.walletContains(Chip.DarkRed)
-        purpleChip.isHidden = !self.gameEngine.walletContains(Chip.Purple)
-        lightBlueChip.isHidden = !self.gameEngine.walletContains(Chip.LightBlue)
-        pinkChip.isHidden = !self.gameEngine.walletContains(Chip.Pink)
-        lightRedChip.isHidden = !self.gameEngine.walletContains(Chip.LightRed)
+        darkBlueChip.isHidden = !self.gameEngine.walletContains(Chip.darkBlue)
+        darkRedChip.isHidden = !self.gameEngine.walletContains(Chip.darkRed)
+        purpleChip.isHidden = !self.gameEngine.walletContains(Chip.purple)
+        lightBlueChip.isHidden = !self.gameEngine.walletContains(Chip.lightBlue)
+        pinkChip.isHidden = !self.gameEngine.walletContains(Chip.pink)
+        lightRedChip.isHidden = !self.gameEngine.walletContains(Chip.lightRed)
     }
 
     override func viewDidLoad() {
@@ -126,7 +124,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         if let dealCardSoundUrl = Bundle.main.url(forResource: Constants.Assets.CardSound, withExtension: Constants.Assets.SoundExtension) {
             dealCardSound = Sound(url: dealCardSoundUrl)!
         }
-        
+
         if let chipSoundUrl = Bundle.main.url(forResource: Constants.Assets.AddChipSound, withExtension: Constants.Assets.SoundExtension) {
             chipSound = Sound(url: chipSoundUrl)!
         }
@@ -216,6 +214,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             standButton.isHidden = true
             restartButton.isHidden = false
             playResultLabel.isHidden = false
+            placeYourBetsTitle.isHidden = true
         default:
             print("do nothing")
         }
@@ -342,18 +341,15 @@ class ViewController: UIViewController, BlackjackViewProtocol {
 
     func selectHand(cardIndex: Int, previousHand: Hand?, currentHand: Hand?) {
 
+        // Move previous hand to side spot and move current to main spot
         self.moveHand(handToMove: previousHand, xMove: -360, yMove: -130, completion: { _ in
             self.playerCardIndex = cardIndex
             self.showAndRefreshValues()
         })
 
-        moveHand(handToMove: currentHand, xMove: 0, yMove: -210, completion: { _ in
+        moveHand(handToMove: currentHand, xMove: 0, yMove: -210)
 
-        })
-
-        // Move previous hand to side spot and move current to main spot
         print("Select hand with cardIndex \(cardIndex)")
-
         self.gameEngine.triggerEvent(GameEvents.playerHandSelected)
     }
 
@@ -392,6 +388,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
 
     func hitPlayer() {
         guard let currentHand = gameEngine.getCurrentHand() else { return }
+
         let newCard: Card = currentHand.getCard(cardIndex: playerCardIndex)
         let imageCardFaceUp: UIImage = getCardImage(newCard)
         let playerCardImageView: UIImageView = getNewCardFromDeckFaceDown()
@@ -441,18 +438,19 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     }
 
     func distributeBets() {
-        organizeUiBasedOnState(state: GameStates.distributeBets)
+
         for button in addedChips {
             button.removeFromSuperview()
         }
         addedChips.removeAll()
         self.refreshWalletInformation()
+        organizeUiBasedOnState(state: GameStates.distributeBets)
+
     }
 
     func getNewCardFromDeckFaceDown() -> UIImageView {
         let cardImageView: UIImageView = UIImageView(image: imageCardFaceDown)
-        cardImageView.frame = CGRect(x: deckCard.frame.origin.x, y: deckCard.frame.origin.y, width: deckCard.frame.size.width,
-            height: deckCard.frame.size.height)
+        cardImageView.frame = CGRect(x: deckCard.frame.origin.x, y: deckCard.frame.origin.y, width: deckCard.frame.size.width, height: deckCard.frame.size.height)
         addedCards.append(cardImageView)
         view.addSubview(cardImageView)
         return cardImageView

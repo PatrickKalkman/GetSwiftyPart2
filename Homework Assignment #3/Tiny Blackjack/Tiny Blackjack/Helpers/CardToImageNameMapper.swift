@@ -11,18 +11,18 @@ import Foundation
 // This class is responsible for mapping a Card from the model to the name of
 // an asset(image)
 class CardToImageNameMapper {
-    
+
     func map(_ card: Card) -> String {
-        
+
         let suit: String = mapSuit(card.suit)
         let rank: String = mapRank(card.rank)
 
         return "\(suit).\(rank)"
     }
-    
+
     func mapRank(_ rank: Rank) -> String {
         var rankString: String = ""
-        
+
         switch rank {
         case Rank.ace:
             rankString = "Ace"
@@ -51,13 +51,13 @@ class CardToImageNameMapper {
         case Rank.queen:
             rankString = "Queen"
         }
-        
+
         return rankString
     }
-    
+
     func mapSuit(_ suit: Suit) -> String {
         var suitString: String = ""
-        
+
         switch suit {
         case Suit.club:
             suitString = "Club"
@@ -68,8 +68,8 @@ class CardToImageNameMapper {
         case Suit.spade:
             suitString = "Spade"
         }
-        
+
         return suitString
     }
- 
+
 }

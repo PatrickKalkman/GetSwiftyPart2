@@ -9,71 +9,71 @@
 import Foundation
 
 class GameResultCalculator {
-    
+
     func calculateAndShowResults(players: [Player], dealer: Player) -> [HandResult] {
-        
+
         var result: [HandResult] = [HandResult]()
-        
+
         var playerIndex: Int = 0
         for player in players {
-            
+
             for handIndex in 0...player.numberOfHands() - 1 {
                 let playerValue: UInt8 = player.getHand(handIndex: handIndex).getValue()
                 let dealerValue: UInt8 = dealer.getHand(handIndex: 0).getValue()
-                
+
                 print("\(player.name) value:\(playerValue) hand:\(player.getState())")
                 print("\(dealer.name) value:\(dealerValue) hand:\(dealer.getState())")
-                
+
                 var handResult: HandResult = HandResult(playerIndex: playerIndex, handIndex: handIndex, result: GameResult.DealerWins)
-                
+
                 if dealer.isBusted(handIndex: 0) {
                     handResult.result = player.getHand(handIndex: handIndex).isBlackjack() ?
-                        GameResult.PlayerWinsWithBlackjack : GameResult.PlayerWins
+                    GameResult.PlayerWinsWithBlackjack: GameResult.PlayerWins
                     result.append(handResult)
                     print("\(player.name) \(handIndex) wins")
                     break;
                 }
-                
+
                 if player.isBusted(handIndex: handIndex) {
                     handResult.result = GameResult.DealerWins
                     result.append(handResult)
                     print("\(dealer.name) \(handIndex) wins")
                     break
                 }
-                
+
                 if dealerValue > playerValue {
                     handResult.result = GameResult.DealerWins
                     result.append(handResult)
                     print("\(dealer.name) \(handIndex) wins")
                     break
                 }
-                
+
                 if dealerValue == playerValue {
                     if player.getHand(handIndex: handIndex).isBlackjack() &&
                         !dealer.getHand(handIndex: 0).isBlackjack() {
-                       handResult.result = GameResult.PlayerWinsWithBlackjack
+                        handResult.result = GameResult.PlayerWinsWithBlackjack
                         print("Same value, but player wins with blackjack \(handIndex)")
                     } else {
-                       handResult.result = GameResult.Push
-                       print("Push \(handIndex)")
+                        handResult.result = GameResult.Push
+                        print("Push \(handIndex)")
                     }
 
                     result.append(handResult)
-                    
+
                     break
                 }
-                
+
                 if playerValue > dealerValue {
-                    handResult.result = player.getHand(handIndex: handIndex).isBlackjack() ? 
-                                            GameResult.PlayerWinsWithBlackjack : GameResult.PlayerWins
-                    
+                    handResult.result = player.getHand(handIndex: handIndex).isBlackjack() ?
+                    GameResult.PlayerWinsWithBlackjack: GameResult.PlayerWins
+
                     result.append(handResult)
                     print("\(player.name) wins")
                 }
             }
             playerIndex += 1
         }
-        
+
         return result
     }
 

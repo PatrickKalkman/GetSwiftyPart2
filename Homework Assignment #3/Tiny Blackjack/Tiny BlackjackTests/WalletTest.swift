@@ -20,40 +20,40 @@ class WalletTest: XCTestCase {
     
     func test_add_chipDarkBlue() {
         let wallet: Wallet = Wallet()
-        wallet.add(Chip.DarkBlue)
+        wallet.add(Chip.darkBlue)
         XCTAssertEqual(wallet.totalValue(), 100)
     }
     
     func test_add_two_chips() {
         let wallet: Wallet = Wallet()
-        wallet.add(Chip.DarkBlue)
-        wallet.add(Chip.LightRed)
+        wallet.add(Chip.darkBlue)
+        wallet.add(Chip.lightRed)
         XCTAssertEqual(wallet.totalValue(), 101)
     }
     
     func test_remove_chip() {
         let wallet: Wallet = Wallet()
-        wallet.add(Chip.DarkBlue)
-        wallet.remove(Chip.DarkBlue)
+        wallet.add(Chip.darkBlue)
+        wallet.remove(Chip.darkBlue)
         XCTAssertEqual(wallet.totalValue(), 0)
     }
     
     func test_hasChip_whenChipExists() {
         let wallet: Wallet = Wallet()
-        wallet.add(Chip.DarkBlue)
-        XCTAssertTrue(wallet.hasChip(Chip.DarkBlue))
+        wallet.add(Chip.darkBlue)
+        XCTAssertTrue(wallet.hasChip(Chip.darkBlue))
     }
     
     func test_hasChip_whenChipDoesNotExists() {
         let wallet: Wallet = Wallet()
-        wallet.add(Chip.DarkBlue)
-        XCTAssertFalse(wallet.hasChip(Chip.DarkRed))
+        wallet.add(Chip.darkBlue)
+        XCTAssertFalse(wallet.hasChip(Chip.darkRed))
     }
     
     func test_clear_removesAllFromWallet() {
         let wallet: Wallet = Wallet()
-        wallet.add(Chip.DarkBlue)
-        wallet.add(Chip.LightRed)
+        wallet.add(Chip.darkBlue)
+        wallet.add(Chip.lightRed)
         wallet.clear()
         XCTAssertEqual(wallet.totalValue(), 0)
     }
@@ -61,12 +61,12 @@ class WalletTest: XCTestCase {
     func test_canAddMultipleChipsAtOnce() {
         
         var chips: [Chip] = [Chip]()
-        chips.append(Chip.DarkRed)
-        chips.append(Chip.LightBlue)
+        chips.append(Chip.darkRed)
+        chips.append(Chip.lightBlue)
         
         let wallet: Wallet = Wallet()
         wallet.add(chips)
 
-        XCTAssertTrue(wallet.hasChip(Chip.DarkRed))
+        XCTAssertTrue(wallet.hasChip(Chip.darkRed))
     }
 }

@@ -9,11 +9,11 @@
 import Foundation
 
 enum Chip: UInt {
-    case Unknown = 0
-    case LightRed = 1
-    case Pink = 5
-    case LightBlue = 10
-    case Purple = 25
-    case DarkRed = 50
-    case DarkBlue = 100
+    case unknown = 0
+    case lightRed = 1
+    case pink = 5
+    case lightBlue = 10
+    case purple = 25
+    case darkRed = 50
+    case darkBlue = 100
 }
