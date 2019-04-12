@@ -14,9 +14,3 @@ struct HandResult {
     var result: GameResult
 }
 
-enum GameResult {
-    case PlayerWins
-    case PlayerWinsWithBlackjack
-    case DealerWins
-    case Push
-}

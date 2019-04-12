@@ -32,5 +32,10 @@ struct Constants {
 
     struct Assets {
         static let FacedownCard: String = "Card.Facedown"
+        static let AddChipSound: String = "AddChip"
+        static let CardSound: String = "Card1"
+        static let ShuffleSound: String = "Shuffle"
+        static let SoundExtension: String = "wav"
     }
+
 }

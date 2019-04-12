@@ -27,7 +27,8 @@ class GameResultCalculator {
                 var handResult: HandResult = HandResult(playerIndex: playerIndex, handIndex: handIndex, result: GameResult.DealerWins)
                 
                 if dealer.isBusted(handIndex: 0) {
-                    handResult.result = GameResult.PlayerWins
+                    handResult.result = player.getHand(handIndex: handIndex).isBlackjack() ?
+                        GameResult.PlayerWinsWithBlackjack : GameResult.PlayerWins
                     result.append(handResult)
                     print("\(player.name) \(handIndex) wins")
                     break;
@@ -48,9 +49,17 @@ class GameResultCalculator {
                 }
                 
                 if dealerValue == playerValue {
-                    handResult.result = GameResult.Push
+                    if player.getHand(handIndex: handIndex).isBlackjack() &&
+                        !dealer.getHand(handIndex: 0).isBlackjack() {
+                       handResult.result = GameResult.PlayerWinsWithBlackjack
+                        print("Same value, but player wins with blackjack \(handIndex)")
+                    } else {
+                       handResult.result = GameResult.Push
+                       print("Push \(handIndex)")
+                    }
+
                     result.append(handResult)
-                    print("Push \(handIndex)")
+                    
                     break
                 }
                 

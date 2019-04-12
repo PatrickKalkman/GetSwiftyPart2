@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SimpleStrategy: BlackjackStrategy {
+class SimpleStrategy: BlackjackStrategyProtocol {
 
     func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction {
 

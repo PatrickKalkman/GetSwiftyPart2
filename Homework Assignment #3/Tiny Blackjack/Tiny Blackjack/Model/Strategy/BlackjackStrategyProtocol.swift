@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol BlackjackStrategy {
+protocol BlackjackStrategyProtocol {
     func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction
 }

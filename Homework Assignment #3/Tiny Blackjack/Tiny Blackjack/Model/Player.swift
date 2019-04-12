@@ -12,7 +12,7 @@ class Player {
 
     let name: String
     private var hands: [Hand] = [Hand]()
-    let strategy: BlackjackStrategy
+    let strategy: BlackjackStrategyProtocol
     var lastProposedAction: ProposedAction = ProposedAction.dontknow
     var isDealer: Bool
     var isHuman: Bool
@@ -21,7 +21,7 @@ class Player {
     var wallet: Wallet = Wallet()
     var betWallets: [Wallet] = [Wallet]()
     
-    init(name: String, strategy: BlackjackStrategy, isDealer: Bool, isHuman: Bool) {
+    init(name: String, strategy: BlackjackStrategyProtocol, isDealer: Bool, isHuman: Bool) {
         self.name = name
         self.hands.append(Hand())
         self.betWallets.append(Wallet())

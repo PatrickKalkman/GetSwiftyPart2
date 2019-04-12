@@ -40,7 +40,7 @@
 		AB97EFF522475E1200E45E6F /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF422475E1200E45E6F /* GameError.swift */; };
 		AB97EFF72247683400E45E6F /* SimpleStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF62247683400E45E6F /* SimpleStrategy.swift */; };
 		AB97EFF92247C7CD00E45E6F /* SimpleStrategyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF82247C7CD00E45E6F /* SimpleStrategyTest.swift */; };
-		AB97EFFD2247CBB000E45E6F /* BlackjackStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFC2247CBB000E45E6F /* BlackjackStrategy.swift */; };
+		AB97EFFD2247CBB000E45E6F /* BlackjackStrategyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFC2247CBB000E45E6F /* BlackjackStrategyProtocol.swift */; };
 		AB97EFFF2247CBD400E45E6F /* ProposedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */; };
 		AB97F0012247F95600E45E6F /* DealerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97F0002247F95600E45E6F /* DealerStrategy.swift */; };
 		AB9955012259FFB300FB9596 /* WalletTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9955002259FFB300FB9596 /* WalletTest.swift */; };
@@ -53,6 +53,7 @@
 		AB995516225FB00200FB9596 /* Shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB995513225FB00100FB9596 /* Shuffle.wav */; };
 		AB995517225FB00200FB9596 /* Card1.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB995514225FB00200FB9596 /* Card1.wav */; };
 		AB99551C2260633400FB9596 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99551B2260633400FB9596 /* UIViewExtensions.swift */; };
+		AB99551E22606BF300FB9596 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99551D22606BF300FB9596 /* GameResult.swift */; };
 		B207F370475E8E0BB123C1AC /* Pods_Tiny_BlackjackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,7 +107,7 @@
 		AB97EFF422475E1200E45E6F /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
 		AB97EFF62247683400E45E6F /* SimpleStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStrategy.swift; sourceTree = "<group>"; };
 		AB97EFF82247C7CD00E45E6F /* SimpleStrategyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStrategyTest.swift; sourceTree = "<group>"; };
-		AB97EFFC2247CBB000E45E6F /* BlackjackStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackStrategy.swift; sourceTree = "<group>"; };
+		AB97EFFC2247CBB000E45E6F /* BlackjackStrategyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackStrategyProtocol.swift; sourceTree = "<group>"; };
 		AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposedAction.swift; sourceTree = "<group>"; };
 		AB97F0002247F95600E45E6F /* DealerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerStrategy.swift; sourceTree = "<group>"; };
 		AB9955002259FFB300FB9596 /* WalletTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTest.swift; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		AB995513225FB00100FB9596 /* Shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Shuffle.wav; sourceTree = "<group>"; };
 		AB995514225FB00200FB9596 /* Card1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Card1.wav; sourceTree = "<group>"; };
 		AB99551B2260633400FB9596 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		AB99551D22606BF300FB9596 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 		CA38E29F8A3BAFED2058E669 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.release.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
 		E0C60877A48C2B275BA4AE84 /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_BlackjackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,7 +198,7 @@
 		AB97EFB522453BEB00E45E6F /* Tiny Blackjack */ = {
 			isa = PBXGroup;
 			children = (
-				AB995518225FB01100FB9596 /* New Group */,
+				AB995518225FB01100FB9596 /* Sounds */,
 				AB129F59225504680025ECA1 /* Constants.swift */,
 				AB129F5422514F810025ECA1 /* Helpers */,
 				AB129F512250EE000025ECA1 /* Ui */,
@@ -249,6 +251,7 @@
 				AB129F522251438C0025ECA1 /* BlackjackViewProtocol.swift */,
 				AB129F5B225518550025ECA1 /* HandResult.swift */,
 				AB995502225A161C00FB9596 /* Wallet.swift */,
+				AB99551D22606BF300FB9596 /* GameResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,21 +260,21 @@
 			isa = PBXGroup;
 			children = (
 				AB97EFF62247683400E45E6F /* SimpleStrategy.swift */,
-				AB97EFFC2247CBB000E45E6F /* BlackjackStrategy.swift */,
+				AB97EFFC2247CBB000E45E6F /* BlackjackStrategyProtocol.swift */,
 				AB97EFFE2247CBD400E45E6F /* ProposedAction.swift */,
 				AB97F0002247F95600E45E6F /* DealerStrategy.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
 		};
-		AB995518225FB01100FB9596 /* New Group */ = {
+		AB995518225FB01100FB9596 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
 				AB995514225FB00200FB9596 /* Card1.wav */,
 				AB995512225FB00100FB9596 /* AddChip.wav */,
 				AB995513225FB00100FB9596 /* Shuffle.wav */,
 			);
-			name = "New Group";
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		B50EE8DE13E3C79D72A493D4 /* Pods */ = {
@@ -469,6 +472,7 @@
 				AB97EFE72246042D00E45E6F /* Hand.swift in Sources */,
 				AB97EFE5224563FE00E45E6F /* Deck.swift in Sources */,
 				AB97EFF72247683400E45E6F /* SimpleStrategy.swift in Sources */,
+				AB99551E22606BF300FB9596 /* GameResult.swift in Sources */,
 				AB97EFB922453BEB00E45E6F /* ViewController.swift in Sources */,
 				AB97EFDF2245580700E45E6F /* Suit.swift in Sources */,
 				AB995509225BBA0300FB9596 /* ChipTag.swift in Sources */,
@@ -488,7 +492,7 @@
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
 				AB97EFED22461D6C00E45E6F /* Player.swift in Sources */,
 				AB97EFEF22461EFF00E45E6F /* GameEngine.swift in Sources */,
-				AB97EFFD2247CBB000E45E6F /* BlackjackStrategy.swift in Sources */,
+				AB97EFFD2247CBB000E45E6F /* BlackjackStrategyProtocol.swift in Sources */,
 				AB97EFDD224557D300E45E6F /* Card.swift in Sources */,
 				AB129F4D22508B960025ECA1 /* GameResultCalculator.swift in Sources */,
 				AB99551C2260633400FB9596 /* UIViewExtensions.swift in Sources */,

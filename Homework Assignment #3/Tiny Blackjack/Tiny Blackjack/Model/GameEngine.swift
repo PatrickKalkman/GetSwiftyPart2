@@ -157,8 +157,7 @@ class GameEngine: BlackjackProtocol {
     func dealCards() {
         for cardCount in 1...2 {
             for player in players {
-                let card: Card = deck.draw()
-                player.add(handIndex: 0, card: card)
+                player.add(handIndex: 0, card: deck.draw())
             }
             let card: Card = deck.draw()
             if cardCount == 2 {
@@ -364,6 +363,7 @@ class GameEngine: BlackjackProtocol {
 
     func distributeBets() {
         for handResult in playResult {
+            print("hand result \(handResult)")
             switch handResult.result {
             case GameResult.DealerWins:
                 // Just remove the bet from the bet wallet
@@ -377,13 +377,20 @@ class GameEngine: BlackjackProtocol {
                 }
                 players[handResult.playerIndex].clearBet()
             case GameResult.PlayerWinsWithBlackjack:
+                // Blackjack pays 3 to 2
                 let chips: [Chip] = players[handResult.playerIndex].betWallets[handResult.handIndex].getAll()
                 for _ in 1...2 {
                     for chip in chips {
                         players[handResult.playerIndex].wallet.add(chip)
                     }
                 }
+                for chip in chips {
+                    let lowerChips: [Chip] = getHalveChip(chip)
+                    players[handResult.playerIndex].wallet.add(lowerChips)
+                }
+                
                 players[handResult.playerIndex].clearBet()
+                print("Total: \(players[handResult.playerIndex].wallet.totalValue())")
             case GameResult.Push:
                 let chips: [Chip] = players[handResult.playerIndex].betWallets[handResult.handIndex].getAll()
                 for chip in chips {
@@ -418,5 +425,34 @@ class GameEngine: BlackjackProtocol {
         }
         return 0
     }
-
+    
+    func getHalveChip(_ chip: Chip) -> [Chip] {
+        var chips: [Chip] = [Chip]()
+        
+        switch chip {
+        case Chip.DarkBlue:
+            chips.append(Chip.DarkRed)
+        case Chip.DarkRed:
+            chips.append(Chip.Purple)
+        case Chip.LightBlue:
+            chips.append(Chip.Pink)
+        case Chip.LightRed:
+            chips.append(Chip.LightRed)
+        case Chip.Pink:
+            chips.append(Chip.LightRed)
+            chips.append(Chip.LightRed)
+            chips.append(Chip.LightRed)
+        case Chip.Purple:
+            chips.append(Chip.LightBlue)
+            chips.append(Chip.LightBlue)
+            chips.append(Chip.LightRed)
+            chips.append(Chip.LightRed)
+            chips.append(Chip.LightRed)
+        case Chip.Unknown:
+            print("Unknown type of chip")
+        }
+        
+        return chips
+    }
+    
 }

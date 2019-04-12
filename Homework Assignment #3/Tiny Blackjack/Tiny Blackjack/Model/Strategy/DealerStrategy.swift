@@ -19,7 +19,7 @@ import Foundation
 // taking more cards—until the house’s hand either becomes a hard 17 or higher, or the hand goes over 21 and goes bust.
 
 // This class defines the strategy of the dealer
-class DealerStrategy: BlackjackStrategy {
+class DealerStrategy: BlackjackStrategyProtocol {
 
     func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction {
 

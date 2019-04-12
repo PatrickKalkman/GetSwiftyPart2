@@ -17,6 +17,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     private var gameEngine: GameEngine!
     private var shuffleSound: Sound?
     private var dealCardSound: Sound?
+    private var chipSound: Sound?
 
     private var addedCards: [UIImageView] = [UIImageView]()
     private var addedChips: [UIButton] = [UIButton]()
@@ -65,7 +66,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                 newChip.frame.origin.y = 100
             }, completion: { _ in
                     self.refreshWalletInformation()
-                    Sound.play(file: "AddChip.wav")
+                self.chipSound?.play()
                     newChip.shake(duration: 0.05)
                 })
         }
@@ -91,7 +92,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                         sender.removeFromSuperview()
                         self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
                         self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
-                        Sound.play(file: "AddChip.wav")
+                    self.chipSound?.play()
                         originalChip.shake(duration: 0.05)
                     })
             }
@@ -118,15 +119,18 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let shuffleSoundUrl = Bundle.main.url(forResource: "Shuffle", withExtension: "wav") {
+        if let shuffleSoundUrl = Bundle.main.url(forResource: Constants.Assets.ShuffleSound, withExtension: Constants.Assets.SoundExtension) {
             shuffleSound = Sound(url: shuffleSoundUrl)!
         }
 
-        if let dealCardSoundUrl = Bundle.main.url(forResource: "Card1", withExtension: "wav") {
+        if let dealCardSoundUrl = Bundle.main.url(forResource: Constants.Assets.CardSound, withExtension: Constants.Assets.SoundExtension) {
             dealCardSound = Sound(url: dealCardSoundUrl)!
         }
+        
+        if let chipSoundUrl = Bundle.main.url(forResource: Constants.Assets.AddChipSound, withExtension: Constants.Assets.SoundExtension) {
+            chipSound = Sound(url: chipSoundUrl)!
+        }
 
-        // Do any additional setup after loading the view, typically from a nib.
         gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
         self.organizeUiBasedOnState(state: GameStates.waitingForStart)
         DispatchQueue.main.async {
