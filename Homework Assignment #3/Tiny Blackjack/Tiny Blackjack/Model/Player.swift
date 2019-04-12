@@ -38,13 +38,11 @@ class Player {
         wallet.add(chipsToAdd)
     }
     
-    func betChip(chipToBet: Chip) -> Bool {
+    func betChip(chipToBet: Chip) {
         if wallet.hasChip(chipToBet) {
             wallet.remove(chipToBet)
             betWallets[0].add(chipToBet)
-            return true
         }
-        return false
     }
     
     func removeBet(chipToRemove: Chip) {
@@ -105,7 +103,7 @@ class Player {
 
     func split(handIndex: Int) {
         if handIndex > hands.count - 1 {
-            print("Cannot split")
+            print("Cannot split, hand index is incorrect")
         }
 
         let handToSplit: Hand = hands[handIndex]

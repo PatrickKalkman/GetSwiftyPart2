@@ -15,7 +15,6 @@
 		AB129F502250EDFB0025ECA1 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F4F2250EDFB0025ECA1 /* BorderButton.swift */; };
 		AB129F532251438C0025ECA1 /* BlackjackViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F522251438C0025ECA1 /* BlackjackViewProtocol.swift */; };
 		AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */; };
-		AB129F582255045C0025ECA1 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F572255045C0025ECA1 /* UIImageViewExtension.swift */; };
 		AB129F5A225504680025ECA1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F59225504680025ECA1 /* Constants.swift */; };
 		AB129F5C225518550025ECA1 /* HandResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F5B225518550025ECA1 /* HandResult.swift */; };
 		AB601D5E224DF48700B140D7 /* DealerStrategyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB601D5D224DF48700B140D7 /* DealerStrategyTest.swift */; };
@@ -49,10 +48,11 @@
 		AB995505225A164F00FB9596 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995504225A164F00FB9596 /* Chip.swift */; };
 		AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */; };
 		AB995509225BBA0300FB9596 /* ChipTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995507225BBA0300FB9596 /* ChipTag.swift */; };
-		AB99550B225BE95E00FB9596 /* AddChip.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB99550A225BE95E00FB9596 /* AddChip.wav */; };
-		AB99550D225D1DE200FB9596 /* Shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB99550C225D1DE100FB9596 /* Shuffle.wav */; };
-		AB99550F225D23A200FB9596 /* Card1.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB99550E225D23A200FB9596 /* Card1.wav */; };
 		AB995511225D375200FB9596 /* InitialChipsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB995510225D375200FB9596 /* InitialChipsGenerator.swift */; };
+		AB995515225FB00200FB9596 /* AddChip.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB995512225FB00100FB9596 /* AddChip.wav */; };
+		AB995516225FB00200FB9596 /* Shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB995513225FB00100FB9596 /* Shuffle.wav */; };
+		AB995517225FB00200FB9596 /* Card1.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB995514225FB00200FB9596 /* Card1.wav */; };
+		AB99551C2260633400FB9596 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99551B2260633400FB9596 /* UIViewExtensions.swift */; };
 		B207F370475E8E0BB123C1AC /* Pods_Tiny_BlackjackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +77,6 @@
 		AB129F4F2250EDFB0025ECA1 /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		AB129F522251438C0025ECA1 /* BlackjackViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackViewProtocol.swift; sourceTree = "<group>"; };
 		AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardToImageNameMapper.swift; sourceTree = "<group>"; };
-		AB129F572255045C0025ECA1 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		AB129F59225504680025ECA1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB129F5B225518550025ECA1 /* HandResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandResult.swift; sourceTree = "<group>"; };
 		AB601D5D224DF48700B140D7 /* DealerStrategyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerStrategyTest.swift; sourceTree = "<group>"; };
@@ -115,10 +114,11 @@
 		AB995504225A164F00FB9596 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueToChipMapper.swift; sourceTree = "<group>"; };
 		AB995507225BBA0300FB9596 /* ChipTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChipTag.swift; sourceTree = "<group>"; };
-		AB99550A225BE95E00FB9596 /* AddChip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AddChip.wav; sourceTree = "<group>"; };
-		AB99550C225D1DE100FB9596 /* Shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Shuffle.wav; sourceTree = "<group>"; };
-		AB99550E225D23A200FB9596 /* Card1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Card1.wav; sourceTree = "<group>"; };
 		AB995510225D375200FB9596 /* InitialChipsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialChipsGenerator.swift; sourceTree = "<group>"; };
+		AB995512225FB00100FB9596 /* AddChip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AddChip.wav; sourceTree = "<group>"; };
+		AB995513225FB00100FB9596 /* Shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Shuffle.wav; sourceTree = "<group>"; };
+		AB995514225FB00200FB9596 /* Card1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Card1.wav; sourceTree = "<group>"; };
+		AB99551B2260633400FB9596 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		CA38E29F8A3BAFED2058E669 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.release.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
 		E0C60877A48C2B275BA4AE84 /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny Blackjack.debug.xcconfig"; path = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA938B89E05B57953FF62A8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_BlackjackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,8 +156,8 @@
 		AB129F512250EE000025ECA1 /* Ui */ = {
 			isa = PBXGroup;
 			children = (
-				AB129F572255045C0025ECA1 /* UIImageViewExtension.swift */,
 				AB129F4F2250EDFB0025ECA1 /* BorderButton.swift */,
+				AB99551B2260633400FB9596 /* UIViewExtensions.swift */,
 			);
 			name = Ui;
 			sourceTree = "<group>";
@@ -196,9 +196,7 @@
 		AB97EFB522453BEB00E45E6F /* Tiny Blackjack */ = {
 			isa = PBXGroup;
 			children = (
-				AB99550E225D23A200FB9596 /* Card1.wav */,
-				AB99550C225D1DE100FB9596 /* Shuffle.wav */,
-				AB99550A225BE95E00FB9596 /* AddChip.wav */,
+				AB995518225FB01100FB9596 /* New Group */,
 				AB129F59225504680025ECA1 /* Constants.swift */,
 				AB129F5422514F810025ECA1 /* Helpers */,
 				AB129F512250EE000025ECA1 /* Ui */,
@@ -264,6 +262,16 @@
 				AB97F0002247F95600E45E6F /* DealerStrategy.swift */,
 			);
 			path = Strategy;
+			sourceTree = "<group>";
+		};
+		AB995518225FB01100FB9596 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				AB995514225FB00200FB9596 /* Card1.wav */,
+				AB995512225FB00100FB9596 /* AddChip.wav */,
+				AB995513225FB00100FB9596 /* Shuffle.wav */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		B50EE8DE13E3C79D72A493D4 /* Pods */ = {
@@ -363,12 +371,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB99550B225BE95E00FB9596 /* AddChip.wav in Resources */,
+				AB995515225FB00200FB9596 /* AddChip.wav in Resources */,
 				AB97EFC422453BEC00E45E6F /* LaunchScreen.storyboard in Resources */,
-				AB99550F225D23A200FB9596 /* Card1.wav in Resources */,
+				AB995516225FB00200FB9596 /* Shuffle.wav in Resources */,
+				AB995517225FB00200FB9596 /* Card1.wav in Resources */,
 				AB97EFC122453BEC00E45E6F /* Assets.xcassets in Resources */,
 				AB97EFBC22453BEB00E45E6F /* Main.storyboard in Resources */,
-				AB99550D225D1DE200FB9596 /* Shuffle.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,12 +486,12 @@
 				AB129F49224E5E780025ECA1 /* GameEvents.swift in Sources */,
 				AB995503225A161C00FB9596 /* Wallet.swift in Sources */,
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
-				AB129F582255045C0025ECA1 /* UIImageViewExtension.swift in Sources */,
 				AB97EFED22461D6C00E45E6F /* Player.swift in Sources */,
 				AB97EFEF22461EFF00E45E6F /* GameEngine.swift in Sources */,
 				AB97EFFD2247CBB000E45E6F /* BlackjackStrategy.swift in Sources */,
 				AB97EFDD224557D300E45E6F /* Card.swift in Sources */,
 				AB129F4D22508B960025ECA1 /* GameResultCalculator.swift in Sources */,
+				AB99551C2260633400FB9596 /* UIViewExtensions.swift in Sources */,
 				AB97EFF32247562500E45E6F /* GameStates.swift in Sources */,
 				AB129F4B224E80890025ECA1 /* BlackjackProtocol.swift in Sources */,
 				AB97F0012247F95600E45E6F /* DealerStrategy.swift in Sources */,

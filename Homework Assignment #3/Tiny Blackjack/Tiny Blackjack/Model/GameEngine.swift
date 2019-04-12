@@ -39,8 +39,8 @@ class GameEngine: BlackjackProtocol {
         gameState.triggerEvent(event)
     }
     
-    func addBet(chip: Chip) -> Bool {
-        return currentPlayer.betChip(chipToBet: chip)
+    func addBet(chip: Chip) {
+        currentPlayer.betChip(chipToBet: chip)
     }
     
     func removeBet(chip: Chip) {
@@ -369,6 +369,14 @@ class GameEngine: BlackjackProtocol {
                 // Just remove the bet from the bet wallet
                 players[handResult.playerIndex].clearBet()
             case GameResult.PlayerWins:
+                let chips: [Chip] = players[handResult.playerIndex].betWallets[handResult.handIndex].getAll()
+                for _ in 1...2 {
+                    for chip in chips {
+                        players[handResult.playerIndex].wallet.add(chip)
+                    }
+                }
+                players[handResult.playerIndex].clearBet()
+            case GameResult.PlayerWinsWithBlackjack:
                 let chips: [Chip] = players[handResult.playerIndex].betWallets[handResult.handIndex].getAll()
                 for _ in 1...2 {
                     for chip in chips {

@@ -58,7 +58,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             }
 
             gameEngine.addBet(chip: chip)
-            let newChip: UIButton = CopyAndAddChip(chipToCopy: sender)
+            let newChip: UIButton = copyAndAddChip(chipToCopy: sender)
 
             UIButton.animate(withDuration: Constants.Animation.PlaceBetDuraction, delay: 0, options: .curveEaseInOut, animations: {
                 newChip.frame.origin.x = 20
@@ -84,7 +84,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                 UIButton.animate(withDuration: Constants.Animation.PlaceBetDuraction, delay: 0, options: .curveEaseInOut, animations: {
                     sender.frame.origin = newOrigin
                 }, completion: { _ in
-                        self.refreshWallet()
+                        self.refreshWalletInformation()
                         self.addedChips.removeFirst()
                         sender.isHidden = true
                         originalChip.isHidden = false
@@ -330,6 +330,8 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             resultString = "You win!"
         case GameResult.Push:
             resultString = "Push"
+        case GameResult.PlayerWinsWithBlackjack:
+            resultString = "You win (Blackjack!)"
         }
         playResultLabel.text = resultString
     }
@@ -440,7 +442,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             button.removeFromSuperview()
         }
         addedChips.removeAll()
-        self.refreshWallet()
+        self.refreshWalletInformation()
     }
 
     func getNewCardFromDeckFaceDown() -> UIImageView {
@@ -482,12 +484,12 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         }
     }
 
-    func CopyAndAddChip(chipToCopy: UIButton) {
+    func copyAndAddChip(chipToCopy: UIButton) -> UIButton {
         let newChip: UIButton = UIButton()
         if let image = chipToCopy.imageView?.image {
             newChip.setImage(image, for: UIControl.State.normal)
         }
-        newChip.frame = sender.frame
+        newChip.frame = chipToCopy.frame
         newChip.titleEdgeInsets.left = -128
         newChip.setTitleColor(chipToCopy.titleColor(for: UIControl.State.normal), for: UIControl.State.normal)
         newChip.setTitle(chipToCopy.title(for: UIControl.State.normal), for: UIControl.State.normal)
@@ -496,5 +498,6 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         newChip.addTarget(self, action: #selector(chipRemoveAction), for: .touchUpInside)
         view.addSubview(newChip)
         addedChips.append(newChip)
+        return newChip
     }
 }
