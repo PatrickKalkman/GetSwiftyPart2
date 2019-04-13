@@ -8,6 +8,7 @@ target 'Tiny Blackjack' do
   # Pods for Tiny Blackjack
   pod 'SwiftState', :git => 'https://github.com/ReactKit/SwiftState', :submodules => true
   pod 'SwiftySound'
+  pod 'GuillotineMenu'
   
   target 'Tiny BlackjackTests' do
     inherit! :search_paths

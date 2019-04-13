@@ -8,9 +8,13 @@
 
 import UIKit
 import SwiftySound
+import GuillotineMenu
 
 class ViewController: UIViewController, BlackjackViewProtocol {
 
+    fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
+    @IBOutlet fileprivate var barButton: UIButton!
+    
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
     private let valueToChipMapper: ValueToChipMapper = ValueToChipMapper()
     private let imageCardFaceDown: UIImage = UIImage(named: Constants.Assets.FacedownCard)!
@@ -43,6 +47,23 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     @IBOutlet weak var playerBetLabel: UILabel!
     @IBOutlet weak var playerTotalLabel: UILabel!
     @IBOutlet weak var placeYourBetsTitle: UILabel!
+    
+    @IBAction func showMenuAction(_ sender: UIButton) {
+        
+        if let sb = storyboard {
+            let menuViewController = sb.instantiateViewController(withIdentifier: "menu")
+            menuViewController.modalPresentationStyle = .custom
+            menuViewController.transitioningDelegate = self
+            
+            presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
+            presentationAnimator.supportView = navigationController!.navigationBar
+            presentationAnimator.presentButton = sender
+            presentationAnimator.animationDuration = 0.1
+            
+            present(menuViewController, animated: true, completion: nil)
+        }
+
+    }
 
     @IBAction func chipAddAction(_ sender: UIButton) {
 
@@ -116,6 +137,11 @@ class ViewController: UIViewController, BlackjackViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let navBar = self.navigationController?.navigationBar
+        navBar?.barTintColor = UIColor(hex: "#193E3CFF")
+        
+        navBar?.titleTextAttributes = [.foregroundColor: UIColor.white]
 
         if let shuffleSoundUrl = Bundle.main.url(forResource: Constants.Assets.ShuffleSound, withExtension: Constants.Assets.SoundExtension) {
             shuffleSound = Sound(url: shuffleSoundUrl)!
@@ -501,5 +527,18 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         view.addSubview(newChip)
         addedChips.append(newChip)
         return newChip
+    }
+}
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .presentation
+        return presentationAnimator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .dismissal
+        return presentationAnimator
     }
 }

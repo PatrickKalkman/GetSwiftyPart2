@@ -8,122 +8,133 @@
 
 /* Begin PBXBuildFile section */
 		06D3EB80C04462212B79B71449BE8014 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
-		1655662E9C7C864C0EEF5D6F236DE579 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
-		25DB0E3075665D258955D0E9E6DAFFFC /* SwiftySound-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60361E4552A4E77FBFAFA5AB5DB852FD /* SwiftySound-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		31B9C1B9D09FC522BB71938D3984641C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
-		3E765927B051CB5A7BBF60DC8D96C5E5 /* SwiftState-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CF55932D69D262F82400F82BE7B7A0 /* SwiftState-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1944A719DA8F661DD6E920B73F55AE2B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8B077304B6FAD57228480E9C187D59 /* AVFoundation.framework */; };
+		1AFDBFFF8D1FA0AB6843518041751B9B /* TransitionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700325AB071C0526111E4A750758E61A /* TransitionChain.swift */; };
+		34870A1BF359A6D1E41B87E79795E8F9 /* SwiftySound-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2649841E2E6487274E65F7F0278F6892 /* SwiftySound-dummy.m */; };
+		372ECA5DB52771577C6AFE214C4C111D /* _HandlerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233ABE683996FDFE99F3C65855B76390 /* _HandlerID.swift */; };
+		3C2152C56F607E8EB24A42D4AE9C7065 /* Pods-Tiny Blackjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32C069DBC2C0D31183B262F547CA29 /* Pods-Tiny Blackjack-dummy.m */; };
+		3E65FA3EF30BB324BA2CFDF3F1DCB8F4 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C848FD68F6ADAB85279B56FD2CED673B /* EventType.swift */; };
 		3FCD62C2BFA4C0E06E5426AB1585306C /* Pods-Tiny BlackjackTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DAA0D2CBB812E5BC0E3B8BB0931AE1A /* Pods-Tiny BlackjackTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		401161F33401AEEE1807D4F0D27D215A /* SwiftState-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFAF14CB99AE2F6156F9AD213AD06AE /* SwiftState-dummy.m */; };
-		4A35B77E6102AE3C1B58BF3B98819020 /* StateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25380AEB00A871B841F6805239EDE77B /* StateType.swift */; };
-		6376D06973491DA8555F1D1FEDFB66C8 /* _RouteMappingID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5302F54EF885D14A619A0E386E6474A5 /* _RouteMappingID.swift */; };
-		67EF93FCE491EB9EB0E1D98CC0F0D85E /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3CCF317117A062812E42A7C6F1B9DF /* Sound.swift */; };
-		6A3D16781DD34D85909661A9869DC625 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870547EBAB87133820EAC525A2827409 /* Machine.swift */; };
-		6EF2F33F200F43A55BB059DDACEE3630 /* Pods-Tiny Blackjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDEA8C56317D6F955EE080467428271 /* Pods-Tiny Blackjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		715FE842A9853F6930E539FFF5E3259F /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B2BCB0A83C6D49E42F4D067FA853B0 /* EventType.swift */; };
-		7CD23782632ADFBD5661BE7567718442 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C8DBBFEBBC38A4176175E97CC5424 /* Disposable.swift */; };
-		7ED3C4D256DD0338541C80C7635E95C3 /* Pods-Tiny Blackjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B32C069DBC2C0D31183B262F547CA29 /* Pods-Tiny Blackjack-dummy.m */; };
-		801E49D3971104DEF6EF0FAF0748DC56 /* _Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2AA67449CC79EF2CFE9CC2CDF559F /* _Random.swift */; };
-		83BA88BEECB1DC1BB4EBA7BCB1C5B6EE /* _RouteID.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDF966D6D4F65F04657470053FAA86 /* _RouteID.swift */; };
-		8965D53F953601F3EE52173922C8BE88 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E752965CD2516859F6572F798D6744 /* Route.swift */; };
-		99D06AC4B71565CC45A457841283728E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8B077304B6FAD57228480E9C187D59 /* AVFoundation.framework */; };
-		A01A938FF7EF3B27F5E32DA40889A4B5 /* TransitionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF100019BCB0658F8F660949BA5D516 /* TransitionChain.swift */; };
-		BAF3D7297774BC019ACA5C79DA634805 /* SwiftySound-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C86B3B688C467E22BE568E60D015DD6 /* SwiftySound-dummy.m */; };
-		C60DD8D6B43D9A28F968EF70DD4EA6B8 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B4436D417D167D982970932B82059E /* Transition.swift */; };
-		CE9C460F7EDDFB5C444CE47E3031E7A5 /* _HandlerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E407F251E3B11CD1DA4EA2F683CB4DEA /* _HandlerID.swift */; };
-		DB7E94E942565210B2AF66AD0D8208AB /* _HandlerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4707376740DB6387A10C2F123091B76 /* _HandlerInfo.swift */; };
-		DD8D093F2062C132744CC39A963399CD /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9354C0D176DD38E4BF10857A34266 /* StateMachine.swift */; };
+		5393688983CFC1D455021E1CFA9DF6D8 /* RouteChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED513F01ACF930958EAFDDD89A455517 /* RouteChain.swift */; };
+		6CE06DAA409478426FC958C71F13FF17 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
+		6D1A9CCDE019E89373433419B51FA9A4 /* Pods-Tiny Blackjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDEA8C56317D6F955EE080467428271 /* Pods-Tiny Blackjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		711031F2F26B65945BA4A1F5EFB742BE /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572219CC5DA3A9322EEAA1D5DB933B1 /* Transition.swift */; };
+		76F8381BA682DC82EDE9E072A38EE5FD /* GuillotineMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E8548EAB7C853E897E80BFB32FABFBEC /* GuillotineMenu-dummy.m */; };
+		781E26F8205DA77DE0C57AACE617F068 /* _HandlerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90D1815162F13D39E6FB2C0F66FD8B /* _HandlerInfo.swift */; };
+		80DF3F3A2EEE8EAEADC191185406539D /* GuillotineMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F648334ABA861C6833F85F4A239B077A /* GuillotineMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8BB687E5A2934718F08B7A3204A4C059 /* StateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D17FB66E085F1344370CBDAF9C6BBB /* StateType.swift */; };
+		94C746B28FBAA9A18B3C61364DD9231C /* GuillotineMenuTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62970362FBC440F7A60A785C16A0E46 /* GuillotineMenuTransitionAnimation.swift */; };
+		9556E1A838BAB79CBA85661AA048F709 /* SwiftState-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C71F0B782D80D3414EC614DDC88458C6 /* SwiftState-dummy.m */; };
+		A35536DD6D215735D75254F18E9AC367 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
+		A7582E8F7E8E795E77AACA89AE3B4432 /* SwiftySound-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF0D4FA89572CAC94D244C07DEF5D67 /* SwiftySound-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B43E23EE77136632A82571244CDF0814 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F52BA4FE25577E0049C3D80B69F120 /* Machine.swift */; };
+		B647356B4E342036F23D2F1A59C365D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
+		B67074F3380B0666F757381225C579DF /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAF917CFD6881E1E90E951C73E7C7F2 /* Disposable.swift */; };
+		B7776363408F8EA1C9B302A1A46A3E25 /* _RouteID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7014CE9D3C850A8C6C9A5C87AE9AFF /* _RouteID.swift */; };
+		B7CC7C88AC1E186AE2997C54E7E6D169 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BF417A1511026F175348DE5D439B9 /* Sound.swift */; };
+		BDEC10EE100688286DE9F919E13FF0A6 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DC42AF6C29CDC84C92407FC6B4B8 /* StateMachine.swift */; };
+		C6C3F09C53AAD0EAD7B2908BE489FBC0 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FEDA09F3AE4E69AC774799B51DAE2 /* Route.swift */; };
+		D5C00C1270DEA992F219F5D48022F06A /* SwiftState-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CBCD5D31C2BB6E51092ECA29FA793A8 /* SwiftState-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7970AAB553712D0D6F18D189C4C6E90 /* _Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADEF7EC9C9FF1264DDDD4E30FFE6C4 /* _Random.swift */; };
 		E0DD23561207592607002D9795B69652 /* Pods-Tiny BlackjackTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6D5615BF708680D6F428D7CB90BC82 /* Pods-Tiny BlackjackTests-dummy.m */; };
-		ECB5EFC6C2D50D7379FEAD20C5D7C579 /* RouteChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A597429D3AF0F6282BB7F83F82B8C15E /* RouteChain.swift */; };
-		FC3D7C9F334456A3734DF6EB5004D9E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
+		E6BF5C62419B97F3A1937CD890477ED2 /* _RouteMappingID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B1BB1899C861A1F2BF8B9E0FD02DD /* _RouteMappingID.swift */; };
+		EFEA73425542B781F28FE8916E3879F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		044BF368441B76DA5D23650D1936450A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2E542B3D0443B719A9B8106F6F19CF87;
-			remoteInfo = SwiftySound;
-		};
 		0C6197C5F77CBE4D7D6DA2CF613C3E69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C110AA665C50D1004C9D1CC47E51F483;
+			remoteGlobalIDString = 28B783795FC4AD4263C3A6614ADC4B9E;
 			remoteInfo = "Pods-Tiny Blackjack";
 		};
-		A7B6763CC70ABB7A7BD1B9596FBB1ADA /* PBXContainerItemProxy */ = {
+		309DCA78901AA171BAC54CE8B8732FC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A2D720457607023A374326C060F23869;
+			remoteGlobalIDString = 927E2D29D7ED3C3AF41CCD1EF846D65E;
 			remoteInfo = SwiftState;
+		};
+		9EAFFEDDBF894F39AAA26789B1B52DB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 292572A303222EC55EA3B8FD79DEA3C1;
+			remoteInfo = GuillotineMenu;
+		};
+		B3E912DB5750BBFF1AE91BE07A908068 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C043330C35FAA63EF089A97B8C38573B;
+			remoteInfo = SwiftySound;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftState.xcconfig; sourceTree = "<group>"; };
+		05C5848398C07904BCABACEE0A706160 /* GuillotineMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GuillotineMenu.modulemap; sourceTree = "<group>"; };
 		06DF1EA44ADAE2081FF0CFC3C1FA8969 /* Pods-Tiny BlackjackTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny BlackjackTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		1ABCCCE140C2DDA28B7CA023E20EEAD9 /* SwiftySound.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftySound.modulemap; sourceTree = "<group>"; };
-		23B4436D417D167D982970932B82059E /* Transition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transition.swift; path = Sources/Transition.swift; sourceTree = "<group>"; };
-		25380AEB00A871B841F6805239EDE77B /* StateType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateType.swift; path = Sources/StateType.swift; sourceTree = "<group>"; };
+		08C617426B487CD2AB1C0047B102EF04 /* GuillotineMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GuillotineMenu.framework; path = GuillotineMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		233ABE683996FDFE99F3C65855B76390 /* _HandlerID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerID.swift; path = Sources/_HandlerID.swift; sourceTree = "<group>"; };
 		253E3D6F6C1FC07F04661C571BD3354F /* Pods-Tiny Blackjack-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny Blackjack-acknowledgements.plist"; sourceTree = "<group>"; };
+		2572219CC5DA3A9322EEAA1D5DB933B1 /* Transition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transition.swift; path = Sources/Transition.swift; sourceTree = "<group>"; };
 		260D71D7D6E4DA7731A0113577C61DE0 /* Pods-Tiny BlackjackTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tiny BlackjackTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2649841E2E6487274E65F7F0278F6892 /* SwiftySound-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftySound-dummy.m"; sourceTree = "<group>"; };
 		2853069A03D6F0FBD5DD113080008FD5 /* Pods-Tiny Blackjack-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tiny Blackjack-acknowledgements.markdown"; sourceTree = "<group>"; };
+		29E2F0A39E18D63213A906550167461E /* SwiftState.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftState.xcconfig; sourceTree = "<group>"; };
+		2CBCD5D31C2BB6E51092ECA29FA793A8 /* SwiftState-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-umbrella.h"; sourceTree = "<group>"; };
+		3373C62A2E67863C1E76CC86E1A7AC47 /* SwiftState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftState.framework; path = SwiftState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B973D058F13E5651BBE6CC7E13BFEE /* Pods-Tiny BlackjackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny BlackjackTests.release.xcconfig"; sourceTree = "<group>"; };
+		3D85A16A025BE6865F8AF1A6AE0B199F /* GuillotineMenu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GuillotineMenu-Info.plist"; sourceTree = "<group>"; };
 		4DAA0D2CBB812E5BC0E3B8BB0931AE1A /* Pods-Tiny BlackjackTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tiny BlackjackTests-umbrella.h"; sourceTree = "<group>"; };
-		52E752965CD2516859F6572F798D6744 /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Sources/Route.swift; sourceTree = "<group>"; };
-		5302F54EF885D14A619A0E386E6474A5 /* _RouteMappingID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteMappingID.swift; path = Sources/_RouteMappingID.swift; sourceTree = "<group>"; };
-		60361E4552A4E77FBFAFA5AB5DB852FD /* SwiftySound-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySound-umbrella.h"; sourceTree = "<group>"; };
-		61F70E2E1CBBA1595D8E6258FB0B1AE8 /* SwiftState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftState.framework; path = SwiftState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E90D1815162F13D39E6FB2C0F66FD8B /* _HandlerInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerInfo.swift; path = Sources/_HandlerInfo.swift; sourceTree = "<group>"; };
+		57BF62BE68EB7425082F442594BE3F26 /* SwiftySound.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftySound.modulemap; sourceTree = "<group>"; };
+		5E476DEB3193F9A1B460BADE195CE330 /* GuillotineMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GuillotineMenu.xcconfig; sourceTree = "<group>"; };
+		6004BEB2C82FAEED0EC1A6216C26BE5B /* GuillotineMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GuillotineMenu-prefix.pch"; sourceTree = "<group>"; };
+		65420E08BFDD95E93546438088E61765 /* Pods_Tiny_Blackjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Tiny_Blackjack.framework; path = "Pods-Tiny Blackjack.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66413D242B5F9986D911634CB99DEF45 /* Pods-Tiny BlackjackTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny BlackjackTests-Info.plist"; sourceTree = "<group>"; };
-		6986AE64C15B891ADC6241C8DC196ED8 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Tiny_BlackjackTests.framework; path = "Pods-Tiny BlackjackTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AECBBD28F44EF8973D57639C97FC041 /* SwiftState.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftState.modulemap; sourceTree = "<group>"; };
 		6B32C069DBC2C0D31183B262F547CA29 /* Pods-Tiny Blackjack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tiny Blackjack-dummy.m"; sourceTree = "<group>"; };
 		6C3802E3A1374119AE3D004D30A85711 /* Pods-Tiny Blackjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny Blackjack.release.xcconfig"; sourceTree = "<group>"; };
-		6E35761B82B71864FCCF3E4CE24FDAEF /* Pods_Tiny_Blackjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Tiny_Blackjack.framework; path = "Pods-Tiny Blackjack.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C86B3B688C467E22BE568E60D015DD6 /* SwiftySound-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftySound-dummy.m"; sourceTree = "<group>"; };
+		700325AB071C0526111E4A750758E61A /* TransitionChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionChain.swift; path = Sources/TransitionChain.swift; sourceTree = "<group>"; };
+		74D17FB66E085F1344370CBDAF9C6BBB /* StateType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateType.swift; path = Sources/StateType.swift; sourceTree = "<group>"; };
+		7BADEF7EC9C9FF1264DDDD4E30FFE6C4 /* _Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _Random.swift; path = Sources/_Random.swift; sourceTree = "<group>"; };
+		7DF0D4FA89572CAC94D244C07DEF5D67 /* SwiftySound-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySound-umbrella.h"; sourceTree = "<group>"; };
+		7E4BF417A1511026F175348DE5D439B9 /* Sound.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sound.swift; path = Sources/Sound.swift; sourceTree = "<group>"; };
 		7E6D5615BF708680D6F428D7CB90BC82 /* Pods-Tiny BlackjackTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tiny BlackjackTests-dummy.m"; sourceTree = "<group>"; };
-		7EB2AA67449CC79EF2CFE9CC2CDF559F /* _Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _Random.swift; path = Sources/_Random.swift; sourceTree = "<group>"; };
+		8152DC42AF6C29CDC84C92407FC6B4B8 /* StateMachine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Sources/StateMachine.swift; sourceTree = "<group>"; };
 		818A08EC8DE3E5926C638070C011DD69 /* Pods-Tiny Blackjack-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tiny Blackjack-frameworks.sh"; sourceTree = "<group>"; };
 		85FA540AEC1A8B43B4227DE0BC46CACA /* Pods-Tiny BlackjackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny BlackjackTests.debug.xcconfig"; sourceTree = "<group>"; };
-		870547EBAB87133820EAC525A2827409 /* Machine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Machine.swift; path = Sources/Machine.swift; sourceTree = "<group>"; };
-		8AB506F28A9BAC04E0489EEE1A8F340D /* SwiftySound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftySound.framework; path = SwiftySound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EF100019BCB0658F8F660949BA5D516 /* TransitionChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionChain.swift; path = Sources/TransitionChain.swift; sourceTree = "<group>"; };
+		8794EEFE50E12FDAA1CDE912A778AD91 /* SwiftState-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftState-Info.plist"; sourceTree = "<group>"; };
 		8F8B077304B6FAD57228480E9C187D59 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		90CF55932D69D262F82400F82BE7B7A0 /* SwiftState-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-umbrella.h"; sourceTree = "<group>"; };
-		9226566E5CED186D5C43CBFAB7575230 /* SwiftySound-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftySound-Info.plist"; sourceTree = "<group>"; };
+		9AC96DCA99FE8DB12958D4AB98E8D7A6 /* SwiftySound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftySound.framework; path = SwiftySound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BAF917CFD6881E1E90E951C73E7C7F2 /* Disposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposable.swift; path = Sources/Disposable.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9EC3710E1AEFD80EB8BE6A184EFCF138 /* SwiftySound-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySound-prefix.pch"; sourceTree = "<group>"; };
-		A597429D3AF0F6282BB7F83F82B8C15E /* RouteChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RouteChain.swift; path = Sources/RouteChain.swift; sourceTree = "<group>"; };
 		AC350AAE8CA3FEB3F37E6BB16B77F571 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		ADD9354C0D176DD38E4BF10857A34266 /* StateMachine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Sources/StateMachine.swift; sourceTree = "<group>"; };
-		B0B2BCB0A83C6D49E42F4D067FA853B0 /* EventType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventType.swift; path = Sources/EventType.swift; sourceTree = "<group>"; };
-		BB3CCF317117A062812E42A7C6F1B9DF /* Sound.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sound.swift; path = Sources/Sound.swift; sourceTree = "<group>"; };
-		BF484B136EA0018437B3A4278AE68B52 /* SwiftState.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftState.modulemap; sourceTree = "<group>"; };
-		BFFAF14CB99AE2F6156F9AD213AD06AE /* SwiftState-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftState-dummy.m"; sourceTree = "<group>"; };
+		AF29F4A085883DCA958EEDF545261B71 /* SwiftySound-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftySound-prefix.pch"; sourceTree = "<group>"; };
+		B3F52BA4FE25577E0049C3D80B69F120 /* Machine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Machine.swift; path = Sources/Machine.swift; sourceTree = "<group>"; };
+		B59B1BB1899C861A1F2BF8B9E0FD02DD /* _RouteMappingID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteMappingID.swift; path = Sources/_RouteMappingID.swift; sourceTree = "<group>"; };
 		C0E49C1360DC3D3236720E6568DF67A3 /* Pods-Tiny Blackjack-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tiny Blackjack-Info.plist"; sourceTree = "<group>"; };
-		C4707376740DB6387A10C2F123091B76 /* _HandlerInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerInfo.swift; path = Sources/_HandlerInfo.swift; sourceTree = "<group>"; };
-		CA0244EAA04DC7E22A30C76C63FCBAFE /* SwiftState-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftState-Info.plist"; sourceTree = "<group>"; };
-		D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftySound.xcconfig; sourceTree = "<group>"; };
+		C25FEDA09F3AE4E69AC774799B51DAE2 /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Sources/Route.swift; sourceTree = "<group>"; };
+		C71F0B782D80D3414EC614DDC88458C6 /* SwiftState-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftState-dummy.m"; sourceTree = "<group>"; };
+		C848FD68F6ADAB85279B56FD2CED673B /* EventType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventType.swift; path = Sources/EventType.swift; sourceTree = "<group>"; };
+		CAA6083B20636F9321039805BA3F1217 /* SwiftySound-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftySound-Info.plist"; sourceTree = "<group>"; };
 		D5C27EE6E174B6B8B436F5644A935A4E /* Pods-Tiny Blackjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tiny Blackjack.debug.xcconfig"; sourceTree = "<group>"; };
-		D5DDF966D6D4F65F04657470053FAA86 /* _RouteID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteID.swift; path = Sources/_RouteID.swift; sourceTree = "<group>"; };
-		DD6CC012ED3BE1AB39AB37000ACDF489 /* SwiftState-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-prefix.pch"; sourceTree = "<group>"; };
+		D62970362FBC440F7A60A785C16A0E46 /* GuillotineMenuTransitionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GuillotineMenuTransitionAnimation.swift; path = GuillotineMenu/GuillotineMenuTransitionAnimation.swift; sourceTree = "<group>"; };
 		DFDEA8C56317D6F955EE080467428271 /* Pods-Tiny Blackjack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tiny Blackjack-umbrella.h"; sourceTree = "<group>"; };
-		E407F251E3B11CD1DA4EA2F683CB4DEA /* _HandlerID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _HandlerID.swift; path = Sources/_HandlerID.swift; sourceTree = "<group>"; };
-		EA6C8DBBFEBBC38A4176175E97CC5424 /* Disposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposable.swift; path = Sources/Disposable.swift; sourceTree = "<group>"; };
+		E8548EAB7C853E897E80BFB32FABFBEC /* GuillotineMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GuillotineMenu-dummy.m"; sourceTree = "<group>"; };
+		EB7014CE9D3C850A8C6C9A5C87AE9AFF /* _RouteID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = _RouteID.swift; path = Sources/_RouteID.swift; sourceTree = "<group>"; };
+		ED513F01ACF930958EAFDDD89A455517 /* RouteChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RouteChain.swift; path = Sources/RouteChain.swift; sourceTree = "<group>"; };
 		F5D806348194E3C66EC0FF09DBD6CE9B /* Pods-Tiny BlackjackTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Tiny BlackjackTests.modulemap"; sourceTree = "<group>"; };
 		F61F602791F5AA1DC1588494237E0BA8 /* Pods-Tiny Blackjack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Tiny Blackjack.modulemap"; sourceTree = "<group>"; };
+		F648334ABA861C6833F85F4A239B077A /* GuillotineMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GuillotineMenu-umbrella.h"; sourceTree = "<group>"; };
+		F77059D3EE75C2D9DD77E58ADBD36F25 /* SwiftState-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftState-prefix.pch"; sourceTree = "<group>"; };
+		FCBE3B23FB75FA2E9E5FC512E543B4D1 /* Pods_Tiny_BlackjackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Tiny_BlackjackTests.framework; path = "Pods-Tiny BlackjackTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD4947D68606FBBD6677EA54741B80C5 /* SwiftySound.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftySound.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0CC382A568F9152E0B357FCEF6DECE2B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FC3D7C9F334456A3734DF6EB5004D9E7 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		187819171701CB089A738D1AF4B3AB16 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,20 +143,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		608B5512FEAAED4974AEB8FC5EFAFBF1 /* Frameworks */ = {
+		41E8CDCBBD26D9E36C085D576749AEB7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99D06AC4B71565CC45A457841283728E /* AVFoundation.framework in Frameworks */,
-				1655662E9C7C864C0EEF5D6F236DE579 /* Foundation.framework in Frameworks */,
+				B647356B4E342036F23D2F1A59C365D9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62AD5ECA7AE204BE8009690CEED63A86 /* Frameworks */ = {
+		43F7B7D9FDB92D1728C8271B5E93C18A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31B9C1B9D09FC522BB71938D3984641C /* Foundation.framework in Frameworks */,
+				1944A719DA8F661DD6E920B73F55AE2B /* AVFoundation.framework in Frameworks */,
+				A35536DD6D215735D75254F18E9AC367 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5828716C6E510D121182A4F7D6FFB4BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CE06DAA409478426FC958C71F13FF17 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E48FAC167299FFCBDF1E99B8988C5F2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFEA73425542B781F28FE8916E3879F8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,71 +213,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		39EC6253D6F90F04668362BA88597F76 /* SwiftState */ = {
+		3FE705100D8BFE86D05DFC019BD3A02F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E407F251E3B11CD1DA4EA2F683CB4DEA /* _HandlerID.swift */,
-				C4707376740DB6387A10C2F123091B76 /* _HandlerInfo.swift */,
-				7EB2AA67449CC79EF2CFE9CC2CDF559F /* _Random.swift */,
-				D5DDF966D6D4F65F04657470053FAA86 /* _RouteID.swift */,
-				5302F54EF885D14A619A0E386E6474A5 /* _RouteMappingID.swift */,
-				EA6C8DBBFEBBC38A4176175E97CC5424 /* Disposable.swift */,
-				B0B2BCB0A83C6D49E42F4D067FA853B0 /* EventType.swift */,
-				870547EBAB87133820EAC525A2827409 /* Machine.swift */,
-				52E752965CD2516859F6572F798D6744 /* Route.swift */,
-				A597429D3AF0F6282BB7F83F82B8C15E /* RouteChain.swift */,
-				ADD9354C0D176DD38E4BF10857A34266 /* StateMachine.swift */,
-				25380AEB00A871B841F6805239EDE77B /* StateType.swift */,
-				23B4436D417D167D982970932B82059E /* Transition.swift */,
-				8EF100019BCB0658F8F660949BA5D516 /* TransitionChain.swift */,
-				C0EA7173B4B846BC395C82C224EEAE98 /* Support Files */,
-			);
-			name = SwiftState;
-			path = SwiftState;
-			sourceTree = "<group>";
-		};
-		3B6F7EB7CC97F81002F7F9BA9DC6761B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6E35761B82B71864FCCF3E4CE24FDAEF /* Pods_Tiny_Blackjack.framework */,
-				6986AE64C15B891ADC6241C8DC196ED8 /* Pods_Tiny_BlackjackTests.framework */,
-				61F70E2E1CBBA1595D8E6258FB0B1AE8 /* SwiftState.framework */,
-				8AB506F28A9BAC04E0489EEE1A8F340D /* SwiftySound.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		4A6D91438BFCE3D0CE025AC1E9BB6655 /* SwiftySound */ = {
-			isa = PBXGroup;
-			children = (
-				BB3CCF317117A062812E42A7C6F1B9DF /* Sound.swift */,
-				58A6B845067707D1B6225D105B2EE8E5 /* Support Files */,
-			);
-			name = SwiftySound;
-			path = SwiftySound;
-			sourceTree = "<group>";
-		};
-		58A6B845067707D1B6225D105B2EE8E5 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1ABCCCE140C2DDA28B7CA023E20EEAD9 /* SwiftySound.modulemap */,
-				D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */,
-				7C86B3B688C467E22BE568E60D015DD6 /* SwiftySound-dummy.m */,
-				9226566E5CED186D5C43CBFAB7575230 /* SwiftySound-Info.plist */,
-				9EC3710E1AEFD80EB8BE6A184EFCF138 /* SwiftySound-prefix.pch */,
-				60361E4552A4E77FBFAFA5AB5DB852FD /* SwiftySound-umbrella.h */,
+				57BF62BE68EB7425082F442594BE3F26 /* SwiftySound.modulemap */,
+				FD4947D68606FBBD6677EA54741B80C5 /* SwiftySound.xcconfig */,
+				2649841E2E6487274E65F7F0278F6892 /* SwiftySound-dummy.m */,
+				CAA6083B20636F9321039805BA3F1217 /* SwiftySound-Info.plist */,
+				AF29F4A085883DCA958EEDF545261B71 /* SwiftySound-prefix.pch */,
+				7DF0D4FA89572CAC94D244C07DEF5D67 /* SwiftySound-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftySound";
 			sourceTree = "<group>";
 		};
-		80B68D80A48364D0F30C07C5B5E524F6 /* Pods */ = {
+		52C0C4CC7FF8BDE5B89A7EF4F9300FFB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				39EC6253D6F90F04668362BA88597F76 /* SwiftState */,
-				4A6D91438BFCE3D0CE025AC1E9BB6655 /* SwiftySound */,
+				6AECBBD28F44EF8973D57639C97FC041 /* SwiftState.modulemap */,
+				29E2F0A39E18D63213A906550167461E /* SwiftState.xcconfig */,
+				C71F0B782D80D3414EC614DDC88458C6 /* SwiftState-dummy.m */,
+				8794EEFE50E12FDAA1CDE912A778AD91 /* SwiftState-Info.plist */,
+				F77059D3EE75C2D9DD77E58ADBD36F25 /* SwiftState-prefix.pch */,
+				2CBCD5D31C2BB6E51092ECA29FA793A8 /* SwiftState-umbrella.h */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftState";
 			sourceTree = "<group>";
 		};
 		8DD94BEC2FC7E335E08318D902D665DB /* Pods-Tiny BlackjackTests */ = {
@@ -269,18 +257,61 @@
 			path = "Target Support Files/Pods-Tiny BlackjackTests";
 			sourceTree = "<group>";
 		};
-		C0EA7173B4B846BC395C82C224EEAE98 /* Support Files */ = {
+		990D0954FA490A0B4343C8C6C6721B13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BF484B136EA0018437B3A4278AE68B52 /* SwiftState.modulemap */,
-				0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */,
-				BFFAF14CB99AE2F6156F9AD213AD06AE /* SwiftState-dummy.m */,
-				CA0244EAA04DC7E22A30C76C63FCBAFE /* SwiftState-Info.plist */,
-				DD6CC012ED3BE1AB39AB37000ACDF489 /* SwiftState-prefix.pch */,
-				90CF55932D69D262F82400F82BE7B7A0 /* SwiftState-umbrella.h */,
+				A54A48FDAF9830E613D366675A4D5C71 /* GuillotineMenu */,
+				9B8477731E2D6E533080055DB649CA0D /* SwiftState */,
+				FA06AE4729E48E4399264A6C1D27B319 /* SwiftySound */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9B8477731E2D6E533080055DB649CA0D /* SwiftState */ = {
+			isa = PBXGroup;
+			children = (
+				233ABE683996FDFE99F3C65855B76390 /* _HandlerID.swift */,
+				4E90D1815162F13D39E6FB2C0F66FD8B /* _HandlerInfo.swift */,
+				7BADEF7EC9C9FF1264DDDD4E30FFE6C4 /* _Random.swift */,
+				EB7014CE9D3C850A8C6C9A5C87AE9AFF /* _RouteID.swift */,
+				B59B1BB1899C861A1F2BF8B9E0FD02DD /* _RouteMappingID.swift */,
+				9BAF917CFD6881E1E90E951C73E7C7F2 /* Disposable.swift */,
+				C848FD68F6ADAB85279B56FD2CED673B /* EventType.swift */,
+				B3F52BA4FE25577E0049C3D80B69F120 /* Machine.swift */,
+				C25FEDA09F3AE4E69AC774799B51DAE2 /* Route.swift */,
+				ED513F01ACF930958EAFDDD89A455517 /* RouteChain.swift */,
+				8152DC42AF6C29CDC84C92407FC6B4B8 /* StateMachine.swift */,
+				74D17FB66E085F1344370CBDAF9C6BBB /* StateType.swift */,
+				2572219CC5DA3A9322EEAA1D5DB933B1 /* Transition.swift */,
+				700325AB071C0526111E4A750758E61A /* TransitionChain.swift */,
+				52C0C4CC7FF8BDE5B89A7EF4F9300FFB /* Support Files */,
+			);
+			name = SwiftState;
+			path = SwiftState;
+			sourceTree = "<group>";
+		};
+		A54A48FDAF9830E613D366675A4D5C71 /* GuillotineMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D62970362FBC440F7A60A785C16A0E46 /* GuillotineMenuTransitionAnimation.swift */,
+				AA7AE7FBEDC0F661F0594737C960808C /* Support Files */,
+			);
+			name = GuillotineMenu;
+			path = GuillotineMenu;
+			sourceTree = "<group>";
+		};
+		AA7AE7FBEDC0F661F0594737C960808C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				05C5848398C07904BCABACEE0A706160 /* GuillotineMenu.modulemap */,
+				5E476DEB3193F9A1B460BADE195CE330 /* GuillotineMenu.xcconfig */,
+				E8548EAB7C853E897E80BFB32FABFBEC /* GuillotineMenu-dummy.m */,
+				3D85A16A025BE6865F8AF1A6AE0B199F /* GuillotineMenu-Info.plist */,
+				6004BEB2C82FAEED0EC1A6216C26BE5B /* GuillotineMenu-prefix.pch */,
+				F648334ABA861C6833F85F4A239B077A /* GuillotineMenu-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftState";
+			path = "../Target Support Files/GuillotineMenu";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -288,8 +319,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				80B68D80A48364D0F30C07C5B5E524F6 /* Pods */,
-				3B6F7EB7CC97F81002F7F9BA9DC6761B /* Products */,
+				990D0954FA490A0B4343C8C6C6721B13 /* Pods */,
+				FDD3FF38E9E1A3E4FE196797A97950B6 /* Products */,
 				03E9507772BB503C83CC8BE77FB9A460 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -303,30 +334,60 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		FA06AE4729E48E4399264A6C1D27B319 /* SwiftySound */ = {
+			isa = PBXGroup;
+			children = (
+				7E4BF417A1511026F175348DE5D439B9 /* Sound.swift */,
+				3FE705100D8BFE86D05DFC019BD3A02F /* Support Files */,
+			);
+			name = SwiftySound;
+			path = SwiftySound;
+			sourceTree = "<group>";
+		};
+		FDD3FF38E9E1A3E4FE196797A97950B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08C617426B487CD2AB1C0047B102EF04 /* GuillotineMenu.framework */,
+				65420E08BFDD95E93546438088E61765 /* Pods_Tiny_Blackjack.framework */,
+				FCBE3B23FB75FA2E9E5FC512E543B4D1 /* Pods_Tiny_BlackjackTests.framework */,
+				3373C62A2E67863C1E76CC86E1A7AC47 /* SwiftState.framework */,
+				9AC96DCA99FE8DB12958D4AB98E8D7A6 /* SwiftySound.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1BA6519AE52EFCCF5587FDCF2E355901 /* Headers */ = {
+		023D9991A4F5C0033B0FA76E7A68CA06 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25DB0E3075665D258955D0E9E6DAFFFC /* SwiftySound-umbrella.h in Headers */,
+				6D1A9CCDE019E89373433419B51FA9A4 /* Pods-Tiny Blackjack-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2272263AB61A1838B1E64B5FBAA8DEBB /* Headers */ = {
+		0871C2B4DE4B0918E9A802719CB06149 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EF2F33F200F43A55BB059DDACEE3630 /* Pods-Tiny Blackjack-umbrella.h in Headers */,
+				D5C00C1270DEA992F219F5D48022F06A /* SwiftState-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		54281F83FFB04992C35D645FAB7F6C77 /* Headers */ = {
+		A83AD3E37351B1DAEB3F59F02C3EEAA4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E765927B051CB5A7BBF60DC8D96C5E5 /* SwiftState-umbrella.h in Headers */,
+				80DF3F3A2EEE8EAEADC191185406539D /* GuillotineMenu-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B317D61C8887C8A54C33F1BDD7E90341 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7582E8F7E8E795E77AACA89AE3B4432 /* SwiftySound-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,32 +402,53 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2E542B3D0443B719A9B8106F6F19CF87 /* SwiftySound */ = {
+		28B783795FC4AD4263C3A6614ADC4B9E /* Pods-Tiny Blackjack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 097915A0DE0B4B6920B7F05B29606C55 /* Build configuration list for PBXNativeTarget "SwiftySound" */;
+			buildConfigurationList = 6EB8BD80288D476FDFC2B730F44AF66A /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */;
 			buildPhases = (
-				1BA6519AE52EFCCF5587FDCF2E355901 /* Headers */,
-				2C1A48D8CCFD9D3BF7B8A91D83494B5B /* Sources */,
-				608B5512FEAAED4974AEB8FC5EFAFBF1 /* Frameworks */,
-				A5FCB76D90F9A78E32B09E55704FA3EF /* Resources */,
+				023D9991A4F5C0033B0FA76E7A68CA06 /* Headers */,
+				C7C602903733960468C6C52439F0853E /* Sources */,
+				E48FAC167299FFCBDF1E99B8988C5F2B /* Frameworks */,
+				07FD08F8BC8A6B322B62B2A36CA5769B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DEA5B8BC429C761859A1CD60EB8F942B /* PBXTargetDependency */,
+				811F47593C7394C9F744773864CF70C1 /* PBXTargetDependency */,
+				0A4ECDBB8BB8D7291FCCF2BBEAF42A25 /* PBXTargetDependency */,
+			);
+			name = "Pods-Tiny Blackjack";
+			productName = "Pods-Tiny Blackjack";
+			productReference = 65420E08BFDD95E93546438088E61765 /* Pods_Tiny_Blackjack.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		292572A303222EC55EA3B8FD79DEA3C1 /* GuillotineMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC09AE85C421466FB6C16F5288C10FCD /* Build configuration list for PBXNativeTarget "GuillotineMenu" */;
+			buildPhases = (
+				A83AD3E37351B1DAEB3F59F02C3EEAA4 /* Headers */,
+				321C755D3FF62204C2026EA500257107 /* Sources */,
+				41E8CDCBBD26D9E36C085D576749AEB7 /* Frameworks */,
+				CA593EC82B5B0FE2B02AEAF9F0E3F792 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SwiftySound;
-			productName = SwiftySound;
-			productReference = 8AB506F28A9BAC04E0489EEE1A8F340D /* SwiftySound.framework */;
+			name = GuillotineMenu;
+			productName = GuillotineMenu;
+			productReference = 08C617426B487CD2AB1C0047B102EF04 /* GuillotineMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A2D720457607023A374326C060F23869 /* SwiftState */ = {
+		927E2D29D7ED3C3AF41CCD1EF846D65E /* SwiftState */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EEA0174B956C25D1C3CD65DEBBB7C9DD /* Build configuration list for PBXNativeTarget "SwiftState" */;
+			buildConfigurationList = 70D5F879575EE3C4AF6197D5CFBBD4FC /* Build configuration list for PBXNativeTarget "SwiftState" */;
 			buildPhases = (
-				54281F83FFB04992C35D645FAB7F6C77 /* Headers */,
-				59DD0419EA8116D8494BA4071D323E3B /* Sources */,
-				0CC382A568F9152E0B357FCEF6DECE2B /* Frameworks */,
-				A5F72DD913D5EA0DDA0D54C452A23875 /* Resources */,
+				0871C2B4DE4B0918E9A802719CB06149 /* Headers */,
+				399BFC61F179380B5DC0794DB8F073C9 /* Sources */,
+				5828716C6E510D121182A4F7D6FFB4BF /* Frameworks */,
+				34957A48B58D4FC788D53A25C134FC27 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -374,7 +456,7 @@
 			);
 			name = SwiftState;
 			productName = SwiftState;
-			productReference = 61F70E2E1CBBA1595D8E6258FB0B1AE8 /* SwiftState.framework */;
+			productReference = 3373C62A2E67863C1E76CC86E1A7AC47 /* SwiftState.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BA6F16A0984D19D48D295D25BD089D35 /* Pods-Tiny BlackjackTests */ = {
@@ -393,27 +475,25 @@
 			);
 			name = "Pods-Tiny BlackjackTests";
 			productName = "Pods-Tiny BlackjackTests";
-			productReference = 6986AE64C15B891ADC6241C8DC196ED8 /* Pods_Tiny_BlackjackTests.framework */;
+			productReference = FCBE3B23FB75FA2E9E5FC512E543B4D1 /* Pods_Tiny_BlackjackTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C110AA665C50D1004C9D1CC47E51F483 /* Pods-Tiny Blackjack */ = {
+		C043330C35FAA63EF089A97B8C38573B /* SwiftySound */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F06CF41A813076ED731F2A1DE8CBD15 /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */;
+			buildConfigurationList = 0525B95B4A64ABFA46E8150585803BCD /* Build configuration list for PBXNativeTarget "SwiftySound" */;
 			buildPhases = (
-				2272263AB61A1838B1E64B5FBAA8DEBB /* Headers */,
-				E537AE50C66776CB816CF34030EFFA58 /* Sources */,
-				62AD5ECA7AE204BE8009690CEED63A86 /* Frameworks */,
-				6E5261FF54B410849F2BE4070E7B297F /* Resources */,
+				B317D61C8887C8A54C33F1BDD7E90341 /* Headers */,
+				D4647FE31D93F57E1B51D293C38EFBCA /* Sources */,
+				43F7B7D9FDB92D1728C8271B5E93C18A /* Frameworks */,
+				7D1C24BE74B157CCDF934300572F3A33 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B0EC9DF16DE068227F38F7D092E50B70 /* PBXTargetDependency */,
-				E2327315782781336547673F6903DFF8 /* PBXTargetDependency */,
 			);
-			name = "Pods-Tiny Blackjack";
-			productName = "Pods-Tiny Blackjack";
-			productReference = 6E35761B82B71864FCCF3E4CE24FDAEF /* Pods_Tiny_Blackjack.framework */;
+			name = SwiftySound;
+			productName = SwiftySound;
+			productReference = 9AC96DCA99FE8DB12958D4AB98E8D7A6 /* SwiftySound.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -433,20 +513,35 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 3B6F7EB7CC97F81002F7F9BA9DC6761B /* Products */;
+			productRefGroup = FDD3FF38E9E1A3E4FE196797A97950B6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C110AA665C50D1004C9D1CC47E51F483 /* Pods-Tiny Blackjack */,
+				292572A303222EC55EA3B8FD79DEA3C1 /* GuillotineMenu */,
+				28B783795FC4AD4263C3A6614ADC4B9E /* Pods-Tiny Blackjack */,
 				BA6F16A0984D19D48D295D25BD089D35 /* Pods-Tiny BlackjackTests */,
-				A2D720457607023A374326C060F23869 /* SwiftState */,
-				2E542B3D0443B719A9B8106F6F19CF87 /* SwiftySound */,
+				927E2D29D7ED3C3AF41CCD1EF846D65E /* SwiftState */,
+				C043330C35FAA63EF089A97B8C38573B /* SwiftySound */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6E5261FF54B410849F2BE4070E7B297F /* Resources */ = {
+		07FD08F8BC8A6B322B62B2A36CA5769B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34957A48B58D4FC788D53A25C134FC27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D1C24BE74B157CCDF934300572F3A33 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -460,14 +555,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5F72DD913D5EA0DDA0D54C452A23875 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5FCB76D90F9A78E32B09E55704FA3EF /* Resources */ = {
+		CA593EC82B5B0FE2B02AEAF9F0E3F792 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -485,65 +573,80 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C1A48D8CCFD9D3BF7B8A91D83494B5B /* Sources */ = {
+		321C755D3FF62204C2026EA500257107 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67EF93FCE491EB9EB0E1D98CC0F0D85E /* Sound.swift in Sources */,
-				BAF3D7297774BC019ACA5C79DA634805 /* SwiftySound-dummy.m in Sources */,
+				76F8381BA682DC82EDE9E072A38EE5FD /* GuillotineMenu-dummy.m in Sources */,
+				94C746B28FBAA9A18B3C61364DD9231C /* GuillotineMenuTransitionAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59DD0419EA8116D8494BA4071D323E3B /* Sources */ = {
+		399BFC61F179380B5DC0794DB8F073C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9C460F7EDDFB5C444CE47E3031E7A5 /* _HandlerID.swift in Sources */,
-				DB7E94E942565210B2AF66AD0D8208AB /* _HandlerInfo.swift in Sources */,
-				801E49D3971104DEF6EF0FAF0748DC56 /* _Random.swift in Sources */,
-				83BA88BEECB1DC1BB4EBA7BCB1C5B6EE /* _RouteID.swift in Sources */,
-				6376D06973491DA8555F1D1FEDFB66C8 /* _RouteMappingID.swift in Sources */,
-				7CD23782632ADFBD5661BE7567718442 /* Disposable.swift in Sources */,
-				715FE842A9853F6930E539FFF5E3259F /* EventType.swift in Sources */,
-				6A3D16781DD34D85909661A9869DC625 /* Machine.swift in Sources */,
-				8965D53F953601F3EE52173922C8BE88 /* Route.swift in Sources */,
-				ECB5EFC6C2D50D7379FEAD20C5D7C579 /* RouteChain.swift in Sources */,
-				DD8D093F2062C132744CC39A963399CD /* StateMachine.swift in Sources */,
-				4A35B77E6102AE3C1B58BF3B98819020 /* StateType.swift in Sources */,
-				401161F33401AEEE1807D4F0D27D215A /* SwiftState-dummy.m in Sources */,
-				C60DD8D6B43D9A28F968EF70DD4EA6B8 /* Transition.swift in Sources */,
-				A01A938FF7EF3B27F5E32DA40889A4B5 /* TransitionChain.swift in Sources */,
+				372ECA5DB52771577C6AFE214C4C111D /* _HandlerID.swift in Sources */,
+				781E26F8205DA77DE0C57AACE617F068 /* _HandlerInfo.swift in Sources */,
+				D7970AAB553712D0D6F18D189C4C6E90 /* _Random.swift in Sources */,
+				B7776363408F8EA1C9B302A1A46A3E25 /* _RouteID.swift in Sources */,
+				E6BF5C62419B97F3A1937CD890477ED2 /* _RouteMappingID.swift in Sources */,
+				B67074F3380B0666F757381225C579DF /* Disposable.swift in Sources */,
+				3E65FA3EF30BB324BA2CFDF3F1DCB8F4 /* EventType.swift in Sources */,
+				B43E23EE77136632A82571244CDF0814 /* Machine.swift in Sources */,
+				C6C3F09C53AAD0EAD7B2908BE489FBC0 /* Route.swift in Sources */,
+				5393688983CFC1D455021E1CFA9DF6D8 /* RouteChain.swift in Sources */,
+				BDEC10EE100688286DE9F919E13FF0A6 /* StateMachine.swift in Sources */,
+				8BB687E5A2934718F08B7A3204A4C059 /* StateType.swift in Sources */,
+				9556E1A838BAB79CBA85661AA048F709 /* SwiftState-dummy.m in Sources */,
+				711031F2F26B65945BA4A1F5EFB742BE /* Transition.swift in Sources */,
+				1AFDBFFF8D1FA0AB6843518041751B9B /* TransitionChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E537AE50C66776CB816CF34030EFFA58 /* Sources */ = {
+		C7C602903733960468C6C52439F0853E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ED3C4D256DD0338541C80C7635E95C3 /* Pods-Tiny Blackjack-dummy.m in Sources */,
+				3C2152C56F607E8EB24A42D4AE9C7065 /* Pods-Tiny Blackjack-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4647FE31D93F57E1B51D293C38EFBCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7CC7C88AC1E186AE2997C54E7E6D169 /* Sound.swift in Sources */,
+				34870A1BF359A6D1E41B87E79795E8F9 /* SwiftySound-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B0EC9DF16DE068227F38F7D092E50B70 /* PBXTargetDependency */ = {
+		0A4ECDBB8BB8D7291FCCF2BBEAF42A25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftySound;
+			target = C043330C35FAA63EF089A97B8C38573B /* SwiftySound */;
+			targetProxy = B3E912DB5750BBFF1AE91BE07A908068 /* PBXContainerItemProxy */;
+		};
+		811F47593C7394C9F744773864CF70C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftState;
-			target = A2D720457607023A374326C060F23869 /* SwiftState */;
-			targetProxy = A7B6763CC70ABB7A7BD1B9596FBB1ADA /* PBXContainerItemProxy */;
+			target = 927E2D29D7ED3C3AF41CCD1EF846D65E /* SwiftState */;
+			targetProxy = 309DCA78901AA171BAC54CE8B8732FC9 /* PBXContainerItemProxy */;
 		};
 		C6E38952EEC5DD133EC3898E89FB4A9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Tiny Blackjack";
-			target = C110AA665C50D1004C9D1CC47E51F483 /* Pods-Tiny Blackjack */;
+			target = 28B783795FC4AD4263C3A6614ADC4B9E /* Pods-Tiny Blackjack */;
 			targetProxy = 0C6197C5F77CBE4D7D6DA2CF613C3E69 /* PBXContainerItemProxy */;
 		};
-		E2327315782781336547673F6903DFF8 /* PBXTargetDependency */ = {
+		DEA5B8BC429C761859A1CD60EB8F942B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftySound;
-			target = 2E542B3D0443B719A9B8106F6F19CF87 /* SwiftySound */;
-			targetProxy = 044BF368441B76DA5D23650D1936450A /* PBXContainerItemProxy */;
+			name = GuillotineMenu;
+			target = 292572A303222EC55EA3B8FD79DEA3C1 /* GuillotineMenu */;
+			targetProxy = 9EAFFEDDBF894F39AAA26789B1B52DB2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -585,42 +688,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		2CEA27E5FC4C871101600B2A100B653E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftState/SwiftState-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftState/SwiftState-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SwiftState/SwiftState.modulemap";
-				PRODUCT_MODULE_NAME = SwiftState;
-				PRODUCT_NAME = SwiftState;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		3048B0C5C704DFFF688DA57F5380ED58 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -681,6 +748,116 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
+		};
+		3C5CB3B1AD1C75D175494DAF9AC2F5E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C3802E3A1374119AE3D004D30A85711 /* Pods-Tiny Blackjack.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		46D0971F2EBCDB3E6AAD5B55520898CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29E2F0A39E18D63213A906550167461E /* SwiftState.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftState/SwiftState-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftState/SwiftState-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftState/SwiftState.modulemap";
+				PRODUCT_MODULE_NAME = SwiftState;
+				PRODUCT_NAME = SwiftState;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4802AB7A7EBD4205A479E91ABE843FD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29E2F0A39E18D63213A906550167461E /* SwiftState.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftState/SwiftState-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftState/SwiftState-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftState/SwiftState.modulemap";
+				PRODUCT_MODULE_NAME = SwiftState;
+				PRODUCT_NAME = SwiftState;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		5B0C8287D755FD95091CF35D87FB8B2D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -746,86 +923,9 @@
 			};
 			name = Debug;
 		};
-		64D03DA826AA64EAC27055BE5F3A625D /* Debug */ = {
+		654FEFC3D9E341C640124479006F9477 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5C27EE6E174B6B8B436F5644A935A4E /* Pods-Tiny Blackjack.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		70EF9BBF351845C9BED227B2E307C951 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C3802E3A1374119AE3D004D30A85711 /* Pods-Tiny Blackjack.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7CAF398B8B86BFD083F3513D16CC0829 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */;
+			baseConfigurationReference = FD4947D68606FBBD6677EA54741B80C5 /* SwiftySound.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -858,9 +958,45 @@
 			};
 			name = Debug;
 		};
-		DCE7E7585A93E2C1DA2C37E98A15BC1F /* Release */ = {
+		856E8A99111D009E0807A76EBDD40BD8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3C430213B981C9D5449A0E795E35B86 /* SwiftySound.xcconfig */;
+			baseConfigurationReference = 5E476DEB3193F9A1B460BADE195CE330 /* GuillotineMenu.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GuillotineMenu/GuillotineMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GuillotineMenu/GuillotineMenu-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GuillotineMenu/GuillotineMenu.modulemap";
+				PRODUCT_MODULE_NAME = GuillotineMenu;
+				PRODUCT_NAME = GuillotineMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A3D7D9B352FAE5ACB54940FF4A3617B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4947D68606FBBD6677EA54741B80C5 /* SwiftySound.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -893,6 +1029,41 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		C79606E092817FDD1EF3983AA067E599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E476DEB3193F9A1B460BADE195CE330 /* GuillotineMenu.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GuillotineMenu/GuillotineMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GuillotineMenu/GuillotineMenu-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GuillotineMenu/GuillotineMenu.modulemap";
+				PRODUCT_MODULE_NAME = GuillotineMenu;
+				PRODUCT_NAME = GuillotineMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		E664709518B3FA7D2A17F749A052AF9F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -933,10 +1104,12 @@
 			};
 			name = Release;
 		};
-		E9368562D8517711C3FA8E6492F8E3BF /* Debug */ = {
+		EDAFC4732A08396803D0AF3CBBA58714 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0662A5A53222C19A04DE93C6D0BC22BB /* SwiftState.xcconfig */;
+			baseConfigurationReference = D5C27EE6E174B6B8B436F5644A935A4E /* Pods-Tiny Blackjack.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -946,22 +1119,23 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftState/SwiftState-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftState/SwiftState-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/SwiftState/SwiftState.modulemap";
-				PRODUCT_MODULE_NAME = SwiftState;
-				PRODUCT_NAME = SwiftState;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -971,20 +1145,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		097915A0DE0B4B6920B7F05B29606C55 /* Build configuration list for PBXNativeTarget "SwiftySound" */ = {
+		0525B95B4A64ABFA46E8150585803BCD /* Build configuration list for PBXNativeTarget "SwiftySound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CAF398B8B86BFD083F3513D16CC0829 /* Debug */,
-				DCE7E7585A93E2C1DA2C37E98A15BC1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2F06CF41A813076ED731F2A1DE8CBD15 /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				64D03DA826AA64EAC27055BE5F3A625D /* Debug */,
-				70EF9BBF351845C9BED227B2E307C951 /* Release */,
+				654FEFC3D9E341C640124479006F9477 /* Debug */,
+				A3D7D9B352FAE5ACB54940FF4A3617B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -998,6 +1163,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		6EB8BD80288D476FDFC2B730F44AF66A /* Build configuration list for PBXNativeTarget "Pods-Tiny Blackjack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDAFC4732A08396803D0AF3CBBA58714 /* Debug */,
+				3C5CB3B1AD1C75D175494DAF9AC2F5E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70D5F879575EE3C4AF6197D5CFBBD4FC /* Build configuration list for PBXNativeTarget "SwiftState" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4802AB7A7EBD4205A479E91ABE843FD8 /* Debug */,
+				46D0971F2EBCDB3E6AAD5B55520898CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C68231D0D497732AAA2D8844E8D10815 /* Build configuration list for PBXNativeTarget "Pods-Tiny BlackjackTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1007,11 +1190,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EEA0174B956C25D1C3CD65DEBBB7C9DD /* Build configuration list for PBXNativeTarget "SwiftState" */ = {
+		CC09AE85C421466FB6C16F5288C10FCD /* Build configuration list for PBXNativeTarget "GuillotineMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E9368562D8517711C3FA8E6492F8E3BF /* Debug */,
-				2CEA27E5FC4C871101600B2A100B653E /* Release */,
+				C79606E092817FDD1EF3983AA067E599 /* Debug */,
+				856E8A99111D009E0807A76EBDD40BD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
