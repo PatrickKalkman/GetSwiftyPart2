@@ -28,4 +28,5 @@ protocol BlackjackViewProtocol {
     func hitDealer()
     func distributeBets()
     func dealerStart()
+    func noMoreMoney()
 }

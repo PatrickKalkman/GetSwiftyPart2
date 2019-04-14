@@ -1,17 +1,17 @@
 PODS:
-  - GuillotineMenu (4.0)
   - SwiftState (4.1.0)
   - SwiftySound (1.0.0)
+  - UINavigationBar-Transparent (1.2)
 
 DEPENDENCIES:
-  - GuillotineMenu
   - SwiftState (from `https://github.com/ReactKit/SwiftState`)
   - SwiftySound
+  - UINavigationBar-Transparent
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - GuillotineMenu
     - SwiftySound
+    - UINavigationBar-Transparent
 
 EXTERNAL SOURCES:
   SwiftState:
@@ -25,10 +25,10 @@ CHECKOUT OPTIONS:
     :submodules: true
 
 SPEC CHECKSUMS:
-  GuillotineMenu: 1345cc8c76e09c46b4096f37cf0cacfaee19e211
   SwiftState: eb4f3ca252feac9ec26235cf4374f91e0560e3a1
   SwiftySound: b9c3370956fd4ed65ed79d45563070077a50a2cd
+  UINavigationBar-Transparent: 7461a7dbff53a7b558985812d38bb054717de795
 
-PODFILE CHECKSUM: 475e5816220217c881a1d3860a49c9ca7128d875
+PODFILE CHECKSUM: 2a69dbe9b841dfba418442006b6d6289c5167c44
 
 COCOAPODS: 1.6.1

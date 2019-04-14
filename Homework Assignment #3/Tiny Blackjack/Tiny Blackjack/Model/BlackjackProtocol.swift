@@ -30,4 +30,5 @@ protocol BlackjackProtocol {
     func hitDealer()
     func distributeBets()
     func dealerStart()
+    func noMoreMoney()
 }

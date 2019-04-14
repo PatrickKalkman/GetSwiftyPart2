@@ -8,12 +8,8 @@
 
 import UIKit
 import SwiftySound
-import GuillotineMenu
 
-class ViewController: UIViewController, BlackjackViewProtocol {
-
-    fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
-    @IBOutlet fileprivate var barButton: UIButton!
+class BlackjackViewController: UIViewController, BlackjackViewProtocol {
     
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
     private let valueToChipMapper: ValueToChipMapper = ValueToChipMapper()
@@ -34,6 +30,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     @IBOutlet weak var hitButton: BorderButton!
     @IBOutlet weak var playerValueLabel: UILabel!
     @IBOutlet weak var dealerValueLabel: UILabel!
+    @IBOutlet weak var noMoreMoneyLabel: UILabel!
     @IBOutlet weak var restartButton: BorderButton!
     @IBOutlet weak var playResultLabel: UILabel!
 
@@ -47,24 +44,38 @@ class ViewController: UIViewController, BlackjackViewProtocol {
     @IBOutlet weak var playerBetLabel: UILabel!
     @IBOutlet weak var playerTotalLabel: UILabel!
     @IBOutlet weak var placeYourBetsTitle: UILabel!
-    
-    @IBAction func showMenuAction(_ sender: UIButton) {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if let sb = storyboard {
-            let menuViewController = sb.instantiateViewController(withIdentifier: "menu")
-            menuViewController.modalPresentationStyle = .custom
-            menuViewController.transitioningDelegate = self
-            
-            presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
-            presentationAnimator.supportView = navigationController!.navigationBar
-            presentationAnimator.presentButton = sender
-            presentationAnimator.animationDuration = 0.1
-            
-            present(menuViewController, animated: true, completion: nil)
+        self.navigationItem.title = "PLAY BLACKJACK"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:Constants.Colors.LightGreen]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
+            statusBar.backgroundColor = UIColor.clear
         }
-
+        
+        if let shuffleSoundUrl = Bundle.main.url(forResource: Constants.Assets.ShuffleSound, withExtension: Constants.Assets.SoundExtension) {
+            shuffleSound = Sound(url: shuffleSoundUrl)!
+        }
+        
+        if let dealCardSoundUrl = Bundle.main.url(forResource: Constants.Assets.CardSound, withExtension: Constants.Assets.SoundExtension) {
+            dealCardSound = Sound(url: dealCardSoundUrl)!
+        }
+        
+        if let chipSoundUrl = Bundle.main.url(forResource: Constants.Assets.AddChipSound, withExtension: Constants.Assets.SoundExtension) {
+            chipSound = Sound(url: chipSoundUrl)!
+        }
+        
+        gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
+        self.organizeUiBasedOnState(state: GameStates.waitingForStart)
+        DispatchQueue.main.async {
+            self.gameEngine.start(numberOfPlayers: 1)
+            self.organizeUiBasedOnState(state: GameStates.started)
+        }
     }
-
+    
     @IBAction func chipAddAction(_ sender: UIButton) {
 
         if gameEngine.getState() != GameStates.playersBetSelectPlayer {
@@ -135,39 +146,18 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         lightRedChip.isHidden = !self.gameEngine.walletContains(Chip.lightRed)
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let navBar = self.navigationController?.navigationBar
-        navBar?.barTintColor = UIColor(hex: "#193E3CFF")
-        
-        navBar?.titleTextAttributes = [.foregroundColor: UIColor.white]
-
-        if let shuffleSoundUrl = Bundle.main.url(forResource: Constants.Assets.ShuffleSound, withExtension: Constants.Assets.SoundExtension) {
-            shuffleSound = Sound(url: shuffleSoundUrl)!
-        }
-
-        if let dealCardSoundUrl = Bundle.main.url(forResource: Constants.Assets.CardSound, withExtension: Constants.Assets.SoundExtension) {
-            dealCardSound = Sound(url: dealCardSoundUrl)!
-        }
-
-        if let chipSoundUrl = Bundle.main.url(forResource: Constants.Assets.AddChipSound, withExtension: Constants.Assets.SoundExtension) {
-            chipSound = Sound(url: chipSoundUrl)!
-        }
-
-        gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
-        self.organizeUiBasedOnState(state: GameStates.waitingForStart)
-        DispatchQueue.main.async {
-            self.gameEngine.start(numberOfPlayers: 1)
-            self.organizeUiBasedOnState(state: GameStates.started)
-        }
-    }
-
     @IBAction func deal(_ sender: Any) {
-        shuffleSound!.play(numberOfLoops: 0, completion: { _ in
+        
+        if !Sound.enabled {
             self.gameEngine.triggerEvent(GameEvents.betsPlaced)
             self.gameEngine.triggerEvent(GameEvents.dealCards)
-        })
+        } else {
+            shuffleSound!.play(numberOfLoops: 0, completion: { _ in
+                self.gameEngine.triggerEvent(GameEvents.betsPlaced)
+                self.gameEngine.triggerEvent(GameEvents.dealCards)
+            })
+        }
+
     }
 
     @IBAction func restartGame(_ sender: UIButton) {
@@ -177,11 +167,19 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         for subview in addedCards {
             subview.removeFromSuperview()
         }
-
-        DispatchQueue.main.async {
-            self.gameEngine.restart()
-            self.organizeUiBasedOnState(state: GameStates.started)
-        }
+        
+        darkBlueChip.isHidden = false
+        darkRedChip.isHidden = false
+        purpleChip.isHidden = false
+        lightBlueChip.isHidden = false
+        pinkChip.isHidden = false
+        lightRedChip.isHidden = false
+        
+        noMoreMoneyLabel.isHidden = true
+        restartButton.isHidden = true
+        self.organizeUiBasedOnState(state: GameStates.started)
+        self.gameEngine.restart()
+        self.refreshWalletInformation()
     }
 
     @IBAction func hitPlayer(_ sender: Any) {
@@ -213,6 +211,8 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             dealerValueLabel.isHidden = true
             restartButton.isHidden = true
             playResultLabel.isHidden = true
+            noMoreMoneyLabel.isHidden = true
+            self.navigationItem.title = "PLAY BLACKJACK"
         case GameStates.started:
             self.placeYourBetsTitle.isHidden = self.gameEngine.getPlayerBetTotal() > 0
             self.dealButton.isHidden = !self.placeYourBetsTitle.isHidden
@@ -221,6 +221,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             playerValueLabel.isHidden = true
             dealerValueLabel.isHidden = true
             playerBetLabel.isHidden = true
+            noMoreMoneyLabel.isHidden = true
         case GameStates.dealCards:
             playerValueLabel.isHidden = true
             dealerValueLabel.isHidden = true
@@ -231,6 +232,8 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             standButton.isHidden = false
             restartButton.isHidden = true
             playResultLabel.isHidden = true
+            self.navigationItem.title = ""
+            noMoreMoneyLabel.isHidden = true
 
         case GameStates.distributeBets:
             dealButton.isHidden = true
@@ -241,6 +244,7 @@ class ViewController: UIViewController, BlackjackViewProtocol {
             restartButton.isHidden = false
             playResultLabel.isHidden = false
             placeYourBetsTitle.isHidden = true
+            self.navigationItem.title = ""
         default:
             print("do nothing")
         }
@@ -338,6 +342,9 @@ class ViewController: UIViewController, BlackjackViewProtocol {
                 self.playerCardIndex = 1
             })
         })
+    }
+    
+    func noMoreMoney() {
     }
 
     func dealerBlackjackTest() {
@@ -471,7 +478,10 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         addedChips.removeAll()
         self.refreshWalletInformation()
         organizeUiBasedOnState(state: GameStates.distributeBets)
-
+        if gameEngine.playerHasNoMoreMoney() {
+            noMoreMoneyLabel.isHidden = false
+            restartButton.isHidden = false
+        }
     }
 
     func getNewCardFromDeckFaceDown() -> UIImageView {
@@ -527,18 +537,5 @@ class ViewController: UIViewController, BlackjackViewProtocol {
         view.addSubview(newChip)
         addedChips.append(newChip)
         return newChip
-    }
-}
-
-extension ViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        presentationAnimator.mode = .presentation
-        return presentationAnimator
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        presentationAnimator.mode = .dismissal
-        return presentationAnimator
     }
 }

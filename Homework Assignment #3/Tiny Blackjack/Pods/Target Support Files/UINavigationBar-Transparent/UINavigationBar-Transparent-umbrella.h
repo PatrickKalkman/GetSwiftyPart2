@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double GuillotineMenuVersionNumber;
-FOUNDATION_EXPORT const unsigned char GuillotineMenuVersionString[];
+FOUNDATION_EXPORT double UINavigationBar_TransparentVersionNumber;
+FOUNDATION_EXPORT const unsigned char UINavigationBar_TransparentVersionString[];
 

@@ -33,4 +33,5 @@ enum GameStates: StateType {
     case dealerPlayHit
     case calculateResult
     case distributeBets
+    case finished
 }

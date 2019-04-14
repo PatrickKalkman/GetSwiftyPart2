@@ -11,6 +11,13 @@ import UIKit
 // Defines global constants for the application
 struct Constants {
 
+    struct Colors {
+        static let LightColor: UIColor = UIColor(hex: "#E1D3D3FF") ?? UIColor.green
+        static let SelectedColor: UIColor = UIColor.init(hex: "#C55856FF") ?? UIColor.gray
+        static let DarkGreen: UIColor = UIColor.init(hex: "#193E3CFF") ?? UIColor.darkGray
+        static let LightGreen: UIColor = UIColor.init(hex: "#6AFFF8FF") ?? UIColor.darkGray
+    }
+    
     struct Animation {
         static let FlipCardDuration: Double = 0.3
         static let DealCardDuraction: Double = 0.7
@@ -37,5 +44,7 @@ struct Constants {
         static let ShuffleSound: String = "Shuffle"
         static let SoundExtension: String = "wav"
     }
+    
+    
 
 }

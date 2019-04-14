@@ -24,6 +24,7 @@ class GameStateMachine {
         machine.addRoutes(event: .shuffled, transitions: [GameStates.shuffleDeck => GameStates.checkingDeck]) { _ in self.checkDeck() }
 
         machine.addRoutes(event: .checked, transitions: [GameStates.checkingDeck => GameStates.playersBetSelectPlayer]) { _ in self.placeBet() }
+        machine.addRoutes(event: .noMoreMoney, transitions: [GameStates.playersBetSelectPlayer => GameStates.finished]) { _ in self.noMoreMoney() }
         machine.addRoutes(event: .playerBetPlaced, transitions: [GameStates.playersBetSelectPlayer => GameStates.playersBetSelectPlayer]) { _ in self.placeBet() }
         machine.addRoutes(event: .betsPlaced, transitions: [GameStates.playersBetSelectPlayer => GameStates.allBetsPlaced]) { _ in self.allBetsPlaced() }
         machine.addRoutes(event: .dealCards, transitions: [GameStates.allBetsPlaced => GameStates.dealCards]) { _ in self.dealCards() }
@@ -50,15 +51,14 @@ class GameStateMachine {
         machine.addRoutes(event: .playerHandSplitted, transitions: [GameStates.playersPlaySplitHand => GameStates.showSplittedHand]) { _ in self.showSplittedHand() }
         machine.addRoutes(event: .playerShowSplittedHandFinished, transitions: [GameStates.showSplittedHand => GameStates.playersPlaySelectHand]) { _ in self.selectHand(justSplitted: true) }
 
-//        machine.addRoutes(event: .doubleDownPlayer, transitions: [GameStates.playersPlayGetChoice => GameStates.playersPlayDoubleDown]) { _ in self.playerDoubleDown() }
-//        machine.addRoutes(event: .standPlayer, transitions: [GameStates.playersPlayDoubleDown => GameStates.playersPlaySelectHand]) { _ in self.selectHand() }
-//
         machine.addRoutes(event: .hitDealer, transitions: [GameStates.dealerPlayGetChoice => GameStates.dealerPlayHit]) { _ in self.hitDealer() }
         machine.addRoutes(event: .standDealer, transitions: [GameStates.dealerPlayGetChoice => GameStates.calculateResult]) { _ in self.calculateResult() }
         machine.addRoutes(event: .dealerChoose, transitions: [GameStates.dealerPlayHit => GameStates.dealerPlayGetChoice]) { _ in self.dealerGetChoice() }
         machine.addRoutes(event: .bustDealer, transitions: [GameStates.dealerPlayGetChoice => GameStates.calculateResult]) { _ in self.calculateResult() }
         machine.addRoutes(event: .resultsCalculated, transitions: [GameStates.calculateResult => GameStates.distributeBets]) { _ in self.distributeBets() }
         machine.addRoutes(event: .resultsCalculated, transitions: [GameStates.dealerPlayGetChoice => GameStates.distributeBets]) { _ in self.distributeBets() }
+
+        machine.addRoutes(event: .noMoreMoney, transitions: [GameStates.distributeBets => GameStates.started]) { _ in self.start() }
         machine.addRoutes(event: .nextRound, transitions: [GameStates.distributeBets => GameStates.checkingDeck]) { _ in self.checkDeck() }
 
         // add errorHandler
@@ -150,5 +150,9 @@ class GameStateMachine {
 
     func dealerStart() {
         self.gameEngine.dealerStart()
+    }
+    
+    func noMoreMoney() {
+        self.gameEngine.noMoreMoney()
     }
 }

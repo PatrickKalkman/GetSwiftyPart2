@@ -78,6 +78,10 @@ class GameEngine: BlackjackProtocol {
     func getPreviousHand() -> Hand {
         return currentPlayer.getHand(handIndex: currentPlayerHandIndex - 1)
     }
+    
+    func playerHasNoMoreMoney() -> Bool {
+        return players[0].wallet.totalValue() <= 0 
+    }
 
     func getPlayerValueString() -> String {
         if let hand = currentHand {
@@ -116,7 +120,14 @@ class GameEngine: BlackjackProtocol {
         for player in players {
             player.clear()
         }
-        triggerEvent(GameEvents.nextRound)
+        players.removeAll()
+        
+        if currentPlayer.wallet.totalValue() > 0 {
+            triggerEvent(GameEvents.nextRound)
+        } else {
+            triggerEvent(GameEvents.noMoreMoney)
+        }
+        
     }
 
     func start() {
@@ -330,7 +341,6 @@ class GameEngine: BlackjackProtocol {
     }
 
     func splitHand() {
-        // TODO add the current bet also on the new hand
         print("Splitting hand \(currentPlayerHandIndex - 1)")
         currentPlayer.split(handIndex: currentPlayerHandIndex - 1)
         currentPlayerHandIndex = currentPlayerHandIndex - 1
@@ -359,6 +369,10 @@ class GameEngine: BlackjackProtocol {
     func dealerStart() {
         blackjackView?.dealerStart()
         triggerEvent(GameEvents.dealerChoose)
+    }
+    
+    func noMoreMoney() {
+        blackjackView?.noMoreMoney()
     }
 
     func distributeBets() {

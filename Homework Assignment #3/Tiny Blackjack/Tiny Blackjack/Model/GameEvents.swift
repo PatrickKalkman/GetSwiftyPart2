@@ -46,4 +46,5 @@ enum GameEvents: EventType {
     case dealerChoose
     case resultsCalculated
     case nextRound
+    case noMoreMoney
 }

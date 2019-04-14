@@ -1,8 +1,8 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GuillotineMenu" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftState" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftySound"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SwiftState" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftySound" "${PODS_CONFIGURATION_BUILD_DIR}/UINavigationBar-Transparent"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GuillotineMenu/GuillotineMenu.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftState/SwiftState.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftySound/SwiftySound.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SwiftState/SwiftState.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftySound/SwiftySound.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/UINavigationBar-Transparent/UINavigationBar_Transparent.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "AVFoundation" -framework "Foundation" -framework "GuillotineMenu" -framework "SwiftState" -framework "SwiftySound"
+OTHER_LDFLAGS = $(inherited) -framework "AVFoundation" -framework "Foundation" -framework "SwiftState" -framework "SwiftySound" -framework "UIKit" -framework "UINavigationBar_Transparent"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
