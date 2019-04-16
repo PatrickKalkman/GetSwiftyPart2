@@ -133,16 +133,16 @@ class BasicStrategy: BlackjackStrategyProtocol {
         splitMatrix[CardCombi(18, 11)] = ProposedAction.stand
         
         // Player 2
-        splitMatrix[CardCombi(2, 2)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 3)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 4)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 5)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 6)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 7)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 8)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 9)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 10)] = ProposedAction.split
-        splitMatrix[CardCombi(2, 11)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 2)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 3)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 4)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 5)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 6)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 7)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 8)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 9)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 10)] = ProposedAction.split
+        splitMatrix[CardCombi(22, 11)] = ProposedAction.split
     }
     
     func initSoftMatrix() {

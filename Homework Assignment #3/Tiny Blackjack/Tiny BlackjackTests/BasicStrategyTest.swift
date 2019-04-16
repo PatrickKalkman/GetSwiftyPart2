@@ -75,4 +75,68 @@ class BasicStrategyTest: XCTestCase {
         let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.doubleOrStand)
     }
+    
+    func test_split_when_dealer_7_hand_is_double_14() {
+        let card1: Card = Card(Suit.heart, Rank.seven, 1)
+        let card2: Card = Card(Suit.club, Rank.seven, 2)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2) // Soft 14
+        
+        let card3: Card = Card(Suit.club, Rank.seven, 1)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3) // 7
+        
+        let strategy: BlackjackStrategyProtocol = BasicStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.split)
+    }
+    
+    func test_split_when_dealer_8_hand_is_double_14() {
+        let card1: Card = Card(Suit.heart, Rank.seven, 1)
+        let card2: Card = Card(Suit.club, Rank.seven, 2)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2) // Soft 14
+        
+        let card3: Card = Card(Suit.club, Rank.eight, 1)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3) // 8
+        
+        let strategy: BlackjackStrategyProtocol = BasicStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.hit)
+    }
+    
+    func test_split_when_dealer_8_hand_is_double_ace() {
+        let card1: Card = Card(Suit.heart, Rank.ace, 1)
+        let card2: Card = Card(Suit.club, Rank.ace, 2)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2) // Soft 14
+        
+        let card3: Card = Card(Suit.club, Rank.eight, 1)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3) // 8
+        
+        let strategy: BlackjackStrategyProtocol = BasicStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.split)
+    }
+    
+    func test_split_when_dealer_7_hand_is_double_nine() {
+        let card1: Card = Card(Suit.heart, Rank.nine, 1)
+        let card2: Card = Card(Suit.club, Rank.nine, 2)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2) // Soft 18
+        
+        let card3: Card = Card(Suit.club, Rank.seven, 1)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3) // 7
+        
+        let strategy: BlackjackStrategyProtocol = BasicStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.stand)
+    }
 }
