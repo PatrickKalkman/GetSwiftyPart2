@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import UINavigationBar_Transparent
 
 class BasicStrategyViewController: UIViewController {
 

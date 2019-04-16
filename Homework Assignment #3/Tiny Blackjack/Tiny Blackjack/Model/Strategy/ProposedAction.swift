@@ -11,9 +11,13 @@ import Foundation
 enum ProposedAction {
     case stand
     case hit
-    case double
+    case doubleOrHit
+    case doubleOrStand
     case split
-    case surrender
+    case splitOrHit
+    case surrenderOrHit
+    case surrenderOrStand
+    case surrenderOrSplit
     case blackjack
     case bust
     case dontknow

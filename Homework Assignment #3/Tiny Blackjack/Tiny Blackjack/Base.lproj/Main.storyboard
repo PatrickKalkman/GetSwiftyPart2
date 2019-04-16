@@ -146,7 +146,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oaZ-E8-5Il"/>
-                                    <action selector="splitPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9NM-Pc-x9v"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ac5-7Q-Lb0" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">

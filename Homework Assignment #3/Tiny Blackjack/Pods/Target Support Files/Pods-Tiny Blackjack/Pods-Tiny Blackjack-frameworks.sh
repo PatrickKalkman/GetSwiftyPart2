@@ -153,14 +153,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Motion/Motion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftState/SwiftState.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftySound/SwiftySound.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/UINavigationBar-Transparent/UINavigationBar_Transparent.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Motion/Motion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftState/SwiftState.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftySound/SwiftySound.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/UINavigationBar-Transparent/UINavigationBar_Transparent.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

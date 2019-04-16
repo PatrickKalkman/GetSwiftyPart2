@@ -99,7 +99,7 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
             }, completion: { _ in
                     self.refreshWalletInformation()
                     self.chipSound?.play()
-                    newChip.shake(duration: 0.05)
+                    newChip.shake(duration: 0.08)
                 })
         }
     }

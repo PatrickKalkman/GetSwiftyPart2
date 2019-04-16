@@ -21,7 +21,7 @@ class SimpleStrategy: BlackjackStrategyProtocol {
         }
 
         if shouldDoubleDown(ownHand, otherHand) {
-            return ProposedAction.double
+            return ProposedAction.doubleOrHit
         }
 
         if shouldSplit(ownHand, otherHand) {

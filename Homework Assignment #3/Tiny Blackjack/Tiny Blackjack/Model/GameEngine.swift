@@ -120,11 +120,11 @@ class GameEngine: BlackjackProtocol {
         for player in players {
             player.clear()
         }
-        players.removeAll()
         
         if currentPlayer.wallet.totalValue() > 0 {
             triggerEvent(GameEvents.nextRound)
         } else {
+            players.removeAll()
             triggerEvent(GameEvents.noMoreMoney)
         }
         
@@ -159,10 +159,10 @@ class GameEngine: BlackjackProtocol {
     }
 
     func placeBets() {
-        for player in players {
-            player.placeBets()
-        }
-        triggerEvent(GameEvents.betsPlaced)
+//        for player in players {
+//            player.placeBets()
+//        }
+//        triggerEvent(GameEvents.betsPlaced)
     }
 
     func dealCards() {
@@ -262,7 +262,9 @@ class GameEngine: BlackjackProtocol {
                 triggerEvent(GameEvents.bustPlayer)
             case ProposedAction.blackjack:
                 triggerEvent(GameEvents.playerHasBlackjack)
-            case ProposedAction.double:
+            case ProposedAction.doubleOrStand:
+                triggerEvent(GameEvents.doubleDownPlayer)
+            case ProposedAction.doubleOrHit:
                 triggerEvent(GameEvents.doubleDownPlayer)
             default:
                 triggerEvent(GameEvents.standPlayer)
