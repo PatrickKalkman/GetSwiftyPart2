@@ -23,6 +23,10 @@ class BasicStrategy: BlackjackStrategyProtocol {
     
     func calculateProposedAction(ownHand: Hand, otherHand: Hand) -> ProposedAction {
         
+        if ownHand.count == 2 && ownHand.highValue() == 21 {
+            return ProposedAction.blackjack
+        }
+
         let cardCombi: CardCombi = CardCombi(ownHand.highValue(), otherHand.highValue())
         
         if ownHand.containsSameRank() {

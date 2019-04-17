@@ -139,4 +139,38 @@ class BasicStrategyTest: XCTestCase {
         let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
         XCTAssertEqual(action, ProposedAction.stand)
     }
+
+    func test_bust_when_dealer_7_hand_is_22() {
+        let card1: Card = Card(Suit.heart, Rank.ten, 1)
+        let card2: Card = Card(Suit.club, Rank.ten, 2)
+        let card3: Card = Card(Suit.club, Rank.two, 3)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2)
+        playerHand.add(card3) // Hard 22
+        
+        let card3: Card = Card(Suit.club, Rank.seven, 1)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3) // 7
+        
+        let strategy: BlackjackStrategyProtocol = BasicStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.bust)
+    }
+
+    func test_blackjack_when_is_21() {
+        let card1: Card = Card(Suit.heart, Rank.ace, 1)
+        let card2: Card = Card(Suit.club, Rank.ten, 2)
+        let playerHand: Hand = Hand()
+        playerHand.add(card1)
+        playerHand.add(card2) // Blackjack
+        
+        let card3: Card = Card(Suit.club, Rank.seven, 1)
+        let dealerHand: Hand = Hand()
+        dealerHand.add(card3) // 7
+        
+        let strategy: BlackjackStrategyProtocol = BasicStrategy()
+        let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)
+        XCTAssertEqual(action, ProposedAction.blackjack)
+    }    
 }
