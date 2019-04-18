@@ -44,4 +44,8 @@ class MenuViewController: UIViewController {
         self.performSegue(withIdentifier: "playBlackjack", sender: self)
         
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

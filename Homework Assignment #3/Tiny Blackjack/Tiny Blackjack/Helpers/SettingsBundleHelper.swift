@@ -15,6 +15,7 @@ class SettingsBundleHelper {
         static let SoundOn = "soundOn"
         static let BuildVersionKey = "build"
         static let AppVersionKey = "version"
+        static let NotificationTimeoutKey = "notificationTimeout"
     }
     
     class func initialize() {
@@ -34,11 +35,17 @@ class SettingsBundleHelper {
     }
     
     class func getBuild() -> String {
-        return UserDefaults.standard.string(forKey: SettingsBundleKeys.BuildVersionKey) ?? ""
+        if let build = UserDefaults.standard.object(forKey: SettingsBundleKeys.BuildVersionKey) as? String {
+            return build
+        }
+        return "0"
     }
     
     class func getSoundOn() -> Bool {
-       return UserDefaults.standard.bool(forKey: SettingsBundleKeys.SoundOn)
+        if let soundOn = UserDefaults.standard.object(forKey: SettingsBundleKeys.SoundOn) as? Bool {
+            return soundOn
+        }
+        return true
     }
     
     class func setSoundOn(enable: Bool) {
@@ -46,4 +53,14 @@ class SettingsBundleHelper {
         UserDefaults.standard.set(enable, forKey: SettingsBundleKeys.SoundOn)
     }
     
+    class func getNotificationTimeout() -> UInt {
+        if let notificationTimeout = UserDefaults.standard.object(forKey: SettingsBundleKeys.NotificationTimeoutKey) as? UInt {
+            return notificationTimeout
+        }
+        return 2
+    }
+    
+    class func setNotificationTimeout(timeout: UInt) {
+        UserDefaults.standard.set(timeout, forKey: SettingsBundleKeys.NotificationTimeoutKey)
+    }
 }

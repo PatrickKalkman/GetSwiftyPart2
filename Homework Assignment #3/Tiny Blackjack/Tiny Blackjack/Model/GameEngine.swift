@@ -135,7 +135,7 @@ class GameEngine: BlackjackProtocol {
         dealer = Player(name: "Dealer", strategy: DealerStrategy(), isDealer: true, isHuman: false)
         // Add the players
         for playerNumber in 1...numberOfPlayers {
-            let player: Player = Player(name: "Player \(playerNumber)", strategy: SimpleStrategy(),
+            let player: Player = Player(name: "Player \(playerNumber)", strategy: BasicStrategy(),
                 isDealer: false, isHuman: true)
             player.addChipsToWallet(chipsToAdd: initialChipsGenerator.generateInitialChips())
             players.append(player)
@@ -159,10 +159,6 @@ class GameEngine: BlackjackProtocol {
     }
 
     func placeBets() {
-//        for player in players {
-//            player.placeBets()
-//        }
-//        triggerEvent(GameEvents.betsPlaced)
     }
 
     func dealCards() {
@@ -276,6 +272,11 @@ class GameEngine: BlackjackProtocol {
         } else if currentHandCanSplit() {
             blackjackView?.enableSplit()
         }
+    }
+    
+    func getProposedAction() -> ProposedAction? {
+        guard let hand = currentHand else { return nil }
+        return currentPlayer.askAction(ownHand: hand, dealerHand: dealer.getHand(handIndex: 0))
     }
 
     func showSplittedHand() {

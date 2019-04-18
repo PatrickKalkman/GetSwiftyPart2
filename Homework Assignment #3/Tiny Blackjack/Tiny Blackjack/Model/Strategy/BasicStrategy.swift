@@ -26,6 +26,10 @@ class BasicStrategy: BlackjackStrategyProtocol {
         if ownHand.count == 2 && ownHand.highValue() == 21 {
             return ProposedAction.blackjack
         }
+        
+        if ownHand.lowValue() > 21 {
+            return ProposedAction.bust
+        }
 
         let cardCombi: CardCombi = CardCombi(ownHand.highValue(), otherHand.highValue())
         

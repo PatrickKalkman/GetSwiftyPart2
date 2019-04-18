@@ -23,6 +23,7 @@
 		AB8A4E202264E1360084323E /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E1F2264E1360084323E /* NavigationViewController.swift */; };
 		AB8A4E2222651C800084323E /* BasicStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2122651C800084323E /* BasicStrategy.swift */; };
 		AB8A4E2422666BFE0084323E /* BasicStrategyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */; };
+		AB8A4E2622687D8E0084323E /* ProposedActionToMessageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */; };
 		AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFB622453BEB00E45E6F /* AppDelegate.swift */; };
 		AB97EFB922453BEB00E45E6F /* BlackjackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFB822453BEB00E45E6F /* BlackjackViewController.swift */; };
 		AB97EFBC22453BEB00E45E6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97EFBA22453BEB00E45E6F /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		AB8A4E1F2264E1360084323E /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		AB8A4E2122651C800084323E /* BasicStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStrategy.swift; sourceTree = "<group>"; };
 		AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStrategyTest.swift; sourceTree = "<group>"; };
+		AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProposedActionTo\U0010MessageMapper.swift"; sourceTree = "<group>"; };
 		AB97EFB322453BEB00E45E6F /* Tiny Blackjack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Blackjack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB97EFB622453BEB00E45E6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB97EFB822453BEB00E45E6F /* BlackjackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */,
 				AB995510225D375200FB9596 /* InitialChipsGenerator.swift */,
 				ABFC4A33226326470011C5AE /* SettingsBundleHelper.swift */,
+				AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -463,7 +466,9 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tiny Blackjack/Pods-Tiny Blackjack-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftState/SwiftState.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftySound/SwiftySound.framework",
 			);
@@ -471,7 +476,9 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftState.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftySound.framework",
 			);
@@ -529,6 +536,7 @@
 				AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */,
 				AB995511225D375200FB9596 /* InitialChipsGenerator.swift in Sources */,
 				AB129F47224E4AF30025ECA1 /* GameStateMachine.swift in Sources */,
+				AB8A4E2622687D8E0084323E /* ProposedActionToMessageMapper.swift in Sources */,
 				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
 				AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */,
 				AB995505225A164F00FB9596 /* Chip.swift in Sources */,

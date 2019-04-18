@@ -8,9 +8,9 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<string>Text Field</string>
 			<key>Title</key>
-			<string>Group</string>
+			<string>Notification timeout</string>
 		</dict>
 		<dict>
 			<key>Type</key>

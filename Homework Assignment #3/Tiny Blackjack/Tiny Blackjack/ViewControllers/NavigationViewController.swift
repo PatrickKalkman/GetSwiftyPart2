@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
-import Motion
 
 class AppNavigationController: UINavigationController {
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

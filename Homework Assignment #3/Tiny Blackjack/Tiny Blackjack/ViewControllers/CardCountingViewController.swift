@@ -24,4 +24,8 @@ class CardCountingViewController: UIViewController {
 
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
 }

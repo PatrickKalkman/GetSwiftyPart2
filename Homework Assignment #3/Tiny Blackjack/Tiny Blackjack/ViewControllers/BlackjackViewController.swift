@@ -18,6 +18,8 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
     private var shuffleSound: Sound?
     private var dealCardSound: Sound?
     private var chipSound: Sound?
+    
+    private var dealerCard2ImageView: UIImageView!
 
     private var addedCards: [UIImageView] = [UIImageView]()
     private var addedChips: [UIButton] = [UIButton]()
@@ -25,7 +27,6 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
     @IBOutlet weak var deckCard: UIImageView!
     @IBOutlet weak var dealButton: BorderButton!
     @IBOutlet weak var splitButton: BorderButton!
-    @IBOutlet weak var doubleButton: BorderButton!
     @IBOutlet weak var standButton: BorderButton!
     @IBOutlet weak var hitButton: BorderButton!
     @IBOutlet weak var playerValueLabel: UILabel!
@@ -58,14 +59,17 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
         
         if let shuffleSoundUrl = Bundle.main.url(forResource: Constants.Assets.ShuffleSound, withExtension: Constants.Assets.SoundExtension) {
             shuffleSound = Sound(url: shuffleSoundUrl)!
+            shuffleSound?.prepare()
         }
         
         if let dealCardSoundUrl = Bundle.main.url(forResource: Constants.Assets.CardSound, withExtension: Constants.Assets.SoundExtension) {
             dealCardSound = Sound(url: dealCardSoundUrl)!
+            dealCardSound?.prepare()
         }
         
         if let chipSoundUrl = Bundle.main.url(forResource: Constants.Assets.AddChipSound, withExtension: Constants.Assets.SoundExtension) {
             chipSound = Sound(url: chipSoundUrl)!
+            chipSound?.prepare()
         }
         
         gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
@@ -74,6 +78,10 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
             self.gameEngine.start(numberOfPlayers: 1)
             self.organizeUiBasedOnState(state: GameStates.started)
         }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     @IBAction func chipAddAction(_ sender: UIButton) {
@@ -186,10 +194,6 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
         gameEngine.triggerEvent(GameEvents.hitPlayer)
     }
 
-    @IBAction func doublePlayer(_ sender: Any) {
-        gameEngine.triggerEvent(GameEvents.doubleDownPlayer)
-    }
-
     @IBAction func standPlayer(_ sender: Any) {
         gameEngine.triggerEvent(GameEvents.standPlayer)
     }
@@ -204,7 +208,6 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
         case GameStates.waitingForStart:
             dealButton.isHidden = false
             splitButton.isHidden = true
-            doubleButton.isHidden = true
             hitButton.isHidden = true
             standButton.isHidden = true
             playerValueLabel.isHidden = true
@@ -227,7 +230,6 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
             dealerValueLabel.isHidden = true
             dealButton.isHidden = true
             splitButton.isHidden = true
-            doubleButton.isHidden = true
             hitButton.isHidden = false
             standButton.isHidden = false
             restartButton.isHidden = true
@@ -238,7 +240,6 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
         case GameStates.distributeBets:
             dealButton.isHidden = true
             splitButton.isHidden = true
-            doubleButton.isHidden = true
             hitButton.isHidden = true
             standButton.isHidden = true
             restartButton.isHidden = false
@@ -263,7 +264,6 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
         splitButton.isHidden = false
     }
 
-    var dealerCard2ImageView: UIImageView!
 
     func dealCards() {
 

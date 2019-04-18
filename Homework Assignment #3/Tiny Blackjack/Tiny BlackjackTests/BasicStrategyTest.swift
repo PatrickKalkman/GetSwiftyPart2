@@ -149,9 +149,9 @@ class BasicStrategyTest: XCTestCase {
         playerHand.add(card2)
         playerHand.add(card3) // Hard 22
         
-        let card3: Card = Card(Suit.club, Rank.seven, 1)
+        let card4: Card = Card(Suit.club, Rank.seven, 1)
         let dealerHand: Hand = Hand()
-        dealerHand.add(card3) // 7
+        dealerHand.add(card4) // 7
         
         let strategy: BlackjackStrategyProtocol = BasicStrategy()
         let action: ProposedAction = strategy.calculateProposedAction(ownHand: playerHand, otherHand: dealerHand)

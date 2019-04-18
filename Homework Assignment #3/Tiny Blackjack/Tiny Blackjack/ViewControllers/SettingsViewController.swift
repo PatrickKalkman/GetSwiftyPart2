@@ -14,6 +14,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var buildLabel: UILabel!
     @IBOutlet weak var soundOn: UISwitch!
+    @IBOutlet weak var notificationTimeoutLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +26,21 @@ class SettingsViewController: UITableViewController {
         versionLabel.text = SettingsBundleHelper.getVersion()
         buildLabel.text = SettingsBundleHelper.getBuild()
         soundOn.isOn = SettingsBundleHelper.getSoundOn()
-        
+        notificationTimeoutLabel.text = "\(SettingsBundleHelper.getNotificationTimeout())s"
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     @IBAction func soundOnChanged(_ sender: UISwitch) {
         SettingsBundleHelper.setSoundOn(enable: sender.isOn)
+    }
+    
+    @IBAction func notificationTimeoutChanges(_ sender: UIStepper) {
+        let notificationTimeout: UInt = UInt(sender.value)
+        SettingsBundleHelper.setNotificationTimeout(timeout: notificationTimeout)
+        notificationTimeoutLabel.text = "\(SettingsBundleHelper.getNotificationTimeout())s"
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
