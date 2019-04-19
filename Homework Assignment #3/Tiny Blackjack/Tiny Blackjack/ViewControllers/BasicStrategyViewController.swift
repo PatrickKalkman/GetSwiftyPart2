@@ -11,15 +11,16 @@ import UIKit
 import SwiftySound
 import Hero
 
-class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
+class BasicStrategyViewController: BlackjackViewControllerBase, BlackjackViewProtocol {
     
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
+    private let soundManager: SoundManager = SoundManager()
     private let proposedActionNotification: ProposedActionNotification = ProposedActionNotification()
     private let valueToChipMapper: ValueToChipMapper = ValueToChipMapper()
     private let imageCardFaceDown: UIImage = UIImage(named: Constants.Assets.FacedownCard)!
     private var gameEngine: GameEngine!
-    private var shuffleSound: Sound?
-    private var dealCardSound: Sound?
+    private var dealerCardIndex: Int = 1
+    private var playerCardIndex: Int = 2
     
     private var addedCards: [UIImageView] = [UIImageView]()
     
@@ -37,46 +38,22 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.hero.id = "test"
-               
-        self.navigationItem.title = "LEARN BASIC STRATEGY"
-        if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
-          statusBar.backgroundColor = UIColor.clear
-        }
-        
-        let textAttributes = [NSAttributedString.Key.foregroundColor:Constants.Colors.LightGreen]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
-        if let shuffleSoundUrl = Bundle.main.url(forResource: Constants.Assets.ShuffleSound, withExtension: Constants.Assets.SoundExtension) {
-            shuffleSound = Sound(url: shuffleSoundUrl)!
-            shuffleSound?.prepare()
-        }
-        
-        if let dealCardSoundUrl = Bundle.main.url(forResource: Constants.Assets.CardSound, withExtension: Constants.Assets.SoundExtension) {
-            dealCardSound = Sound(url: dealCardSoundUrl)!
-            dealCardSound?.prepare()
-        }
-        
-        gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
-        self.gameEngine.start(numberOfPlayers: 1)
+        setTitle("LEARN BASIC STRATEGY")
         self.organizeUiBasedOnState(state: GameStates.started)
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    override func viewDidAppear(_ animated: Bool) {
+        gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
+
+        soundManager.prepare()
+        gameEngine.start(numberOfPlayers: 1)
     }
     
     @IBAction func deal(_ sender: Any) {
-        if !Sound.enabled {
+        soundManager.playShuffle(completion: { _ in
             self.gameEngine.triggerEvent(GameEvents.betsPlaced)
             self.gameEngine.triggerEvent(GameEvents.dealCards)
-        } else {
-            shuffleSound!.play(numberOfLoops: 0, completion: { _ in
-                self.gameEngine.triggerEvent(GameEvents.betsPlaced)
-                self.gameEngine.triggerEvent(GameEvents.dealCards)
-            })
-        }
+        })
     }
     
     @IBAction func restartGame(_ sender: UIButton) {
@@ -87,7 +64,7 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
             subview.removeFromSuperview()
         }
         
-        restartButton.isHidden = true
+        restartButton.hideWithAnimation(hidden: true)
         self.organizeUiBasedOnState(state: GameStates.started)
         self.gameEngine.restart()
         self.deal(sender)
@@ -115,45 +92,33 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     }
     
     func organizeUiBasedOnState(state: GameStates) {
-        print("Organizing UI for state: \(state)")
         switch state {
-        case GameStates.waitingForStart:
-            dealButton.isHidden = false
-            splitButton.isHidden = true
-            hitButton.isHidden = true
-            standButton.isHidden = true
-            playerValueLabel.isHidden = true
-            dealerValueLabel.isHidden = true
-            restartButton.isHidden = true
-            playResultLabel.isHidden = true
-            self.navigationItem.title = "LEARN BASIC STRATEGY"
         case GameStates.started:
-            self.dealButton.isHidden = false
-            self.restartButton.isHidden = true
-            playResultLabel.isHidden = true
-            playerValueLabel.isHidden = true
-            dealerValueLabel.isHidden = true
+            self.dealButton.hideWithAnimation(hidden: false)
+            self.restartButton.hideWithAnimation(hidden: true)
+            playResultLabel.hideWithAnimation(hidden: true)
+            playerValueLabel.hideWithAnimation(hidden: true)
+            dealerValueLabel.hideWithAnimation(hidden: true)
         case GameStates.dealCards:
-            playerValueLabel.isHidden = true
-            dealerValueLabel.isHidden = true
-            dealButton.isHidden = true
-            splitButton.isHidden = true
-            hitButton.isHidden = false
-            standButton.isHidden = false
-            restartButton.isHidden = true
-            playResultLabel.isHidden = true
-            self.navigationItem.title = ""
-            
+            playerValueLabel.hideWithAnimation(hidden: true)
+            dealerValueLabel.hideWithAnimation(hidden: true)
+            dealButton.hideWithAnimation(hidden: true)
+            splitButton.hideWithAnimation(hidden: true)
+            hitButton.hideWithAnimation(hidden: false)
+            standButton.hideWithAnimation(hidden: false)
+            restartButton.hideWithAnimation(hidden: true)
+            playResultLabel.hideWithAnimation(hidden: true)
+            self.setTitle("")
         case GameStates.distributeBets:
-            dealButton.isHidden = true
-            splitButton.isHidden = true
-            hitButton.isHidden = true
-            standButton.isHidden = true
-            restartButton.isHidden = false
-            playResultLabel.isHidden = false
+            dealButton.hideWithAnimation(hidden: true)
+            splitButton.hideWithAnimation(hidden: true)
+            hitButton.hideWithAnimation(hidden: true)
+            standButton.hideWithAnimation(hidden: true)
+            restartButton.hideWithAnimation(hidden: false)
+            playResultLabel.hideWithAnimation(hidden: false)
             self.navigationItem.title = ""
         default:
-            print("do nothing")
+            dealButton.isHidden = true
         }
     }
     
@@ -167,7 +132,7 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     }
     
     func enableSplit() {
-        splitButton.isHidden = false
+        splitButton.hideWithAnimation(hidden: false)
     }
     
     func dealCards() {
@@ -195,8 +160,8 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
                                    options: .transitionFlipFromLeft, animations: { player1Card1ImageView.image = imageCardFaceUp },
                                    completion: { _ in
                                     
-                                    self.dealCardSound!.play(numberOfLoops: 0)
-                                    
+                                    self.soundManager.playCard()
+
                                     let dealerCard1ImageView: UIImageView = self.getNewCardFromDeckFaceDown()
                                     let dealerCard1FaceUp: UIImage = self.getCardImage(self.gameEngine.getDealerCard(cardIndex: 0))
                                     
@@ -204,7 +169,7 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
                                         dealerCard1ImageView.setOrigin(Constants.Positions.FirstDealerCard)
                                     }, completion: { _ in
                                         
-                                        self.dealCardSound!.play(numberOfLoops: 0)
+                                        self.soundManager.playCard()
                                         UIImageView.transition(with: dealerCard1ImageView, duration: Constants.Animation.FlipCardDuration, options: .transitionFlipFromLeft,
                                                                animations: { dealerCard1ImageView.image = dealerCard1FaceUp },
                                                                completion: { _ in
@@ -212,7 +177,7 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
                                                                 UIImageView.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
                                                                     player1Card2ImageView.setOrigin(Constants.Positions.SecondPlayerCard)
                                                                 }, completion: { _ in
-                                                                    self.dealCardSound!.play(numberOfLoops: 0)
+                                                                    self.soundManager.playCard()
                                                                     UIImageView.transition(with: player1Card2ImageView,
                                                                                            duration: Constants.Animation.FlipCardDuration, options: .transitionFlipFromLeft,
                                                                                            animations: { player1Card2ImageView.image = imageCard2FaceUp },
@@ -259,22 +224,8 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     }
     
     func calculateResult() {
-        
         self.dealerValueLabel.text = self.gameEngine.getDealerValueString()
-        // Calculate results
-        let result: [HandResult] = gameEngine.getPlayResult()
-        var resultString: String
-        switch result[0].result {
-        case GameResult.DealerWins:
-            resultString = "The dealer wins"
-        case GameResult.PlayerWins:
-            resultString = "You win!"
-        case GameResult.Push:
-            resultString = "Push"
-        case GameResult.PlayerWinsWithBlackjack:
-            resultString = "You win (Blackjack!)"
-        }
-        playResultLabel.text = resultString
+        playResultLabel.text = gameEngine.getPlayResultMessage()
     }
     
     func selectHand(cardIndex: Int, previousHand: Hand?, currentHand: Hand?) {
@@ -293,12 +244,11 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     
     func playerGetChoice() {
     }
-    
-    var dealerCardIndex: Int = 1
+
     
     func dealerStart() {
         let dealerCardFaceUp: UIImage = getCardImage(self.gameEngine.getDealerCard(cardIndex: dealerCardIndex))
-        self.dealCardSound!.play(numberOfLoops: 0)
+        self.soundManager.playCard()
         UIImageView.transition(with: dealerCard2ImageView, duration: Constants.Animation.FlipCardDuration,
                                options: .transitionFlipFromLeft, animations: { self.dealerCard2ImageView.image = dealerCardFaceUp },
                                completion: { _ in
@@ -321,8 +271,7 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     
     func dealerGetChoice() {
     }
-    
-    var playerCardIndex: Int = 2
+
     
     func hitPlayer() {
         guard let currentHand = gameEngine.getCurrentHand() else { return }
@@ -336,7 +285,7 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
             playerCardImageView.frame.origin.y = Constants.Positions.FirstCardY
             playerCardImageView.frame.origin.x = CGFloat(Constants.Positions.FirstCardX + CGFloat(self.playerCardIndex) * Constants.Positions.CardXDifference)
         }, completion: { _ in
-            self.dealCardSound!.play(numberOfLoops: 0)
+            self.soundManager.playCard()
             UIImageView.transition(with: playerCardImageView, duration: Constants.Animation.FlipCardDuration, options: .transitionFlipFromLeft,
                                    animations: { playerCardImageView.image = imageCardFaceUp }, completion: { _ in
                                     
@@ -362,7 +311,7 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
             dealerCardImageView.frame.origin.y = 80
             dealerCardImageView.frame.origin.x = CGFloat(400 + self.dealerCardIndex * 40)
         }, completion: { _ in
-            self.dealCardSound!.play(numberOfLoops: 0)
+            self.soundManager.playCard()
             UIImageView.transition(with: dealerCardImageView, duration: Constants.Animation.FlipCardDuration,
                                    options: .transitionFlipFromLeft, animations: { dealerCardImageView.image = imageCardFaceUp },
                                    completion: { _ in
@@ -393,10 +342,12 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     }
     
     func showAndRefreshValues() {
+        self.playerValueLabel.fadeTransition(0.6)
         self.playerValueLabel.text = self.gameEngine.getPlayerValueString()
+        self.dealerValueLabel.fadeTransition(0.6)
         self.dealerValueLabel.text = self.gameEngine.getDealerValueString()
-        self.playerValueLabel.isHidden = false
-        self.dealerValueLabel.isHidden = false
+        self.playerValueLabel.hideWithAnimation(hidden: false)
+        self.dealerValueLabel.hideWithAnimation(hidden: false)
     }
     
     func moveHand(handToMove: Hand?, xMove: CGFloat, yMove: CGFloat, completion: ((Bool) -> Void)? = nil) {

@@ -47,14 +47,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="S8t-Qw-lMN">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="698"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lho-mF-RCB" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
-                                <rect key="frame" x="824" y="299" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lho-mF-RCB">
+                                <rect key="frame" x="844" y="309" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="3qV-79-bUF"/>
-                                    <constraint firstAttribute="width" constant="100" id="wC1-Ai-33A"/>
+                                    <constraint firstAttribute="height" constant="80" id="3qV-79-bUF"/>
+                                    <constraint firstAttribute="width" constant="80" id="wC1-Ai-33A"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="Deal">
+                                <state key="normal" title="Deal" image="deal">
                                     <color key="titleColor" red="0.41436464088397784" green="1" blue="0.97237569060773477" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -66,21 +65,20 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="50"/>
+                                        <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="deal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsS-Hz-4rJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-wD-tRU" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
-                                <rect key="frame" x="894" y="525" width="100" height="100"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-wD-tRU">
+                                <rect key="frame" x="894" y="525" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="6H1-Fs-hbF"/>
-                                    <constraint firstAttribute="height" constant="100" id="FOX-iM-r44"/>
+                                    <constraint firstAttribute="width" constant="80" id="6H1-Fs-hbF"/>
+                                    <constraint firstAttribute="height" constant="80" id="FOX-iM-r44"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                <state key="normal" title="Stand">
+                                <state key="normal" title="Stand" image="stand">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -92,21 +90,20 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="50"/>
+                                        <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="standPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bn9-8b-hfO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-dw-dse" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
-                                <rect key="frame" x="767" y="399" width="100" height="100"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-dw-dse">
+                                <rect key="frame" x="787" y="419" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="tIf-iE-sWC"/>
-                                    <constraint firstAttribute="height" constant="100" id="x6n-Ep-k0B"/>
+                                    <constraint firstAttribute="width" constant="80" id="tIf-iE-sWC"/>
+                                    <constraint firstAttribute="height" constant="80" id="x6n-Ep-k0B"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                <state key="normal" title="Split">
+                                <state key="normal" title="Split" image="split">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -118,21 +115,20 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="50"/>
+                                        <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="splitPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N9U-ro-d8Q"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuH-DW-St2" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
-                                <rect key="frame" x="824" y="299" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuH-DW-St2">
+                                <rect key="frame" x="844" y="309" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="nW1-t3-8Nv"/>
-                                    <constraint firstAttribute="width" constant="100" id="pCr-2V-71h"/>
+                                    <constraint firstAttribute="height" constant="80" id="nW1-t3-8Nv"/>
+                                    <constraint firstAttribute="width" constant="80" id="pCr-2V-71h"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                <state key="normal" title="Restart">
+                                <state key="normal" image="restart">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -144,21 +140,20 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="50"/>
+                                        <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oaZ-E8-5Il"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1q-u4-aPO" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
-                                <rect key="frame" x="767" y="525" width="100" height="100"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1q-u4-aPO">
+                                <rect key="frame" x="787" y="525" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="NSe-Dp-hjm"/>
-                                    <constraint firstAttribute="height" constant="100" id="yqE-gc-v96"/>
+                                    <constraint firstAttribute="width" constant="80" id="NSe-Dp-hjm"/>
+                                    <constraint firstAttribute="height" constant="80" id="yqE-gc-v96"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                <state key="normal" title="Hit">
+                                <state key="normal" title="Hit" image="hit">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -170,7 +165,7 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="50"/>
+                                        <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -185,7 +180,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ 18 ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v79-TG-NBY">
-                                <rect key="frame" x="0.0" y="363" width="1024" height="30"/>
+                                <rect key="frame" x="0.0" y="375.5" width="1024" height="30"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -210,7 +205,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dealer wins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD2-Er-9xA">
-                                <rect key="frame" x="362" y="227" width="1024" height="30"/>
+                                <rect key="frame" x="372" y="237" width="1024" height="30"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -250,6 +245,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="-128" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="50" image="Chip.DarkRed"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ay-uq-mLT"/>
                                 </connections>
@@ -263,6 +263,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="-128" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="25" image="Chip.Purple"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hsh-Yz-c8I"/>
                                 </connections>
@@ -276,6 +281,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="-128" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="10" image="Chip.LightBlue"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWw-Tf-gZT"/>
                                 </connections>
@@ -289,6 +299,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="-128" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="5" image="Chip.Pink"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUm-a0-kOM"/>
                                 </connections>
@@ -302,6 +317,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="-128" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="1" image="Chip.LightRed"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PEg-j7-iDr"/>
                                 </connections>
@@ -331,6 +351,7 @@
                             <constraint firstItem="7Lx-SH-2wJ" firstAttribute="bottom" secondItem="DRZ-3s-M2A" secondAttribute="top" constant="-25" id="3OF-Gi-du3"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="top" secondItem="Ane-wD-tRU" secondAttribute="top" id="3y2-I3-ota"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="centerY" secondItem="Ane-wD-tRU" secondAttribute="centerY" id="4nU-3b-ZZU"/>
+                            <constraint firstItem="v79-TG-NBY" firstAttribute="top" secondItem="V9d-kw-iyy" secondAttribute="bottom" constant="10" id="7J7-Ic-2kw"/>
                             <constraint firstItem="RuH-DW-St2" firstAttribute="trailing" secondItem="S8t-Qw-lMN" secondAttribute="trailing" constant="-100" id="7ws-vP-1Fv"/>
                             <constraint firstItem="Za6-7j-185" firstAttribute="leading" secondItem="S8t-Qw-lMN" secondAttribute="leading" id="D0I-az-VWw"/>
                             <constraint firstItem="ihX-dx-uKN" firstAttribute="top" secondItem="S8t-Qw-lMN" secondAttribute="top" constant="40" id="GV4-4n-I1X"/>
@@ -349,7 +370,6 @@
                             <constraint firstItem="eD2-Er-9xA" firstAttribute="centerX" secondItem="RuH-DW-St2" secondAttribute="centerX" id="XMN-NO-fTV"/>
                             <constraint firstItem="J1q-u4-aPO" firstAttribute="top" secondItem="o5c-dw-dse" secondAttribute="bottom" constant="26" id="aoY-kg-6fC"/>
                             <constraint firstItem="vck-sZ-kob" firstAttribute="leading" secondItem="DRZ-3s-M2A" secondAttribute="trailing" constant="20" id="arM-7G-InH"/>
-                            <constraint firstItem="v79-TG-NBY" firstAttribute="firstBaseline" secondItem="RuH-DW-St2" secondAttribute="baseline" constant="30.5" id="b1z-LM-CZg"/>
                             <constraint firstItem="Ztd-hv-YFq" firstAttribute="centerX" secondItem="S8t-Qw-lMN" secondAttribute="centerX" id="bJd-Bo-OZ2"/>
                             <constraint firstItem="3Bd-Uh-nPd" firstAttribute="centerX" secondItem="DRZ-3s-M2A" secondAttribute="centerX" id="deb-We-yIX"/>
                             <constraint firstItem="B5Y-Hv-JnN" firstAttribute="centerY" secondItem="3Bd-Uh-nPd" secondAttribute="centerY" id="fZu-sW-qqC"/>
@@ -420,109 +440,61 @@
                                     <constraint firstAttribute="height" constant="800" id="Sb8-Y8-vZu"/>
                                 </constraints>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4c-QD-iZf" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4c-QD-iZf">
                                 <rect key="frame" x="774" y="528" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="RTF-HW-6tZ"/>
                                     <constraint firstAttribute="width" constant="80" id="dSf-y5-vX0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Stand">
+                                <state key="normal" title="Stand" image="stand">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.29416942410000002" green="0.71142801759999996" blue="0.69142684089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="standPlayer:" destination="gCu-6S-Joq" eventType="touchUpInside" id="1TK-U7-fFN"/>
                                     <action selector="standPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uif-2F-vGM"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93a-zr-3pg" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93a-zr-3pg">
                                 <rect key="frame" x="714" y="418" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="UTR-cR-87t"/>
                                     <constraint firstAttribute="width" constant="80" id="jDx-Ma-3cV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Split">
+                                <state key="normal" title="Split" image="split">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.29416942410000002" green="0.71142801759999996" blue="0.69142684089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="splitPlayer:" destination="gCu-6S-Joq" eventType="touchUpInside" id="GLh-8F-lRh"/>
                                     <action selector="splitPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rd4-cZ-lSo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkZ-bX-wJq" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkZ-bX-wJq">
                                 <rect key="frame" x="874" y="288" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="crp-rN-6c4"/>
                                     <constraint firstAttribute="height" constant="80" id="wPz-Ay-YC4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Deal">
+                                <state key="normal" title="Deal" image="deal">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.29416942410000002" green="0.71142801759999996" blue="0.69142684089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="restartGame:" destination="gCu-6S-Joq" eventType="touchUpInside" id="dni-Uk-NKY"/>
                                     <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qU8-52-Xhd"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9I-tr-Blp" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9I-tr-Blp">
                                 <rect key="frame" x="664" y="528" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="0Mh-Zf-tAb"/>
                                     <constraint firstAttribute="height" constant="80" id="soa-AI-Jt6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Hit">
+                                <state key="normal" title="Hit" image="hit">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.29416942410000002" green="0.71142801759999996" blue="0.69142684089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="hitPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I5b-cg-cnB"/>
                                     <action selector="hitPlayer:" destination="gCu-6S-Joq" eventType="touchUpInside" id="uss-Hh-5Ev"/>
@@ -562,27 +534,17 @@
                                 <color key="textColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="059-5n-46a" customClass="BorderButton" customModule="Tiny_Blackjack" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="059-5n-46a">
                                 <rect key="frame" x="874" y="288" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="fBC-bV-Qv8"/>
                                     <constraint firstAttribute="height" constant="80" id="qRs-Pb-Qgm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Deal">
+                                <state key="normal" title="Deal" image="deal">
                                     <color key="titleColor" red="0.41436464090000003" green="1" blue="0.97237569059999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.29416942410000002" green="0.71142801759999996" blue="0.69142684089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="NO"/>
                                 </userDefinedRuntimeAttributes>
@@ -642,7 +604,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="698"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="SPu-sX-0gh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundTable" translatesAutoresizingMaskIntoConstraints="NO" id="SPu-sX-0gh">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="698"/>
                             </imageView>
                         </subviews>
@@ -671,6 +633,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="698"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9m-76-S6t" customClass="GradientView" customModule="Tiny_Blackjack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="698"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.098039215690000001" green="0.24313725489999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointY">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endPointX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endPointY">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.17645233029999999" green="0.42673752339999999" blue="0.4147401711" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p59-2Z-Kvb">
                                 <rect key="frame" x="410" y="202.5" width="400" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="PROFILE"/>
@@ -678,7 +664,7 @@
                                     <constraint firstAttribute="width" constant="400" id="Ie1-ob-X4X"/>
                                     <constraint firstAttribute="height" constant="40" id="fVO-6A-Ulw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="PLAY BLACKJACK">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -699,7 +685,7 @@
                                     <constraint firstAttribute="height" constant="40" id="m8l-Sd-fOJ"/>
                                     <constraint firstAttribute="width" constant="500" id="n7R-ga-GK1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="SIMULATE CARD COUNTING">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -717,7 +703,7 @@
                                     <constraint firstAttribute="height" constant="40" id="HIS-VZ-Lb7"/>
                                     <constraint firstAttribute="width" constant="450" id="pFo-2h-Wvt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="LEARN BASIC STRATEGY">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -738,7 +724,7 @@
                                     <constraint firstAttribute="height" constant="40" id="BEB-YW-xBA"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="450" id="FPO-Kk-KaV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="LEARN CARD COUNTING">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -759,7 +745,7 @@
                                     <constraint firstAttribute="width" constant="400" id="h4g-DW-trq"/>
                                     <constraint firstAttribute="height" constant="40" id="qRo-Dr-HuZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="SETTINGS">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -830,6 +816,9 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playBlackjack:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="Uwx-a0-BnI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTH-3f-QDY">
                                 <rect key="frame" x="340" y="270" width="45" height="45"/>
@@ -880,6 +869,7 @@
                             <constraint firstItem="aTH-3f-QDY" firstAttribute="centerX" secondItem="1C9-Xu-dnM" secondAttribute="centerX" id="J9K-U3-24I"/>
                             <constraint firstItem="sRx-Mz-D5F" firstAttribute="top" secondItem="aTH-3f-QDY" secondAttribute="bottom" constant="25" id="K0d-kP-fMf"/>
                             <constraint firstItem="29t-Nm-t5Q" firstAttribute="centerY" secondItem="sRx-Mz-D5F" secondAttribute="centerY" id="LfF-yh-iSM"/>
+                            <constraint firstItem="R9m-76-S6t" firstAttribute="centerX" secondItem="Jkb-id-Oe7" secondAttribute="centerX" id="TNR-uY-sJd"/>
                             <constraint firstItem="A5F-Sk-jCt" firstAttribute="top" secondItem="eYA-xX-LjP" secondAttribute="bottom" constant="50" id="VCB-En-a7M"/>
                             <constraint firstItem="XJe-4t-b6g" firstAttribute="leading" secondItem="Y9j-89-svH" secondAttribute="leading" id="VRo-pJ-5X1"/>
                             <constraint firstItem="Y9j-89-svH" firstAttribute="leading" secondItem="29t-Nm-t5Q" secondAttribute="leading" id="WzG-wn-cYb"/>
@@ -889,9 +879,12 @@
                             <constraint firstItem="1C9-Xu-dnM" firstAttribute="top" secondItem="Jkb-id-Oe7" secondAttribute="top" constant="200" id="Y1F-dX-dj3"/>
                             <constraint firstItem="XJe-4t-b6g" firstAttribute="centerY" secondItem="A5F-Sk-jCt" secondAttribute="centerY" id="fEK-zQ-aln"/>
                             <constraint firstItem="eYA-xX-LjP" firstAttribute="centerX" secondItem="sRx-Mz-D5F" secondAttribute="centerX" id="gDR-jy-H1i"/>
+                            <constraint firstItem="R9m-76-S6t" firstAttribute="centerY" secondItem="Jkb-id-Oe7" secondAttribute="centerY" id="hJE-v8-VjG"/>
                             <constraint firstItem="Jkb-id-Oe7" firstAttribute="top" secondItem="tI6-qs-0UI" secondAttribute="top" constant="11" id="nkm-3W-aWo"/>
                             <constraint firstItem="A5F-Sk-jCt" firstAttribute="centerX" secondItem="eYA-xX-LjP" secondAttribute="centerX" id="qmS-YD-bzD"/>
                             <constraint firstItem="eYA-xX-LjP" firstAttribute="top" secondItem="sRx-Mz-D5F" secondAttribute="bottom" constant="25" id="vAq-aM-mZn"/>
+                            <constraint firstItem="R9m-76-S6t" firstAttribute="height" secondItem="oJY-6V-AW0" secondAttribute="height" id="wSO-dQ-uxe"/>
+                            <constraint firstItem="R9m-76-S6t" firstAttribute="width" secondItem="oJY-6V-AW0" secondAttribute="width" id="xMS-01-1Cb"/>
                             <constraint firstItem="sRx-Mz-D5F" firstAttribute="centerX" secondItem="aTH-3f-QDY" secondAttribute="centerX" id="zjy-TF-zac"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jkb-id-Oe7" userLabel="Safe Are"/>
@@ -941,6 +934,8 @@
                                                     <color key="onTintColor" red="0.3025438392" green="0.7316809501" blue="0.71111038000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="settings"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="soundOnChanged:" destination="hY9-oB-A7h" eventType="valueChanged" id="eIO-kr-lht"/>
@@ -1122,6 +1117,7 @@
     </scenes>
     <resources>
         <image name="Background" width="6000" height="4000"/>
+        <image name="BackgroundTable" width="725" height="484"/>
         <image name="Card.Facedown" width="284" height="398"/>
         <image name="Chip.DarkBlue" width="127" height="127"/>
         <image name="Chip.DarkRed" width="127" height="127"/>
@@ -1130,9 +1126,14 @@
         <image name="Chip.Pink" width="127" height="127"/>
         <image name="Chip.Purple" width="127" height="127"/>
         <image name="club-chip" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="deal" width="266" height="266"/>
         <image name="diamonds-token" width="414.66665649414062" height="414.66665649414062"/>
         <image name="hearts-token" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="hit" width="266" height="266"/>
         <image name="poker-token" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="restart" width="266" height="266"/>
         <image name="spades-token" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="split" width="266" height="266"/>
+        <image name="stand" width="266" height="266"/>
     </resources>
 </document>

@@ -51,7 +51,7 @@ class BasicStrategy: BlackjackStrategyProtocol {
             }
         }
         
-        return ProposedAction.dontknow
+        return ProposedAction.stand
     }
     
     func initSplitMatrix() {

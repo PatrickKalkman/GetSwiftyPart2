@@ -20,8 +20,6 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.hero.id = "test"
-        
         self.navigationItem.title = "Settings"
         let textAttributes = [NSAttributedString.Key.foregroundColor:Constants.Colors.DarkGreen]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -32,9 +30,7 @@ class SettingsViewController: UITableViewController {
         notificationTimeoutLabel.text = "\(SettingsBundleHelper.getNotificationTimeout())s"
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+
     
     @IBAction func soundOnChanged(_ sender: UISwitch) {
         SettingsBundleHelper.setSoundOn(enable: sender.isOn)

@@ -368,6 +368,19 @@ class GameEngine: BlackjackProtocol {
     func getPlayResult() -> [HandResult] {
         return playResult
     }
+    
+    func getPlayResultMessage() -> String {
+        switch playResult[0].result {
+        case GameResult.DealerWins:
+            return "The dealer wins"
+        case GameResult.PlayerWins:
+            return "You win!"
+        case GameResult.Push:
+            return "Push"
+        case GameResult.PlayerWinsWithBlackjack:
+            return "You win (Blackjack!)"
+        }
+    }
 
     func dealerStart() {
         blackjackView?.dealerStart()

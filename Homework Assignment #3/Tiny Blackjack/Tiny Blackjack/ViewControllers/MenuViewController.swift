@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: BlackjackViewControllerBase {
     
     var dismissButton: UIButton?
     var titleLabel: UILabel?
@@ -16,22 +16,15 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.hero.id = "test"
-        
-        if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
-            statusBar.backgroundColor = UIColor.clear
-        }
-        let textAttributes = [NSAttributedString.Key.foregroundColor:Constants.Colors.LightGreen]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
         self.navigationController!.navigationBar.backgroundColor = UIColor.clear
     }
     
-    @IBAction func showSettings(_ sender: Any) {
-        self.performSegue(withIdentifier: "settings", sender: self)
+    @IBAction func playBlackjack(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "playBlackjack", sender: self)
+        
     }
     
     @IBAction func playBasicStrategy(_ sender: Any) {
@@ -42,10 +35,10 @@ class MenuViewController: UIViewController {
         self.performSegue(withIdentifier: "cardCounting", sender: self)
     }
     
-    @IBAction func playBlackjack(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "playBlackjack", sender: self)
-        
+    @IBAction func showSettings(_ sender: Any) {
+        self.performSegue(withIdentifier: "settings", sender: self)
     }
+    
     
     override var prefersStatusBarHidden: Bool {
         return true

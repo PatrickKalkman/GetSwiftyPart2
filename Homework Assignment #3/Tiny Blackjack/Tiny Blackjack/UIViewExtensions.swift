@@ -49,6 +49,23 @@ extension UIView {
         shakeGroup.duration = duration
         self.layer.add(shakeGroup, forKey: "shakeIt")
     }
+    
+
+    // When hiding UI elements, we let them fade in or out
+    func hideWithAnimation(hidden: Bool) {
+        UIView.transition(with: self, duration: 1, options: .transitionCrossDissolve, animations: {
+            self.isHidden = hidden
+        })
+    }
+    
+    // When changing text on a label we use this to fade in/out the text
+    func fadeTransition(_ duration: CFTimeInterval) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.duration = duration
+        layer.add(animation, forKey: CATransitionType.fade.rawValue)
+    }
 }
 
 extension UILabel {
