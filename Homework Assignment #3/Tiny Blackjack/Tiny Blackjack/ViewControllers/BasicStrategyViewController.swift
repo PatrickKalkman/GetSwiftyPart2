@@ -139,7 +139,7 @@ class BasicStrategyViewController: BlackjackViewControllerBase, BlackjackViewPro
         
         // The game engine already has dealt the cards
         // Here we instruct the UI to show the dealing of the first cards using animation
-        self.dealButton.isHidden = true
+        self.dealButton.hideWithAnimation(hidden: true)
         self.organizeUiBasedOnState(state: GameStates.dealCards)
         
         let player1Card1ImageView: UIImageView = getNewCardFromDeckFaceDown()
@@ -224,7 +224,9 @@ class BasicStrategyViewController: BlackjackViewControllerBase, BlackjackViewPro
     }
     
     func calculateResult() {
-        self.dealerValueLabel.text = self.gameEngine.getDealerValueString()
+        dealerValueLabel.fadeTransition(0.6)
+        dealerValueLabel.text = self.gameEngine.getDealerValueString()
+        playResultLabel.fadeTransition(0.6)
         playResultLabel.text = gameEngine.getPlayResultMessage()
     }
     
@@ -237,15 +239,12 @@ class BasicStrategyViewController: BlackjackViewControllerBase, BlackjackViewPro
         })
         
         moveHand(handToMove: currentHand, xMove: 0, yMove: -210)
-        
-        print("Select hand with cardIndex \(cardIndex)")
         self.gameEngine.triggerEvent(GameEvents.playerHandSelected)
     }
     
     func playerGetChoice() {
     }
 
-    
     func dealerStart() {
         let dealerCardFaceUp: UIImage = getCardImage(self.gameEngine.getDealerCard(cardIndex: dealerCardIndex))
         self.soundManager.playCard()
@@ -271,7 +270,6 @@ class BasicStrategyViewController: BlackjackViewControllerBase, BlackjackViewPro
     
     func dealerGetChoice() {
     }
-
     
     func hitPlayer() {
         guard let currentHand = gameEngine.getCurrentHand() else { return }

@@ -9,24 +9,42 @@
 import Foundation
 import UIKit
 
-class CardCountingViewController: UIViewController {
+class CardCountingViewController: BlackjackViewControllerBase {
+    
+    @IBOutlet weak var numberOfPlayersTitleLabel: UILabel!
+    @IBOutlet weak var numberOfPlayersLabel: UILabel!
+    @IBOutlet weak var numberOfPlayersStepper: UIStepper!
+    
+    @IBOutlet weak var numberOfDecksRemainingStepper: UIStepper!
+    @IBOutlet weak var numberOfDecksRemainingTitleLabel: UILabel!
+    @IBOutlet weak var numberOfDeckRemainingLabel: UILabel!
+    
+
+    var numberOfPlayers: UInt = 7
+    var numberOfDecksRemaining: UInt = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.hero.id = "test"
+        setTitle("PRACTICE CARD COUNTING")
+    }
 
-        self.navigationItem.title = "PRACTICE CARD COUNTING"
-        if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
-            statusBar.backgroundColor = UIColor.clear
-        }
-
-        let textAttributes = [NSAttributedString.Key.foregroundColor:Constants.Colors.LightGreen]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-
+    @IBAction func numberOfPlayersChanged(_ sender: UIStepper) {
+        numberOfPlayers = UInt(sender.value)
+        numberOfPlayersLabel.text = String(numberOfPlayers)
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    @IBAction func numberOfDecksChanged(_ sender: UIStepper) {
+        numberOfDecksRemaining = UInt(sender.value)
+        numberOfDeckRemainingLabel.text = String(numberOfDecksRemaining)
     }
+    
+    @IBAction func startPlaying(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func selectCards(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "selectCards", sender: self)
+    }
+
     
 }

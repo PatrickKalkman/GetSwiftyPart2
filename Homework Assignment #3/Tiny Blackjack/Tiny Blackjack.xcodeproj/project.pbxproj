@@ -27,6 +27,8 @@
 		AB8A4E2222651C800084323E /* BasicStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2122651C800084323E /* BasicStrategy.swift */; };
 		AB8A4E2422666BFE0084323E /* BasicStrategyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */; };
 		AB8A4E2622687D8E0084323E /* ProposedActionToMessageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */; };
+		AB8D9F7D226A094C00D0E304 /* SelectCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */; };
+		AB8D9F7F226A206A00D0E304 /* CardSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8D9F7E226A206A00D0E304 /* CardSelectCollectionViewCell.swift */; };
 		AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFB622453BEB00E45E6F /* AppDelegate.swift */; };
 		AB97EFB922453BEB00E45E6F /* BlackjackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFB822453BEB00E45E6F /* BlackjackViewController.swift */; };
 		AB97EFBC22453BEB00E45E6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97EFBA22453BEB00E45E6F /* Main.storyboard */; };
@@ -104,6 +106,8 @@
 		AB8A4E2122651C800084323E /* BasicStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStrategy.swift; sourceTree = "<group>"; };
 		AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStrategyTest.swift; sourceTree = "<group>"; };
 		AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProposedActionTo\U0010MessageMapper.swift"; sourceTree = "<group>"; };
+		AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardsViewController.swift; sourceTree = "<group>"; };
+		AB8D9F7E226A206A00D0E304 /* CardSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB97EFB322453BEB00E45E6F /* Tiny Blackjack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Blackjack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB97EFB622453BEB00E45E6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB97EFB822453BEB00E45E6F /* BlackjackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				AB99551B2260633400FB9596 /* UIViewExtensions.swift */,
 				ABFC4A2E22627A770011C5AE /* UIColor.swift */,
 				AB58210C22699A51003A07A8 /* BlackjackViewControllerBase.swift */,
+				AB8D9F7E226A206A00D0E304 /* CardSelectCollectionViewCell.swift */,
 			);
 			name = Ui;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				AB8A4E1B2263A2B10084323E /* BasicStrategyViewController.swift */,
 				AB8A4E1D2263A2CB0084323E /* CardCountingViewController.swift */,
 				AB8A4E1F2264E1360084323E /* NavigationViewController.swift */,
+				AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -553,6 +559,8 @@
 				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
 				AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */,
 				AB995505225A164F00FB9596 /* Chip.swift in Sources */,
+				AB8D9F7D226A094C00D0E304 /* SelectCardsViewController.swift in Sources */,
+				AB8D9F7F226A206A00D0E304 /* CardSelectCollectionViewCell.swift in Sources */,
 				AB97EFF522475E1200E45E6F /* GameError.swift in Sources */,
 				AB129F49224E5E780025ECA1 /* GameEvents.swift in Sources */,
 				AB995503225A161C00FB9596 /* Wallet.swift in Sources */,
