@@ -25,13 +25,16 @@
                             <color key="textColor" red="0.36694591706234747" green="0.89383041863401769" blue="0.87287846978019568" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>
                     </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="Mrf-hQ-uCn" kind="relationship" relationship="rootViewController" id="2O5-Mg-SSD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRc-aw-Wic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2285" y="-1294"/>
+            <point key="canvasLocation" x="-2359" y="-1295"/>
         </scene>
         <!--Tiny Blackjack-->
         <scene sceneID="tne-QT-ifu">
@@ -229,6 +232,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="-128" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="100" image="Chip.DarkBlue"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="chipAddAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ifu-LK-lzF"/>
                                 </connections>
@@ -368,6 +376,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tiny Blackjack" id="nCw-m0-lgD"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="darkBlueChip" destination="vck-sZ-kob" id="i2G-rl-1ay"/>
                         <outlet property="darkRedChip" destination="DRZ-3s-M2A" id="rTs-7O-k2H"/>
@@ -531,6 +542,11 @@
                                     <constraint firstAttribute="height" constant="170" id="Vup-7L-pw2"/>
                                     <constraint firstAttribute="width" constant="120" id="xYf-Eu-hBM"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="basicstrategy"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ 18 ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrv-H4-kbD">
                                 <rect key="frame" x="483" y="374" width="58.5" height="30"/>
@@ -567,6 +583,8 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="deal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1i6-ow-oc4"/>
@@ -597,6 +615,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jta-6m-Vts"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="dealButton" destination="059-5n-46a" id="LUI-Gc-3nr"/>
                         <outlet property="dealerValueLabel" destination="VPl-Sw-8r1" id="HXU-fq-Jhf"/>
@@ -634,6 +655,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CFF-sx-2DZ"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFi-xd-ujY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -647,103 +671,238 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="698"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-1N-1to">
-                                <rect key="frame" x="362" y="224" width="300" height="250"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJe-4t-b6g">
-                                        <rect key="frame" x="-46" y="202" width="400" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" label="SETTINGS"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="h4g-DW-trq"/>
-                                            <constraint firstAttribute="height" constant="40" id="qRo-Dr-HuZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="SETTINGS" image="ic_settings">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showSettings:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="Gaa-2A-3hJ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p59-2Z-Kvb">
-                                        <rect key="frame" x="-50" y="8" width="400" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" label="PROFILE"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="Ie1-ob-X4X"/>
-                                            <constraint firstAttribute="height" constant="40" id="fVO-6A-Ulw"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
-                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="PLAY BLACKJACK" image="ic_profile">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="playBlackjack:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="n8Q-8D-Xgf"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIi-P0-9j8">
-                                        <rect key="frame" x="-50" y="56" width="400" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" label="FEED"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="HIS-VZ-Lb7"/>
-                                            <constraint firstAttribute="width" constant="400" id="WA9-Bp-69h"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="PRACTICE BASIC STRATEGY" image="ic_feed">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="playBasicStrategy:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="2f3-gf-rMS"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29t-Nm-t5Q">
-                                        <rect key="frame" x="-50" y="105" width="400" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" label="ACTIVITY"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="4Da-qY-G12"/>
-                                            <constraint firstAttribute="height" constant="40" id="BEB-YW-xBA"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="CARD COUNTING" image="ic_activity">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="playCardCounting:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="489-o0-P3M"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p59-2Z-Kvb">
+                                <rect key="frame" x="410" y="202.5" width="400" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="PROFILE"/>
                                 <constraints>
-                                    <constraint firstItem="p59-2Z-Kvb" firstAttribute="centerX" secondItem="eIi-P0-9j8" secondAttribute="centerX" id="BaC-ej-l7p"/>
-                                    <constraint firstAttribute="width" constant="300" id="C6g-d0-wGC"/>
-                                    <constraint firstItem="p59-2Z-Kvb" firstAttribute="top" secondItem="dDo-1N-1to" secondAttribute="top" constant="8" id="E7r-La-jil"/>
-                                    <constraint firstAttribute="centerX" secondItem="p59-2Z-Kvb" secondAttribute="centerX" id="Jj7-0W-Cko"/>
-                                    <constraint firstAttribute="height" constant="250" id="Rxk-MM-kfw"/>
-                                    <constraint firstItem="29t-Nm-t5Q" firstAttribute="top" secondItem="eIi-P0-9j8" secondAttribute="bottom" constant="9" id="TEB-7d-5SJ"/>
-                                    <constraint firstItem="29t-Nm-t5Q" firstAttribute="centerX" secondItem="eIi-P0-9j8" secondAttribute="centerX" id="dvn-yK-O6Z"/>
-                                    <constraint firstItem="XJe-4t-b6g" firstAttribute="centerX" secondItem="29t-Nm-t5Q" secondAttribute="centerX" constant="4" id="tWo-Nv-2fE"/>
-                                    <constraint firstAttribute="bottom" secondItem="XJe-4t-b6g" secondAttribute="bottom" constant="8" id="wxs-pJ-ckT"/>
-                                    <constraint firstItem="eIi-P0-9j8" firstAttribute="top" secondItem="p59-2Z-Kvb" secondAttribute="bottom" constant="8" id="ylj-FN-Hlc"/>
+                                    <constraint firstAttribute="width" constant="400" id="Ie1-ob-X4X"/>
+                                    <constraint firstAttribute="height" constant="40" id="fVO-6A-Ulw"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <state key="normal" title="PLAY BLACKJACK">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playBlackjack:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="n8Q-8D-Xgf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9j-89-svH">
+                                <rect key="frame" x="410" y="412.5" width="500" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="PROFILE"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="m8l-Sd-fOJ"/>
+                                    <constraint firstAttribute="width" constant="500" id="n7R-ga-GK1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <state key="normal" title="SIMULATE CARD COUNTING">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="simulate"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIi-P0-9j8">
+                                <rect key="frame" x="410" y="272.5" width="450" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="FEED"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HIS-VZ-Lb7"/>
+                                    <constraint firstAttribute="width" constant="450" id="pFo-2h-Wvt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <state key="normal" title="LEARN BASIC STRATEGY">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="basicstrategy"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playBasicStrategy:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="2f3-gf-rMS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29t-Nm-t5Q">
+                                <rect key="frame" x="410" y="342.5" width="450" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="ACTIVITY"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BEB-YW-xBA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="450" id="FPO-Kk-KaV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <state key="normal" title="LEARN CARD COUNTING">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="cardcounting"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playCardCounting:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="489-o0-P3M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJe-4t-b6g">
+                                <rect key="frame" x="410" y="507.5" width="400" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="SETTINGS"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="h4g-DW-trq"/>
+                                    <constraint firstAttribute="height" constant="40" id="qRo-Dr-HuZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <state key="normal" title="SETTINGS">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="settings"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showSettings:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="Gaa-2A-3hJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5F-Sk-jCt">
+                                <rect key="frame" x="340" y="505" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="4Zj-JG-sri"/>
+                                    <constraint firstAttribute="height" constant="45" id="rjl-en-2ZB"/>
+                                </constraints>
+                                <state key="normal" image="poker-token"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="settings"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showSettings:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="ESg-53-xNH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-Mz-D5F">
+                                <rect key="frame" x="340" y="340" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0TD-0I-oVG"/>
+                                    <constraint firstAttribute="width" constant="45" id="eqq-py-kZF"/>
+                                </constraints>
+                                <state key="normal" image="hearts-token"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="cardcounting"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playCardCounting:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="DdD-d8-f21"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYA-xX-LjP">
+                                <rect key="frame" x="340" y="410" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="0N0-9r-mlD"/>
+                                    <constraint firstAttribute="height" constant="45" id="oZz-sV-4Le"/>
+                                </constraints>
+                                <state key="normal" image="club-chip"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="simulate"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1C9-Xu-dnM">
+                                <rect key="frame" x="340" y="200" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="UCR-16-D5j"/>
+                                    <constraint firstAttribute="width" constant="45" id="gL4-ym-Lyv"/>
+                                </constraints>
+                                <state key="normal" image="spades-token"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="blackjack"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTH-3f-QDY">
+                                <rect key="frame" x="340" y="270" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="tPZ-Bn-81k"/>
+                                    <constraint firstAttribute="height" constant="45" id="yQc-zW-teY"/>
+                                </constraints>
+                                <state key="normal" image="diamonds-token"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="basicstrategy"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playBasicStrategy:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="pib-4C-Ac9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tI6-qs-0UI">
+                                <rect key="frame" x="237" y="-11" width="550" height="80"/>
+                                <accessibility key="accessibilityConfiguration" label="PROFILE"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="1Ny-b4-tXv"/>
+                                    <constraint firstAttribute="width" constant="550" id="jbb-w5-vmt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="55"/>
+                                <state key="normal" title="TINY BLACKJACK">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playBlackjack:" destination="Mrf-hQ-uCn" eventType="touchUpInside" id="bom-Z1-lkZ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.098039215686274508" green="0.24313725490196078" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.10429605977815036" green="0.32416044038583181" blue="0.32211295980341531" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="dDo-1N-1to" firstAttribute="centerY" secondItem="oJY-6V-AW0" secondAttribute="centerY" id="c2C-qu-Zr8"/>
-                            <constraint firstItem="dDo-1N-1to" firstAttribute="centerX" secondItem="oJY-6V-AW0" secondAttribute="centerX" id="kCF-V7-SQz"/>
+                            <constraint firstItem="tI6-qs-0UI" firstAttribute="leading" secondItem="Jkb-id-Oe7" secondAttribute="leading" constant="237" id="0iA-d7-gJg"/>
+                            <constraint firstItem="Y9j-89-svH" firstAttribute="centerY" secondItem="eYA-xX-LjP" secondAttribute="centerY" id="3Wj-ZV-sp2"/>
+                            <constraint firstItem="p59-2Z-Kvb" firstAttribute="leading" secondItem="1C9-Xu-dnM" secondAttribute="trailing" constant="25" id="7ot-87-VhM"/>
+                            <constraint firstItem="eIi-P0-9j8" firstAttribute="leading" secondItem="p59-2Z-Kvb" secondAttribute="leading" id="7yS-Uy-nHO"/>
+                            <constraint firstItem="29t-Nm-t5Q" firstAttribute="leading" secondItem="eIi-P0-9j8" secondAttribute="leading" id="BiV-Ee-vRm"/>
+                            <constraint firstItem="aTH-3f-QDY" firstAttribute="top" secondItem="1C9-Xu-dnM" secondAttribute="bottom" constant="25" id="Fru-ov-kLq"/>
+                            <constraint firstItem="eIi-P0-9j8" firstAttribute="centerY" secondItem="aTH-3f-QDY" secondAttribute="centerY" id="IGe-YT-gYC"/>
+                            <constraint firstItem="aTH-3f-QDY" firstAttribute="centerX" secondItem="1C9-Xu-dnM" secondAttribute="centerX" id="J9K-U3-24I"/>
+                            <constraint firstItem="sRx-Mz-D5F" firstAttribute="top" secondItem="aTH-3f-QDY" secondAttribute="bottom" constant="25" id="K0d-kP-fMf"/>
+                            <constraint firstItem="29t-Nm-t5Q" firstAttribute="centerY" secondItem="sRx-Mz-D5F" secondAttribute="centerY" id="LfF-yh-iSM"/>
+                            <constraint firstItem="A5F-Sk-jCt" firstAttribute="top" secondItem="eYA-xX-LjP" secondAttribute="bottom" constant="50" id="VCB-En-a7M"/>
+                            <constraint firstItem="XJe-4t-b6g" firstAttribute="leading" secondItem="Y9j-89-svH" secondAttribute="leading" id="VRo-pJ-5X1"/>
+                            <constraint firstItem="Y9j-89-svH" firstAttribute="leading" secondItem="29t-Nm-t5Q" secondAttribute="leading" id="WzG-wn-cYb"/>
+                            <constraint firstItem="tI6-qs-0UI" firstAttribute="centerX" secondItem="Jkb-id-Oe7" secondAttribute="centerX" id="XZa-fi-fB2"/>
+                            <constraint firstItem="p59-2Z-Kvb" firstAttribute="centerY" secondItem="1C9-Xu-dnM" secondAttribute="centerY" id="Xpx-xH-fqA"/>
+                            <constraint firstItem="1C9-Xu-dnM" firstAttribute="leading" secondItem="Jkb-id-Oe7" secondAttribute="leading" constant="340" id="Xuo-Tg-FWy"/>
+                            <constraint firstItem="1C9-Xu-dnM" firstAttribute="top" secondItem="Jkb-id-Oe7" secondAttribute="top" constant="200" id="Y1F-dX-dj3"/>
+                            <constraint firstItem="XJe-4t-b6g" firstAttribute="centerY" secondItem="A5F-Sk-jCt" secondAttribute="centerY" id="fEK-zQ-aln"/>
+                            <constraint firstItem="eYA-xX-LjP" firstAttribute="centerX" secondItem="sRx-Mz-D5F" secondAttribute="centerX" id="gDR-jy-H1i"/>
+                            <constraint firstItem="Jkb-id-Oe7" firstAttribute="top" secondItem="tI6-qs-0UI" secondAttribute="top" constant="11" id="nkm-3W-aWo"/>
+                            <constraint firstItem="A5F-Sk-jCt" firstAttribute="centerX" secondItem="eYA-xX-LjP" secondAttribute="centerX" id="qmS-YD-bzD"/>
+                            <constraint firstItem="eYA-xX-LjP" firstAttribute="top" secondItem="sRx-Mz-D5F" secondAttribute="bottom" constant="25" id="vAq-aM-mZn"/>
+                            <constraint firstItem="sRx-Mz-D5F" firstAttribute="centerX" secondItem="aTH-3f-QDY" secondAttribute="centerX" id="zjy-TF-zac"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jkb-id-Oe7" userLabel="Safe Are"/>
                     </view>
                     <navigationItem key="navigationItem" id="fqn-Dk-ug4">
                         <barButtonItem key="backBarButtonItem" title=" " id="Vi8-57-YfH"/>
                     </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="heroModalAnimationTypeString" value="Blackjack"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="hY9-oB-A7h" kind="show" identifier="settings" id="9EC-2f-1mR"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="playBlackjack" id="Svf-s5-M8l"/>
@@ -753,7 +912,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDc-LN-Sq2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1659" y="-1295"/>
+            <point key="canvasLocation" x="-1659.375" y="-1295.3125"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="lja-Jh-Aj1">
@@ -780,6 +939,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roB-cZ-GYt">
                                                     <rect key="frame" x="101.5" y="6.5" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.3025438392" green="0.7316809501" blue="0.71111038000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="soundOnChanged:" destination="hY9-oB-A7h" eventType="valueChanged" id="eIO-kr-lht"/>
                                                     </connections>
@@ -825,8 +987,8 @@
                                                         <action selector="notificationTimeoutChanges:" destination="hY9-oB-A7h" eventType="valueChanged" id="zYf-0N-yQk"/>
                                                     </connections>
                                                 </stepper>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58M-Ym-YXN">
-                                                    <rect key="frame" x="202" y="0.5" width="20" height="44.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58M-Ym-YXN">
+                                                    <rect key="frame" x="202" y="-0.5" width="20" height="44.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="Yjy-kB-KrL"/>
                                                     </constraints>
@@ -943,6 +1105,9 @@
                         </connections>
                     </tableView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="buildLabel" destination="dvo-8w-fEB" id="HjB-Ah-hdJ"/>
                         <outlet property="notificationTimeoutLabel" destination="58M-Ym-YXN" id="FBD-Ov-g8U"/>
@@ -964,9 +1129,10 @@
         <image name="Chip.LightRed" width="127" height="127"/>
         <image name="Chip.Pink" width="127" height="127"/>
         <image name="Chip.Purple" width="127" height="127"/>
-        <image name="ic_activity" width="25" height="19"/>
-        <image name="ic_feed" width="21" height="22"/>
-        <image name="ic_profile" width="17" height="24"/>
-        <image name="ic_settings" width="23" height="23"/>
+        <image name="club-chip" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="diamonds-token" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="hearts-token" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="poker-token" width="414.66665649414062" height="414.66665649414062"/>
+        <image name="spades-token" width="414.66665649414062" height="414.66665649414062"/>
     </resources>
 </document>

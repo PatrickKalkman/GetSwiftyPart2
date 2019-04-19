@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Hero
 
 class SettingsViewController: UITableViewController {
     
@@ -18,6 +19,8 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.hero.id = "test"
         
         self.navigationItem.title = "Settings"
         let textAttributes = [NSAttributedString.Key.foregroundColor:Constants.Colors.DarkGreen]

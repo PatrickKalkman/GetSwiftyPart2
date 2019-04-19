@@ -16,6 +16,8 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.hero.id = "test"
+        
         if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
             statusBar.backgroundColor = UIColor.clear
         }

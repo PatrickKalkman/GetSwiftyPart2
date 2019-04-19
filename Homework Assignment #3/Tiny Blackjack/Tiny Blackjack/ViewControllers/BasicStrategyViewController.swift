@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import SwiftySound
-
+import Hero
 
 class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     
@@ -38,6 +38,8 @@ class BasicStrategyViewController: UIViewController, BlackjackViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.hero.id = "test"
+               
         self.navigationItem.title = "LEARN BASIC STRATEGY"
         if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
           statusBar.backgroundColor = UIColor.clear

@@ -49,6 +49,8 @@ class BlackjackViewController: UIViewController, BlackjackViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.hero.id = "test"
+        
         self.navigationItem.title = "PLAY BLACKJACK"
         let textAttributes = [NSAttributedString.Key.foregroundColor:Constants.Colors.LightGreen]
         navigationController?.navigationBar.titleTextAttributes = textAttributes

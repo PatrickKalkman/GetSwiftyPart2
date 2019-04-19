@@ -13,7 +13,8 @@ class CardCountingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.hero.id = "test"
+
         self.navigationItem.title = "PRACTICE CARD COUNTING"
         if let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
             statusBar.backgroundColor = UIColor.clear
