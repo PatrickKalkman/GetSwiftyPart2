@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import NotificationBannerSwift
 
-class SelectCardsViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
+class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
     
     private var hearts: [Card] = [Card]()
     private var diamonds: [Card] = [Card]()
@@ -31,6 +32,10 @@ class SelectCardsViewController : UIViewController, UICollectionViewDataSource, 
         clubsCollectionView.delegate = self
         diamondsCollectionView.delegate = self
         spadesCollectionView.delegate = self
+        heartsCollectionView.allowsMultipleSelection = true
+        clubsCollectionView.allowsMultipleSelection = true
+        diamondsCollectionView.allowsMultipleSelection = true
+        spadesCollectionView.allowsMultipleSelection = true
         heartsCollectionView.reloadData()
         clubsCollectionView.reloadData()
         diamondsCollectionView.reloadData()
@@ -61,25 +66,13 @@ class SelectCardsViewController : UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        var card: Card
-            
-        if collectionView == heartsCollectionView {
-            card = hearts[indexPath.item]
-        } else if collectionView == clubsCollectionView {
-            card = clubs[indexPath.item]
-        } else if collectionView == diamondsCollectionView {
-            card = diamonds[indexPath.item]
-        } else {
-            card = spades[indexPath.item]
-        }
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        if let myCell = cell as? CardSelectCollectionViewCell {
-            
+        if let cardSelectCell = cell as? CardSelectCollectionViewCell {
+            let card: Card = selectCard(collectionView, indexPath.item)
             let imageName: String = cardToImageNameMapper.map(card)
-            myCell.Image.image = UIImage(named: imageName)
-            myCell.card = card
+            cardSelectCell.Image.image = UIImage(named: imageName)
+            cardSelectCell.card = card
         }
         
         return cell
@@ -90,5 +83,36 @@ class SelectCardsViewController : UIViewController, UICollectionViewDataSource, 
         return CGSize(width: 94, height: 120)
     }
     
-
+    func selectCard(_ collectionView: UICollectionView, _ index: Int) -> Card {
+        if collectionView == heartsCollectionView {
+            return hearts[index]
+        } else if collectionView == clubsCollectionView {
+            return clubs[index]
+        } else if collectionView == diamondsCollectionView {
+            return diamonds[index]
+        } else {
+            return spades[index]
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if totalNumberOfSelectedItems() == 2 {
+            showMaximumSelection()
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func totalNumberOfSelectedItems() -> Int {
+        return heartsCollectionView.numberOfSelectedItems() +
+            clubsCollectionView.numberOfSelectedItems() +
+            spadesCollectionView.numberOfSelectedItems() +
+            diamondsCollectionView.numberOfSelectedItems()
+    }
+    
+    func showMaximumSelection() {
+        let banner = NotificationBanner(title: "Maximum number of cards selected (2)" , subtitle: "Deselect a card before selecting another one", style: BannerStyle.info)
+        banner.show(bannerPosition: BannerPosition.top)
+    }
 }

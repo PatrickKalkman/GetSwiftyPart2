@@ -14,8 +14,6 @@ class AppNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.hero.id = "test"
-        
         hero.navigationAnimationType = .none
     }
     

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class CardSelectCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var Image: UIImageView!
     var card: Card!
     
@@ -23,8 +24,8 @@ class CardSelectCollectionViewCell: UICollectionViewCell {
             if self.isSelected
             {
                 UIView.animate(withDuration: 0.1) {
-                    self.Image.transform = .init(scaleX: 0.95, y: 0.95)
-                    self.contentView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+                    self.Image.transform = .init(scaleX: 0.9, y: 0.9)
+                    self.contentView.backgroundColor = UIColor.init(hex: "#58CB70FF")
                 }
             }
             else
