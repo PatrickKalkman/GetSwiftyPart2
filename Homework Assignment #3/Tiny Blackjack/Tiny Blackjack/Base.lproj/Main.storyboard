@@ -608,7 +608,18 @@
                                 <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.45490196078431372" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEF-HF-PbL" userLabel="Card Player 7">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWU-ba-1Zq" userLabel="Start Button">
+                                <rect key="frame" x="903" y="37" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="8Wb-HN-mFy"/>
+                                    <constraint firstAttribute="width" constant="80" id="iYg-rS-QQp"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="restart"/>
+                                <connections>
+                                    <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="StJ-DT-ZMZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEF-HF-PbL" userLabel="Card Player 7">
                                 <rect key="frame" x="26" y="558" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="WdK-0B-azW"/>
@@ -620,7 +631,7 @@
                                     <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="fgD-lK-rEt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-Wa-aWd" userLabel="Card Player 6">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-Wa-aWd" userLabel="Card Player 6">
                                 <rect key="frame" x="172" y="608" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="gd7-N5-QXa"/>
@@ -632,7 +643,7 @@
                                     <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="yeC-TI-Pgn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-oj-0Iw" userLabel="Card Player 5">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-oj-0Iw" userLabel="Card Player 5">
                                 <rect key="frame" x="327" y="640" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="59h-bE-ldV"/>
@@ -644,7 +655,7 @@
                                     <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="eqq-iO-Tbn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnp-cM-TqX" userLabel="Card Player 4">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnp-cM-TqX" userLabel="Card Player 4">
                                 <rect key="frame" x="482" y="648" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="XT8-3d-PSC"/>
@@ -656,7 +667,7 @@
                                     <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="5IY-Qg-DT7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQU-et-wwq" userLabel="Card Player 2">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQU-et-wwq" userLabel="Card Player 2">
                                 <rect key="frame" x="792" y="608" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="r7f-KE-uAx"/>
@@ -718,16 +729,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Card.Facedown" translatesAutoresizingMaskIntoConstraints="NO" id="ELT-R6-BIM">
-                                <rect key="frame" x="9" y="20" width="94" height="124"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotateation.z">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvI-v8-Vgm" userLabel="Card Player 3">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvI-v8-Vgm" userLabel="Card Player 3">
                                 <rect key="frame" x="637" y="640" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Wkx-34-7Vy"/>
@@ -739,21 +741,29 @@
                                     <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="PVi-Tg-KwB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWU-ba-1Zq" userLabel="Start Button">
-                                <rect key="frame" x="903" y="37" width="80" height="80"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card.Facedown" translatesAutoresizingMaskIntoConstraints="NO" id="ELT-R6-BIM">
+                                <rect key="frame" x="465" y="20" width="94" height="124"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="8Wb-HN-mFy"/>
-                                    <constraint firstAttribute="width" constant="80" id="iYg-rS-QQp"/>
+                                    <constraint firstAttribute="width" constant="94" id="nW8-bY-S9u"/>
+                                    <constraint firstAttribute="height" constant="124" id="x58-eW-6yr"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="restart"/>
-                                <connections>
-                                    <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="StJ-DT-ZMZ"/>
-                                </connections>
-                            </button>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotateation.z">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Select each players cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fC0-QX-JLN">
+                                <rect key="frame" x="379" y="173" width="266" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.19841215014457703" green="0.45681071281433105" blue="0.25121781229972839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="gvI-v8-Vgm" firstAttribute="leading" secondItem="tnp-cM-TqX" secondAttribute="trailing" constant="95" id="0H1-tc-fZK"/>
+                            <constraint firstItem="ELT-R6-BIM" firstAttribute="centerX" secondItem="DXc-rm-V1x" secondAttribute="centerX" id="0c1-7X-Wf3"/>
                             <constraint firstItem="2Oa-D5-QLi" firstAttribute="trailing" secondItem="hWU-ba-1Zq" secondAttribute="leading" constant="-30" id="0xx-uQ-aSF"/>
                             <constraint firstItem="SPu-sX-0gh" firstAttribute="top" secondItem="CFF-sx-2DZ" secondAttribute="top" id="4Dy-m1-2Nd"/>
                             <constraint firstItem="SPu-sX-0gh" firstAttribute="width" secondItem="DXc-rm-V1x" secondAttribute="width" id="5kM-RS-eBy"/>
@@ -761,6 +771,7 @@
                             <constraint firstItem="tnp-cM-TqX" firstAttribute="centerX" secondItem="SPu-sX-0gh" secondAttribute="centerX" id="8Wk-HX-FhX"/>
                             <constraint firstItem="EFp-Yj-aAo" firstAttribute="trailing" secondItem="2Oa-D5-QLi" secondAttribute="leading" constant="-16" id="8ts-O1-I3e"/>
                             <constraint firstItem="tnp-cM-TqX" firstAttribute="leading" secondItem="Qdk-oj-0Iw" secondAttribute="trailing" constant="95" id="9IP-pc-yaE"/>
+                            <constraint firstItem="ELT-R6-BIM" firstAttribute="top" secondItem="CFF-sx-2DZ" secondAttribute="top" id="Gw2-HS-8Ie"/>
                             <constraint firstItem="xEF-HF-PbL" firstAttribute="top" secondItem="bW0-F7-TeA" secondAttribute="top" id="HrV-Do-dDS"/>
                             <constraint firstItem="xEF-HF-PbL" firstAttribute="trailing" secondItem="7rn-Wa-aWd" secondAttribute="leading" constant="-86" id="Hxg-iE-GSa"/>
                             <constraint firstItem="2Oa-D5-QLi" firstAttribute="centerY" secondItem="EFp-Yj-aAo" secondAttribute="centerY" id="I4l-4P-jTI"/>
@@ -769,7 +780,9 @@
                             <constraint firstItem="SPu-sX-0gh" firstAttribute="leading" secondItem="DXc-rm-V1x" secondAttribute="leading" id="KPh-k9-IgY"/>
                             <constraint firstItem="hWU-ba-1Zq" firstAttribute="top" secondItem="CFF-sx-2DZ" secondAttribute="top" id="LT5-Kb-XFu"/>
                             <constraint firstItem="hWU-ba-1Zq" firstAttribute="trailing" secondItem="CFF-sx-2DZ" secondAttribute="trailing" constant="-24" id="O9S-q6-etr"/>
+                            <constraint firstItem="fC0-QX-JLN" firstAttribute="centerX" secondItem="DXc-rm-V1x" secondAttribute="centerX" id="OpX-oL-LIL"/>
                             <constraint firstItem="7rn-Wa-aWd" firstAttribute="top" secondItem="BQU-et-wwq" secondAttribute="top" id="P9o-Ep-6eJ"/>
+                            <constraint firstItem="SPu-sX-0gh" firstAttribute="centerX" secondItem="DXc-rm-V1x" secondAttribute="centerX" id="SYU-yo-tf6"/>
                             <constraint firstItem="zrs-IV-XHA" firstAttribute="trailing" secondItem="EFp-Yj-aAo" secondAttribute="leading" constant="-16" id="WaG-Lc-VyT"/>
                             <constraint firstItem="BQU-et-wwq" firstAttribute="top" secondItem="gvI-v8-Vgm" secondAttribute="top" constant="-32" id="bhi-K6-qAI"/>
                             <constraint firstItem="tnp-cM-TqX" firstAttribute="top" secondItem="gvI-v8-Vgm" secondAttribute="top" constant="8" id="bvg-EA-j9L"/>
@@ -800,6 +813,8 @@
                         <outlet property="numberOfPlayersLabel" destination="EFp-Yj-aAo" id="NoR-9S-D0e"/>
                         <outlet property="numberOfPlayersStepper" destination="2Oa-D5-QLi" id="Qmx-ai-0Wy"/>
                         <outlet property="numberOfPlayersTitleLabel" destination="zrs-IV-XHA" id="I6O-Rf-FC5"/>
+                        <outlet property="selectCardsLabel" destination="fC0-QX-JLN" id="FqZ-yS-Cb1"/>
+                        <outlet property="startButton" destination="hWU-ba-1Zq" id="i4C-rW-MRw"/>
                         <outletCollection property="playerCardButtons" destination="bW0-F7-TeA" collectionClass="NSMutableArray" id="YkL-jq-MwC"/>
                         <outletCollection property="playerCardButtons" destination="BQU-et-wwq" collectionClass="NSMutableArray" id="wMq-hI-SKK"/>
                         <outletCollection property="playerCardButtons" destination="gvI-v8-Vgm" collectionClass="NSMutableArray" id="lPs-JV-1kW"/>
@@ -983,6 +998,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="doneAction:" destination="sjX-VD-Xn5" eventType="touchUpInside" id="7A8-aR-5v9"/>
+                                    <segue destination="GZa-Fe-u5d" kind="unwind" unwindAction="unwindToViewControllerWithSegue:" id="c0X-Dc-HQC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1017,6 +1033,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLJ-xb-m5f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GZa-Fe-u5d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-230.27343749999997" y="-741.40625"/>
         </scene>

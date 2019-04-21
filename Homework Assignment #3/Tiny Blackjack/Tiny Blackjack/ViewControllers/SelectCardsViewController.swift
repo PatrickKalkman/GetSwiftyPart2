@@ -16,9 +16,13 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     private var diamonds: [Card] = [Card]()
     private var clubs: [Card] = [Card]()
     private var spades: [Card] = [Card]()
+    private var collectionViews: [Suit: UICollectionView] = [Suit: UICollectionView]()
     
     private let reuseIdentifier = "CardCell"
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
+    
+    var playerIndex: Int = 0
+    var selectedCards: [Card] = [Card]()
     
     @IBOutlet weak var heartsCollectionView: UICollectionView!
     @IBOutlet weak var clubsCollectionView: UICollectionView!
@@ -28,6 +32,11 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         createCards()
+        collectionViews[Suit.club] = clubsCollectionView
+        collectionViews[Suit.heart] = heartsCollectionView
+        collectionViews[Suit.diamond] = diamondsCollectionView
+        collectionViews[Suit.spade] = spadesCollectionView
+        
         heartsCollectionView.delegate = self
         clubsCollectionView.delegate = self
         diamondsCollectionView.delegate = self
@@ -40,24 +49,39 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
         clubsCollectionView.reloadData()
         diamondsCollectionView.reloadData()
         spadesCollectionView.reloadData()
+
+        print("Trying to select \(selectedCards.count) cards")
+        selectCards()
     }
     
     func createCards() {
-        var cardIndex: Int = 1
+        var cardIndex: Int = 0
         for rank in Rank.allCases {
             hearts.append(Card(Suit.heart, rank, cardIndex))
-            cardIndex += 1
             diamonds.append(Card(Suit.diamond, rank, cardIndex))
-            cardIndex += 1
             clubs.append(Card(Suit.club, rank, cardIndex))
-            cardIndex += 1
             spades.append(Card(Suit.spade, rank, cardIndex))
             cardIndex += 1
         }
     }
     
     @IBAction func doneAction(_ sender: UIButton) {
+        selectedCards.removeAll()
+        saveSelections()
+        print("Saving \(selectedCards.count)")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func saveSelections() {
+        for collectionView in collectionViews {
+            if let selectedItems = collectionView.value.indexPathsForSelectedItems {
+                for item in selectedItems {
+                    if let cell = collectionView.value.cellForItem(at: item) as? CardSelectCollectionViewCell {
+                        selectedCards.append(cell.card)
+                    }
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,6 +100,16 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
         }
         
         return cell
+    }
+    
+    func selectCards() {
+        
+        for card in selectedCards {
+            if let collectionView = collectionViews[card.suit] {
+                let at: IndexPath = IndexPath(item: card.index, section: 0)
+                collectionView.selectItem(at: at, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
