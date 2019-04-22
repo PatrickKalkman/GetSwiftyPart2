@@ -50,7 +50,6 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
         diamondsCollectionView.reloadData()
         spadesCollectionView.reloadData()
 
-        print("Trying to select \(selectedCards.count) cards")
         selectCards()
     }
     
@@ -68,7 +67,6 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     @IBAction func doneAction(_ sender: UIButton) {
         selectedCards.removeAll()
         saveSelections()
-        print("Saving \(selectedCards.count)")
         self.dismiss(animated: true, completion: nil)
     }
     

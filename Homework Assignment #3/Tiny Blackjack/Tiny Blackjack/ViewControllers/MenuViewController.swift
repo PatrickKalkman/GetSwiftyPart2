@@ -39,7 +39,6 @@ class MenuViewController: BlackjackViewControllerBase {
         self.performSegue(withIdentifier: "settings", sender: self)
     }
     
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }

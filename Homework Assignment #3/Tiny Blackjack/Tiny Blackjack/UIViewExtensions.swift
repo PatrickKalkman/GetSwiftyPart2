@@ -11,10 +11,6 @@ import UIKit
 
 extension UIImageView {
 
-    func setOrigin(_ originToSet: CGPoint) {
-        self.frame.origin = originToSet
-    }
-
     func moveXY(_ toMoveX: CGFloat, _ toMoveY: CGFloat) {
         self.frame.origin.x += toMoveX
         self.frame.origin.y += toMoveY
@@ -72,15 +68,12 @@ extension UIView {
         animation.duration = duration
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
-}
-
-extension UILabel {
-
+    
     func setOrigin(_ originToSet: CGPoint) {
         self.frame.origin = originToSet
     }
-
 }
+
 
 extension UICollectionView {
     func numberOfSelectedItems() -> Int {

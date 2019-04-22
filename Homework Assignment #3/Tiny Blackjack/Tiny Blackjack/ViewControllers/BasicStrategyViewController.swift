@@ -16,7 +16,6 @@ class BasicStrategyViewController: BlackjackViewControllerBase, BlackjackViewPro
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
     private let soundManager: SoundManager = SoundManager()
     private let proposedActionNotification: ProposedActionNotification = ProposedActionNotification()
-    private let valueToChipMapper: ValueToChipMapper = ValueToChipMapper()
     private let imageCardFaceDown: UIImage = UIImage(named: Constants.Assets.FacedownCard)!
     private var gameEngine: GameEngine!
     private var dealerCardIndex: Int = 1

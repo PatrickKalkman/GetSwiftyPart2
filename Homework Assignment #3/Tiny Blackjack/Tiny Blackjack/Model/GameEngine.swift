@@ -23,12 +23,17 @@ class GameEngine: BlackjackProtocol {
     private var gameResultCalculator: GameResultCalculator
     private var numberOfPlayers: UInt8 = 0
     private var initialChipsGenerator: InitialChipsGenerator = InitialChipsGenerator()
+    private var manualMode: Bool = false
 
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
         self.playResult = [HandResult]()
         self.gameResultCalculator = gameResultCalculator
         self.gameState = GameStateMachine(gameEngine: self)
         self.blackjackView = blackjackView
+    }
+    
+    func setManualMode() {
+        manualMode = true
     }
 
     func getState() -> GameStates {
@@ -162,6 +167,11 @@ class GameEngine: BlackjackProtocol {
     }
 
     func dealCards() {
+        
+        if manualMode {
+            return
+        }
+        
         for cardCount in 1...2 {
             for player in players {
                 player.add(handIndex: 0, card: deck.draw())
@@ -175,6 +185,11 @@ class GameEngine: BlackjackProtocol {
         if let view = blackjackView {
             view.dealCards()
         }
+    }
+    
+    func dealtCards(playerIndex: Int, card1: Card, card2: Card) {
+        players[playerIndex].add(handIndex: 0, card: card1)
+        players[playerIndex].add(handIndex: 0, card: card2)
     }
 
     func dealerBlackjackTest() {
