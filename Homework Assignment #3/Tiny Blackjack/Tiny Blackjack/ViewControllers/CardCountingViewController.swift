@@ -112,7 +112,7 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
     
     @IBOutlet weak var standButton: UIButton!
     @IBOutlet weak var hitButton: UIButton!
-    @IBOutlet weak var playerIndicatorButton: UIButton!
+    var playerIndicatorButton: UIButton!
     
     var numberOfPlayers: UInt = 7
     var numberOfDecksRemaining: UInt = 8
@@ -134,13 +134,23 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
         gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
         initializePlayers()
         fillPlayerPoints()
+        
+        playerIndicatorButton = UIButton()
+        playerIndicatorButton.setImage(UIImage(named: "Chip.LightRed"), for: UIControl.State.normal)
+        let origin = playerStartPoints[0]
+        playerIndicatorButton.frame = CGRect(x: origin.x, y: origin.y, width: 46, height: 46)
+        playerIndicatorButton.isHidden = true
+        playerIndicatorButton.addTarget(self, action: #selector(playerIndicatorPressed), for: .touchUpInside)
+        view.addSubview(playerIndicatorButton)
+        movePlayerIndicatorToCurrentPlayer()
     }
-
-
+    
     override func viewDidAppear(_ animated: Bool) {
+        
         if playerSelected {
             dealCards(playerIndex: currentPlayerIndex)
             playerSelected = false
+            playerIndicatorPressed(self)
         }
     }
     
@@ -154,7 +164,7 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
     }
     
     func movePlayerIndicatorToCurrentPlayer() {
-        UIImageView.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
+        UIButton.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
             self.playerIndicatorButton.setOrigin(self.playerIndicatorStartPoints[self.currentPlayerIndex])
         }, completion: { _ in
             
@@ -210,6 +220,7 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
     }
 
     func fillPlayerPoints() {
+        
         playerStartPoints.append(CGPoint(x: 870, y: 425))
         playerStartPoints.append(CGPoint(x: 735, y: 475))
         playerStartPoints.append(CGPoint(x: 600, y: 500))
@@ -246,6 +257,7 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
 
         UIImageView.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
             playerCard1ImageView.setOrigin(card1Pos)
+            playerCard1ImageView.tag = card1.index
             playerCard1ImageView.transform = CGAffineTransform(rotationAngle: rotation)
         }, completion: { _ in
                 UIImageView.transition(with: playerCard1ImageView, duration: Constants.Animation.FlipCardDuration,
@@ -253,6 +265,7 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
                     completion: { _ in
 
                         let playerCard2ImageView: UIImageView = self.getNewCardFromDeckFaceDown()
+                        playerCard2ImageView.tag = card2.index
                         let imageCard2FaceUp: UIImage = self.getCardImage(card2)
 
                         UIImageView.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
@@ -276,6 +289,11 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
         if let source = segue.source as? SelectCardsViewController {
             if source.selectedCards.count == 2 {
+                
+                for previouslySelectedCard in playerCards[currentPlayerIndex]! {
+                    view.viewWithTag(previouslySelectedCard.index)?.removeFromSuperview()
+                }
+
                 playerCards[currentPlayerIndex]!.removeAll()
                 playerCards[currentPlayerIndex]!.append(contentsOf: source.selectedCards)
                 playerSelected = true

@@ -710,17 +710,6 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="split"/>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sD-e9-jdE" userLabel="PlayerIndicator">
-                                <rect key="frame" x="855" y="375" width="46" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="8WU-oG-Sf1"/>
-                                    <constraint firstAttribute="width" constant="46" id="MlJ-hc-2IE"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="Chip.LightRed"/>
-                                <connections>
-                                    <action selector="playerIndicatorPressed:" destination="efv-N3-csu" eventType="touchUpInside" id="8lV-Ye-U8W"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19841215014457703" green="0.45681071281433105" blue="0.25121781229972839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -741,7 +730,6 @@
                             <constraint firstItem="fC0-QX-JLN" firstAttribute="centerX" secondItem="DXc-rm-V1x" secondAttribute="centerX" id="OpX-oL-LIL"/>
                             <constraint firstItem="SPu-sX-0gh" firstAttribute="centerX" secondItem="DXc-rm-V1x" secondAttribute="centerX" id="SYU-yo-tf6"/>
                             <constraint firstItem="zrs-IV-XHA" firstAttribute="trailing" secondItem="EFp-Yj-aAo" secondAttribute="leading" constant="-16" id="WaG-Lc-VyT"/>
-                            <constraint firstItem="1sD-e9-jdE" firstAttribute="leading" secondItem="DXc-rm-V1x" secondAttribute="leading" constant="855" id="Z17-NZ-16Q"/>
                             <constraint firstItem="bW0-F7-TeA" firstAttribute="centerY" secondItem="DXc-rm-V1x" secondAttribute="centerY" id="dqt-Nu-HpS"/>
                             <constraint firstItem="K7A-I8-pOs" firstAttribute="leading" secondItem="u65-8u-0jD" secondAttribute="leading" constant="35" id="goS-26-q0D"/>
                             <constraint firstItem="ubf-fJ-Up7" firstAttribute="centerY" secondItem="sJT-Oc-Fra" secondAttribute="centerY" id="h9S-KM-XB1"/>
@@ -753,7 +741,6 @@
                             <constraint firstItem="bW0-F7-TeA" firstAttribute="centerX" secondItem="DXc-rm-V1x" secondAttribute="centerX" id="pJg-sC-zWq"/>
                             <constraint firstItem="VNv-jl-ZhU" firstAttribute="leading" secondItem="u65-8u-0jD" secondAttribute="leading" constant="-35" id="qUx-6v-jpq"/>
                             <constraint firstItem="TB9-y0-xjq" firstAttribute="leading" secondItem="zrs-IV-XHA" secondAttribute="leading" id="qoE-wX-3ja"/>
-                            <constraint firstItem="1sD-e9-jdE" firstAttribute="top" secondItem="DXc-rm-V1x" secondAttribute="top" constant="375" id="sSq-CZ-24j"/>
                             <constraint firstItem="u65-8u-0jD" firstAttribute="centerY" secondItem="bW0-F7-TeA" secondAttribute="centerY" id="tqM-VG-nI5"/>
                             <constraint firstItem="TB9-y0-xjq" firstAttribute="centerY" secondItem="sJT-Oc-Fra" secondAttribute="centerY" id="xK6-ZP-Z4n"/>
                             <constraint firstItem="u65-8u-0jD" firstAttribute="centerX" secondItem="DXc-rm-V1x" secondAttribute="centerX" id="xrF-nK-TK1"/>
@@ -775,7 +762,6 @@
                         <outlet property="numberOfPlayersLabel" destination="EFp-Yj-aAo" id="NoR-9S-D0e"/>
                         <outlet property="numberOfPlayersStepper" destination="2Oa-D5-QLi" id="Qmx-ai-0Wy"/>
                         <outlet property="numberOfPlayersTitleLabel" destination="zrs-IV-XHA" id="I6O-Rf-FC5"/>
-                        <outlet property="playerIndicatorButton" destination="1sD-e9-jdE" id="RG4-fH-8oQ"/>
                         <outlet property="selectCardsLabel" destination="fC0-QX-JLN" id="FqZ-yS-Cb1"/>
                         <outlet property="splitButton" destination="u65-8u-0jD" id="eoj-Fs-FiL"/>
                         <outlet property="standButton" destination="VNv-jl-ZhU" id="IyC-HT-pBr"/>

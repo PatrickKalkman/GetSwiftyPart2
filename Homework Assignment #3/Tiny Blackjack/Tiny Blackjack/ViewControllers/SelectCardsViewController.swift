@@ -54,11 +54,14 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     }
     
     func createCards() {
-        var cardIndex: Int = 0
+        var cardIndex: Int = 1
         for rank in Rank.allCases {
             hearts.append(Card(Suit.heart, rank, cardIndex))
+            cardIndex += 1
             diamonds.append(Card(Suit.diamond, rank, cardIndex))
+            cardIndex += 1
             clubs.append(Card(Suit.club, rank, cardIndex))
+            cardIndex += 1
             spades.append(Card(Suit.spade, rank, cardIndex))
             cardIndex += 1
         }
