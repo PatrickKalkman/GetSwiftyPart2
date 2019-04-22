@@ -118,8 +118,11 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
     var numberOfDecksRemaining: UInt = 8
 
     var playerCards: [Int: [Card]] = [Int: [Card]]()
+    var dealerCards: [Card] = [Card]()
     var playerStartPoints: [CGPoint] = [CGPoint]()
+    var dealerStartPoint: CGPoint = CGPoint()
     var playerIndicatorStartPoints: [CGPoint] = [CGPoint]()
+    var dealerIndicatorStartPoint: CGPoint = CGPoint()
     
     var playerSelected: Bool = false
     var currentPlayerIndex: Int = 0
@@ -148,24 +151,45 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
     override func viewDidAppear(_ animated: Bool) {
         
         if playerSelected {
-            dealCards(playerIndex: currentPlayerIndex)
+            if !atDealer {
+               dealCards(playerIndex: currentPlayerIndex)
+            } else {
+                dealDealerCard()
+            }
             playerSelected = false
             playerIndicatorPressed(self)
         }
     }
     
+    var atDealer: Bool = false
+    
     @IBAction func playerIndicatorPressed(_ sender: Any) {
-        if currentPlayerIndex < 6 {
+        if currentPlayerIndex < numberOfPlayers - 1 {
             currentPlayerIndex += 1
+             movePlayerIndicatorToCurrentPlayer()
         } else {
-            currentPlayerIndex = 0
+            if !atDealer {
+                movePlayerIndicatorToDealer()
+                atDealer = true
+            } else {
+                atDealer = false
+                currentPlayerIndex = 0
+                movePlayerIndicatorToCurrentPlayer()
+            }
         }
-        movePlayerIndicatorToCurrentPlayer()
     }
     
     func movePlayerIndicatorToCurrentPlayer() {
         UIButton.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
             self.playerIndicatorButton.setOrigin(self.playerIndicatorStartPoints[self.currentPlayerIndex])
+        }, completion: { _ in
+            
+        })
+    }
+    
+    func movePlayerIndicatorToDealer() {
+        UIButton.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
+            self.playerIndicatorButton.setOrigin(self.dealerIndicatorStartPoint)
         }, completion: { _ in
             
         })
@@ -215,7 +239,13 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
         if let selectCardsViewController = segue.destination as? SelectCardsViewController {
             selectCardsViewController.selectedCards.removeAll()
             selectCardsViewController.playerIndex = currentPlayerIndex
-            selectCardsViewController.selectedCards.append(contentsOf: playerCards[currentPlayerIndex]!)
+            if atDealer {
+                selectCardsViewController.maximumNumberOfCardsToSelect = 1
+                selectCardsViewController.selectedCards.append(contentsOf: dealerCards)
+            } else {
+                selectCardsViewController.maximumNumberOfCardsToSelect = 2
+                selectCardsViewController.selectedCards.append(contentsOf: playerCards[currentPlayerIndex]!)
+            }
         }
     }
 
@@ -229,6 +259,8 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
         playerStartPoints.append(CGPoint(x: 195, y: 475))
         playerStartPoints.append(CGPoint(x: 60, y: 425))
         
+        dealerStartPoint = CGPoint(x: 475, y: 135)
+        
         playerIndicatorStartPoints.append(CGPoint(x: 855, y: 375))
         playerIndicatorStartPoints.append(CGPoint(x: 733, y: 420))
         playerIndicatorStartPoints.append(CGPoint(x: 615, y: 445))
@@ -236,6 +268,14 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
         playerIndicatorStartPoints.append(CGPoint(x: 360, y: 440))
         playerIndicatorStartPoints.append(CGPoint(x: 240, y: 415))
         playerIndicatorStartPoints.append(CGPoint(x: 122, y: 375))
+        
+        dealerIndicatorStartPoint = CGPoint(x: 488, y: 75)
+    }
+    func dealDealerCard() {
+        let card: Card = dealerCards[0]
+        let cardPosition: CGPoint = dealerStartPoint
+        
+        animateCard(card, 0, cardPosition)
     }
 
     func dealCards(playerIndex: Int) {
@@ -280,6 +320,24 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
                     })
             })
     }
+    
+    func animateCard(_ card: Card, _ rotation: CGFloat, _ cardPos: CGPoint) {
+        
+        let playerCardImageView: UIImageView = getNewCardFromDeckFaceDown()
+        let imageCardFaceUp: UIImage = getCardImage(card)
+        
+        UIImageView.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
+            playerCardImageView.setOrigin(cardPos)
+            playerCardImageView.tag = card.index
+            playerCardImageView.transform = CGAffineTransform(rotationAngle: rotation)
+        }, completion: { _ in
+            UIImageView.transition(with: playerCardImageView, duration: Constants.Animation.FlipCardDuration,
+                                   options: .transitionFlipFromLeft, animations: { playerCardImageView.image = imageCardFaceUp },
+                                   completion: { _ in
+                                    
+            })
+        })
+    }
 
     func getCardImage(_ card: Card) -> UIImage {
         let imageName: String = cardToImageNameMapper.map(card)
@@ -288,17 +346,27 @@ class CardCountingViewController: BlackjackViewControllerBase, BlackjackViewProt
 
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
         if let source = segue.source as? SelectCardsViewController {
-            if source.selectedCards.count == 2 {
+            if source.selectedCards.count >= 1 {
                 
-                for previouslySelectedCard in playerCards[currentPlayerIndex]! {
-                    view.viewWithTag(previouslySelectedCard.index)?.removeFromSuperview()
-                }
 
-                playerCards[currentPlayerIndex]!.removeAll()
-                playerCards[currentPlayerIndex]!.append(contentsOf: source.selectedCards)
-                playerSelected = true
-                gameEngine.dealtCards(playerIndex: currentPlayerIndex,
-                        card1: source.selectedCards[0], card2: source.selectedCards[1])
+
+                if !atDealer {
+                    for previouslySelectedCard in playerCards[currentPlayerIndex]! {
+                        view.viewWithTag(previouslySelectedCard.index)?.removeFromSuperview()
+                    }
+                    playerCards[currentPlayerIndex]!.removeAll()
+                    playerCards[currentPlayerIndex]!.append(contentsOf: source.selectedCards)
+                    playerSelected = true
+                    gameEngine.dealtCards(playerIndex: currentPlayerIndex,
+                            card1: source.selectedCards[0], card2: source.selectedCards[1])
+                } else {
+                    for previouslySelectedCard in dealerCards {
+                        view.viewWithTag(previouslySelectedCard.index)?.removeFromSuperview()
+                    }
+                    dealerCards.removeAll()
+                    dealerCards.append(contentsOf: source.selectedCards)
+                    playerSelected = true
+                }
             }
         }
     }

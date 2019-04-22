@@ -21,6 +21,7 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     private let reuseIdentifier = "CardCell"
     private let cardToImageNameMapper: CardToImageNameMapper = CardToImageNameMapper()
     
+    var maximumNumberOfCardsToSelect: Int = 2
     var playerIndex: Int = 0
     var selectedCards: [Card] = [Card]()
     
@@ -107,7 +108,7 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
         
         for card in selectedCards {
             if let collectionView = collectionViews[card.suit] {
-                let at: IndexPath = IndexPath(item: card.index, section: 0)
+                let at: IndexPath = IndexPath(item: card.index / 4, section: 0)
                 collectionView.selectItem(at: at, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
             }
         }
@@ -131,7 +132,7 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        if totalNumberOfSelectedItems() == 2 {
+        if totalNumberOfSelectedItems() == maximumNumberOfCardsToSelect {
             showMaximumSelection()
             return false
         } else {
@@ -147,7 +148,7 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     }
     
     func showMaximumSelection() {
-        let banner = NotificationBanner(title: "Maximum number of cards selected (2)" , subtitle: "Deselect a card before selecting another one", style: BannerStyle.info)
+        let banner = NotificationBanner(title: "Maximum number of cards selected (\(maximumNumberOfCardsToSelect))" , subtitle: "Deselect a card before selecting another one", style: BannerStyle.info)
         banner.show(bannerPosition: BannerPosition.top)
     }
 }
