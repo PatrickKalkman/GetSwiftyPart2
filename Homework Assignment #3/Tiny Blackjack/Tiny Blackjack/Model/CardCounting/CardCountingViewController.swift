@@ -352,7 +352,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
     func getNextPlayersPlay() {
         currentHand = 0
-        currentPlayerIndex += 1
+        currentPlayerIndex += 1
         if currentPlayerIndex < numberOfPlayers {
             gameEngine.selectHand()
         } else {

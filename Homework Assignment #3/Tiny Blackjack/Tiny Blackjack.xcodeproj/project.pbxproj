@@ -31,7 +31,6 @@
 		AB8A4E202264E1360084323E /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E1F2264E1360084323E /* NavigationViewController.swift */; };
 		AB8A4E2222651C800084323E /* BasicStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2122651C800084323E /* BasicStrategy.swift */; };
 		AB8A4E2422666BFE0084323E /* BasicStrategyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */; };
-		AB8A4E2622687D8E0084323E /* ProposedActionToMessageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */; };
 		AB8D9F7D226A094C00D0E304 /* SelectCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */; };
 		AB8D9F7F226A206A00D0E304 /* CardSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8D9F7E226A206A00D0E304 /* CardSelectCollectionViewCell.swift */; };
 		AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFB622453BEB00E45E6F /* AppDelegate.swift */; };
@@ -69,6 +68,7 @@
 		AB995517225FB00200FB9596 /* Card1.wav in Resources */ = {isa = PBXBuildFile; fileRef = AB995514225FB00200FB9596 /* Card1.wav */; };
 		AB99551C2260633400FB9596 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99551B2260633400FB9596 /* UIViewExtensions.swift */; };
 		AB99551E22606BF300FB9596 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99551D22606BF300FB9596 /* GameResult.swift */; };
+		ABC1965E22723BE100B5A3A7 /* ProposedActionToMessageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1965D22723BE100B5A3A7 /* ProposedActionToMessageMapper.swift */; };
 		ABFC4A2D22620C6E0011C5AE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC4A2C22620C6E0011C5AE /* MenuViewController.swift */; };
 		ABFC4A2F22627A770011C5AE /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC4A2E22627A770011C5AE /* UIColor.swift */; };
 		ABFC4A31226325100011C5AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC4A30226325100011C5AE /* SettingsViewController.swift */; };
@@ -114,7 +114,6 @@
 		AB8A4E1F2264E1360084323E /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		AB8A4E2122651C800084323E /* BasicStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStrategy.swift; sourceTree = "<group>"; };
 		AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStrategyTest.swift; sourceTree = "<group>"; };
-		AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProposedActionTo\U0010MessageMapper.swift"; sourceTree = "<group>"; };
 		AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardsViewController.swift; sourceTree = "<group>"; };
 		AB8D9F7E226A206A00D0E304 /* CardSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB97EFB322453BEB00E45E6F /* Tiny Blackjack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Blackjack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +155,7 @@
 		AB995514225FB00200FB9596 /* Card1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Card1.wav; sourceTree = "<group>"; };
 		AB99551B2260633400FB9596 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		AB99551D22606BF300FB9596 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
+		ABC1965D22723BE100B5A3A7 /* ProposedActionToMessageMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposedActionToMessageMapper.swift; sourceTree = "<group>"; };
 		ABFC4A2C22620C6E0011C5AE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ABFC4A2E22627A770011C5AE /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		ABFC4A30226325100011C5AE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -212,13 +212,13 @@
 		AB129F5422514F810025ECA1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ABC1965D22723BE100B5A3A7 /* ProposedActionToMessageMapper.swift */,
 				AB129F4C22508B960025ECA1 /* GameResultCalculator.swift */,
 				AB995507225BBA0300FB9596 /* ChipTag.swift */,
 				AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */,
 				AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */,
 				AB995510225D375200FB9596 /* InitialChipsGenerator.swift */,
 				ABFC4A33226326470011C5AE /* SettingsBundleHelper.swift */,
-				AB8A4E2522687D8E0084323E /* ProposedActionToMessageMapper.swift */,
 				AB58210E22699BE7003A07A8 /* SoundManager.swift */,
 			);
 			path = Helpers;
@@ -592,7 +592,6 @@
 				AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */,
 				AB995511225D375200FB9596 /* InitialChipsGenerator.swift in Sources */,
 				AB129F47224E4AF30025ECA1 /* AutomaticGameStateMachine.swift in Sources */,
-				AB8A4E2622687D8E0084323E /* ProposedActionToMessageMapper.swift in Sources */,
 				AB142D33226F8279005B1B26 /* AutomaticGameEngine.swift in Sources */,
 				AB142D3A227196E4005B1B26 /* CardCountingGameEngine.swift in Sources */,
 				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
@@ -605,6 +604,7 @@
 				AB995503225A161C00FB9596 /* Wallet.swift in Sources */,
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
 				ABFC4A31226325100011C5AE /* SettingsViewController.swift in Sources */,
+				ABC1965E22723BE100B5A3A7 /* ProposedActionToMessageMapper.swift in Sources */,
 				AB58210D22699A51003A07A8 /* BlackjackViewControllerBase.swift in Sources */,
 				AB8A4E202264E1360084323E /* NavigationViewController.swift in Sources */,
 				ABFC4A2F22627A770011C5AE /* UIColor.swift in Sources */,
