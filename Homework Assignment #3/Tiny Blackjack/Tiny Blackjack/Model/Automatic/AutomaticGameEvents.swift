@@ -9,7 +9,7 @@
 import Foundation
 import SwiftState
 
-enum GameEvents: EventType {
+enum AutomaticGameEvents: EventType {
     case start
     case playersAdded
     case checked

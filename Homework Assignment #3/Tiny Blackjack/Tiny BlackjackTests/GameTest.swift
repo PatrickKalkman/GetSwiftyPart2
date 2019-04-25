@@ -13,7 +13,7 @@ class GameTest: XCTestCase {
 
     func test_start_deals_every_player_two_cards() {
         for _ in 1...30 {
-            let game: GameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: nil)
+            let game: AutomaticGameEngine = AutomaticGameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: nil)
             game.start(numberOfPlayers: 5)
             print(game.getState())
         }

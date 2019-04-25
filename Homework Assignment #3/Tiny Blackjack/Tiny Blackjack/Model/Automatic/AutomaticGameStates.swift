@@ -9,7 +9,7 @@
 import Foundation
 import SwiftState
 
-enum GameStates: StateType {
+enum AutomaticGameStates: StateType {
     case waitingForStart
     case started
     case shuffleDeck

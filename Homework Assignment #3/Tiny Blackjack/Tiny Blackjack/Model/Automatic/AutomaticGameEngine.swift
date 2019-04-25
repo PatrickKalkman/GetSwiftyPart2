@@ -9,12 +9,12 @@
 import Foundation
 import SwiftState
 
-class GameEngine: BlackjackProtocol {
+class AutomaticGameEngine: BlackjackProtocol {
 
     private var deck: Deck!
     private var players: [Player] = [Player]()
     private var dealer: Player!
-    private var gameState: GameStateMachine!
+    private var gameState: AutomaticGameStateMachine!
     private var blackjackView: BlackjackViewProtocol?
     private var currentPlayerIndex: Int = 0
     private var currentPlayer: Player!
@@ -28,7 +28,7 @@ class GameEngine: BlackjackProtocol {
     init(gameResultCalculator: GameResultCalculator, blackjackView: BlackjackViewProtocol?) {
         self.playResult = [HandResult]()
         self.gameResultCalculator = gameResultCalculator
-        self.gameState = GameStateMachine(gameEngine: self)
+        self.gameState = AutomaticGameStateMachine(gameEngine: self)
         self.blackjackView = blackjackView
     }
     
@@ -36,11 +36,11 @@ class GameEngine: BlackjackProtocol {
         manualMode = true
     }
 
-    func getState() -> GameStates {
+    func getState() -> AutomaticGameStates {
         return gameState.machine.state
     }
 
-    func triggerEvent(_ event: GameEvents) {
+    func triggerEvent(_ event: AutomaticGameEvents) {
         gameState.triggerEvent(event)
     }
 
@@ -117,7 +117,7 @@ class GameEngine: BlackjackProtocol {
 
     func start(numberOfPlayers: UInt8) {
         self.numberOfPlayers = numberOfPlayers
-        triggerEvent(GameEvents.start)
+        triggerEvent(AutomaticGameEvents.start)
     }
 
     func restart() {
@@ -127,10 +127,10 @@ class GameEngine: BlackjackProtocol {
         }
         
         if currentPlayer.wallet.totalValue() > 0 {
-            triggerEvent(GameEvents.nextRound)
+            triggerEvent(AutomaticGameEvents.nextRound)
         } else {
             players.removeAll()
-            triggerEvent(GameEvents.noMoreMoney)
+            triggerEvent(AutomaticGameEvents.noMoreMoney)
         }
         
     }
@@ -146,13 +146,13 @@ class GameEngine: BlackjackProtocol {
             players.append(player)
         }
 
-        triggerEvent(GameEvents.shuffle)
+        triggerEvent(AutomaticGameEvents.shuffle)
     }
 
     func shuffle() {
         deck = Deck()
         deck.shuffle()
-        triggerEvent(GameEvents.shuffled)
+        triggerEvent(AutomaticGameEvents.shuffled)
     }
 
     func checkDeck() {
@@ -160,7 +160,7 @@ class GameEngine: BlackjackProtocol {
             deck = Deck()
             deck.shuffle()
         }
-        triggerEvent(GameEvents.checked)
+        triggerEvent( AutomaticGameEvents.checked)
     }
 
     func placeBets() {
@@ -191,13 +191,17 @@ class GameEngine: BlackjackProtocol {
         players[playerIndex].add(handIndex: 0, card: card1)
         players[playerIndex].add(handIndex: 0, card: card2)
     }
+    
+    func dealtDealerCards(card: Card) {
+        dealer.add(handIndex: 0, card: card)
+    }
 
     func dealerBlackjackTest() {
         if dealer.getHand(handIndex: 0).isBlackjack() {
             dealer.getHand(handIndex: 0).setCardsFaceUp()
-            triggerEvent(GameEvents.dealerHasBlackjack)
+            triggerEvent(AutomaticGameEvents.dealerHasBlackjack)
         } else {
-            triggerEvent(GameEvents.dealerHasNoBlackjack)
+            triggerEvent(AutomaticGameEvents.dealerHasNoBlackjack)
         }
     }
 
@@ -210,12 +214,12 @@ class GameEngine: BlackjackProtocol {
             currentPlayer = players[currentPlayerIndex]
             if !currentPlayer.isHuman {
                 currentPlayer.placeBets()
-                triggerEvent(GameEvents.playerBetPlaced)
+                triggerEvent(AutomaticGameEvents.playerBetPlaced)
             } else {
                 // do nothing wait until signal from ui
             }
         } else {
-            triggerEvent(GameEvents.betsPlaced)
+            triggerEvent(AutomaticGameEvents.betsPlaced)
         }
     }
 
@@ -227,9 +231,9 @@ class GameEngine: BlackjackProtocol {
         if currentPlayerIndex < players.count {
             currentPlayer = players[currentPlayerIndex]
             currentPlayerHandIndex = 0
-            triggerEvent(GameEvents.playerSelected)
+            triggerEvent(AutomaticGameEvents.playerSelected)
         } else {
-            triggerEvent(GameEvents.allPlayersFinished)
+            triggerEvent(AutomaticGameEvents.allPlayersFinished)
             currentPlayerIndex = 0
             currentPlayerHandIndex = 0
         }
@@ -252,7 +256,7 @@ class GameEngine: BlackjackProtocol {
 
         } else {
             currentPlayerIndex += 1
-            triggerEvent(GameEvents.playerHandsFinished)
+            triggerEvent(AutomaticGameEvents.playerHandsFinished)
         }
     }
 
@@ -264,26 +268,26 @@ class GameEngine: BlackjackProtocol {
                 dealerHand: dealer.getHand(handIndex: 0))
             switch action {
             case ProposedAction.hit:
-                triggerEvent(GameEvents.hitPlayer)
+                triggerEvent(AutomaticGameEvents.hitPlayer)
             case ProposedAction.stand:
-                triggerEvent(GameEvents.standPlayer)
+                triggerEvent(AutomaticGameEvents.standPlayer)
             case ProposedAction.split:
-                triggerEvent(GameEvents.splitPlayerHand)
+                triggerEvent(AutomaticGameEvents.splitPlayerHand)
             case ProposedAction.bust:
-                triggerEvent(GameEvents.bustPlayer)
+                triggerEvent(AutomaticGameEvents.bustPlayer)
             case ProposedAction.blackjack:
-                triggerEvent(GameEvents.playerHasBlackjack)
+                triggerEvent(AutomaticGameEvents.playerHasBlackjack)
             case ProposedAction.doubleOrStand:
-                triggerEvent(GameEvents.doubleDownPlayer)
+                triggerEvent(AutomaticGameEvents.doubleDownPlayer)
             case ProposedAction.doubleOrHit:
-                triggerEvent(GameEvents.doubleDownPlayer)
+                triggerEvent(AutomaticGameEvents.doubleDownPlayer)
             default:
-                triggerEvent(GameEvents.standPlayer)
+                triggerEvent(AutomaticGameEvents.standPlayer)
             }
         } else if isCurrentHandBlackjack() {
-            triggerEvent(GameEvents.playerHasBlackjack)
+            triggerEvent(AutomaticGameEvents.playerHasBlackjack)
         } else if isCurrentHandBusted() {
-            triggerEvent(GameEvents.bustPlayer)
+            triggerEvent(AutomaticGameEvents.bustPlayer)
         } else if currentHandCanSplit() {
             blackjackView?.enableSplit()
         }
@@ -334,13 +338,13 @@ class GameEngine: BlackjackProtocol {
 
         switch action {
         case ProposedAction.hit:
-            triggerEvent(GameEvents.hitDealer)
+            triggerEvent(AutomaticGameEvents.hitDealer)
         case ProposedAction.stand:
-            triggerEvent(GameEvents.standDealer)
+            triggerEvent(AutomaticGameEvents.standDealer)
         case ProposedAction.bust:
-            triggerEvent(GameEvents.bustDealer)
+            triggerEvent(AutomaticGameEvents.bustDealer)
         default:
-            triggerEvent(GameEvents.standDealer)
+            triggerEvent(AutomaticGameEvents.standDealer)
         }
     }
 
@@ -355,7 +359,7 @@ class GameEngine: BlackjackProtocol {
         let card: Card = deck.draw()
         currentPlayer.add(handIndex: currentPlayerHandIndex - 1, card: card)
         currentPlayerHandIndex += 1
-        triggerEvent(GameEvents.standPlayer)
+        triggerEvent(AutomaticGameEvents.standPlayer)
     }
 
     func splitHand() {
@@ -363,7 +367,7 @@ class GameEngine: BlackjackProtocol {
         currentPlayer.split(handIndex: currentPlayerHandIndex - 1)
         currentPlayerHandIndex = currentPlayerHandIndex - 1
         currentHand = currentPlayer.getHand(handIndex: currentPlayerHandIndex)
-        triggerEvent(GameEvents.playerHandSplitted)
+        triggerEvent(AutomaticGameEvents.playerHandSplitted)
     }
 
     func hitDealer() {
@@ -377,7 +381,7 @@ class GameEngine: BlackjackProtocol {
     func calculateResult() {
         playResult = gameResultCalculator.calculateAndShowResults(players: players, dealer: dealer)
         blackjackView?.calculateResult()
-        triggerEvent(GameEvents.resultsCalculated)
+        triggerEvent(AutomaticGameEvents.resultsCalculated)
     }
 
     func getPlayResult() -> [HandResult] {
@@ -399,7 +403,7 @@ class GameEngine: BlackjackProtocol {
 
     func dealerStart() {
         blackjackView?.dealerStart()
-        triggerEvent(GameEvents.dealerChoose)
+        triggerEvent(AutomaticGameEvents.dealerChoose)
     }
     
     func noMoreMoney() {

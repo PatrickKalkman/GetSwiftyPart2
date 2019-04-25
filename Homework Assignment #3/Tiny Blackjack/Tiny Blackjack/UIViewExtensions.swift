@@ -45,7 +45,7 @@ extension UIView {
         shakeGroup.duration = duration
         self.layer.add(shakeGroup, forKey: "shakeIt")
     }
-    
+
 
     // When hiding UI elements, we let them fade in or out
     func hideWithAnimation(hidden: Bool) {
@@ -53,13 +53,13 @@ extension UIView {
             self.isHidden = hidden
         })
     }
-    
+
     func animate(fadeIn: Bool, withDuration: TimeInterval = 0.6) {
         UIView.animate(withDuration: withDuration, delay: 0.0, options: .curveEaseInOut, animations: {
             self.alpha = fadeIn ? 1.0 : 0.0
         })
     }
-    
+
     // When changing text on a label we use this to fade in/out the text
     func fadeTransition(_ duration: CFTimeInterval) {
         let animation = CATransition()
@@ -68,12 +68,19 @@ extension UIView {
         animation.duration = duration
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
-    
+
     func setOrigin(_ originToSet: CGPoint) {
         self.frame.origin = originToSet
     }
-}
 
+    func setBorder(radius: CGFloat, color: UIColor = UIColor.clear) {
+        let roundView: UIView = self
+        roundView.layer.cornerRadius = CGFloat(radius)
+        roundView.layer.borderWidth = 1
+        roundView.layer.borderColor = color.cgColor
+        roundView.clipsToBounds = true
+    }
+}
 
 extension UICollectionView {
     func numberOfSelectedItems() -> Int {

@@ -14,7 +14,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
     private let valueToChipMapper: ValueToChipMapper = ValueToChipMapper()
     private let soundManager: SoundManager = SoundManager()
     private let imageCardFaceDown: UIImage = UIImage(named: Constants.Assets.FacedownCard)!
-    private var gameEngine: GameEngine!
+    private var gameEngine: AutomaticGameEngine!
 
     private var dealerCard2ImageView: UIImageView!
 
@@ -48,9 +48,9 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         
         setTitle("PLAY BLACKJACK")
 
-        gameEngine = GameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
+        gameEngine = AutomaticGameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
 
-        self.organizeUiBasedOnState(state: GameStates.started)
+        self.organizeUiBasedOnState(state: AutomaticGameStates.started)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +60,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
     
     @IBAction func chipAddAction(_ sender: UIButton) {
 
-        if gameEngine.getState() != GameStates.playersBetSelectPlayer {
+        if gameEngine.getState() != AutomaticGameStates.playersBetSelectPlayer {
             return
         }
 
@@ -133,8 +133,8 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
     @IBAction func deal(_ sender: Any) {
         
         self.soundManager.playShuffle( completion: { _ in
-            self.gameEngine.triggerEvent(GameEvents.betsPlaced)
-            self.gameEngine.triggerEvent(GameEvents.dealCards)
+            self.gameEngine.triggerEvent(AutomaticGameEvents.betsPlaced)
+            self.gameEngine.triggerEvent(AutomaticGameEvents.dealCards)
         })
 
     }
@@ -156,26 +156,26 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         
         noMoreMoneyLabel.hideWithAnimation(hidden: true)
         restartButton.hideWithAnimation(hidden: true)
-        self.organizeUiBasedOnState(state: GameStates.started)
+        self.organizeUiBasedOnState(state: AutomaticGameStates.started)
         self.gameEngine.restart()
         self.refreshWalletInformation()
     }
 
     @IBAction func hitPlayer(_ sender: Any) {
-        gameEngine.triggerEvent(GameEvents.hitPlayer)
+        gameEngine.triggerEvent(AutomaticGameEvents.hitPlayer)
     }
 
     @IBAction func standPlayer(_ sender: Any) {
-        gameEngine.triggerEvent(GameEvents.standPlayer)
+        gameEngine.triggerEvent(AutomaticGameEvents.standPlayer)
     }
 
     @IBAction func splitPlayer(_ sender: Any) {
-        gameEngine.triggerEvent(GameEvents.splitPlayerHand)
+        gameEngine.triggerEvent(AutomaticGameEvents.splitPlayerHand)
     }
 
-    func organizeUiBasedOnState(state: GameStates) {
+    func organizeUiBasedOnState(state: AutomaticGameStates) {
         switch state {
-        case GameStates.started:
+        case AutomaticGameStates.started:
             self.placeYourBetsTitle.hideWithAnimation(hidden: false)
             self.dealButton.hideWithAnimation(hidden: true)
             self.restartButton.hideWithAnimation(hidden: true)
@@ -184,7 +184,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
             dealerValueLabel.hideWithAnimation(hidden: true)
             playerBetLabel.hideWithAnimation(hidden: true)
             noMoreMoneyLabel.hideWithAnimation(hidden: true)
-        case GameStates.dealCards:
+        case AutomaticGameStates.dealCards:
             playerValueLabel.hideWithAnimation(hidden: true)
             dealerValueLabel.hideWithAnimation(hidden: true)
             dealButton.hideWithAnimation(hidden: true)
@@ -195,7 +195,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
             playResultLabel.hideWithAnimation(hidden: true)
             self.navigationItem.title = ""
             noMoreMoneyLabel.hideWithAnimation(hidden: true)
-        case GameStates.distributeBets:
+        case AutomaticGameStates.distributeBets:
             dealButton.hideWithAnimation(hidden: true)
             splitButton.hideWithAnimation(hidden: true)
             hitButton.hideWithAnimation(hidden: true)
@@ -228,7 +228,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         // The game engine already has dealt the cards
         // Here we instruct the UI to show the dealing of the first cards using animation
         self.dealButton.hideWithAnimation(hidden: true)
-        self.organizeUiBasedOnState(state: GameStates.dealCards)
+        self.organizeUiBasedOnState(state: AutomaticGameStates.dealCards)
 
         let player1Card1ImageView: UIImageView = getNewCardFromDeckFaceDown()
         let card1: Card = gameEngine.getPlayerCard(playerIndex: 0, handIndex: 0, cardIndex: 0)
@@ -277,7 +277,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
                                                             self.dealerCard2ImageView.setOrigin(Constants.Positions.SecondDealerCard)
                                                         }, completion: { _ in
 
-                                                                self.gameEngine.triggerEvent(GameEvents.dealt)
+                                                                self.gameEngine.triggerEvent(AutomaticGameEvents.dealt)
                                                                 self.showAndRefreshValues()
                                                             })
                                                     })
@@ -295,8 +295,8 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         moveHand(handToMove: nextHand, xMove: 0, yMove: 210, completion: { _ in
             let currentHand = self.gameEngine.getCurrentHand()
             self.moveHand(handToMove: currentHand, xMove: -40, yMove: 0, completion: { _ in
-                self.gameEngine.triggerEvent(GameEvents.playerShowSplittedHandFinished)
-                self.organizeUiBasedOnState(state: GameStates.dealCards)
+                self.gameEngine.triggerEvent(AutomaticGameEvents.playerShowSplittedHandFinished)
+                self.organizeUiBasedOnState(state: AutomaticGameStates.dealCards)
                 self.playerCardIndex = 1
             })
         })
@@ -327,7 +327,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         moveHand(handToMove: currentHand, xMove: 0, yMove: -210)
 
         print("Select hand with cardIndex \(cardIndex)")
-        self.gameEngine.triggerEvent(GameEvents.playerHandSelected)
+        self.gameEngine.triggerEvent(AutomaticGameEvents.playerHandSelected)
     }
 
     func playerGetChoice() {
@@ -343,7 +343,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
             completion: { _ in
                 self.dealerCardIndex += 1
                 self.showAndRefreshValues()
-                self.gameEngine.triggerEvent(GameEvents.turnDealerCardFaceUp)
+                self.gameEngine.triggerEvent(AutomaticGameEvents.turnDealerCardFaceUp)
             })
     }
 
@@ -354,7 +354,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
             options: .transitionFlipFromLeft, animations: { self.dealerCard2ImageView.image = dealerCardFaceUp },
             completion: { _ in
                 self.showAndRefreshValues()
-                self.gameEngine.triggerEvent(GameEvents.dealerHasBlackjackIsShown)
+                self.gameEngine.triggerEvent(AutomaticGameEvents.dealerHasBlackjackIsShown)
             })
     }
 
@@ -381,7 +381,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
 
                         self.playerCardIndex += 1
                         self.showAndRefreshValues()
-                        self.gameEngine.triggerEvent(GameEvents.playerChoose)
+                        self.gameEngine.triggerEvent(AutomaticGameEvents.playerChoose)
                     })
 
             })
@@ -407,7 +407,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
                     completion: { _ in
                         self.dealerCardIndex += 1
                         self.showAndRefreshValues()
-                        self.gameEngine.triggerEvent(GameEvents.dealerChoose)
+                        self.gameEngine.triggerEvent(AutomaticGameEvents.dealerChoose)
 
                     })
 
@@ -421,7 +421,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         }
         addedChips.removeAll()
         self.refreshWalletInformation()
-        organizeUiBasedOnState(state: GameStates.distributeBets)
+        organizeUiBasedOnState(state: AutomaticGameStates.distributeBets)
         if gameEngine.playerHasNoMoreMoney() {
             noMoreMoneyLabel.hideWithAnimation(hidden: false)
             restartButton.hideWithAnimation(hidden: false)

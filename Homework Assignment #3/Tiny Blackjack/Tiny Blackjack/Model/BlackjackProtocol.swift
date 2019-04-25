@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftState
 
 protocol BlackjackProtocol {
     func start()

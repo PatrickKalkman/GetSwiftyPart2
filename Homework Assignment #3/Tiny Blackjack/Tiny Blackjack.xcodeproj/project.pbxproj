@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		560722196772135F319FE866 /* Pods_Tiny_Blackjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613B956073532DFBB426CA8C /* Pods_Tiny_Blackjack.framework */; };
-		AB129F47224E4AF30025ECA1 /* GameStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F46224E4AF30025ECA1 /* GameStateMachine.swift */; };
-		AB129F49224E5E780025ECA1 /* GameEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F48224E5E780025ECA1 /* GameEvents.swift */; };
+		AB129F47224E4AF30025ECA1 /* AutomaticGameStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F46224E4AF30025ECA1 /* AutomaticGameStateMachine.swift */; };
+		AB129F49224E5E780025ECA1 /* AutomaticGameEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F48224E5E780025ECA1 /* AutomaticGameEvents.swift */; };
 		AB129F4B224E80890025ECA1 /* BlackjackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F4A224E80890025ECA1 /* BlackjackProtocol.swift */; };
 		AB129F4D22508B960025ECA1 /* GameResultCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F4C22508B960025ECA1 /* GameResultCalculator.swift */; };
 		AB129F502250EDFB0025ECA1 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F4F2250EDFB0025ECA1 /* BorderButton.swift */; };
@@ -17,6 +17,11 @@
 		AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */; };
 		AB129F5A225504680025ECA1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F59225504680025ECA1 /* Constants.swift */; };
 		AB129F5C225518550025ECA1 /* HandResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB129F5B225518550025ECA1 /* HandResult.swift */; };
+		AB142D33226F8279005B1B26 /* AutomaticGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D32226F8279005B1B26 /* AutomaticGameEngine.swift */; };
+		AB142D3522718C32005B1B26 /* CardCountingStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D3422718C32005B1B26 /* CardCountingStateMachine.swift */; };
+		AB142D3A227196E4005B1B26 /* CardCountingGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D39227196E4005B1B26 /* CardCountingGameEngine.swift */; };
+		AB142D3C22719939005B1B26 /* CardCountingGameEngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D3B22719939005B1B26 /* CardCountingGameEngineTest.swift */; };
+		AB142D3E2271A088005B1B26 /* CardCountingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D3D2271A088005B1B26 /* CardCountingViewProtocol.swift */; };
 		AB58210D22699A51003A07A8 /* BlackjackViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB58210C22699A51003A07A8 /* BlackjackViewControllerBase.swift */; };
 		AB58210F22699BE7003A07A8 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB58210E22699BE7003A07A8 /* SoundManager.swift */; };
 		AB5821112269C5CE003A07A8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5821102269C5CE003A07A8 /* GradientView.swift */; };
@@ -45,9 +50,8 @@
 		AB97EFE92246048100E45E6F /* HandTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFE82246048100E45E6F /* HandTest.swift */; };
 		AB97EFEB22461CCB00E45E6F /* PlayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFEA22461CCB00E45E6F /* PlayerTest.swift */; };
 		AB97EFED22461D6C00E45E6F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFEC22461D6C00E45E6F /* Player.swift */; };
-		AB97EFEF22461EFF00E45E6F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFEE22461EFF00E45E6F /* GameEngine.swift */; };
 		AB97EFF122461FC200E45E6F /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF022461FC200E45E6F /* GameTest.swift */; };
-		AB97EFF32247562500E45E6F /* GameStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF22247562500E45E6F /* GameStates.swift */; };
+		AB97EFF32247562500E45E6F /* AutomaticGameStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF22247562500E45E6F /* AutomaticGameStates.swift */; };
 		AB97EFF522475E1200E45E6F /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF422475E1200E45E6F /* GameError.swift */; };
 		AB97EFF72247683400E45E6F /* SimpleStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF62247683400E45E6F /* SimpleStrategy.swift */; };
 		AB97EFF92247C7CD00E45E6F /* SimpleStrategyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB97EFF82247C7CD00E45E6F /* SimpleStrategyTest.swift */; };
@@ -87,8 +91,8 @@
 		613B956073532DFBB426CA8C /* Pods_Tiny_Blackjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiny_Blackjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6301AB8487290F38BBCCF22F /* Pods-Tiny BlackjackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny BlackjackTests.debug.xcconfig"; path = "Target Support Files/Pods-Tiny BlackjackTests/Pods-Tiny BlackjackTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7912DF28179C43BF31E5E0FD /* Pods-Tiny BlackjackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny BlackjackTests.release.xcconfig"; path = "Target Support Files/Pods-Tiny BlackjackTests/Pods-Tiny BlackjackTests.release.xcconfig"; sourceTree = "<group>"; };
-		AB129F46224E4AF30025ECA1 /* GameStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateMachine.swift; sourceTree = "<group>"; };
-		AB129F48224E5E780025ECA1 /* GameEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEvents.swift; sourceTree = "<group>"; };
+		AB129F46224E4AF30025ECA1 /* AutomaticGameStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticGameStateMachine.swift; sourceTree = "<group>"; };
+		AB129F48224E5E780025ECA1 /* AutomaticGameEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticGameEvents.swift; sourceTree = "<group>"; };
 		AB129F4A224E80890025ECA1 /* BlackjackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackProtocol.swift; sourceTree = "<group>"; };
 		AB129F4C22508B960025ECA1 /* GameResultCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultCalculator.swift; sourceTree = "<group>"; };
 		AB129F4F2250EDFB0025ECA1 /* BorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
@@ -96,6 +100,11 @@
 		AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardToImageNameMapper.swift; sourceTree = "<group>"; };
 		AB129F59225504680025ECA1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB129F5B225518550025ECA1 /* HandResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandResult.swift; sourceTree = "<group>"; };
+		AB142D32226F8279005B1B26 /* AutomaticGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutomaticGameEngine.swift; sourceTree = "<group>"; };
+		AB142D3422718C32005B1B26 /* CardCountingStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingStateMachine.swift; sourceTree = "<group>"; };
+		AB142D39227196E4005B1B26 /* CardCountingGameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingGameEngine.swift; sourceTree = "<group>"; };
+		AB142D3B22719939005B1B26 /* CardCountingGameEngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingGameEngineTest.swift; sourceTree = "<group>"; };
+		AB142D3D2271A088005B1B26 /* CardCountingViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingViewProtocol.swift; sourceTree = "<group>"; };
 		AB58210C22699A51003A07A8 /* BlackjackViewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackViewControllerBase.swift; sourceTree = "<group>"; };
 		AB58210E22699BE7003A07A8 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		AB5821102269C5CE003A07A8 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = "../../../Homework Assignment #2/Tiny Converter/Tiny Converter/UI/GradientView.swift"; sourceTree = "<group>"; };
@@ -128,9 +137,8 @@
 		AB97EFE82246048100E45E6F /* HandTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandTest.swift; sourceTree = "<group>"; };
 		AB97EFEA22461CCB00E45E6F /* PlayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTest.swift; sourceTree = "<group>"; };
 		AB97EFEC22461D6C00E45E6F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		AB97EFEE22461EFF00E45E6F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		AB97EFF022461FC200E45E6F /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
-		AB97EFF22247562500E45E6F /* GameStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStates.swift; sourceTree = "<group>"; };
+		AB97EFF22247562500E45E6F /* AutomaticGameStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticGameStates.swift; sourceTree = "<group>"; };
 		AB97EFF422475E1200E45E6F /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
 		AB97EFF62247683400E45E6F /* SimpleStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStrategy.swift; sourceTree = "<group>"; };
 		AB97EFF82247C7CD00E45E6F /* SimpleStrategyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStrategyTest.swift; sourceTree = "<group>"; };
@@ -190,6 +198,7 @@
 		AB129F512250EE000025ECA1 /* Ui */ = {
 			isa = PBXGroup;
 			children = (
+				AB129F522251438C0025ECA1 /* BlackjackViewProtocol.swift */,
 				AB5821102269C5CE003A07A8 /* GradientView.swift */,
 				AB129F4F2250EDFB0025ECA1 /* BorderButton.swift */,
 				AB99551B2260633400FB9596 /* UIViewExtensions.swift */,
@@ -203,6 +212,7 @@
 		AB129F5422514F810025ECA1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AB129F4C22508B960025ECA1 /* GameResultCalculator.swift */,
 				AB995507225BBA0300FB9596 /* ChipTag.swift */,
 				AB995506225BBA0300FB9596 /* ValueToChipMapper.swift */,
 				AB129F5522514F9E0025ECA1 /* CardToImageNameMapper.swift */,
@@ -212,6 +222,44 @@
 				AB58210E22699BE7003A07A8 /* SoundManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AB142D3622718C3D005B1B26 /* Automatic */ = {
+			isa = PBXGroup;
+			children = (
+				AB142D32226F8279005B1B26 /* AutomaticGameEngine.swift */,
+				AB97EFF22247562500E45E6F /* AutomaticGameStates.swift */,
+				AB129F46224E4AF30025ECA1 /* AutomaticGameStateMachine.swift */,
+				AB129F48224E5E780025ECA1 /* AutomaticGameEvents.swift */,
+			);
+			path = Automatic;
+			sourceTree = "<group>";
+		};
+		AB142D3722718C81005B1B26 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				AB995502225A161C00FB9596 /* Wallet.swift */,
+				AB97EFDC224557D300E45E6F /* Card.swift */,
+				AB995504225A164F00FB9596 /* Chip.swift */,
+				AB97EFDE2245580700E45E6F /* Suit.swift */,
+				AB97EFE02245583900E45E6F /* Rank.swift */,
+				AB97EFE4224563FE00E45E6F /* Deck.swift */,
+				AB97EFE62246042D00E45E6F /* Hand.swift */,
+				AB97EFEC22461D6C00E45E6F /* Player.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		AB142D3822718CBC005B1B26 /* CardCounting */ = {
+			isa = PBXGroup;
+			children = (
+				AB8A4E1D2263A2CB0084323E /* CardCountingViewController.swift */,
+				AB142D3422718C32005B1B26 /* CardCountingStateMachine.swift */,
+				AB142D39227196E4005B1B26 /* CardCountingGameEngine.swift */,
+				AB142D3D2271A088005B1B26 /* CardCountingViewProtocol.swift */,
+				AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */,
+			);
+			path = CardCounting;
 			sourceTree = "<group>";
 		};
 		AB97EFAA22453BEB00E45E6F = {
@@ -267,6 +315,7 @@
 				AB601D5D224DF48700B140D7 /* DealerStrategyTest.swift */,
 				AB9955002259FFB300FB9596 /* WalletTest.swift */,
 				AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */,
+				AB142D3B22719939005B1B26 /* CardCountingGameEngineTest.swift */,
 			);
 			path = "Tiny BlackjackTests";
 			sourceTree = "<group>";
@@ -274,24 +323,13 @@
 		AB97EFDB224557A800E45E6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB142D3822718CBC005B1B26 /* CardCounting */,
+				AB142D3722718C81005B1B26 /* Entity */,
+				AB142D3622718C3D005B1B26 /* Automatic */,
 				AB97EFFB2247CB8600E45E6F /* Strategy */,
-				AB97EFDC224557D300E45E6F /* Card.swift */,
-				AB995504225A164F00FB9596 /* Chip.swift */,
-				AB97EFDE2245580700E45E6F /* Suit.swift */,
-				AB97EFE02245583900E45E6F /* Rank.swift */,
-				AB97EFE4224563FE00E45E6F /* Deck.swift */,
-				AB97EFE62246042D00E45E6F /* Hand.swift */,
-				AB97EFEC22461D6C00E45E6F /* Player.swift */,
-				AB97EFEE22461EFF00E45E6F /* GameEngine.swift */,
-				AB97EFF22247562500E45E6F /* GameStates.swift */,
 				AB97EFF422475E1200E45E6F /* GameError.swift */,
-				AB129F46224E4AF30025ECA1 /* GameStateMachine.swift */,
-				AB129F48224E5E780025ECA1 /* GameEvents.swift */,
 				AB129F4A224E80890025ECA1 /* BlackjackProtocol.swift */,
-				AB129F4C22508B960025ECA1 /* GameResultCalculator.swift */,
-				AB129F522251438C0025ECA1 /* BlackjackViewProtocol.swift */,
 				AB129F5B225518550025ECA1 /* HandResult.swift */,
-				AB995502225A161C00FB9596 /* Wallet.swift */,
 				AB99551D22606BF300FB9596 /* GameResult.swift */,
 			);
 			path = Model;
@@ -326,9 +364,7 @@
 				AB97EFB822453BEB00E45E6F /* BlackjackViewController.swift */,
 				ABFC4A2C22620C6E0011C5AE /* MenuViewController.swift */,
 				AB8A4E1B2263A2B10084323E /* BasicStrategyViewController.swift */,
-				AB8A4E1D2263A2CB0084323E /* CardCountingViewController.swift */,
 				AB8A4E1F2264E1360084323E /* NavigationViewController.swift */,
-				AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -534,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB8A4E1E2263A2CB0084323E /* CardCountingViewController.swift in Sources */,
+				AB142D3E2271A088005B1B26 /* CardCountingViewProtocol.swift in Sources */,
 				AB129F5A225504680025ECA1 /* Constants.swift in Sources */,
 				AB5821112269C5CE003A07A8 /* GradientView.swift in Sources */,
 				AB97EFE72246042D00E45E6F /* Hand.swift in Sources */,
@@ -554,15 +591,17 @@
 				AB8A4E1C2263A2B10084323E /* BasicStrategyViewController.swift in Sources */,
 				AB995508225BBA0300FB9596 /* ValueToChipMapper.swift in Sources */,
 				AB995511225D375200FB9596 /* InitialChipsGenerator.swift in Sources */,
-				AB129F47224E4AF30025ECA1 /* GameStateMachine.swift in Sources */,
+				AB129F47224E4AF30025ECA1 /* AutomaticGameStateMachine.swift in Sources */,
 				AB8A4E2622687D8E0084323E /* ProposedActionToMessageMapper.swift in Sources */,
+				AB142D33226F8279005B1B26 /* AutomaticGameEngine.swift in Sources */,
+				AB142D3A227196E4005B1B26 /* CardCountingGameEngine.swift in Sources */,
 				AB97EFE12245583900E45E6F /* Rank.swift in Sources */,
 				AB129F5622514F9E0025ECA1 /* CardToImageNameMapper.swift in Sources */,
 				AB995505225A164F00FB9596 /* Chip.swift in Sources */,
 				AB8D9F7D226A094C00D0E304 /* SelectCardsViewController.swift in Sources */,
 				AB8D9F7F226A206A00D0E304 /* CardSelectCollectionViewCell.swift in Sources */,
 				AB97EFF522475E1200E45E6F /* GameError.swift in Sources */,
-				AB129F49224E5E780025ECA1 /* GameEvents.swift in Sources */,
+				AB129F49224E5E780025ECA1 /* AutomaticGameEvents.swift in Sources */,
 				AB995503225A161C00FB9596 /* Wallet.swift in Sources */,
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
 				ABFC4A31226325100011C5AE /* SettingsViewController.swift in Sources */,
@@ -570,12 +609,12 @@
 				AB8A4E202264E1360084323E /* NavigationViewController.swift in Sources */,
 				ABFC4A2F22627A770011C5AE /* UIColor.swift in Sources */,
 				AB97EFED22461D6C00E45E6F /* Player.swift in Sources */,
-				AB97EFEF22461EFF00E45E6F /* GameEngine.swift in Sources */,
 				AB97EFFD2247CBB000E45E6F /* BlackjackStrategyProtocol.swift in Sources */,
+				AB142D3522718C32005B1B26 /* CardCountingStateMachine.swift in Sources */,
 				AB97EFDD224557D300E45E6F /* Card.swift in Sources */,
 				AB129F4D22508B960025ECA1 /* GameResultCalculator.swift in Sources */,
 				AB99551C2260633400FB9596 /* UIViewExtensions.swift in Sources */,
-				AB97EFF32247562500E45E6F /* GameStates.swift in Sources */,
+				AB97EFF32247562500E45E6F /* AutomaticGameStates.swift in Sources */,
 				AB129F4B224E80890025ECA1 /* BlackjackProtocol.swift in Sources */,
 				AB97F0012247F95600E45E6F /* DealerStrategy.swift in Sources */,
 				AB129F502250EDFB0025ECA1 /* BorderButton.swift in Sources */,
@@ -588,6 +627,7 @@
 			files = (
 				AB97EFEB22461CCB00E45E6F /* PlayerTest.swift in Sources */,
 				AB97EFE92246048100E45E6F /* HandTest.swift in Sources */,
+				AB142D3C22719939005B1B26 /* CardCountingGameEngineTest.swift in Sources */,
 				AB97EFF92247C7CD00E45E6F /* SimpleStrategyTest.swift in Sources */,
 				AB97EFF122461FC200E45E6F /* GameTest.swift in Sources */,
 				AB9955012259FFB300FB9596 /* WalletTest.swift in Sources */,
