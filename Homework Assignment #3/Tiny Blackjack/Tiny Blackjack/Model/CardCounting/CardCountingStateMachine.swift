@@ -26,9 +26,9 @@ class CardCountingStateMachine {
         machine.addRoutes(event: .dealerDealt, transitions: [.getDealersDeal => .getNextPlayerPlay]) { _ in self.engine.getNextPlayersPlay() }
         machine.addRoutes(event: .handSelected, transitions: [.getNextPlayerPlay => .getNextHand]) { _ in self.engine.getNextHand() }
         machine.addRoutes(event: .presentOptions, transitions: [.getNextHand => .presentOptions]) { _ in self.engine.presentOptions() }
-
-        
-        
+        machine.addRoutes(event: .hit, transitions: [.presentOptions => .hit]) { _ in self.engine.presentOptions() }
+        machine.addRoutes(event: .stand, transitions: [.presentOptions => .getNextPlayerPlay]) { _ in self.engine.getNextPlayersPlay() }
+        machine.addRoutes(event: .stand, transitions: [.hit => .getNextPlayerPlay]) { _ in self.engine.getNextPlayersPlay() }
     }
     
     func triggerEvent(_ event: CountingEvents) {
@@ -51,6 +51,8 @@ enum CountingStates: StateType {
     case getNextPlayerPlay
     case getNextHand
     case presentOptions
+    case hit
+    case stand
     
 }
 
@@ -61,7 +63,8 @@ enum CountingEvents: EventType {
     case dealerDealt
     case handSelected
     case presentOptions
-
+    case stand
+    case hit
 }
 
 protocol CardCountingProtocol {

@@ -27,7 +27,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
     @IBOutlet weak var playInputPanel: UIView!
     @IBOutlet weak var playPanel: UIView!
-    
+
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var deckCard: UIImageView!
     @IBOutlet weak var dealCardsButton: UIButton!
@@ -35,7 +35,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
     @IBOutlet weak var standButton: UIButton!
     @IBOutlet weak var hitButton: UIButton!
-    
+
     var playerIndicatorButton: UIButton!
     var numberOfPlayers: UInt = 7
     var numberOfDecksRemaining: UInt = 8
@@ -46,8 +46,9 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     var dealerStartPoint: CGPoint = CGPoint()
     var playerIndicatorStartPoints: [CGPoint] = [CGPoint]()
     var dealerIndicatorStartPoint: CGPoint = CGPoint()
-    
+
     var currentPlayerIndex: Int = -1
+    var cardIndex: Int = 2
     var playerSelectedCards: Bool = false
 
     override func viewDidLoad() {
@@ -75,21 +76,27 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
             if gameEngine.IsPlayerDealing() {
                 dealCards(playerIndex: currentPlayerIndex, completion: {
                     if self.currentPlayerIndex < self.numberOfPlayers - 1 {
-                        self.gameEngine.gotPlayersDeal()
+                        if let cardsOfCurrentPlayer = self.playerCards[self.currentPlayerIndex] {
+                            self.gameEngine.gotPlayersDeal(self.currentPlayerIndex, cardsOfCurrentPlayer)
+                        }
                     } else {
                         self.gameEngine.gotAllPlayersDeal()
                     }
                 })
-            } else {
-                if gameEngine.IsDealerDealing() {
-                    dealDealerCard(completion: {
-                        self.gameEngine.gotDealersDeal()
-                    })
-                }
+            } else if gameEngine.IsDealerDealing() {
+                dealDealerCard(completion: {
+                    self.currentPlayerIndex = -1
+                    self.gameEngine.gotDealersDeal(self.dealerCards[0])
+                })
             }
-            playerSelectedCards = false
+            else if gameEngine.isHit() {
+                dealCard(playerIndex: currentPlayerIndex)
+                cardIndex += 1
+            }
         }
+        playerSelectedCards = false
     }
+
 
     @IBAction func numberOfPlayersChanged(_ sender: UIStepper) {
         numberOfPlayers = UInt(sender.value)
@@ -102,10 +109,10 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     }
 
     @IBAction func startPlaying(_ sender: UIButton) {
-       playInputPanel.animate(fadeIn: false)
-       playInputPanel.hideWithAnimation(hidden: true)
-       playPanel.hideWithAnimation(hidden: false)
-       gameEngine.start()
+        playInputPanel.animate(fadeIn: false)
+        playInputPanel.hideWithAnimation(hidden: true)
+        playPanel.hideWithAnimation(hidden: false)
+        gameEngine.start(numberOfPlayers: numberOfPlayers)
     }
 
     @IBAction func selectCards(_ sender: UIButton) {
@@ -113,17 +120,19 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     }
 
     @IBAction func hit(_ sender: UIButton) {
+        gameEngine.hit()
         self.performSegue(withIdentifier: "selectCards", sender: sender)
     }
 
     @IBAction func stand(_ sender: UIButton) {
+        gameEngine.stand()
     }
 
     @IBAction func split(_ sender: UIButton) {
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
+
         if let selectCardsViewController = segue.destination as? SelectCardsViewController {
             if gameEngine.IsPlayerDealing() {
                 selectCardsViewController.maximumNumberOfCardsToSelect = 2
@@ -132,14 +141,17 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
             } else if gameEngine.IsDealerDealing() {
                 selectCardsViewController.maximumNumberOfCardsToSelect = 1
                 selectCardsViewController.selectedCards.removeAll()
+            } else if gameEngine.isPlayerPlaying() {
+                selectCardsViewController.maximumNumberOfCardsToSelect = 1
+                selectCardsViewController.selectedCards.removeAll()
             }
         }
     }
-    
+
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
 
         if let selectCardsViewController = segue.source as? SelectCardsViewController {
-            
+
             if gameEngine.IsPlayerDealing() {
                 let cards: [Card] = selectCardsViewController.selectedCards
                 if cards.count == 2 {
@@ -154,6 +166,12 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
                     dealerCards.removeAll()
                     dealerCards.append(contentsOf: cards)
                 }
+            } else if gameEngine.isHit() {
+                let cards: [Card] = selectCardsViewController.selectedCards
+                if cards.count == 1 {
+                    playerSelectedCards = true
+                    playerCards[currentPlayerIndex]?.append(contentsOf: cards)
+                }
             }
         }
     }
@@ -163,7 +181,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
             playerCards[cardIndex] = [Card]()
         }
     }
-    
+
     func fillPlayerPoints() {
 
         playerStartPoints.append(CGPoint(x: 870, y: 425))
@@ -174,7 +192,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         playerStartPoints.append(CGPoint(x: 195, y: 475))
         playerStartPoints.append(CGPoint(x: 60, y: 425))
 
-        dealerStartPoint = CGPoint(x: 475, y: 125)
+        dealerStartPoint = CGPoint(x: 475, y: 115)
 
         playerIndicatorStartPoints.append(CGPoint(x: 855, y: 375))
         playerIndicatorStartPoints.append(CGPoint(x: 733, y: 420))
@@ -186,7 +204,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
         dealerIndicatorStartPoint = CGPoint(x: 488, y: 55)
     }
-    
+
     func dealDealerCard(completion: @escaping (() -> Void)) {
         let card: Card = dealerCards[0]
         let cardPosition: CGPoint = dealerStartPoint
@@ -204,6 +222,17 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         let angle: CGFloat = -CGFloat.pi / 8 + (CGFloat.pi / 8) / 3 * CGFloat(playerIndex)
 
         animateCards(card1, angle, firstCardPosition, card2, secondCardposition, completion: completion)
+    }
+
+    func dealCard(playerIndex: Int) {
+
+        let card: Card = playerCards[playerIndex]![cardIndex]
+
+        let firstCardPosition: CGPoint = playerStartPoints[playerIndex]
+        let cardposition: CGPoint = CGPoint(x: firstCardPosition.x + CGFloat(cardIndex * 15), y: firstCardPosition.y)
+        let angle: CGFloat = -CGFloat.pi / 8 + (CGFloat.pi / 8) / 3 * CGFloat(playerIndex)
+
+        animateCard(card, angle, cardposition)
     }
 
     func animateCards(_ card1: Card, _ rotation: CGFloat, _ card1Pos: CGPoint, _ card2: Card, _ card2Pos: CGPoint, completion: (() -> Void)? = nil) {
@@ -234,7 +263,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
                                         if let funcToCallWhenComplete = completion {
                                             funcToCallWhenComplete()
                                         }
-                                })
+                                    })
                             })
 
                     })
@@ -273,25 +302,25 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         view.addSubview(cardImageView)
         return cardImageView
     }
-    
+
     func animatePlayerIndicatorToCurrentPlayer(completion: (() -> Void)? = nil) {
         UIButton.animate(withDuration: 2.0, delay: 0, options: .curveEaseInOut, animations: {
             self.playerIndicatorButton.setOrigin(self.playerIndicatorStartPoints[self.currentPlayerIndex])
         }, completion: { _ in
-            if let completion = completion {
-                completion()
-            }
-        })
+                if let completion = completion {
+                    completion()
+                }
+            })
     }
-    
+
     func animatePlayerIndicatorToDealer(completion: (() -> Void)? = nil) {
         UIButton.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
             self.playerIndicatorButton.setOrigin(self.dealerIndicatorStartPoint)
         }, completion: { _ in
-            if let completion = completion {
-                completion()
-            }
-        })
+                if let completion = completion {
+                    completion()
+                }
+            })
     }
 
     func getNextPlayerDeal() {
@@ -310,9 +339,9 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
                 }
                 self.dealCardsButton.shake(duration: 1.0)
             })
-         }
+        }
     }
-    
+
     func getDealersDeal() {
         instructionLabel.text = "Select the card that was dealt to the dealer"
         animatePlayerIndicatorToDealer(completion: {
@@ -320,15 +349,36 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
             self.dealCardsButton.shake(duration: 1.0)
         })
     }
-    
+
     func getNextPlayersPlay() {
+        currentHand = 0
+        currentPlayerIndex += 1
+        if currentPlayerIndex < numberOfPlayers {
+            gameEngine.selectHand()
+        } else {
+            print("Should switch to dealer")
+        }
     }
     
+    var currentHand: Int = 0
+
     func getNextHand() {
-    }
-    
-    func presentOptions() {
+        currentHand += 1
+        gameEngine.shouldPresentOptions()
     }
 
-    
+    func presentOptions() {
+        if (currentPlayerIndex < numberOfPlayers) {
+            instructionLabel.fadeTransition(0.9)
+            instructionLabel.text = "Select the action of player: \(currentPlayerIndex + 1)"
+            animatePlayerIndicatorToCurrentPlayer(completion: {
+                self.dealCardsButton.hideWithAnimation(hidden: true)
+                self.splitButton.hideWithAnimation(hidden: true) //
+                self.standButton.hideWithAnimation(hidden: false)
+                self.hitButton.hideWithAnimation(hidden: false)
+            })
+        }
+    }
+
+
 }

@@ -618,6 +618,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotateation.z">
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="deck"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AbK-PM-WTV" userLabel="Information Panel">
@@ -701,6 +704,11 @@
                                             <constraint firstItem="hWU-ba-1Zq" firstAttribute="bottom" secondItem="kDE-Qb-1eH" secondAttribute="bottom" constant="-16" id="z10-Oo-yxO"/>
                                             <constraint firstItem="EFp-Yj-aAo" firstAttribute="centerY" secondItem="zrs-IV-XHA" secondAttribute="centerY" id="zNd-X9-Vkg"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="instruction"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxn-jL-WRl" userLabel="Play Panel">
                                         <rect key="frame" x="0.0" y="0.0" width="614" height="131"/>
@@ -769,6 +777,11 @@
                                             <constraint firstItem="fC0-QX-JLN" firstAttribute="centerX" secondItem="mxn-jL-WRl" secondAttribute="centerX" id="vHK-t0-rYe"/>
                                             <constraint firstItem="bW0-F7-TeA" firstAttribute="centerX" secondItem="mxn-jL-WRl" secondAttribute="centerX" id="ymG-cM-qY4"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="instruction"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -869,6 +882,11 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="deck"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="sjX-VD-Xn5" id="zOP-lC-J3v"/>
                                     <outlet property="delegate" destination="sjX-VD-Xn5" id="VxV-Pc-kgE"/>
@@ -1304,7 +1322,6 @@
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="heroModalAnimationTypeString" value="Blackjack"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="hY9-oB-A7h" kind="show" identifier="settings" id="9EC-2f-1mR"/>
