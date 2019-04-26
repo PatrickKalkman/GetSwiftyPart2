@@ -20,8 +20,9 @@
 		AB142D33226F8279005B1B26 /* AutomaticGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D32226F8279005B1B26 /* AutomaticGameEngine.swift */; };
 		AB142D3522718C32005B1B26 /* CardCountingStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D3422718C32005B1B26 /* CardCountingStateMachine.swift */; };
 		AB142D3A227196E4005B1B26 /* CardCountingGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D39227196E4005B1B26 /* CardCountingGameEngine.swift */; };
-		AB142D3C22719939005B1B26 /* CardCountingGameEngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D3B22719939005B1B26 /* CardCountingGameEngineTest.swift */; };
+		AB142D3C22719939005B1B26 /* CardCountingCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D3B22719939005B1B26 /* CardCountingCalculatorTest.swift */; };
 		AB142D3E2271A088005B1B26 /* CardCountingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB142D3D2271A088005B1B26 /* CardCountingViewProtocol.swift */; };
+		AB4AA5C922733874003D8C9C /* CardCountCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AA5C822733874003D8C9C /* CardCountCalculator.swift */; };
 		AB58210D22699A51003A07A8 /* BlackjackViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB58210C22699A51003A07A8 /* BlackjackViewControllerBase.swift */; };
 		AB58210F22699BE7003A07A8 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB58210E22699BE7003A07A8 /* SoundManager.swift */; };
 		AB5821112269C5CE003A07A8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5821102269C5CE003A07A8 /* GradientView.swift */; };
@@ -103,8 +104,9 @@
 		AB142D32226F8279005B1B26 /* AutomaticGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutomaticGameEngine.swift; sourceTree = "<group>"; };
 		AB142D3422718C32005B1B26 /* CardCountingStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingStateMachine.swift; sourceTree = "<group>"; };
 		AB142D39227196E4005B1B26 /* CardCountingGameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingGameEngine.swift; sourceTree = "<group>"; };
-		AB142D3B22719939005B1B26 /* CardCountingGameEngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingGameEngineTest.swift; sourceTree = "<group>"; };
+		AB142D3B22719939005B1B26 /* CardCountingCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingCalculatorTest.swift; sourceTree = "<group>"; };
 		AB142D3D2271A088005B1B26 /* CardCountingViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountingViewProtocol.swift; sourceTree = "<group>"; };
+		AB4AA5C822733874003D8C9C /* CardCountCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountCalculator.swift; sourceTree = "<group>"; };
 		AB58210C22699A51003A07A8 /* BlackjackViewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackViewControllerBase.swift; sourceTree = "<group>"; };
 		AB58210E22699BE7003A07A8 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		AB5821102269C5CE003A07A8 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = "../../../Homework Assignment #2/Tiny Converter/Tiny Converter/UI/GradientView.swift"; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				AB142D39227196E4005B1B26 /* CardCountingGameEngine.swift */,
 				AB142D3D2271A088005B1B26 /* CardCountingViewProtocol.swift */,
 				AB8D9F7C226A094C00D0E304 /* SelectCardsViewController.swift */,
+				AB4AA5C822733874003D8C9C /* CardCountCalculator.swift */,
 			);
 			path = CardCounting;
 			sourceTree = "<group>";
@@ -315,7 +318,7 @@
 				AB601D5D224DF48700B140D7 /* DealerStrategyTest.swift */,
 				AB9955002259FFB300FB9596 /* WalletTest.swift */,
 				AB8A4E2322666BFE0084323E /* BasicStrategyTest.swift */,
-				AB142D3B22719939005B1B26 /* CardCountingGameEngineTest.swift */,
+				AB142D3B22719939005B1B26 /* CardCountingCalculatorTest.swift */,
 			);
 			path = "Tiny BlackjackTests";
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				AB995503225A161C00FB9596 /* Wallet.swift in Sources */,
 				AB97EFB722453BEB00E45E6F /* AppDelegate.swift in Sources */,
 				ABFC4A31226325100011C5AE /* SettingsViewController.swift in Sources */,
+				AB4AA5C922733874003D8C9C /* CardCountCalculator.swift in Sources */,
 				ABC1965E22723BE100B5A3A7 /* ProposedActionToMessageMapper.swift in Sources */,
 				AB58210D22699A51003A07A8 /* BlackjackViewControllerBase.swift in Sources */,
 				AB8A4E202264E1360084323E /* NavigationViewController.swift in Sources */,
@@ -627,7 +631,7 @@
 			files = (
 				AB97EFEB22461CCB00E45E6F /* PlayerTest.swift in Sources */,
 				AB97EFE92246048100E45E6F /* HandTest.swift in Sources */,
-				AB142D3C22719939005B1B26 /* CardCountingGameEngineTest.swift in Sources */,
+				AB142D3C22719939005B1B26 /* CardCountingCalculatorTest.swift in Sources */,
 				AB97EFF92247C7CD00E45E6F /* SimpleStrategyTest.swift in Sources */,
 				AB97EFF122461FC200E45E6F /* GameTest.swift in Sources */,
 				AB9955012259FFB300FB9596 /* WalletTest.swift in Sources */,

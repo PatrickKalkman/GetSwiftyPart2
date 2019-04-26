@@ -27,7 +27,14 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
     @IBOutlet weak var playInputPanel: UIView!
     @IBOutlet weak var playPanel: UIView!
-
+    @IBOutlet weak var playNextRoundPanel: UIView!
+    @IBOutlet weak var calculatorPanel: UIView!
+    
+    @IBOutlet weak var trueCountValueLabel: UILabel!
+    @IBOutlet weak var bettingUnitsValueLabel: UILabel!
+    @IBOutlet weak var runningCountLabel: UILabel!
+    
+    @IBOutlet weak var strategyLabel: UILabel!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var deckCard: UIImageView!
     @IBOutlet weak var dealCardsButton: UIButton!
@@ -47,8 +54,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     var playerIndicatorStartPoints: [CGPoint] = [CGPoint]()
     var dealerIndicatorStartPoint: CGPoint = CGPoint()
 
-    var currentPlayerIndex: Int = -1
     var cardIndex: Int = 2
+    var dealerCardIndex: Int = 0
     var playerSelectedCards: Bool = false
 
     override func viewDidLoad() {
@@ -63,6 +70,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         fillPlayerPoints()
         playInputPanel.setBorder(radius: 10, color: UIColor.white)
         playPanel.setBorder(radius: 10, color: UIColor.white)
+        playNextRoundPanel.setBorder(radius: 10, color: UIColor.white)
+        calculatorPanel.setBorder(radius: 10, color: UIColor.white)
 
         playerIndicatorButton = UIButton()
         playerIndicatorButton.setImage(UIImage(named: "Chip.LightRed"), for: UIControl.State.normal)
@@ -74,24 +83,42 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     override func viewDidAppear(_ animated: Bool) {
         if playerSelectedCards {
             if gameEngine.IsPlayerDealing() {
-                dealCards(playerIndex: currentPlayerIndex, completion: {
-                    if self.currentPlayerIndex < self.numberOfPlayers - 1 {
-                        if let cardsOfCurrentPlayer = self.playerCards[self.currentPlayerIndex] {
-                            self.gameEngine.gotPlayersDeal(self.currentPlayerIndex, cardsOfCurrentPlayer)
+                dealCards(playerIndex: gameEngine.playerIndex, completion: {
+                    if self.gameEngine.playersLeft() {
+                        if let cardsOfCurrentPlayer = self.playerCards[self.gameEngine.playerIndex] {
+                            self.gameEngine.gotPlayersDeal(self.gameEngine.playerIndex, cardsOfCurrentPlayer)
                         }
                     } else {
                         self.gameEngine.gotAllPlayersDeal()
                     }
+                    self.refreshCalculatorValues()
                 })
             } else if gameEngine.IsDealerDealing() {
                 dealDealerCard(completion: {
-                    self.currentPlayerIndex = -1
                     self.gameEngine.gotDealersDeal(self.dealerCards[0])
+                    self.dealerCardIndex += 1
+                    self.refreshCalculatorValues()
                 })
-            }
-            else if gameEngine.isHit() {
-                dealCard(playerIndex: currentPlayerIndex)
-                cardIndex += 1
+            } else if gameEngine.isHit() {
+                dealCard(playerIndex: gameEngine.playerIndex, completion: {
+                    let card: Card = self.playerCards[self.gameEngine.playerIndex]![self.cardIndex]
+                    self.gameEngine.gotPlayerCard(card)
+                    self.cardIndex += 1
+                    self.strategyLabel.text = self.gameEngine.getStrategyMessage().1
+                    self.refreshCalculatorValues()
+                })
+            } else if gameEngine.isSecondDealerCard() {
+                dealDealerCard(completion: {
+                    self.gameEngine.gotDealersSecondCard(self.dealerCards[self.dealerCardIndex])
+                    self.dealerCardIndex += 1
+                    self.refreshCalculatorValues()
+                })
+            } else if gameEngine.isDealerHit() {
+                dealDealerCard(completion: {
+                    self.gameEngine.gotDealerCard(self.dealerCards[self.dealerCardIndex])
+                    self.dealerCardIndex += 1
+                    self.refreshCalculatorValues()
+                })
             }
         }
         playerSelectedCards = false
@@ -112,7 +139,13 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         playInputPanel.animate(fadeIn: false)
         playInputPanel.hideWithAnimation(hidden: true)
         playPanel.hideWithAnimation(hidden: false)
-        gameEngine.start(numberOfPlayers: numberOfPlayers)
+        refreshCalculatorValues()
+        calculatorPanel.hideWithAnimation(hidden: false)
+        gameEngine.start(numberOfPlayers: numberOfPlayers, numberOfDecksRemaining: numberOfDecksRemaining)
+    }
+    
+    @IBAction func startNextRound(_ sender: Any) {
+        gameEngine.nextRound()
     }
 
     @IBAction func selectCards(_ sender: UIButton) {
@@ -136,7 +169,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         if let selectCardsViewController = segue.destination as? SelectCardsViewController {
             if gameEngine.IsPlayerDealing() {
                 selectCardsViewController.maximumNumberOfCardsToSelect = 2
-                selectCardsViewController.playerIndex = currentPlayerIndex
+                selectCardsViewController.playerIndex = gameEngine.playerIndex
                 selectCardsViewController.selectedCards.removeAll()
             } else if gameEngine.IsDealerDealing() {
                 selectCardsViewController.maximumNumberOfCardsToSelect = 1
@@ -151,26 +184,33 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
 
         if let selectCardsViewController = segue.source as? SelectCardsViewController {
-
+            let cards: [Card] = selectCardsViewController.selectedCards
             if gameEngine.IsPlayerDealing() {
-                let cards: [Card] = selectCardsViewController.selectedCards
                 if cards.count == 2 {
                     playerSelectedCards = true
-                    playerCards[currentPlayerIndex]?.removeAll()
-                    playerCards[currentPlayerIndex]?.append(contentsOf: cards)
+                    playerCards[gameEngine.playerIndex]?.removeAll()
+                    playerCards[gameEngine.playerIndex]?.append(contentsOf: cards)
                 }
             } else if gameEngine.IsDealerDealing() {
-                let cards: [Card] = selectCardsViewController.selectedCards
                 if cards.count == 1 {
                     playerSelectedCards = true
                     dealerCards.removeAll()
                     dealerCards.append(contentsOf: cards)
                 }
             } else if gameEngine.isHit() {
-                let cards: [Card] = selectCardsViewController.selectedCards
                 if cards.count == 1 {
                     playerSelectedCards = true
-                    playerCards[currentPlayerIndex]?.append(contentsOf: cards)
+                    playerCards[gameEngine.playerIndex]?.append(contentsOf: cards)
+                }
+            } else if gameEngine.isSecondDealerCard() {
+                if cards.count == 1 {
+                    playerSelectedCards = true
+                    dealerCards.append(contentsOf: cards)
+                }
+            } else if gameEngine.isDealerHit() {
+                if cards.count == 1 {
+                    playerSelectedCards = true
+                    dealerCards.append(contentsOf: cards)
                 }
             }
         }
@@ -206,9 +246,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     }
 
     func dealDealerCard(completion: @escaping (() -> Void)) {
-        let card: Card = dealerCards[0]
-        let cardPosition: CGPoint = dealerStartPoint
-
+        let card: Card = dealerCards[dealerCardIndex]
+        let cardPosition: CGPoint = CGPoint(x: dealerStartPoint.x + CGFloat(dealerCardIndex * 15), y: dealerStartPoint.y)
         animateCard(card, 0, cardPosition, completion: completion)
     }
 
@@ -224,7 +263,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         animateCards(card1, angle, firstCardPosition, card2, secondCardposition, completion: completion)
     }
 
-    func dealCard(playerIndex: Int) {
+    func dealCard(playerIndex: Int, completion: @escaping (() -> Void)) {
 
         let card: Card = playerCards[playerIndex]![cardIndex]
 
@@ -232,7 +271,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         let cardposition: CGPoint = CGPoint(x: firstCardPosition.x + CGFloat(cardIndex * 15), y: firstCardPosition.y)
         let angle: CGFloat = -CGFloat.pi / 8 + (CGFloat.pi / 8) / 3 * CGFloat(playerIndex)
 
-        animateCard(card, angle, cardposition)
+        animateCard(card, angle, cardposition, completion: completion)
     }
 
     func animateCards(_ card1: Card, _ rotation: CGFloat, _ card1Pos: CGPoint, _ card2: Card, _ card2Pos: CGPoint, completion: (() -> Void)? = nil) {
@@ -305,7 +344,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
     func animatePlayerIndicatorToCurrentPlayer(completion: (() -> Void)? = nil) {
         UIButton.animate(withDuration: 2.0, delay: 0, options: .curveEaseInOut, animations: {
-            self.playerIndicatorButton.setOrigin(self.playerIndicatorStartPoints[self.currentPlayerIndex])
+            self.playerIndicatorButton.setOrigin(self.playerIndicatorStartPoints[self.gameEngine.playerIndex])
         }, completion: { _ in
                 if let completion = completion {
                     completion()
@@ -324,61 +363,93 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     }
 
     func getNextPlayerDeal() {
-        currentPlayerIndex += 1
-        if (currentPlayerIndex < numberOfPlayers) {
-            instructionLabel.text = "Select the two cards that were dealt to player: \(currentPlayerIndex + 1)"
-            if instructionLabel.isHidden {
-                instructionLabel.hideWithAnimation(hidden: false)
-            }
-            if self.playerIndicatorButton.isHidden {
-                self.playerIndicatorButton.hideWithAnimation(hidden: false)
-            }
-            animatePlayerIndicatorToCurrentPlayer(completion: {
-                if self.dealCardsButton.isHidden {
-                    self.dealCardsButton.hideWithAnimation(hidden: false)
-                }
-                self.dealCardsButton.shake(duration: 1.0)
-            })
+        strategyLabel.hideWithAnimation(hidden: true)
+        instructionLabel.text = "Select the two cards that were dealt to player: \(gameEngine.playerNumber())"
+        if instructionLabel.isHidden {
+            instructionLabel.hideWithAnimation(hidden: false)
         }
+        if self.playerIndicatorButton.isHidden {
+            self.playerIndicatorButton.hideWithAnimation(hidden: false)
+        }
+        animatePlayerIndicatorToCurrentPlayer(completion: {
+            if self.dealCardsButton.isHidden {
+                self.dealCardsButton.hideWithAnimation(hidden: false)
+            }
+            self.dealCardsButton.shake(duration: 1.0)
+        })
     }
 
     func getDealersDeal() {
+        strategyLabel.hideWithAnimation(hidden: true)
         instructionLabel.text = "Select the card that was dealt to the dealer"
         animatePlayerIndicatorToDealer(completion: {
             self.dealCardsButton.hideWithAnimation(hidden: false)
             self.dealCardsButton.shake(duration: 1.0)
         })
     }
-
-    func getNextPlayersPlay() {
-        currentHand = 0
-        currentPlayerIndex += 1
-        if currentPlayerIndex < numberOfPlayers {
-            gameEngine.selectHand()
-        } else {
-            print("Should switch to dealer")
-        }
-    }
     
-    var currentHand: Int = 0
-
-    func getNextHand() {
-        currentHand += 1
-        gameEngine.shouldPresentOptions()
+    func getDealersSecondCard() {
+        strategyLabel.hideWithAnimation(hidden: true)
+        instructionLabel.text = "Select the second card that was dealt to the dealer"
+        self.standButton.hideWithAnimation(hidden: true)
+        self.splitButton.hideWithAnimation(hidden: true)
+        self.hitButton.hideWithAnimation(hidden: false)
+        animatePlayerIndicatorToDealer(completion: {
+            self.standButton.shake(duration: 1.0)
+        })
     }
 
     func presentOptions() {
-        if (currentPlayerIndex < numberOfPlayers) {
-            instructionLabel.fadeTransition(0.9)
-            instructionLabel.text = "Select the action of player: \(currentPlayerIndex + 1)"
-            animatePlayerIndicatorToCurrentPlayer(completion: {
-                self.dealCardsButton.hideWithAnimation(hidden: true)
-                self.splitButton.hideWithAnimation(hidden: true) //
-                self.standButton.hideWithAnimation(hidden: false)
-                self.hitButton.hideWithAnimation(hidden: false)
-            })
-        }
+        instructionLabel.fadeTransition(0.9)
+        instructionLabel.text = "Select the action of player: \(gameEngine.playerIndex + 1)"
+        strategyLabel.text = gameEngine.getStrategyMessage().1
+        strategyLabel.hideWithAnimation(hidden: false)
+        dealCardsButton.hideWithAnimation(hidden: true)
+        splitButton.hideWithAnimation(hidden: true)
+        standButton.hideWithAnimation(hidden: false)
+        hitButton.hideWithAnimation(hidden: false)
+
+        animatePlayerIndicatorToCurrentPlayer()
     }
-
-
+    
+    func presentDealerOptions() {
+        instructionLabel.fadeTransition(0.9)
+        instructionLabel.text = "Select the action of the dealer"
+        strategyLabel.hideWithAnimation(hidden: true)
+        dealCardsButton.hideWithAnimation(hidden: true)
+        splitButton.hideWithAnimation(hidden: true)
+        standButton.hideWithAnimation(hidden: false)
+        hitButton.hideWithAnimation(hidden: false)
+        animatePlayerIndicatorToDealer()
+    }
+    
+    func presentNextRound() {
+        for cardView in addedCards {
+            cardView.removeFromSuperview()
+        }
+        playerIndicatorButton.frame = CGRect(x: 300, y: -400, width: 46, height: 46)
+        playerIndicatorButton.isHidden = true
+        splitButton.isHidden = true
+        standButton.isHidden = true
+        hitButton.isHidden = true
+        dealerCardIndex = 0
+        cardIndex = 2
+        
+        playPanel.hideWithAnimation(hidden: true)
+        playNextRoundPanel.hideWithAnimation(hidden: false)
+    }
+    
+    func refreshCalculatorValues() {
+        let runningCount: Int = self.gameEngine.calculateRunningCount()
+        let trueCount: Int = self.gameEngine.calculateTrueCount()
+        let bettingUnits: UInt = self.gameEngine.getBettingUnits()
+        
+        runningCountLabel.text = String(runningCount)
+        trueCountValueLabel.text = String(trueCount)
+        bettingUnitsValueLabel.text = String(bettingUnits)
+    }
+    
+    func resetCardIndex() {
+        self.cardIndex = 2
+    }
 }

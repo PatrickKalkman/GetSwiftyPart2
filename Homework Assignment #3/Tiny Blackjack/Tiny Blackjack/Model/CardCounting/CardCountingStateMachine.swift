@@ -23,26 +23,31 @@ class CardCountingStateMachine {
         machine.addRoutes(event: .start, transitions: [.idle => .getNextPlayerDeal]) { _ in self.engine.getNextPlayerDeal() }
         machine.addRoutes(event: .playerDealt, transitions: [.getNextPlayerDeal => .getNextPlayerDeal]) { _ in self.engine.getNextPlayerDeal() }
         machine.addRoutes(event: .allPlayersDealt, transitions: [.getNextPlayerDeal => .getDealersDeal]) { _ in self.engine.getDealersDeal() }
-        machine.addRoutes(event: .dealerDealt, transitions: [.getDealersDeal => .getNextPlayerPlay]) { _ in self.engine.getNextPlayersPlay() }
-        machine.addRoutes(event: .handSelected, transitions: [.getNextPlayerPlay => .getNextHand]) { _ in self.engine.getNextHand() }
-        machine.addRoutes(event: .presentOptions, transitions: [.getNextHand => .presentOptions]) { _ in self.engine.presentOptions() }
+        machine.addRoutes(event: .dealerDealt, transitions: [.getDealersDeal => .presentOptions]) { _ in self.engine.presentOptions() }
         machine.addRoutes(event: .hit, transitions: [.presentOptions => .hit]) { _ in self.engine.presentOptions() }
-        machine.addRoutes(event: .stand, transitions: [.presentOptions => .getNextPlayerPlay]) { _ in self.engine.getNextPlayersPlay() }
-        machine.addRoutes(event: .stand, transitions: [.hit => .getNextPlayerPlay]) { _ in self.engine.getNextPlayersPlay() }
+        machine.addRoutes(event: .stand, transitions: [.presentOptions => .presentOptions]) { _ in self.engine.presentOptions() }
+        machine.addRoutes(event: .hit, transitions: [.hit => .presentOptions]) { _ in self.engine.presentOptions() }
+        machine.addRoutes(event: .getDealerSecondCard, transitions: [.hit => .getDealerSecondCard]) { _ in self.engine.getDealerSecondCard() }
+        machine.addRoutes(event: .stand, transitions: [.hit => .presentOptions]) { _ in self.engine.presentOptions() }
+        machine.addRoutes(event: .getDealerSecondCard, transitions: [.presentOptions => .getDealerSecondCard]) { _ in self.engine.getDealerSecondCard() }
+        machine.addRoutes(event: .gotDealerSecondCard, transitions: [.getDealerSecondCard => .presentDealerOptions]) { _ in self.engine.presentDealerOptions() }
+        machine.addRoutes(event: .dealerHit, transitions: [.presentDealerOptions => .dealerHit]) { _ in self.engine.dealerHit() }
+        machine.addRoutes(event: .dealerStand, transitions: [.presentDealerOptions => .idle]) { _ in self.engine.dealerStand() }
+        machine.addRoutes(event: .dealerStand, transitions: [.dealerHit => .idle]) { _ in self.engine.dealerStand() }
+        machine.addRoutes(event: .dealerStand, transitions: [.presentDealerOptions => .idle]) { _ in self.engine.dealerStand() }
     }
     
     func triggerEvent(_ event: CountingEvents) {
-        print("--< In state: \(self.machine.state), trigger \(event)")
+        let currentState: CountingStates = self.machine.state
         self.machine <-! event
+        let newState: CountingStates = self.machine.state
+        print("\(currentState) -> \(newState) : \(event)")
     }
     
     func getCurrentState() -> CountingStates {
         return machine.state
     }
-    
 }
-
-
 
 enum CountingStates: StateType {
     case idle
@@ -53,7 +58,10 @@ enum CountingStates: StateType {
     case presentOptions
     case hit
     case stand
-    
+    case getDealerSecondCard
+    case presentDealerOptions
+    case dealerHit
+    case dealerStand
 }
 
 enum CountingEvents: EventType {
@@ -65,14 +73,20 @@ enum CountingEvents: EventType {
     case presentOptions
     case stand
     case hit
+    case getDealerSecondCard
+    case gotDealerSecondCard
+    case dealerHit
+    case dealerStand
 }
 
 protocol CardCountingProtocol {
     func getNextPlayerDeal()
     func getDealersDeal()
-    func getNextPlayersPlay()
-    func getNextHand()
     func presentOptions()
-    
+    func getDealerSecondCard()
+    func getDealerPlay()
+    func presentDealerOptions()
+    func dealerHit()
+    func dealerStand()
 }
 
