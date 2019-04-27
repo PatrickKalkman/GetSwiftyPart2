@@ -399,7 +399,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="9Jz-AJ-dEW">
                                 <rect key="frame" x="0.0" y="-51" width="1024" height="800"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.096358470618724823" green="0.24239903688430786" blue="0.23347309231758118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1024" id="Mza-zd-UcJ"/>
                                     <constraint firstAttribute="height" constant="800" id="Sb8-Y8-vZu"/>
@@ -510,7 +510,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.096358470618724823" green="0.24239903688430786" blue="0.23347309231758118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="tkZ-bX-wJq" firstAttribute="centerY" secondItem="059-5n-46a" secondAttribute="centerY" id="Ces-Ou-nfg"/>
                             <constraint firstItem="R9I-tr-Blp" firstAttribute="top" secondItem="93a-zr-3pg" secondAttribute="bottom" constant="30" id="Gse-kO-w9R"/>
