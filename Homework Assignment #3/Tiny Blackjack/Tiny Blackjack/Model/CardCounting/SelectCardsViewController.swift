@@ -29,9 +29,12 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
     @IBOutlet weak var clubsCollectionView: UICollectionView!
     @IBOutlet weak var diamondsCollectionView: UICollectionView!
     @IBOutlet weak var spadesCollectionView: UICollectionView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setSelectionTitle()
         createCards()
         collectionViews[Suit.club] = clubsCollectionView
         collectionViews[Suit.heart] = heartsCollectionView
@@ -52,6 +55,14 @@ class SelectCardsViewController : BlackjackViewControllerBase, UICollectionViewD
         spadesCollectionView.reloadData()
 
         selectCards()
+    }
+    
+    func setSelectionTitle() {
+        if maximumNumberOfCardsToSelect == 1 {
+            titleLabel.text = "Select one card"
+        } else {
+            titleLabel.text = "Select two cards"
+        }
     }
     
     func createCards() {

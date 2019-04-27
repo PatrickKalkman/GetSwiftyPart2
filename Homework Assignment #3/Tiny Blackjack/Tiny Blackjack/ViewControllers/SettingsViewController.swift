@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Hero
 
 class SettingsViewController: UITableViewController {
     

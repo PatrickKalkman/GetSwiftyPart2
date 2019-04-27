@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import SwiftySound
-import Hero
 
 class BasicStrategyViewController: BlackjackViewControllerBase, BlackjackViewProtocol {
     

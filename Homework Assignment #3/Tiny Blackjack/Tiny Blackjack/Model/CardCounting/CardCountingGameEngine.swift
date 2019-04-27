@@ -77,6 +77,14 @@ class CardCountingGameEngine: CardCountingProtocol {
         gameState.triggerEvent(CountingEvents.start)
     }
     
+    func getPlayerValue() -> UInt8 {
+        return players[playerIndex].getHand(handIndex: 0).getValue()
+    }
+    
+    func getDealerValue() -> UInt8 {
+        return dealer.getHand(handIndex: 0).getValue()
+    }
+    
     func getStrategyMessage() -> (ProposedAction, String) {
         let proposedAction: ProposedAction = players[playerIndex].askAction(handIndex: 0, dealerHand: dealer.getHand(handIndex: 0))
     
@@ -136,12 +144,16 @@ class CardCountingGameEngine: CardCountingProtocol {
     }
     
     func gotPlayersDeal(_ playerIndex: Int, _ dealtCards: [Card]) {
+        storePlayersDeal(playerIndex, dealtCards)
+        nextPlayer()
+        gameState.triggerEvent(CountingEvents.playerDealt)
+    }
+    
+    func storePlayersDeal(_ playerIndex: Int, _ dealtCards: [Card]) {
         players[playerIndex].add(handIndex: 0, card: dealtCards[0])
         players[playerIndex].add(handIndex: 0, card: dealtCards[1])
         cardCountCalculator.addCards(card: dealtCards[0])
         cardCountCalculator.addCards(card: dealtCards[1])
-        nextPlayer()
-        gameState.triggerEvent(CountingEvents.playerDealt)
     }
     
     func gotAllPlayersDeal() {

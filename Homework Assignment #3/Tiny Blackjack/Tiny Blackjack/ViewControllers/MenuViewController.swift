@@ -15,16 +15,14 @@ class MenuViewController: BlackjackViewControllerBase {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
         self.navigationController!.navigationBar.backgroundColor = UIColor.clear
     }
-    
+
     @IBAction func playBlackjack(_ sender: UIButton) {
         self.performSegue(withIdentifier: "playBlackjack", sender: self)
-        
     }
     
     @IBAction func playBasicStrategy(_ sender: Any) {

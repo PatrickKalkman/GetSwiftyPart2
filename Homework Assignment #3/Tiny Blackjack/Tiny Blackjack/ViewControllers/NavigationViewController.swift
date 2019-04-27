@@ -8,13 +8,11 @@
 
 import Foundation
 import UIKit
-import Hero
 
 class AppNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hero.navigationAnimationType = .none
     }
     
     override var prefersStatusBarHidden: Bool {

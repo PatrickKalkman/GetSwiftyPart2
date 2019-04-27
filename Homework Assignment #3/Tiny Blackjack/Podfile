@@ -9,7 +9,6 @@ target 'Tiny Blackjack' do
   pod 'SwiftState', :git => 'https://github.com/ReactKit/SwiftState', :submodules => true
   pod 'SwiftySound'
   pod 'NotificationBannerSwift', :git => 'https://github.com/Daltron/NotificationBanner'
-  pod 'Hero'
   
   target 'Tiny BlackjackTests' do
     inherit! :search_paths

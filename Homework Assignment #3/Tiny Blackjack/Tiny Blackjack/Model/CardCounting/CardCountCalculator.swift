@@ -8,6 +8,8 @@
 
 import Foundation
 
+// This class is responsible for calculating the running count,
+// true count and the number of betting units
 public class CardCountCalculator {
     
     private var remainingDecks: Int = 0
@@ -35,7 +37,6 @@ public class CardCountCalculator {
         }
 
         let numberOfDecksRemaining: Float = Float(remainingDecks * 52 - cards.count) / 52.0
-        print("number of decks remaining: \(numberOfDecksRemaining)")
         let numberOfDecksRemainingRounded: Int = Int(numberOfDecksRemaining.rounded(FloatingPointRoundingRule.down))
         
         if (numberOfDecksRemainingRounded > 0) {
@@ -43,7 +44,6 @@ public class CardCountCalculator {
         } else {
             return calculateRunningCount()
         }
-        
     }
     
     func getBettingUnits() -> UInt {

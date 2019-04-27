@@ -89,6 +89,9 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
                             self.gameEngine.gotPlayersDeal(self.gameEngine.playerIndex, cardsOfCurrentPlayer)
                         }
                     } else {
+                        if let cardsOfCurrentPlayer = self.playerCards[self.gameEngine.playerIndex] {
+                            self.gameEngine.storePlayersDeal(self.gameEngine.playerIndex, cardsOfCurrentPlayer)
+                        }
                         self.gameEngine.gotAllPlayersDeal()
                     }
                     self.refreshCalculatorValues()
@@ -105,6 +108,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
                     self.gameEngine.gotPlayerCard(card)
                     self.cardIndex += 1
                     self.strategyLabel.text = self.gameEngine.getStrategyMessage().1
+                    self.instructionLabel.text = "Select the action of player: \(self.gameEngine.playerIndex + 1) (\(self.gameEngine.getPlayerValue()))"
                     self.refreshCalculatorValues()
                 })
             } else if gameEngine.isSecondDealerCard() {
@@ -118,6 +122,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
                     self.gameEngine.gotDealerCard(self.dealerCards[self.dealerCardIndex])
                     self.dealerCardIndex += 1
                     self.refreshCalculatorValues()
+                    self.instructionLabel.text = "Select the action of the dealer (\(self.gameEngine.getDealerValue()))"
                 })
             }
         }
@@ -177,6 +182,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
             } else if gameEngine.isPlayerPlaying() {
                 selectCardsViewController.maximumNumberOfCardsToSelect = 1
                 selectCardsViewController.selectedCards.removeAll()
+            } else {
+                selectCardsViewController.maximumNumberOfCardsToSelect = 1
             }
         }
     }
@@ -343,7 +350,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     }
 
     func animatePlayerIndicatorToCurrentPlayer(completion: (() -> Void)? = nil) {
-        UIButton.animate(withDuration: 2.0, delay: 0, options: .curveEaseInOut, animations: {
+        UIButton.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
             self.playerIndicatorButton.setOrigin(self.playerIndicatorStartPoints[self.gameEngine.playerIndex])
         }, completion: { _ in
                 if let completion = completion {
@@ -353,7 +360,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     }
 
     func animatePlayerIndicatorToDealer(completion: (() -> Void)? = nil) {
-        UIButton.animate(withDuration: Constants.Animation.DealCardDuraction, delay: 0, options: .curveEaseInOut, animations: {
+        UIButton.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
             self.playerIndicatorButton.setOrigin(self.dealerIndicatorStartPoint)
         }, completion: { _ in
                 if let completion = completion {
@@ -401,7 +408,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
     func presentOptions() {
         instructionLabel.fadeTransition(0.9)
-        instructionLabel.text = "Select the action of player: \(gameEngine.playerIndex + 1)"
+        let playerValue: UInt8 = gameEngine.getPlayerValue()
+        instructionLabel.text = "Select the action of player: \(gameEngine.playerIndex + 1) (\(playerValue))"
         strategyLabel.text = gameEngine.getStrategyMessage().1
         strategyLabel.hideWithAnimation(hidden: false)
         dealCardsButton.hideWithAnimation(hidden: true)
@@ -414,7 +422,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     
     func presentDealerOptions() {
         instructionLabel.fadeTransition(0.9)
-        instructionLabel.text = "Select the action of the dealer"
+        let dealerValue: UInt8 = gameEngine.getDealerValue()
+        instructionLabel.text = "Select the action of the dealer (\(dealerValue))"
         strategyLabel.hideWithAnimation(hidden: true)
         dealCardsButton.hideWithAnimation(hidden: true)
         splitButton.hideWithAnimation(hidden: true)
