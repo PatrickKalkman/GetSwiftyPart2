@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: BlackjackViewControllerBase {
+class MenuViewController: UIViewController {
     
     var dismissButton: UIButton?
     var titleLabel: UILabel?
@@ -19,6 +19,7 @@ class MenuViewController: BlackjackViewControllerBase {
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
         self.navigationController!.navigationBar.backgroundColor = UIColor.clear
+
     }
 
     @IBAction func playBlackjack(_ sender: UIButton) {

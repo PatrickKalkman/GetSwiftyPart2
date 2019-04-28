@@ -167,6 +167,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     }
 
     @IBAction func split(_ sender: UIButton) {
+        gameEngine.split()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -280,7 +281,40 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
         animateCard(card, angle, cardposition, completion: completion)
     }
+    
+    func showSplittedHand() {
+        
+        let angle: CGFloat = -CGFloat.pi / 8 + (CGFloat.pi / 8) / 3 * CGFloat(gameEngine.playerIndex)
+        
+        // Hand is already splitted, show the splitted hand
+        let nextHand: Hand = gameEngine.getNextHand()
+        moveHand(handToMove: nextHand, xMove: 0, yMove: 140, angle: angle, completion: { _ in
+            let currentHand = self.gameEngine.getCurrentHand()
+            self.moveHand(handToMove: currentHand, xMove: -15, yMove: 0, angle: angle, completion: { _ in
+                self.gameEngine.splittingFinished()
+            })
+        })
+    }
 
+    func moveHand(handToMove: Hand?, xMove: CGFloat, yMove: CGFloat, angle: CGFloat, completion: ((Bool) -> Void)? = nil) {
+        if let hand = handToMove {
+            let cardViewIndex: [Int] = hand.getAllCardsIndex()
+            for cardIndex in cardViewIndex {
+                if let cardImage = view.viewWithTag(cardIndex) as? UIImageView {
+                    cardImage.transform = CGAffineTransform.identity
+                    UIImageView.animate(withDuration: Constants.Animation.SplitMoveCardDuration, delay: 0, options: .curveEaseInOut, animations: {
+                        cardImage.moveXY(xMove, yMove)
+                    }, completion: { input in
+                        cardImage.transform = CGAffineTransform(rotationAngle: angle)
+                        if let complete = completion {
+                            complete(input)
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
     func animateCards(_ card1: Card, _ rotation: CGFloat, _ card1Pos: CGPoint, _ card2: Card, _ card2Pos: CGPoint, completion: (() -> Void)? = nil) {
 
         let playerCard1ImageView: UIImageView = getNewCardFromDeckFaceDown()
@@ -413,7 +447,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         strategyLabel.text = gameEngine.getStrategyMessage().1
         strategyLabel.hideWithAnimation(hidden: false)
         dealCardsButton.hideWithAnimation(hidden: true)
-        splitButton.hideWithAnimation(hidden: true)
+        splitButton.hideWithAnimation(hidden: !gameEngine.canBeSplit())
         standButton.hideWithAnimation(hidden: false)
         hitButton.hideWithAnimation(hidden: false)
 

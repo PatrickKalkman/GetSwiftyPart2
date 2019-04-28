@@ -47,9 +47,7 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         super.viewDidLoad()
         
         setTitle("PLAY BLACKJACK")
-
         gameEngine = AutomaticGameEngine(gameResultCalculator: GameResultCalculator(), blackjackView: self)
-
         self.organizeUiBasedOnState(state: AutomaticGameStates.started)
     }
     
@@ -67,7 +65,6 @@ class BlackjackViewController: BlackjackViewControllerBase, BlackjackViewProtoco
         if let chipIdentifier = sender.titleLabel?.text {
 
             let chip: Chip = valueToChipMapper.map(chipIdentifier)
-
             if gameEngine.isLastChip(chip: chip) {
                 sender.isHidden = true
             }

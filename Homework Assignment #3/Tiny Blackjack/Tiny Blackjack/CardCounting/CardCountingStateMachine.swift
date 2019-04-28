@@ -25,6 +25,8 @@ class CardCountingStateMachine {
         machine.addRoutes(event: .allPlayersDealt, transitions: [.getNextPlayerDeal => .getDealersDeal]) { _ in self.engine.getDealersDeal() }
         machine.addRoutes(event: .dealerDealt, transitions: [.getDealersDeal => .presentOptions]) { _ in self.engine.presentOptions() }
         machine.addRoutes(event: .hit, transitions: [.presentOptions => .hit]) { _ in self.engine.presentOptions() }
+        machine.addRoutes(event: .startSplit, transitions: [.presentOptions => .splitting]) { _ in self.engine.splitCurrentHand() }
+        machine.addRoutes(event: .finishedSplit, transitions: [.splitting => .presentOptions]) { _ in self.engine.presentOptions() }
         machine.addRoutes(event: .stand, transitions: [.presentOptions => .presentOptions]) { _ in self.engine.presentOptions() }
         machine.addRoutes(event: .hit, transitions: [.hit => .presentOptions]) { _ in self.engine.presentOptions() }
         machine.addRoutes(event: .getDealerSecondCard, transitions: [.hit => .getDealerSecondCard]) { _ in self.engine.getDealerSecondCard() }
@@ -58,6 +60,7 @@ enum CountingStates: StateType {
     case presentOptions
     case hit
     case stand
+    case splitting
     case getDealerSecondCard
     case presentDealerOptions
     case dealerHit
@@ -73,6 +76,8 @@ enum CountingEvents: EventType {
     case presentOptions
     case stand
     case hit
+    case startSplit
+    case finishedSplit
     case getDealerSecondCard
     case gotDealerSecondCard
     case dealerHit
@@ -83,6 +88,7 @@ protocol CardCountingProtocol {
     func getNextPlayerDeal()
     func getDealersDeal()
     func presentOptions()
+    func splitCurrentHand()
     func getDealerSecondCard()
     func getDealerPlay()
     func presentDealerOptions()

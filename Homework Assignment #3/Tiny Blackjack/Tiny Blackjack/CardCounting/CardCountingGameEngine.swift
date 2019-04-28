@@ -10,63 +10,69 @@ import Foundation
 import SwiftState
 
 class CardCountingGameEngine: CardCountingProtocol {
-    
+
     private let cardCountCalculator: CardCountCalculator = CardCountCalculator()
     private var gameState: CardCountingStateMachine!
     private var view: CardCountingViewProtocol!
     private var players: [Player] = [Player]()
     private var dealer: Player = Player(name: "Dealer", strategy: DealerStrategy(), isDealer: true, isHuman: true)
-    
+
     var playerIndex: Int = 0
+    var handIndex: Int = 0
     var numberOfPlayers: UInt = 0
-    
+
     func nextPlayer() {
         playerIndex += 1
     }
-    
+
     func resetPlayerIndex() {
         playerIndex = 0
     }
-    
+
     func playerNumber() -> String {
         return String(playerIndex + 1)
     }
-    
+
     func playersLeft() -> Bool {
-         return playerIndex < numberOfPlayers - 1
+        return playerIndex < numberOfPlayers - 1
     }
-    
+
     init(view: CardCountingViewProtocol) {
         self.gameState = CardCountingStateMachine(self)
         self.view = view
     }
-    
+
     // Protocol for calling the view
     func getNextPlayerDeal() {
         view.getNextPlayerDeal()
     }
-    
+
     func getDealersDeal() {
         view.getDealersDeal()
     }
-    
+
     func presentOptions() {
         view.presentOptions()
     }
-    
+
     func getDealerSecondCard() {
         view.getDealersSecondCard()
     }
-    
+
     func getDealerPlay() {
     }
-    
+
     func presentDealerOptions() {
         view.presentDealerOptions()
     }
-    
+
     func dealerHit() {
         view.presentDealerOptions()
+    }
+    
+    func splitCurrentHand() {
+        players[playerIndex].split(handIndex: handIndex)
+        view.showSplittedHand()
     }
     
     // Helpers that are used by the view
@@ -76,59 +82,71 @@ class CardCountingGameEngine: CardCountingProtocol {
         createPlayers(numberOfPlayers)
         gameState.triggerEvent(CountingEvents.start)
     }
+
+    func split() {
+        gameState.triggerEvent(CountingEvents.startSplit)
+    }
+    
+    func splittingFinished() {
+        gameState.triggerEvent(CountingEvents.finishedSplit)
+    }
+    
+    func canBeSplit() -> Bool {
+        return players[playerIndex].getHand(handIndex: handIndex).canSplit()
+    }
     
     func getPlayerValue() -> UInt8 {
         return players[playerIndex].getHand(handIndex: 0).getValue()
     }
-    
+
     func getDealerValue() -> UInt8 {
         return dealer.getHand(handIndex: 0).getValue()
     }
-    
+
     func getStrategyMessage() -> (ProposedAction, String) {
         let proposedAction: ProposedAction = players[playerIndex].askAction(handIndex: 0, dealerHand: dealer.getHand(handIndex: 0))
-    
+
         var proposedMessage: String = "Basic strategy says to: "
-        
+
         switch proposedAction {
         case .stand:
-                proposedMessage += "stand"
+            proposedMessage += "stand"
         case .hit:
-                proposedMessage += "hit"
+            proposedMessage += "hit"
         case .double:
-                proposedMessage += "double"
+            proposedMessage += "double"
         case .doubleOrHit:
-                proposedMessage += "double or hit"
+            proposedMessage += "double or hit"
         case .doubleOrStand:
-                proposedMessage += "double or stand"
+            proposedMessage += "double or stand"
         case .split:
-                proposedMessage += "split"
+            proposedMessage += "split"
         case .splitOrHit:
-                proposedMessage += "split or hit"
+            proposedMessage += "split or hit"
         case .surrender:
-                proposedMessage += "surrender"
+            proposedMessage += "surrender"
         case .surrenderOrHit:
-                proposedMessage += "surrender or hit"
+            proposedMessage += "surrender or hit"
         case .surrenderOrStand:
-                proposedMessage += "surrender or stand"
+            proposedMessage += "surrender or stand"
         case .surrenderOrSplit:
-                proposedMessage += "surrender or split"
+            proposedMessage += "surrender or split"
         case .blackjack:
-                proposedMessage += "stand (blackjack)"
+            proposedMessage += "stand (blackjack)"
         case .bust:
-                proposedMessage += "stand (bust)"
+            proposedMessage += "stand (bust)"
         case .dontknow:
-                proposedMessage += "stand"
+            proposedMessage += "stand"
         }
-        
+
         return (proposedAction, proposedMessage)
     }
-    
+
     func nextRound() {
         clearPlayersAndDealer()
         gameState.triggerEvent(CountingEvents.start)
     }
-    
+
     func createPlayers(_ numberOfPlayers: UInt) {
         for playerIndex in 1...numberOfPlayers {
             let player: Player = Player(name: "player \(playerIndex)", strategy: BasicStrategy(), isDealer: false, isHuman: true)
@@ -136,37 +154,45 @@ class CardCountingGameEngine: CardCountingProtocol {
         }
     }
     
+    func getNextHand() -> Hand {
+        return players[playerIndex].getHand(handIndex: handIndex + 1)
+    }
+    
+    func getCurrentHand() -> Hand {
+        return players[playerIndex].getHand(handIndex: handIndex)
+    }
+
     func clearPlayersAndDealer() {
         for player in players {
             player.clear()
         }
         dealer.clear()
     }
-    
+
     func gotPlayersDeal(_ playerIndex: Int, _ dealtCards: [Card]) {
         storePlayersDeal(playerIndex, dealtCards)
         nextPlayer()
         gameState.triggerEvent(CountingEvents.playerDealt)
     }
-    
+
     func storePlayersDeal(_ playerIndex: Int, _ dealtCards: [Card]) {
         players[playerIndex].add(handIndex: 0, card: dealtCards[0])
         players[playerIndex].add(handIndex: 0, card: dealtCards[1])
         cardCountCalculator.addCards(card: dealtCards[0])
         cardCountCalculator.addCards(card: dealtCards[1])
     }
-    
+
     func gotAllPlayersDeal() {
         gameState.triggerEvent(CountingEvents.allPlayersDealt)
     }
-    
+
     func gotDealersDeal(_ dealerCard: Card) {
         dealer.add(handIndex: 0, card: dealerCard)
         cardCountCalculator.addCards(card: dealerCard)
         resetPlayerIndex()
         gameState.triggerEvent(CountingEvents.dealerDealt)
     }
-    
+
     func gotDealersSecondCard(_ dealerCard: Card) {
         dealer.add(handIndex: 0, card: dealerCard)
         cardCountCalculator.addCards(card: dealerCard)
@@ -178,20 +204,20 @@ class CardCountingGameEngine: CardCountingProtocol {
         dealer.add(handIndex: 0, card: dealerCard)
         cardCountCalculator.addCards(card: dealerCard)
     }
-    
+
     func gotPlayerCard(_ playerCard: Card) {
         players[playerIndex].add(handIndex: 0, card: playerCard)
         cardCountCalculator.addCards(card: playerCard)
     }
-    
+
     func selectDealer() {
         gameState.triggerEvent(CountingEvents.getDealerSecondCard)
     }
-    
+
     func shouldPresentOptions() {
         gameState.triggerEvent(CountingEvents.presentOptions)
     }
-    
+
     func hit() {
         if checkState(CountingStates.presentOptions) {
             gameState.triggerEvent(CountingEvents.hit)
@@ -199,7 +225,7 @@ class CardCountingGameEngine: CardCountingProtocol {
             gameState.triggerEvent(CountingEvents.dealerHit)
         }
     }
-    
+
     func stand() {
         if checkState(CountingStates.presentOptions) || checkState(CountingStates.hit) {
             if playersLeft() {
@@ -213,49 +239,49 @@ class CardCountingGameEngine: CardCountingProtocol {
             gameState.triggerEvent(CountingEvents.dealerStand)
         }
     }
-    
+
     func dealerStand() {
         view.presentNextRound()
     }
-   
+
     func IsPlayerDealing() -> Bool {
         return checkState(CountingStates.getNextPlayerDeal)
     }
-    
+
     func IsDealerDealing() -> Bool {
         return checkState(CountingStates.getDealersDeal)
     }
- 
+
     func isPlayerPlaying() -> Bool {
         return checkState(CountingStates.getNextPlayerPlay)
     }
-    
+
     func isHit() -> Bool {
         return checkState(CountingStates.hit)
     }
-    
+
     func isDealerHit() -> Bool {
         return checkState(CountingStates.dealerHit)
     }
-    
+
     func isSecondDealerCard() -> Bool {
         return checkState(CountingStates.getDealerSecondCard)
     }
-    
+
     func checkState(_ stateToCheck: CountingStates) -> Bool {
         return gameState.getCurrentState() == stateToCheck
     }
- 
+
     func calculateRunningCount() -> Int {
         return cardCountCalculator.calculateRunningCount()
     }
-    
+
     func calculateTrueCount() -> Int {
         return cardCountCalculator.calculateTrueCount()
     }
-    
+
     func getBettingUnits() -> UInt {
         return cardCountCalculator.getBettingUnits()
     }
-    
+
 }
