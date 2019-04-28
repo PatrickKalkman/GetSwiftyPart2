@@ -54,7 +54,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
     var playerIndicatorStartPoints: [CGPoint] = [CGPoint]()
     var dealerIndicatorStartPoint: CGPoint = CGPoint()
 
-    var cardIndex: Int = 2
+    var viewCardIndex: Int = 2
+    var handCardIndex: Int = 2
     var dealerCardIndex: Int = 0
     var playerSelectedCards: Bool = false
 
@@ -104,9 +105,10 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
                 })
             } else if gameEngine.isHit() {
                 dealCard(playerIndex: gameEngine.playerIndex, completion: {
-                    let card: Card = self.playerCards[self.gameEngine.playerIndex]![self.cardIndex]
+                    let card: Card = self.playerCards[self.gameEngine.playerIndex]![self.viewCardIndex]
                     self.gameEngine.gotPlayerCard(card)
-                    self.cardIndex += 1
+                    self.viewCardIndex += 1
+                    self.handCardIndex += 1
                     self.strategyLabel.text = self.gameEngine.getStrategyMessage().1
                     self.instructionLabel.text = "Select the action of player: \(self.gameEngine.playerIndex + 1) (\(self.gameEngine.getPlayerValue()))"
                     self.refreshCalculatorValues()
@@ -273,13 +275,27 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
 
     func dealCard(playerIndex: Int, completion: @escaping (() -> Void)) {
 
-        let card: Card = playerCards[playerIndex]![cardIndex]
+        let card: Card = playerCards[playerIndex]![viewCardIndex]
 
         let firstCardPosition: CGPoint = playerStartPoints[playerIndex]
-        let cardposition: CGPoint = CGPoint(x: firstCardPosition.x + CGFloat(cardIndex * 15), y: firstCardPosition.y)
+        let cardposition: CGPoint = CGPoint(x: firstCardPosition.x + CGFloat(handCardIndex * 15), y: firstCardPosition.y)
         let angle: CGFloat = -CGFloat.pi / 8 + (CGFloat.pi / 8) / 3 * CGFloat(playerIndex)
 
         animateCard(card, angle, cardposition, completion: completion)
+    }
+    
+    func showNextHand() {
+        
+        let previousHand: Hand = gameEngine.getPreviousHand()
+        let currentHand: Hand = gameEngine.getCurrentHand()
+        let angle: CGFloat = -CGFloat.pi / 8 + (CGFloat.pi / 8) / 3 * CGFloat(gameEngine.playerIndex)
+        
+        // Move previous hand to side spot and move current to main spot
+        self.moveHand(handToMove: previousHand, xMove: 20, yMove: -130, angle: angle, completion: { _ in
+
+        })
+        
+        moveHand(handToMove: currentHand, xMove: 15, yMove: -140, angle: angle)
     }
     
     func showSplittedHand() {
@@ -288,7 +304,7 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         
         // Hand is already splitted, show the splitted hand
         let nextHand: Hand = gameEngine.getNextHand()
-        moveHand(handToMove: nextHand, xMove: 0, yMove: 140, angle: angle, completion: { _ in
+        moveHand(handToMove: nextHand, xMove: -15, yMove: 140, angle: angle, completion: { _ in
             let currentHand = self.gameEngine.getCurrentHand()
             self.moveHand(handToMove: currentHand, xMove: -15, yMove: 0, angle: angle, completion: { _ in
                 self.gameEngine.splittingFinished()
@@ -450,7 +466,6 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         splitButton.hideWithAnimation(hidden: !gameEngine.canBeSplit())
         standButton.hideWithAnimation(hidden: false)
         hitButton.hideWithAnimation(hidden: false)
-
         animatePlayerIndicatorToCurrentPlayer()
     }
     
@@ -476,7 +491,8 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         standButton.isHidden = true
         hitButton.isHidden = true
         dealerCardIndex = 0
-        cardIndex = 2
+        viewCardIndex = 2
+        handCardIndex = 2
         
         playPanel.hideWithAnimation(hidden: true)
         playNextRoundPanel.hideWithAnimation(hidden: false)
@@ -492,7 +508,11 @@ class CardCountingViewController: BlackjackViewControllerBase, CardCountingViewP
         bettingUnitsValueLabel.text = String(bettingUnits)
     }
     
-    func resetCardIndex() {
-        self.cardIndex = 2
+    func resetViewCardIndex() {
+        self.viewCardIndex = 2
+    }
+    
+    func resetHandCardIndex() {
+        self.handCardIndex = 1
     }
 }

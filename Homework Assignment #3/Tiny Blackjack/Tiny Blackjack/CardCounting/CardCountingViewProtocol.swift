@@ -13,10 +13,12 @@ protocol CardCountingViewProtocol {
     func getNextPlayerDeal()
     func getDealersDeal()
     func showSplittedHand()
+    func showNextHand()
     func presentOptions()
     func getDealersSecondCard()
     func presentDealerOptions()
     func presentNextRound()
-    func resetCardIndex()
+    func resetViewCardIndex()
+    func resetHandCardIndex()
     
 }

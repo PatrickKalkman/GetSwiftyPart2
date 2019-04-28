@@ -668,7 +668,10 @@
                                                     <constraint firstAttribute="height" constant="60" id="cH9-bs-AmC"/>
                                                     <constraint firstAttribute="width" constant="60" id="oK1-Ls-aSa"/>
                                                 </constraints>
-                                                <state key="normal" title="Restart" image="Empty Button"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="Restart" backgroundImage="Empty Button">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="startNextRound:" destination="efv-N3-csu" eventType="touchUpInside" id="ddM-Wy-DI0"/>
                                                     <action selector="startPlaying:" destination="efv-N3-csu" eventType="touchUpInside" id="wSf-fo-QnL"/>

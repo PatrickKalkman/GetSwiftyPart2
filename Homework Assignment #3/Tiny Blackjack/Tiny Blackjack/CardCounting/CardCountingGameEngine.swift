@@ -21,12 +21,25 @@ class CardCountingGameEngine: CardCountingProtocol {
     var handIndex: Int = 0
     var numberOfPlayers: UInt = 0
 
+    func nextHand() {
+        if handIndex < players[playerIndex].numberOfHands() - 1 {
+            handIndex += 1
+            view.showNextHand()
+            view.resetHandCardIndex()
+        } else {
+            nextPlayer()
+            view.resetViewCardIndex()
+            handIndex = 0
+        }
+    }
+    
     func nextPlayer() {
         playerIndex += 1
     }
 
     func resetPlayerIndex() {
         playerIndex = 0
+        handIndex = 0
     }
 
     func playerNumber() -> String {
@@ -34,7 +47,7 @@ class CardCountingGameEngine: CardCountingProtocol {
     }
 
     func playersLeft() -> Bool {
-        return playerIndex < numberOfPlayers - 1
+        return playerIndex < numberOfPlayers - 1 || handIndex < players[playerIndex].numberOfHands() - 1
     }
 
     init(view: CardCountingViewProtocol) {
@@ -96,7 +109,7 @@ class CardCountingGameEngine: CardCountingProtocol {
     }
     
     func getPlayerValue() -> UInt8 {
-        return players[playerIndex].getHand(handIndex: 0).getValue()
+        return players[playerIndex].getHand(handIndex: handIndex).getValue()
     }
 
     func getDealerValue() -> UInt8 {
@@ -104,7 +117,7 @@ class CardCountingGameEngine: CardCountingProtocol {
     }
 
     func getStrategyMessage() -> (ProposedAction, String) {
-        let proposedAction: ProposedAction = players[playerIndex].askAction(handIndex: 0, dealerHand: dealer.getHand(handIndex: 0))
+        let proposedAction: ProposedAction = players[playerIndex].askAction(handIndex: handIndex, dealerHand: dealer.getHand(handIndex: 0))
 
         var proposedMessage: String = "Basic strategy says to: "
 
@@ -161,6 +174,10 @@ class CardCountingGameEngine: CardCountingProtocol {
     func getCurrentHand() -> Hand {
         return players[playerIndex].getHand(handIndex: handIndex)
     }
+    
+    func getPreviousHand() -> Hand {
+        return players[playerIndex].getHand(handIndex: handIndex - 1)
+    }
 
     func clearPlayersAndDealer() {
         for player in players {
@@ -206,7 +223,7 @@ class CardCountingGameEngine: CardCountingProtocol {
     }
 
     func gotPlayerCard(_ playerCard: Card) {
-        players[playerIndex].add(handIndex: 0, card: playerCard)
+        players[playerIndex].add(handIndex: handIndex, card: playerCard)
         cardCountCalculator.addCards(card: playerCard)
     }
 
@@ -229,8 +246,7 @@ class CardCountingGameEngine: CardCountingProtocol {
     func stand() {
         if checkState(CountingStates.presentOptions) || checkState(CountingStates.hit) {
             if playersLeft() {
-                view.resetCardIndex()
-                nextPlayer()
+                nextHand()
                 gameState.triggerEvent(CountingEvents.stand)
             } else {
                 gameState.triggerEvent(CountingEvents.getDealerSecondCard)
