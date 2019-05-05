@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		AB0668C0227EC5BB0090B1CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0668BF227EC5BB0090B1CC /* AppDelegate.swift */; };
-		AB0668C2227EC5BB0090B1CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0668C1227EC5BB0090B1CC /* ViewController.swift */; };
+		AB0668C2227EC5BB0090B1CC /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0668C1227EC5BB0090B1CC /* ContactsViewController.swift */; };
 		AB0668C5227EC5BB0090B1CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0668C3227EC5BB0090B1CC /* Main.storyboard */; };
 		AB0668C8227EC5BB0090B1CC /* Tiny_Contacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0668C6227EC5BB0090B1CC /* Tiny_Contacts.xcdatamodeld */; };
 		AB0668CA227EC5BD0090B1CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0668C9227EC5BD0090B1CC /* Assets.xcassets */; };
 		AB0668CD227EC5BD0090B1CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0668CB227EC5BD0090B1CC /* LaunchScreen.storyboard */; };
 		AB0668D8227EC5BD0090B1CC /* Tiny_ContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0668D7227EC5BD0090B1CC /* Tiny_ContactsTests.swift */; };
+		AB0668E4227ED0F90090B1CC /* SearchbarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0668E3227ED0F90090B1CC /* SearchbarExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +30,7 @@
 /* Begin PBXFileReference section */
 		AB0668BC227EC5BB0090B1CC /* Tiny Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tiny Contacts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0668BF227EC5BB0090B1CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB0668C1227EC5BB0090B1CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB0668C1227EC5BB0090B1CC /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		AB0668C4227EC5BB0090B1CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB0668C7227EC5BB0090B1CC /* Tiny_Contacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiny_Contacts.xcdatamodel; sourceTree = "<group>"; };
 		AB0668C9227EC5BD0090B1CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		AB0668D3227EC5BD0090B1CC /* Tiny ContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tiny ContactsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0668D7227EC5BD0090B1CC /* Tiny_ContactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiny_ContactsTests.swift; sourceTree = "<group>"; };
 		AB0668D9227EC5BD0090B1CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB0668E3227ED0F90090B1CC /* SearchbarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +81,9 @@
 		AB0668BE227EC5BB0090B1CC /* Tiny Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				AB0668E2227ED0E30090B1CC /* UI */,
 				AB0668BF227EC5BB0090B1CC /* AppDelegate.swift */,
-				AB0668C1227EC5BB0090B1CC /* ViewController.swift */,
+				AB0668C1227EC5BB0090B1CC /* ContactsViewController.swift */,
 				AB0668C3227EC5BB0090B1CC /* Main.storyboard */,
 				AB0668C9227EC5BD0090B1CC /* Assets.xcassets */,
 				AB0668CB227EC5BD0090B1CC /* LaunchScreen.storyboard */,
@@ -97,6 +100,14 @@
 				AB0668D9227EC5BD0090B1CC /* Info.plist */,
 			);
 			path = "Tiny ContactsTests";
+			sourceTree = "<group>";
+		};
+		AB0668E2227ED0E30090B1CC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AB0668E3227ED0F90090B1CC /* SearchbarExtensions.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +212,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0668C8227EC5BB0090B1CC /* Tiny_Contacts.xcdatamodeld in Sources */,
-				AB0668C2227EC5BB0090B1CC /* ViewController.swift in Sources */,
+				AB0668C2227EC5BB0090B1CC /* ContactsViewController.swift in Sources */,
 				AB0668C0227EC5BB0090B1CC /* AppDelegate.swift in Sources */,
+				AB0668E4227ED0F90090B1CC /* SearchbarExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
