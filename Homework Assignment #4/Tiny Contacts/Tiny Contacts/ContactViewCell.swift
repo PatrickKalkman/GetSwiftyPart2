@@ -17,7 +17,7 @@ class ContactViewCell: UICollectionViewCell {
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var payButton: UIButton!
     
-    
-    
-    
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
 }
