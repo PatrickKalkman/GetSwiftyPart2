@@ -22,6 +22,7 @@ class ContactsViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     private var searchQueryText: String = ""
     
@@ -37,6 +38,8 @@ class ContactsViewController: UIViewController {
         let width: CGFloat = (view.frame.size.width - 50) / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+    
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +47,27 @@ class ContactsViewController: UIViewController {
         refresh()
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        collectionView.allowsMultipleSelection = editing
+        addButton.isEnabled = !editing
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        for indexPath in indexPaths {
+            let cell = collectionView.cellForItem(at: indexPath) as! ContactViewCell
+            cell.isEditing = editing
+        }
+    }
+    
     @IBAction func addContact() {
         let generatedContact = contactGenerator.generateRandomContact()
         context.insert(generatedContact)
         appDelegate.saveContext()
     }
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        setEditing(true, animated: true)
+    }
+    
     
     func refresh() {
         let request = Contact.fetchRequest() as NSFetchRequest<Contact>
@@ -112,10 +131,7 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
             contactViewCell.textButton.layer.cornerRadius = 3
             contactViewCell.textButton.clipsToBounds = true
             
-            contactViewCell.payButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
-            contactViewCell.payButton.setTitle(String.fontAwesomeIcon(name: .dollarSign), for: .normal)
-            contactViewCell.payButton.layer.cornerRadius = 3
-            contactViewCell.payButton.clipsToBounds = true
+            contactViewCell.isEditing = isEditing
             
             return contactViewCell
         }
