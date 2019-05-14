@@ -23,6 +23,7 @@ class ContactsViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     private var searchQueryText: String = ""
     
@@ -40,6 +41,7 @@ class ContactsViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: width)
     
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationController?.toolbar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,12 +52,21 @@ class ContactsViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView.allowsMultipleSelection = editing
+        collectionView.indexPathsForSelectedItems?.forEach({
+            collectionView.deselectItem(at: $0, animated: false)
+            })
         addButton.isEnabled = !editing
+        deleteButton.isEnabled = editing
         let indexPaths = collectionView.indexPathsForVisibleItems
         for indexPath in indexPaths {
             let cell = collectionView.cellForItem(at: indexPath) as! ContactViewCell
             cell.isEditing = editing
         }
+        deleteButton.isEnabled = isEditing
+        if !editing {
+            navigationController?.toolbar.isHidden = true
+        }
+        
     }
     
     @IBAction func addContact() {
@@ -68,6 +79,16 @@ class ContactsViewController: UIViewController {
         setEditing(true, animated: true)
     }
     
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        if let selectedItems = collectionView.indexPathsForSelectedItems {
+            for indexPath in selectedItems.reversed() {
+                let contactToDelete: Contact = fetchResultController.object(at: indexPath)
+                context.delete(contactToDelete)
+                appDelegate.saveContext()
+            }
+        }
+        setEditing(false, animated: true)
+    }
     
     func refresh() {
         let request = Contact.fetchRequest() as NSFetchRequest<Contact>
@@ -95,6 +116,20 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
             return 0
         }
         return contacts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isEditing {
+            navigationController?.toolbar.isHidden = false
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if isEditing {
+            if let selected = collectionView.indexPathsForSelectedItems, selected.count == 0 {
+                navigationController?.toolbar.isHidden = true
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

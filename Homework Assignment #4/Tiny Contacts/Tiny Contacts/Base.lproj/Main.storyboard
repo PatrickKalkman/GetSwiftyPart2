@@ -283,11 +283,9 @@
                                     <constraint firstItem="x22-X6-lH9" firstAttribute="width" secondItem="ql5-Fk-iyB" secondAttribute="width" id="xr5-JP-fTp"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="krw-C6-D5V">
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="krw-C6-D5V">
                                 <rect key="frame" x="0.0" y="847" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="trash" id="OG1-si-p5L"/>
-                                </items>
+                                <items/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -311,6 +309,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="trash" id="OG1-si-p5L">
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="BYZ-38-t0r" id="YHG-aX-riS"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="WGW-HX-wBv">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aGv-2e-ixh">
                             <connections>
@@ -318,9 +323,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="aGv-2e-ixh" id="crr-C1-gNr"/>
                         <outlet property="collectionView" destination="tkz-1w-fWZ" id="qhy-d2-c69"/>
+                        <outlet property="deleteButton" destination="OG1-si-p5L" id="c5V-gd-WwA"/>
                         <outlet property="searchBar" destination="x22-X6-lH9" id="r9T-os-kZb"/>
                     </connections>
                 </viewController>
@@ -331,13 +338,17 @@
         <!--Navigation Controller-->
         <scene sceneID="hKd-fF-frR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="moP-2b-HyN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="moP-2b-HyN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4VT-oX-zDB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hVV-va-crw">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zmv-Gv-rA3"/>
                     </connections>
