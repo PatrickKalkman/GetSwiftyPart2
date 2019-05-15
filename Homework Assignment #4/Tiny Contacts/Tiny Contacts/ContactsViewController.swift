@@ -81,11 +81,13 @@ class ContactsViewController: UIViewController {
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
         if let selectedItems = collectionView.indexPathsForSelectedItems {
-            for indexPath in selectedItems.reversed() {
+            let layout = self.collectionView?.collectionViewLayout as! FlowLayout
+            layout.itemToDelete = selectedItems
+            for indexPath in selectedItems {
                 let contactToDelete: Contact = fetchResultController.object(at: indexPath)
                 context.delete(contactToDelete)
-                appDelegate.saveContext()
             }
+            appDelegate.saveContext()
         }
         setEditing(false, animated: true)
     }
@@ -133,7 +135,9 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath)
+        
         if let contactViewCell = cell as? ContactViewCell {
             
             let contact: Contact = fetchResultController.object(at: indexPath)
@@ -145,7 +149,7 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
             } else {
                 contactViewCell.lastNameLabel.text = ""
             }
-            
+
             contactViewCell.callButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
             contactViewCell.callButton.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
             contactViewCell.callButton.layer.cornerRadius = 3
@@ -179,8 +183,10 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                     withReuseIdentifier: "ContactHeaderView", for: indexPath) as! ContactHeaderView
         
-        if let contacts = fetchResultController.sections?[indexPath.section].objects as? [Contact], let contact = contacts.first {
-            sectionHeaderView.headerTitle = contact.group
+        if let sections = fetchResultController.sections, sections.count > indexPath.section {
+            if let contacts = fetchResultController.sections?[indexPath.section].objects as? [Contact], let contact = contacts.first {
+                sectionHeaderView.headerTitle = contact.group
+            }
         }
         
         return sectionHeaderView
@@ -201,33 +207,45 @@ extension ContactsViewController: UISearchBarDelegate {
 
 // Fetch controller delegate
 extension ContactsViewController: NSFetchedResultsControllerDelegate {
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         blockOperations.removeAll(keepingCapacity: true)
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
 
         let index = indexPath ?? (newIndexPath ?? nil)
         guard let cellIndex = index else {
             return
         }
-        
+
         var op: BlockOperation  = BlockOperation { }
         switch type {
         case .insert:
-            op = BlockOperation { self.collectionView.insertItems(at: [cellIndex]) }
+            op = BlockOperation {
+                let layout = self.collectionView?.collectionViewLayout as! FlowLayout
+                layout.addedItem = cellIndex
+                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.65, initialSpringVelocity: 0.0, options: [], animations: {
+                    self.collectionView.insertItems(at: [cellIndex])
+                }) { finished in
+                    layout.addedItem = nil
+                }
+            }
         case .delete:
-            op = BlockOperation { self.collectionView.deleteItems(at: [cellIndex]) }
+            op = BlockOperation {
+
+                self.collectionView.deleteItems(at: [cellIndex])
+
+            }
         default:
             break;
         }
-        
+
         blockOperations.append(op)
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
+
         var op: BlockOperation = BlockOperation { }
         let sectionIndexSet = IndexSet(integer: sectionIndex)
         switch type {
@@ -235,12 +253,14 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
             op = BlockOperation { self.collectionView.insertSections(sectionIndexSet) }
         case .delete:
             op = BlockOperation { self.collectionView.deleteSections(sectionIndexSet) }
+        case .update:
+            op = BlockOperation { self.collectionView?.reloadSections(sectionIndexSet) }
         default:
             break;
         }
         blockOperations.append(op)
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         collectionView.performBatchUpdates({
             self.blockOperations.forEach({ $0.start() })

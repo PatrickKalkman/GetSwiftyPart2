@@ -56,7 +56,7 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tkz-1w-fWZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="620.66666666666663"/>
                                                 <color key="backgroundColor" red="0.94115807220000003" green="0.94115807220000003" blue="0.94115807220000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JIf-HE-9wF">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JIf-HE-9wF" customClass="FlowLayout" customModule="Tiny_Contacts" customModuleProvider="target">
                                                     <size key="itemSize" width="200" height="200"/>
                                                     <size key="headerReferenceSize" width="40" height="40"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
