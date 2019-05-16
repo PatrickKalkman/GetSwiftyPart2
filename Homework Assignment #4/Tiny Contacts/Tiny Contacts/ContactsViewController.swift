@@ -131,6 +131,8 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
             if let selected = collectionView.indexPathsForSelectedItems, selected.count == 0 {
                 navigationController?.toolbar.isHidden = true
             }
+        } else {
+            performSegue(withIdentifier: "showDetail", sender: self)
         }
     }
     
@@ -223,17 +225,11 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
             op = BlockOperation {
                 let layout = self.collectionView?.collectionViewLayout as! FlowLayout
                 layout.addedItem = cellIndex
-                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.65, initialSpringVelocity: 0.0, options: [], animations: {
-                    self.collectionView.insertItems(at: [cellIndex])
-                }) { finished in
-                    layout.addedItem = nil
-                }
+                self.collectionView.insertItems(at: [cellIndex])
             }
         case .delete:
             op = BlockOperation {
-
                 self.collectionView.deleteItems(at: [cellIndex])
-
             }
         default:
             break;
