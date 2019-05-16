@@ -28,7 +28,6 @@
 		AB4D89B92285A26E0038090F /* Phone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D89B52285A26E0038090F /* Phone+CoreDataProperties.swift */; };
 		AB4D89BA2285A26E0038090F /* Phone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D89B42285A26E0038090F /* Phone+CoreDataClass.swift */; };
 		AB4D89BB2285A26E0038090F /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D89B22285A26E0038090F /* Contact+CoreDataProperties.swift */; };
-		AB4D89BD2285AA7E0038090F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D89BC2285AA7E0038090F /* UIViewExtensions.swift */; };
 		ABF47EC0228C83ED00AFE222 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF47EBF228C83ED00AFE222 /* FlowLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +70,6 @@
 		AB4D89B32285A26E0038090F /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Contact+CoreDataClass.swift"; path = "/Users/kalkie/cus/simpletechture/GetSwiftyPart2/Homework Assignment #4/Tiny Contacts/Tiny Contacts/Data/Contact+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		AB4D89B42285A26E0038090F /* Phone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Phone+CoreDataClass.swift"; path = "/Users/kalkie/cus/simpletechture/GetSwiftyPart2/Homework Assignment #4/Tiny Contacts/Tiny Contacts/Data/Phone+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		AB4D89B52285A26E0038090F /* Phone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Phone+CoreDataProperties.swift"; path = "/Users/kalkie/cus/simpletechture/GetSwiftyPart2/Homework Assignment #4/Tiny Contacts/Tiny Contacts/Data/Phone+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		AB4D89BC2285AA7E0038090F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ABF47EBF228C83ED00AFE222 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		AD890A5E55A1B36D9236B98A /* Pods-Tiny ContactsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ContactsTests.debug.xcconfig"; path = "Target Support Files/Pods-Tiny ContactsTests/Pods-Tiny ContactsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,7 +179,6 @@
 			children = (
 				AB4D89AC22859A230038090F /* DateExtension.swift */,
 				AB4D89AE22859A580038090F /* IntExtension.swift */,
-				AB4D89BC2285AA7E0038090F /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,12 +312,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tiny Contacts/Pods-Tiny Contacts-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -389,7 +388,6 @@
 				AB0668E4227ED0F90090B1CC /* SearchbarExtensions.swift in Sources */,
 				ABF47EC0228C83ED00AFE222 /* FlowLayout.swift in Sources */,
 				AB4D89A82285949E0038090F /* ContactDataGenerator.swift in Sources */,
-				AB4D89BD2285AA7E0038090F /* UIViewExtensions.swift in Sources */,
 				AB4D89B62285A26E0038090F /* Email+CoreDataProperties.swift in Sources */,
 				AB4D89BA2285A26E0038090F /* Phone+CoreDataClass.swift in Sources */,
 				AB4D89B82285A26E0038090F /* Contact+CoreDataClass.swift in Sources */,

@@ -137,9 +137,7 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath)
-        
         if let contactViewCell = cell as? ContactViewCell {
-            
             let contact: Contact = fetchResultController.object(at: indexPath)
             if let firstName = contact.firstname {
                 contactViewCell.firstNameLabel.text = firstName

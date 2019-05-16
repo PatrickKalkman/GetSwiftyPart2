@@ -1,16 +1,39 @@
 PODS:
   - FontAwesome.swift (1.6.0)
+  - MaterialComponents/Cards (80.0.0):
+    - "MaterialComponents/Cards+Private"
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+  - "MaterialComponents/Cards+Private (80.0.0)"
+  - MaterialComponents/Ink (80.0.0):
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Icons/Base (80.0.0)
+  - MaterialComponents/private/Icons/ic_check_circle (80.0.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (80.0.0)
+  - MaterialComponents/ShadowElevations (80.0.0)
+  - MaterialComponents/ShadowLayer (80.0.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (80.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
 
 DEPENDENCIES:
   - FontAwesome.swift
+  - MaterialComponents/Cards
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FontAwesome.swift
+    - MaterialComponents
 
 SPEC CHECKSUMS:
   FontAwesome.swift: 71a422e7b209ee940c7c21a5d13964ecf2897ca4
+  MaterialComponents: fcd7ab0d6087bce852e2c60c2c712809f76c7f9e
 
-PODFILE CHECKSUM: 619d14952a78130c9d134fdcc8170a1f6929ee2b
+PODFILE CHECKSUM: 6314fe2939bf9330cb31ac27476e8db3ac386ec4
 
 COCOAPODS: 1.6.1

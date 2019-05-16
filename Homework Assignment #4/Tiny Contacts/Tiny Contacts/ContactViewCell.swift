@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import FontAwesome
 
 class ContactViewCell: UICollectionViewCell {
     
