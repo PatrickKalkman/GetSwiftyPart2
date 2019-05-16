@@ -1,16 +1,20 @@
 PODS:
   - FontAwesome.swift (1.6.0)
+  - RSSelectionMenu (6.0)
 
 DEPENDENCIES:
   - FontAwesome.swift
+  - RSSelectionMenu
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FontAwesome.swift
+    - RSSelectionMenu
 
 SPEC CHECKSUMS:
   FontAwesome.swift: 71a422e7b209ee940c7c21a5d13964ecf2897ca4
+  RSSelectionMenu: 165136011efa3b4141249de88d2c7346be2780c6
 
-PODFILE CHECKSUM: 619d14952a78130c9d134fdcc8170a1f6929ee2b
+PODFILE CHECKSUM: 3413ed2b0814a668878ed05966489572fe31e09d
 
 COCOAPODS: 1.6.1

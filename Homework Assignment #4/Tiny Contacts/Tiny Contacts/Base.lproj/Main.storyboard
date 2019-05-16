@@ -53,7 +53,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQE-Kn-FSI" userLabel="Favorites Panel">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="620.66666666666663"/>
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tkz-1w-fWZ">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tkz-1w-fWZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="620.66666666666663"/>
                                                 <color key="backgroundColor" red="0.94115807220000003" green="0.94115807220000003" blue="0.94115807220000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JIf-HE-9wF" customClass="FlowLayout" customModule="Tiny_Contacts" customModuleProvider="target">
@@ -180,29 +180,6 @@
                                                             <constraint firstItem="Mg7-gj-Fcs" firstAttribute="leading" secondItem="pgO-fK-diT" secondAttribute="leading" id="SCe-X9-hsb"/>
                                                             <constraint firstItem="Mg7-gj-Fcs" firstAttribute="top" secondItem="pgO-fK-diT" secondAttribute="top" constant="4" id="ixz-cd-G5M"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="8"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" red="0.82864048753665687" green="0.82864048753665687" blue="0.82864048753665687" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="4"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                <size key="value" width="3" height="3"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="callButton" destination="Zsy-C9-Xyn" id="BJy-4T-Kwk"/>
                                                             <outlet property="faceTimeButton" destination="BR6-9z-Kla" id="amP-GM-DRb"/>
@@ -211,6 +188,7 @@
                                                             <outlet property="mailButton" destination="ZE1-tp-BWj" id="Lv4-zR-YPr"/>
                                                             <outlet property="selectionImage" destination="6Zi-Fo-T8f" id="P8S-en-z9Z"/>
                                                             <outlet property="textButton" destination="2q4-hQ-Jyh" id="uIF-fE-70f"/>
+                                                            <segue destination="t1U-Mc-Rud" kind="show" id="T0f-rh-k5J"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -241,9 +219,9 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.94115807216538017" green="0.94115807216538017" blue="0.94115807216538017" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="tkz-1w-fWZ" firstAttribute="leading" secondItem="IQE-Kn-FSI" secondAttribute="leading" id="FZ2-Uu-YhV"/>
-                                            <constraint firstItem="tkz-1w-fWZ" firstAttribute="bottom" secondItem="IQE-Kn-FSI" secondAttribute="bottom" id="RF1-uN-Qwq"/>
+                                            <constraint firstItem="tkz-1w-fWZ" firstAttribute="height" secondItem="IQE-Kn-FSI" secondAttribute="height" id="4zJ-7l-NvT"/>
                                             <constraint firstItem="tkz-1w-fWZ" firstAttribute="width" secondItem="IQE-Kn-FSI" secondAttribute="width" id="Xzi-FY-vyi"/>
+                                            <constraint firstItem="tkz-1w-fWZ" firstAttribute="top" secondItem="IQE-Kn-FSI" secondAttribute="top" id="ogs-oc-ftD"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -251,7 +229,6 @@
                                 <constraints>
                                     <constraint firstItem="IQE-Kn-FSI" firstAttribute="top" secondItem="cvs-bL-WRr" secondAttribute="top" id="BMN-hz-lBI"/>
                                     <constraint firstItem="IQE-Kn-FSI" firstAttribute="leading" secondItem="cvs-bL-WRr" secondAttribute="leading" id="UIU-br-x7k"/>
-                                    <constraint firstItem="tkz-1w-fWZ" firstAttribute="top" secondItem="cvs-bL-WRr" secondAttribute="top" id="XsI-Un-CMR"/>
                                     <constraint firstItem="IQE-Kn-FSI" firstAttribute="width" secondItem="cvs-bL-WRr" secondAttribute="width" id="ryf-bi-mGa"/>
                                     <constraint firstItem="IQE-Kn-FSI" firstAttribute="height" secondItem="cvs-bL-WRr" secondAttribute="height" id="z9C-Mt-Kpj"/>
                                 </constraints>
@@ -323,7 +300,6 @@
                         <outlet property="collectionView" destination="tkz-1w-fWZ" id="qhy-d2-c69"/>
                         <outlet property="deleteButton" destination="OG1-si-p5L" id="c5V-gd-WwA"/>
                         <outlet property="searchBar" destination="x22-X6-lH9" id="r9T-os-kZb"/>
-                        <segue destination="t1U-Mc-Rud" kind="show" identifier="showDetail" id="ScJ-So-n1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -352,20 +328,66 @@
             </objects>
             <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact Detail View Controller-->
         <scene sceneID="vcl-UA-DVP">
             <objects>
-                <viewController storyboardIdentifier="CardContent" id="t1U-Mc-Rud" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardContent" id="t1U-Mc-Rud" customClass="ContactDetailViewController" customModule="Tiny_Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4NV-5M-t8R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TDB-jj-QRP" userLabel="FirstName">
+                                <rect key="frame" x="12" y="102" width="390" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMa-lt-Mgx" userLabel="LastName">
+                                <rect key="frame" x="12" y="146" width="390" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za2-4y-dZg" userLabel="GroupButton">
+                                <rect key="frame" x="12" y="190" width="53" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="yUN-2E-p2X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Family"/>
+                                <connections>
+                                    <action selector="showGroupMenu:" destination="t1U-Mc-Rud" eventType="touchUpInside" id="Pi7-g1-d8b"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Za2-4y-dZg" firstAttribute="width" secondItem="4NV-5M-t8R" secondAttribute="width" id="0oF-l5-7AU"/>
+                            <constraint firstItem="TDB-jj-QRP" firstAttribute="top" secondItem="qLa-mQ-nr3" secondAttribute="top" constant="14" id="0pz-fZ-ANj"/>
+                            <constraint firstItem="QMa-lt-Mgx" firstAttribute="trailing" secondItem="qLa-mQ-nr3" secondAttribute="trailing" constant="-12" id="6k9-19-KNj"/>
+                            <constraint firstItem="QMa-lt-Mgx" firstAttribute="top" secondItem="TDB-jj-QRP" secondAttribute="bottom" constant="14" id="JvS-9P-QkN"/>
+                            <constraint firstItem="TDB-jj-QRP" firstAttribute="trailing" secondItem="qLa-mQ-nr3" secondAttribute="trailing" constant="-12" id="KjR-bT-OkG"/>
+                            <constraint firstItem="QMa-lt-Mgx" firstAttribute="leading" secondItem="qLa-mQ-nr3" secondAttribute="leading" constant="12" id="ObZ-jk-zdl"/>
+                            <constraint firstItem="Za2-4y-dZg" firstAttribute="top" secondItem="QMa-lt-Mgx" secondAttribute="bottom" constant="14" id="syf-eN-iTw"/>
+                            <constraint firstItem="TDB-jj-QRP" firstAttribute="leading" secondItem="qLa-mQ-nr3" secondAttribute="leading" constant="12" id="yCk-wr-Gnl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qLa-mQ-nr3"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="cancel" id="bw6-SR-UuR"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="mTq-oO-Qbi"/>
+                        <barButtonItem style="done" systemItem="save" id="5su-Yx-3hh"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="FirstName" destination="TDB-jj-QRP" id="s1p-W2-JaF"/>
+                        <outlet property="GroupButton" destination="Za2-4y-dZg" id="xdj-bd-XNB"/>
+                        <outlet property="LastName" destination="QMa-lt-Mgx" id="yiF-qA-CQu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4y-lb-9vf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1861" y="21"/>
+            <point key="canvasLocation" x="1860.8695652173915" y="20.758928571428569"/>
         </scene>
     </scenes>
     <resources>

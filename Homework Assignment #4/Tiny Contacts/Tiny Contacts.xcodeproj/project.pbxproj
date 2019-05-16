@@ -29,6 +29,7 @@
 		AB4D89BA2285A26E0038090F /* Phone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D89B42285A26E0038090F /* Phone+CoreDataClass.swift */; };
 		AB4D89BB2285A26E0038090F /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D89B22285A26E0038090F /* Contact+CoreDataProperties.swift */; };
 		ABF47EC0228C83ED00AFE222 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF47EBF228C83ED00AFE222 /* FlowLayout.swift */; };
+		ABF47EC2228D3AA700AFE222 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF47EC1228D3AA700AFE222 /* ContactDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		AB4D89B42285A26E0038090F /* Phone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Phone+CoreDataClass.swift"; path = "/Users/kalkie/cus/simpletechture/GetSwiftyPart2/Homework Assignment #4/Tiny Contacts/Tiny Contacts/Data/Phone+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		AB4D89B52285A26E0038090F /* Phone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Phone+CoreDataProperties.swift"; path = "/Users/kalkie/cus/simpletechture/GetSwiftyPart2/Homework Assignment #4/Tiny Contacts/Tiny Contacts/Data/Phone+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		ABF47EBF228C83ED00AFE222 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		ABF47EC1228D3AA700AFE222 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		AD890A5E55A1B36D9236B98A /* Pods-Tiny ContactsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ContactsTests.debug.xcconfig"; path = "Target Support Files/Pods-Tiny ContactsTests/Pods-Tiny ContactsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 				AB0668CE227EC5BD0090B1CC /* Info.plist */,
 				AB0668E5227F6C700090B1CC /* ContactHeaderView.swift */,
 				AB0668E72280BC180090B1CC /* ContactViewCell.swift */,
+				ABF47EC1228D3AA700AFE222 /* ContactDetailViewController.swift */,
 			);
 			path = "Tiny Contacts";
 			sourceTree = "<group>";
@@ -312,12 +315,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tiny Contacts/Pods-Tiny Contacts-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/RSSelectionMenu/RSSelectionMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSSelectionMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -388,6 +393,7 @@
 				AB4D89A82285949E0038090F /* ContactDataGenerator.swift in Sources */,
 				AB4D89B62285A26E0038090F /* Email+CoreDataProperties.swift in Sources */,
 				AB4D89BA2285A26E0038090F /* Phone+CoreDataClass.swift in Sources */,
+				ABF47EC2228D3AA700AFE222 /* ContactDetailViewController.swift in Sources */,
 				AB4D89B82285A26E0038090F /* Contact+CoreDataClass.swift in Sources */,
 				AB0668E82280BC180090B1CC /* ContactViewCell.swift in Sources */,
 				AB4D89B92285A26E0038090F /* Phone+CoreDataProperties.swift in Sources */,

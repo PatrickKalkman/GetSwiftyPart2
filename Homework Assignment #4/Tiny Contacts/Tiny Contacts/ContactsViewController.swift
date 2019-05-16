@@ -14,47 +14,53 @@ class ContactsViewController: UIViewController {
 
     private let contactGenerator: ContactDataGenerator = ContactDataGenerator()
     private var blockOperations: [BlockOperation] = []
-    
+
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+
     private var fetchResultController: NSFetchedResultsController<Contact>!
-    
+
+    private var selectedContact: Contact?
+
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
-    
+
     private var searchQueryText: String = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         searchBar.setTextFieldColor(color: UIColor.lightGray.withAlphaComponent(0.3))
         searchBar.setTextColor(color: UIColor.darkGray)
         searchBar.layer.borderWidth = 1;
         searchBar.layer.borderColor = UIColor.white.cgColor
         searchBar.delegate = self
-        
+
         let width: CGFloat = (view.frame.size.width - 50) / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
-    
+
         navigationItem.leftBarButtonItem = editButtonItem
         navigationController?.toolbar.isHidden = true
+        collectionView.allowsMultipleSelection = false
+        collectionView.allowsSelection = true
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
     }
-    
+
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView.allowsMultipleSelection = editing
+
         collectionView.indexPathsForSelectedItems?.forEach({
             collectionView.deselectItem(at: $0, animated: false)
-            })
+        })
+
         addButton.isEnabled = !editing
         deleteButton.isEnabled = editing
         let indexPaths = collectionView.indexPathsForVisibleItems
@@ -65,22 +71,23 @@ class ContactsViewController: UIViewController {
         deleteButton.isEnabled = isEditing
         if !editing {
             navigationController?.toolbar.isHidden = true
+        } else {
+            navigationController?.toolbar.isHidden = false
         }
-        
     }
-    
+
     @IBAction func addContact() {
-        let generatedContact = contactGenerator.generateRandomContact()
+        let generatedContact: Contact = contactGenerator.generateRandomContact()
         context.insert(generatedContact)
         appDelegate.saveContext()
     }
-    
+
     @IBAction func editButtonPressed(_ sender: Any) {
         setEditing(true, animated: true)
     }
-    
+
     @IBAction func deleteButtonPressed(_ sender: Any) {
-        if let selectedItems = collectionView.indexPathsForSelectedItems {
+        if let selectedItems: [IndexPath] = collectionView.indexPathsForSelectedItems {
             let layout = self.collectionView?.collectionViewLayout as! FlowLayout
             layout.itemToDelete = selectedItems
             for indexPath in selectedItems {
@@ -91,7 +98,7 @@ class ContactsViewController: UIViewController {
         }
         setEditing(false, animated: true)
     }
-    
+
     func refresh() {
         let request = Contact.fetchRequest() as NSFetchRequest<Contact>
         if !searchQueryText.isEmpty {
@@ -101,43 +108,52 @@ class ContactsViewController: UIViewController {
         let group = NSSortDescriptor(key: #keyPath(Contact.group), ascending: true)
         request.sortDescriptors = [group, sort]
         do {
-            fetchResultController = NSFetchedResultsController(fetchRequest: request,
-                    managedObjectContext: context, sectionNameKeyPath: #keyPath(Contact.group), cacheName: nil)
+            fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: #keyPath(Contact.group), cacheName: nil)
             fetchResultController.delegate = self
             try fetchResultController.performFetch()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return !isEditing
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let contactViewCell = sender as? ContactViewCell {
+            if let indexPathForContactViewCell = collectionView.indexPath(for: contactViewCell) {
+                let selectedContact: Contact = fetchResultController.object(at: indexPathForContactViewCell)
+                if let destination = segue.destination as? ContactDetailViewController {
+                    destination.selectedContact = selectedContact
+                }
+            }
+        }
+        
+    }
 }
 
 extension ContactsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchResultController.sections, let contacts = sections[section].objects else {
             return 0
         }
         return contacts.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isEditing {
-            navigationController?.toolbar.isHidden = false
-        }
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if isEditing {
+            navigationController?.toolbar.isHidden = false
             if let selected = collectionView.indexPathsForSelectedItems, selected.count == 0 {
                 navigationController?.toolbar.isHidden = true
             }
-        } else {
-            performSegue(withIdentifier: "showDetail", sender: self)
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath)
         if let contactViewCell = cell as? ContactViewCell {
             let contact: Contact = fetchResultController.object(at: indexPath)
@@ -159,39 +175,39 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
             contactViewCell.mailButton.setTitle(String.fontAwesomeIcon(name: .envelope), for: .normal)
             contactViewCell.mailButton.layer.cornerRadius = 3
             contactViewCell.mailButton.clipsToBounds = true
-            
+
             contactViewCell.faceTimeButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
             contactViewCell.faceTimeButton.setTitle(String.fontAwesomeIcon(name: .video), for: .normal)
             contactViewCell.faceTimeButton.layer.cornerRadius = 3
             contactViewCell.faceTimeButton.clipsToBounds = true
-            
+
             contactViewCell.textButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
             contactViewCell.textButton.setTitle(String.fontAwesomeIcon(name: .comment), for: .normal)
             contactViewCell.textButton.layer.cornerRadius = 3
             contactViewCell.textButton.clipsToBounds = true
-            
+
             contactViewCell.isEditing = isEditing
-            
+
             return contactViewCell
         }
-        
+
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
+
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                    withReuseIdentifier: "ContactHeaderView", for: indexPath) as! ContactHeaderView
-        
+            withReuseIdentifier: "ContactHeaderView", for: indexPath) as! ContactHeaderView
+
         if let sections = fetchResultController.sections, sections.count > indexPath.section {
             if let contacts = fetchResultController.sections?[indexPath.section].objects as? [Contact], let contact = contacts.first {
                 sectionHeaderView.headerTitle = contact.group
             }
         }
-        
+
         return sectionHeaderView
     }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchResultController.sections?.count ?? 0
     }
@@ -219,7 +235,7 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
             return
         }
 
-        var op: BlockOperation  = BlockOperation { }
+        var op: BlockOperation = BlockOperation { }
         switch type {
         case .insert:
             op = BlockOperation {
@@ -258,7 +274,7 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         collectionView.performBatchUpdates({
             self.blockOperations.forEach({ $0.start() })
-            }, completion: {(finished) in
+        }, completion: { (finished) in
                 self.blockOperations.removeAll(keepingCapacity: false)
             })
     }
