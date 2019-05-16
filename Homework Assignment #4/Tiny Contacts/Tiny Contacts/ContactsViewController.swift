@@ -46,11 +46,12 @@ class ContactsViewController: UIViewController {
         navigationController?.toolbar.isHidden = true
         collectionView.allowsMultipleSelection = false
         collectionView.allowsSelection = true
+        refresh()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refresh()
+        
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -77,8 +78,18 @@ class ContactsViewController: UIViewController {
     }
 
     @IBAction func addContact() {
-        let generatedContact: Contact = contactGenerator.generateRandomContact()
-        context.insert(generatedContact)
+        let generatedContact: Contact = contactGenerator.generateRandomContact(context: context)
+        appDelegate.saveContext()
+        
+        let phone1: Phone = contactGenerator.generatePhone(type: "work", context: context)
+        phone1.phoneOwner = generatedContact
+        let phone2: Phone = contactGenerator.generatePhone(type: "private", context: context)
+        phone2.phoneOwner = generatedContact
+
+        let email1: Email = contactGenerator.generateEmail(type: "work", context: context)
+        email1.emailOwner = generatedContact
+        let email2: Email = contactGenerator.generateEmail(type: "private", context: context)
+        email2.emailOwner = generatedContact
         appDelegate.saveContext()
     }
 
@@ -221,7 +232,6 @@ extension ContactsViewController: UISearchBarDelegate {
     }
 }
 
-// Fetch controller delegate
 extension ContactsViewController: NSFetchedResultsControllerDelegate {
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -246,6 +256,14 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             op = BlockOperation {
                 self.collectionView.deleteItems(at: [cellIndex])
+            }
+        case .update:
+            op = BlockOperation {
+                self.collectionView.reloadItems(at: [cellIndex])
+            }
+        case .move:
+            op = BlockOperation {
+                self.collectionView.moveItem(at: index!, to: newIndexPath!)
             }
         default:
             break;

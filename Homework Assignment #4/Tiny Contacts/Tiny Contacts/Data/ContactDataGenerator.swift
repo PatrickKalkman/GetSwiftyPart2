@@ -417,18 +417,31 @@ class ContactDataGenerator {
     
     private let groups: [String] = ["Favorites", "Family", "Work", "Other"]
 
-    func generateRandomContact() -> Contact {
+    func generateRandomContact(context: NSManagedObjectContext) -> Contact {
         let contactIndex = Int(arc4random_uniform(UInt32(firstNames.count)))
         let groupIndex = Int(arc4random_uniform(UInt32(groups.count)))
         
-        //dob = Date().random(unit: Calendar.Component.year, from: -10, upto: -90)!
-
-        let newContact: Contact = Contact(entity: Contact.entity(), insertInto: nil)
+        let newContact: Contact = Contact(entity: Contact.entity(), insertInto: context)
         newContact.firstname = firstNames[contactIndex]
         newContact.lastname = lastNames[contactIndex]
         newContact.group = groups[groupIndex]
-        
         return newContact
     }
     
+    func generatePhone(type: String, context: NSManagedObjectContext) -> Phone {
+        let phoneIndex = Int(arc4random_uniform(UInt32(phoneNumbers.count)))
+        let newPhone: Phone = Phone(entity: Phone.entity(), insertInto: context)
+        newPhone.phone = phoneNumbers[phoneIndex]
+        newPhone.type = type
+        return newPhone
+    }
+    
+    func generateEmail(type: String, context: NSManagedObjectContext) -> Email {
+        
+        let emailIndex = Int(arc4random_uniform(UInt32(emails.count)))
+        let newEmail: Email = Email(entity: Email.entity(), insertInto: context)
+        newEmail.email = emails[emailIndex]
+        newEmail.type = type
+        return newEmail
+    }
 }

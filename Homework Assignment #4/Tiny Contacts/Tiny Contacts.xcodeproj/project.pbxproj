@@ -30,6 +30,7 @@
 		AB4D89BB2285A26E0038090F /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D89B22285A26E0038090F /* Contact+CoreDataProperties.swift */; };
 		ABF47EC0228C83ED00AFE222 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF47EBF228C83ED00AFE222 /* FlowLayout.swift */; };
 		ABF47EC2228D3AA700AFE222 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF47EC1228D3AA700AFE222 /* ContactDetailViewController.swift */; };
+		ABF47EC4228DAD9B00AFE222 /* PhoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF47EC3228DAD9B00AFE222 /* PhoneTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		AB4D89B52285A26E0038090F /* Phone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Phone+CoreDataProperties.swift"; path = "/Users/kalkie/cus/simpletechture/GetSwiftyPart2/Homework Assignment #4/Tiny Contacts/Tiny Contacts/Data/Phone+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		ABF47EBF228C83ED00AFE222 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		ABF47EC1228D3AA700AFE222 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		ABF47EC3228DAD9B00AFE222 /* PhoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTableViewCell.swift; sourceTree = "<group>"; };
 		AD890A5E55A1B36D9236B98A /* Pods-Tiny ContactsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiny ContactsTests.debug.xcconfig"; path = "Target Support Files/Pods-Tiny ContactsTests/Pods-Tiny ContactsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 				AB4D898B22857E260038090F /* Data */,
 				AB0668E2227ED0E30090B1CC /* UI */,
 				AB0668BF227EC5BB0090B1CC /* AppDelegate.swift */,
+				ABF47EC3228DAD9B00AFE222 /* PhoneTableViewCell.swift */,
 				AB0668C1227EC5BB0090B1CC /* ContactsViewController.swift */,
 				AB0668C3227EC5BB0090B1CC /* Main.storyboard */,
 				AB0668C9227EC5BD0090B1CC /* Assets.xcassets */,
@@ -384,6 +387,7 @@
 				AB4D89AD22859A230038090F /* DateExtension.swift in Sources */,
 				AB0668C8227EC5BB0090B1CC /* Tiny_Contacts.xcdatamodeld in Sources */,
 				AB4D89BB2285A26E0038090F /* Contact+CoreDataProperties.swift in Sources */,
+				ABF47EC4228DAD9B00AFE222 /* PhoneTableViewCell.swift in Sources */,
 				AB0668C2227EC5BB0090B1CC /* ContactsViewController.swift in Sources */,
 				AB0668C0227EC5BB0090B1CC /* AppDelegate.swift in Sources */,
 				AB0668E6227F6C700090B1CC /* ContactHeaderView.swift in Sources */,
