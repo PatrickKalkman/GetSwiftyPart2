@@ -59,7 +59,7 @@ class ContactDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             if let emails = contactToUpdate.emails?.allObjects as? [Email] {
                 for emailIndex in 0...emails.count - 1 {
-                    if let cell = PhoneTableView.cellForRow(at: IndexPath(item: emailIndex, section: 0)) as? PhoneTableViewCell {
+                    if let cell = PhoneTableView.cellForRow(at: IndexPath(item: emailIndex, section: 1)) as? PhoneTableViewCell {
                         emails[emailIndex].email = cell.phoneNumberTextField.text
                         emails[emailIndex].type = cell.typeOfPhoneButton.titleLabel?.text
                     }
