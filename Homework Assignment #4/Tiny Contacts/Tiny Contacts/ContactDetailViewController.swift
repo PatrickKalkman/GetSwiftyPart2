@@ -43,18 +43,30 @@ class ContactDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func saveAction(_ sender: Any) {
         
         if let contactToUpdate = selectedContact {
+            
             contactToUpdate.firstname = FirstName.text
             contactToUpdate.lastname = LastName.text
             contactToUpdate.group = GroupButton.titleLabel?.text
-            appDelegate.saveContext()
             
-            if let cell = PhoneTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? PhoneTableViewCell {
-                if let phone = contactToUpdate.phones?.allObjects[0] as? Phone {
-                    phone.phone = cell.phoneNumberTextField.text
-                    phone.type = cell.typeOfPhoneButton.titleLabel?.text
-                    appDelegate.saveContext()
+            if let phones = contactToUpdate.phones?.allObjects as? [Phone] {
+                for phoneIndex in 0...phones.count - 1 {
+                    if let cell = PhoneTableView.cellForRow(at: IndexPath(item: phoneIndex, section: 0)) as? PhoneTableViewCell {
+                        phones[phoneIndex].phone = cell.phoneNumberTextField.text
+                        phones[phoneIndex].type = cell.typeOfPhoneButton.titleLabel?.text
+                    }
                 }
             }
+            
+            if let emails = contactToUpdate.emails?.allObjects as? [Email] {
+                for emailIndex in 0...emails.count - 1 {
+                    if let cell = PhoneTableView.cellForRow(at: IndexPath(item: emailIndex, section: 0)) as? PhoneTableViewCell {
+                        emails[emailIndex].email = cell.phoneNumberTextField.text
+                        emails[emailIndex].type = cell.typeOfPhoneButton.titleLabel?.text
+                    }
+                }
+            }
+            
+            appDelegate.saveContext()
             
             navigationController?.toolbar.isHidden = true
             self.navigationController?.popViewController(animated: true)
