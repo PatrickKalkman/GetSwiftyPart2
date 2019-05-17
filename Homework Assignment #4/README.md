@@ -1,5 +1,7 @@
 # GetSwiftyPart2 Homework assignment #4
 
+![Tiny Contacts Demo](TinyContacts.gif)
+
 Project #4 Contacts 
 
 Details:
