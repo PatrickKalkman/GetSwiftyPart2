@@ -13,14 +13,11 @@ import CoreData
 class ContactsViewController: UIViewController {
 
     private let contactGenerator: ContactDataGenerator = ContactDataGenerator()
-    private var blockOperations: [BlockOperation] = []
 
+    private var blockOperations: [BlockOperation] = []
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     private var fetchResultController: NSFetchedResultsController<Contact>!
-
-    private var selectedContact: Contact?
 
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -46,12 +43,12 @@ class ContactsViewController: UIViewController {
         navigationController?.toolbar.isHidden = true
         collectionView.allowsMultipleSelection = false
         collectionView.allowsSelection = true
-        refresh()
+        loadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -78,9 +75,10 @@ class ContactsViewController: UIViewController {
     }
 
     @IBAction func addContact() {
+        // This generates a random contact from random data
         let generatedContact: Contact = contactGenerator.generateRandomContact(context: context)
         appDelegate.saveContext()
-        
+
         let phone1: Phone = contactGenerator.generatePhone(type: "work", context: context)
         phone1.phoneOwner = generatedContact
         let phone2: Phone = contactGenerator.generatePhone(type: "private", context: context)
@@ -110,7 +108,7 @@ class ContactsViewController: UIViewController {
         setEditing(false, animated: true)
     }
 
-    func refresh() {
+    func loadData() {
         let request = Contact.fetchRequest() as NSFetchRequest<Contact>
         if !searchQueryText.isEmpty {
             request.predicate = NSPredicate(format: "firstname CONTAINS[cd] %@", searchQueryText)
@@ -123,16 +121,16 @@ class ContactsViewController: UIViewController {
             fetchResultController.delegate = self
             try fetchResultController.performFetch()
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            print("Could not fetch the contact data. \(error), \(error.userInfo)")
         }
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        // Only move to detail screen when we are not in editing mode
         return !isEditing
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if let contactViewCell = sender as? ContactViewCell {
             if let indexPathForContactViewCell = collectionView.indexPath(for: contactViewCell) {
                 let selectedContact: Contact = fetchResultController.object(at: indexPathForContactViewCell)
@@ -141,16 +139,18 @@ class ContactsViewController: UIViewController {
                 }
             }
         }
-        
     }
+
 }
 
+// Collectionview delegate and datasource
 extension ContactsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchResultController.sections, let contacts = sections[section].objects else {
             return 0
         }
+
         return contacts.count
     }
 
@@ -168,41 +168,36 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath)
         if let contactViewCell = cell as? ContactViewCell {
             let contact: Contact = fetchResultController.object(at: indexPath)
-            if let firstName = contact.firstname {
-                contactViewCell.firstNameLabel.text = firstName
-            }
-            if let lastName = contact.lastname {
-                contactViewCell.lastNameLabel.text = lastName
-            } else {
-                contactViewCell.lastNameLabel.text = ""
-            }
-
-            contactViewCell.callButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
-            contactViewCell.callButton.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
-            contactViewCell.callButton.layer.cornerRadius = 3
-            contactViewCell.callButton.clipsToBounds = true
-
-            contactViewCell.mailButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
-            contactViewCell.mailButton.setTitle(String.fontAwesomeIcon(name: .envelope), for: .normal)
-            contactViewCell.mailButton.layer.cornerRadius = 3
-            contactViewCell.mailButton.clipsToBounds = true
-
-            contactViewCell.faceTimeButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
-            contactViewCell.faceTimeButton.setTitle(String.fontAwesomeIcon(name: .video), for: .normal)
-            contactViewCell.faceTimeButton.layer.cornerRadius = 3
-            contactViewCell.faceTimeButton.clipsToBounds = true
-
-            contactViewCell.textButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
-            contactViewCell.textButton.setTitle(String.fontAwesomeIcon(name: .comment), for: .normal)
-            contactViewCell.textButton.layer.cornerRadius = 3
-            contactViewCell.textButton.clipsToBounds = true
-
+            contactViewCell.firstNameLabel.text = contact.firstname
+            contactViewCell.lastNameLabel.text = contact.lastname
+            setCellButtons(contactViewCell: contactViewCell)
             contactViewCell.isEditing = isEditing
-
             return contactViewCell
         }
 
         return cell
+    }
+
+    func setCellButtons(contactViewCell: ContactViewCell) {
+        contactViewCell.callButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
+        contactViewCell.callButton.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
+        contactViewCell.callButton.layer.cornerRadius = 3
+        contactViewCell.callButton.clipsToBounds = true
+
+        contactViewCell.mailButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
+        contactViewCell.mailButton.setTitle(String.fontAwesomeIcon(name: .envelope), for: .normal)
+        contactViewCell.mailButton.layer.cornerRadius = 3
+        contactViewCell.mailButton.clipsToBounds = true
+
+        contactViewCell.faceTimeButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
+        contactViewCell.faceTimeButton.setTitle(String.fontAwesomeIcon(name: .video), for: .normal)
+        contactViewCell.faceTimeButton.layer.cornerRadius = 3
+        contactViewCell.faceTimeButton.clipsToBounds = true
+
+        contactViewCell.textButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 10, style: .solid)
+        contactViewCell.textButton.setTitle(String.fontAwesomeIcon(name: .comment), for: .normal)
+        contactViewCell.textButton.layer.cornerRadius = 3
+        contactViewCell.textButton.clipsToBounds = true
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -224,15 +219,20 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+// Searchbar delegate
 extension ContactsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchQueryText = searchText
-        refresh()
+        loadData()
         collectionView.reloadData()
     }
 }
 
+// Delegate that gets called when contacts data changes
 extension ContactsViewController: NSFetchedResultsControllerDelegate {
+
+    // All the changes are batched and performed in one go (section, contacts). Otherwise, the collectionview
+    // reports problems.
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         blockOperations.removeAll(keepingCapacity: true)
@@ -245,48 +245,48 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
             return
         }
 
-        var op: BlockOperation = BlockOperation { }
+        var blockOperation: BlockOperation = BlockOperation { }
         switch type {
         case .insert:
-            op = BlockOperation {
+            blockOperation = BlockOperation {
                 let layout = self.collectionView?.collectionViewLayout as! FlowLayout
                 layout.addedItem = cellIndex
                 self.collectionView.insertItems(at: [cellIndex])
             }
         case .delete:
-            op = BlockOperation {
+            blockOperation = BlockOperation {
                 self.collectionView.deleteItems(at: [cellIndex])
             }
         case .update:
-            op = BlockOperation {
+            blockOperation = BlockOperation {
                 self.collectionView.reloadItems(at: [cellIndex])
             }
         case .move:
-            op = BlockOperation {
+            blockOperation = BlockOperation {
                 self.collectionView.moveItem(at: index!, to: newIndexPath!)
             }
         default:
             break;
         }
 
-        blockOperations.append(op)
+        blockOperations.append(blockOperation)
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
 
-        var op: BlockOperation = BlockOperation { }
+        var blockOperation: BlockOperation = BlockOperation { }
         let sectionIndexSet = IndexSet(integer: sectionIndex)
         switch type {
         case .insert:
-            op = BlockOperation { self.collectionView.insertSections(sectionIndexSet) }
+            blockOperation = BlockOperation { self.collectionView.insertSections(sectionIndexSet) }
         case .delete:
-            op = BlockOperation { self.collectionView.deleteSections(sectionIndexSet) }
+            blockOperation = BlockOperation { self.collectionView.deleteSections(sectionIndexSet) }
         case .update:
-            op = BlockOperation { self.collectionView?.reloadSections(sectionIndexSet) }
+            blockOperation = BlockOperation { self.collectionView?.reloadSections(sectionIndexSet) }
         default:
             break;
         }
-        blockOperations.append(op)
+        blockOperations.append(blockOperation)
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
